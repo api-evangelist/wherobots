@@ -1,0 +1,764 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey subscriptions API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: subscriptions
+paths:
+  /subscriptions/amazon-marketplace-customer:
+    get:
+      tags:
+      - subscriptions
+      summary: Get AWS Marketplace customer details
+      operationId: getAmazonMarketplaceCustomerDetails
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: x-amzn-marketplace-token
+        in: header
+        required: true
+        schema:
+          type: string
+          description: The Amazon Marketplace registration token
+          title: X-Amzn-Marketplace-Token
+        description: The Amazon Marketplace registration token
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AmazonMarketplaceCustomerDetails'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /subscriptions/aws-marketplace:
+    post:
+      tags:
+      - subscriptions
+      summary: Link organization to AWS Marketplace
+      operationId: linkAmazonMarketplace
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: x-amzn-marketplace-token
+        in: header
+        required: true
+        schema:
+          type: string
+          description: The Amazon Marketplace registration token
+          title: X-Amzn-Marketplace-Token
+        description: The Amazon Marketplace registration token
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /subscriptions:
+    get:
+      tags:
+      - subscriptions
+      summary: Get current organization subscription
+      operationId: getMySubscription
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/SubscriptionInfo'
+                - type: 'null'
+                title: Response Getmysubscription
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /subscriptions/upgrade:
+    post:
+      tags:
+      - subscriptions
+      summary: Initiate a subscription upgrade
+      description: 'Initiates the upgrade process for the organization''s subscription with
+
+        Stripe-based payments.
+
+
+        This creates a new Stripe SetupIntent and a PENDING StripeSubscription to
+
+        initiate the upgrade flow. The client will use the returned intent secret to
+
+        complete the payment method setup on the frontend. The PENDING StripeSubscription
+
+        does not become the organization''s active subscription as a result of this call
+
+        (see the upgrade_confirmation endpoint below).
+
+
+        The Stripe subscription webhook handler will then finalize the upgrade once the payment method is
+
+        confirmed and successfully attached by Stripe (see src.routers.webhook.stripe).'
+      operationId: initiateSubscriptionUpgrade
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StripeSubscription'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+  /subscriptions/upgrade-confirmation:
+    post:
+      tags:
+      - subscriptions
+      summary: Confirm subscription upgrade with Stripe
+      description: 'Confirms the subscription upgrade process for the organization''s Stripe-based subscription.
+
+
+        Called by the frontend after the Stripe SetupIntent process is completed, as notification to the
+
+        backend that the pending StripeSubscription can now be considered the active subscription for the organization.
+
+
+        This is a UX optimization so that the user will see the pending state immediately after completing the SetupIntent,
+
+        instead of having to wait for the Stripe webhook to be processed. The upgrade will still be finalized properly by
+
+        the webhook handler even if the call to this endpoint fails or is never made.'
+      operationId: confirmSubscriptionUpgrade
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpgradeConfirmationRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+  /subscriptions/cancel:
+    post:
+      tags:
+      - subscriptions
+      summary: Cancel organization Stripe subscription
+      description: 'Cancels the organization''s Stripe subscription.
+
+
+        This will cancel the subscription in Orb (stopping billing), downgrade the
+
+        organization to the Community plan, and mark the subscription as stopped.'
+      operationId: cancelStripeSubscription
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+  /subscriptions/portal:
+    get:
+      tags:
+      - subscriptions
+      summary: Get billing portal URL
+      operationId: getPortalUrl
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - type: string
+                - type: 'null'
+                title: Response Getportalurl
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+components:
+  schemas:
+    InternalDevelopmentSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: InternalDevelopmentSubscription
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    SubscriptionInfo:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        awsMarketplaceSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/AwsMarketplaceSubscription'
+          - type: 'null'
+        stripeSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/StripeSubscription'
+          - type: 'null'
+        internalDevelopmentSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/InternalDevelopmentSubscription'
+          - type: 'null'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: SubscriptionInfo
+      description: 'Detailed subscription information including type-specific fields.
+
+
+        This model is used across endpoints to return comprehensive subscription data,
+
+        with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
+    AwsMarketplaceSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        customerAWSAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Customerawsaccountid
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      - customerAWSAccountId
+      title: AwsMarketplaceSubscription
+    AmazonMarketplaceCustomerDetails:
+      properties:
+        customer_identifier:
+          type: string
+          title: Customer Identifier
+        customer_aws_account_id:
+          type: string
+          title: Customer Aws Account Id
+      type: object
+      required:
+      - customer_identifier
+      - customer_aws_account_id
+      title: AmazonMarketplaceCustomerDetails
+    StripeSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        stripeCustomerId:
+          type: string
+          title: Stripecustomerid
+        intentSecret:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Intentsecret
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      - stripeCustomerId
+      title: StripeSubscription
+    SubscriptionState:
+      type: string
+      enum:
+      - PENDING
+      - ACTIVE
+      - ACTIVE_PROBATION
+      - FAILED
+      - STOPPED
+      title: SubscriptionState
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    UpgradeConfirmationRequest:
+      properties:
+        setup_intent_id:
+          type: string
+          title: Setup Intent Id
+      type: object
+      required:
+      - setup_intent_id
+      title: UpgradeConfirmationRequest
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

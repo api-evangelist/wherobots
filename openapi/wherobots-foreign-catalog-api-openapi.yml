@@ -1,0 +1,1153 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey foreign-catalog API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: foreign-catalog
+paths:
+  /foreign-catalog:
+    get:
+      tags:
+      - foreign-catalog
+      summary: List foreign catalogs
+      description: Lists all foreign catalogs visible to the current user.
+      operationId: listForeignCatalogs
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  oneOf:
+                  - $ref: '#/components/schemas/DeltaForeignCatalogRead'
+                  - $ref: '#/components/schemas/IcebergForeignCatalogRead'
+                  - $ref: '#/components/schemas/AwsGlueForeignCatalogRead'
+                  - $ref: '#/components/schemas/S3TablesForeignCatalogRead'
+                  discriminator:
+                    propertyName: type
+                    mapping:
+                      UNITY_DELTA: '#/components/schemas/DeltaForeignCatalogRead'
+                      UNITY_ICEBERG: '#/components/schemas/IcebergForeignCatalogRead'
+                      AWS_GLUE: '#/components/schemas/AwsGlueForeignCatalogRead'
+                      S3_TABLES: '#/components/schemas/S3TablesForeignCatalogRead'
+                type: array
+                title: Response Listforeigncatalogs
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+    post:
+      tags:
+      - foreign-catalog
+      summary: Create a foreign catalog connection
+      description: 'Creates a new foreign catalog.
+
+
+        This endpoint allows for the creation of a new foreign catalog connection.
+
+        The number of foreign catalogs is limited by the organization''s plan.'
+      operationId: createForeignCatalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/UnityIcebergForeignCatalogCreate'
+              - $ref: '#/components/schemas/UnityDeltaForeignCatalogCreate'
+              - $ref: '#/components/schemas/AwsGlueForeignCatalogCreate'
+              - $ref: '#/components/schemas/S3TablesForeignCatalogCreate'
+              title: Payload
+              discriminator:
+                propertyName: type
+                mapping:
+                  UNITY_ICEBERG: '#/components/schemas/UnityIcebergForeignCatalogCreate'
+                  UNITY_DELTA: '#/components/schemas/UnityDeltaForeignCatalogCreate'
+                  AWS_GLUE: '#/components/schemas/AwsGlueForeignCatalogCreate'
+                  S3_TABLES: '#/components/schemas/S3TablesForeignCatalogCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/DeltaForeignCatalogRead'
+                - $ref: '#/components/schemas/IcebergForeignCatalogRead'
+                - $ref: '#/components/schemas/AwsGlueForeignCatalogRead'
+                - $ref: '#/components/schemas/S3TablesForeignCatalogRead'
+                title: Response Createforeigncatalog
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    UNITY_DELTA: '#/components/schemas/DeltaForeignCatalogRead'
+                    UNITY_ICEBERG: '#/components/schemas/IcebergForeignCatalogRead'
+                    AWS_GLUE: '#/components/schemas/AwsGlueForeignCatalogRead'
+                    S3_TABLES: '#/components/schemas/S3TablesForeignCatalogRead'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /foreign-catalog/{catalog_id}:
+    get:
+      tags:
+      - foreign-catalog
+      summary: Get a foreign catalog
+      description: Gets a specific foreign catalog by its ID.
+      operationId: getForeignCatalog
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the foreign catalog to retrieve.
+          title: Catalog Id
+        description: The ID of the foreign catalog to retrieve.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/DeltaForeignCatalogRead'
+                - $ref: '#/components/schemas/IcebergForeignCatalogRead'
+                - $ref: '#/components/schemas/AwsGlueForeignCatalogRead'
+                - $ref: '#/components/schemas/S3TablesForeignCatalogRead'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    UNITY_DELTA: '#/components/schemas/DeltaForeignCatalogRead'
+                    UNITY_ICEBERG: '#/components/schemas/IcebergForeignCatalogRead'
+                    AWS_GLUE: '#/components/schemas/AwsGlueForeignCatalogRead'
+                    S3_TABLES: '#/components/schemas/S3TablesForeignCatalogRead'
+                title: Response Getforeigncatalog
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    put:
+      tags:
+      - foreign-catalog
+      summary: Update a foreign catalog
+      description: Updates an existing foreign catalog.
+      operationId: updateForeignCatalog
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the foreign catalog to update.
+          title: Catalog Id
+        description: The ID of the foreign catalog to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/UnityIcebergForeignCatalogUpdate'
+              - $ref: '#/components/schemas/UnityDeltaForeignCatalogUpdate'
+              - $ref: '#/components/schemas/AwsGlueForeignCatalogUpdate'
+              - $ref: '#/components/schemas/S3TablesForeignCatalogUpdate'
+              discriminator:
+                propertyName: type
+                mapping:
+                  UNITY_ICEBERG: '#/components/schemas/UnityIcebergForeignCatalogUpdate'
+                  UNITY_DELTA: '#/components/schemas/UnityDeltaForeignCatalogUpdate'
+                  AWS_GLUE: '#/components/schemas/AwsGlueForeignCatalogUpdate'
+                  S3_TABLES: '#/components/schemas/S3TablesForeignCatalogUpdate'
+              title: Catalog
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/DeltaForeignCatalogRead'
+                - $ref: '#/components/schemas/IcebergForeignCatalogRead'
+                - $ref: '#/components/schemas/AwsGlueForeignCatalogRead'
+                - $ref: '#/components/schemas/S3TablesForeignCatalogRead'
+                discriminator:
+                  propertyName: type
+                  mapping:
+                    UNITY_DELTA: '#/components/schemas/DeltaForeignCatalogRead'
+                    UNITY_ICEBERG: '#/components/schemas/IcebergForeignCatalogRead'
+                    AWS_GLUE: '#/components/schemas/AwsGlueForeignCatalogRead'
+                    S3_TABLES: '#/components/schemas/S3TablesForeignCatalogRead'
+                title: Response Updateforeigncatalog
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    delete:
+      tags:
+      - foreign-catalog
+      summary: Delete a foreign catalog
+      description: Deletes a foreign catalog by its ID.
+      operationId: deleteForeignCatalog
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the foreign catalog to delete.
+          title: Catalog Id
+        description: The ID of the foreign catalog to delete.
+      responses:
+        '204':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /foreign-catalog/test-connection:
+    post:
+      tags:
+      - foreign-catalog
+      summary: Test a new foreign catalog connection
+      description: 'Tests the connection to a foreign catalog.
+
+
+        This endpoint allows users to test the connection details of a foreign catalog
+
+        before creating it.'
+      operationId: testUnsavedForeignCatalogConnection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/UnityIcebergForeignCatalogCreate'
+              - $ref: '#/components/schemas/UnityDeltaForeignCatalogCreate'
+              - $ref: '#/components/schemas/AwsGlueForeignCatalogCreate'
+              - $ref: '#/components/schemas/S3TablesForeignCatalogCreate'
+              title: Catalog
+              discriminator:
+                propertyName: type
+                mapping:
+                  UNITY_ICEBERG: '#/components/schemas/UnityIcebergForeignCatalogCreate'
+                  UNITY_DELTA: '#/components/schemas/UnityDeltaForeignCatalogCreate'
+                  AWS_GLUE: '#/components/schemas/AwsGlueForeignCatalogCreate'
+                  S3_TABLES: '#/components/schemas/S3TablesForeignCatalogCreate'
+        required: true
+      responses:
+        '204':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /foreign-catalog/{catalog_id}/test-connection:
+    post:
+      tags:
+      - foreign-catalog
+      summary: Test an existing foreign catalog connection
+      description: 'Tests the connection to a foreign catalog.
+
+
+        This endpoint allows users to test the connection details of an existing
+
+        foreign catalog.'
+      operationId: testExistingForeignCatalogConnection
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the foreign catalog to test.
+          title: Catalog Id
+        description: The ID of the foreign catalog to test.
+      responses:
+        '204':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+components:
+  schemas:
+    IcebergForeignCatalogRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique external ID of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        serverUrl:
+          type: string
+          title: Serverurl
+          description: URL of the foreign catalog server.
+        type:
+          type: string
+          const: UNITY_ICEBERG
+          title: Type
+          description: Type of the foreign catalog. Must be 'UNITY_DELTA'.
+        oauthClientId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Oauthclientid
+          description: OAuth client ID.
+      type: object
+      required:
+      - id
+      - name
+      - serverUrl
+      - type
+      title: IcebergForeignCatalogRead
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    AwsGlueForeignCatalogRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique external ID of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        type:
+          type: string
+          const: AWS_GLUE
+          title: Type
+          description: Type of the foreign catalog. Must be 'AWS_GLUE'.
+        region:
+          type: string
+          title: Region
+          description: AWS region where the Glue catalog lives.
+        s3Path:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: S3Path
+        accessType:
+          $ref: '#/components/schemas/ForeignCatalogAccessType'
+        stackName:
+          type: string
+          title: Stackname
+          description: CloudFormation stack name backing this Glue catalog.
+        cloudConnection:
+          $ref: '#/components/schemas/CloudConnectionRead'
+          description: Resolved cloud connection details.
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - region
+      - accessType
+      - stackName
+      - cloudConnection
+      title: AwsGlueForeignCatalogRead
+    AwsGlueForeignCatalogUpdate:
+      properties:
+        type:
+          type: string
+          const: AWS_GLUE
+          title: Type
+          description: Type of the foreign catalog. Must be 'AWS_GLUE'.
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Updated name of the foreign catalog.
+      type: object
+      required:
+      - type
+      title: AwsGlueForeignCatalogUpdate
+      description: Request model for updating an AWS Glue foreign catalog.
+    S3TablesForeignCatalogUpdate:
+      properties:
+        type:
+          type: string
+          const: S3_TABLES
+          title: Type
+          description: Type of the foreign catalog. Must be 'S3_TABLES'.
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Updated name of the foreign catalog.
+      type: object
+      required:
+      - type
+      title: S3TablesForeignCatalogUpdate
+      description: Request model for updating an Amazon S3 Tables foreign catalog.
+    UnityDeltaForeignCatalogUpdate:
+      properties:
+        type:
+          type: string
+          const: UNITY_DELTA
+          title: Type
+          description: Type of the foreign catalog. Must be 'UNITY_DELTA'.
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Updated name of the foreign catalog.
+        serverUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Serverurl
+          description: Updated URL of the Unity Delta server.
+        token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Token
+          description: Updated personal access token.
+      type: object
+      required:
+      - type
+      title: UnityDeltaForeignCatalogUpdate
+      description: 'Request model for updating a Unity Delta foreign catalog.
+
+        Used for OpenAPI schema generation.'
+    DeltaForeignCatalogRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique external ID of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        serverUrl:
+          type: string
+          title: Serverurl
+          description: URL of the foreign catalog server.
+        type:
+          type: string
+          const: UNITY_DELTA
+          title: Type
+          description: Type of the foreign catalog. Must be 'UNITY_DELTA'.
+      type: object
+      required:
+      - id
+      - name
+      - serverUrl
+      - type
+      title: DeltaForeignCatalogRead
+    S3TablesForeignCatalogCreate:
+      properties:
+        type:
+          type: string
+          const: S3_TABLES
+          title: Type
+          description: Type of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        cloudConnectionId:
+          type: string
+          title: Cloudconnectionid
+          description: ID of the AWS cloud connection that grants access to the table bucket.
+        tableBucketArn:
+          type: string
+          pattern: ^arn:aws:s3tables:[a-z0-9\-]+:\d{12}:bucket/[a-z0-9][a-z0-9\-]{1,61}[a-z0-9]$
+          title: Tablebucketarn
+          description: ARN of the S3 Tables table bucket this catalog exposes.
+        accessType:
+          $ref: '#/components/schemas/ForeignCatalogAccessType'
+          description: Whether the catalog is read-only or read-write.
+      type: object
+      required:
+      - type
+      - name
+      - cloudConnectionId
+      - tableBucketArn
+      - accessType
+      title: S3TablesForeignCatalogCreate
+      description: Request model for creating an Amazon S3 Tables foreign catalog.
+    ForeignCatalogAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: ForeignCatalogAccessType
+      description: Enum for foreign catalog access modes (e.g. read-only vs. read-write).
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
+    CloudConnectionRead:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        cloudProvider:
+          $ref: '#/components/schemas/CloudProvider'
+        managedBy:
+          anyOf:
+          - $ref: '#/components/schemas/CloudConnectionManagedBy'
+          - type: 'null'
+        roleArn:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rolearn
+        awsAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Awsaccountid
+        trustedAccountIds:
+          items:
+            type: string
+          type: array
+          title: Trustedaccountids
+        allowSaas:
+          type: boolean
+          title: Allowsaas
+          default: true
+        stackName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Stackname
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
+        bindings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/CloudConnectionBinding'
+            type: array
+          - type: 'null'
+          title: Bindings
+      type: object
+      required:
+      - id
+      - name
+      - cloudProvider
+      - managedBy
+      - createdAt
+      title: CloudConnectionRead
+    AwsGlueForeignCatalogCreate:
+      properties:
+        type:
+          type: string
+          const: AWS_GLUE
+          title: Type
+          description: Type of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        region:
+          type: string
+          title: Region
+          description: AWS region where the Glue catalog lives.
+        cloudConnectionId:
+          type: string
+          title: Cloudconnectionid
+          description: ID of the AWS cloud connection that grants access to the Glue catalog.
+        s3Path:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: S3Path
+          description: Optional S3 path constraining which Glue tables this catalog exposes.
+        accessType:
+          $ref: '#/components/schemas/ForeignCatalogAccessType'
+          description: Whether the catalog is read-only or read-write.
+      type: object
+      required:
+      - type
+      - name
+      - region
+      - cloudConnectionId
+      - accessType
+      title: AwsGlueForeignCatalogCreate
+      description: Request model for creating an AWS Glue foreign catalog.
+    S3TablesForeignCatalogRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique external ID of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        type:
+          type: string
+          const: S3_TABLES
+          title: Type
+          description: Type of the foreign catalog. Must be 'S3_TABLES'.
+        region:
+          type: string
+          title: Region
+          description: AWS region where the table bucket lives.
+        tableBucketArn:
+          type: string
+          title: Tablebucketarn
+          description: ARN of the S3 Tables table bucket this catalog exposes.
+        accessType:
+          $ref: '#/components/schemas/ForeignCatalogAccessType'
+        stackName:
+          type: string
+          title: Stackname
+          description: CloudFormation stack name backing this S3 Tables catalog.
+        cloudConnection:
+          $ref: '#/components/schemas/CloudConnectionRead'
+          description: Resolved cloud connection details.
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - region
+      - tableBucketArn
+      - accessType
+      - stackName
+      - cloudConnection
+      title: S3TablesForeignCatalogRead
+    UnityIcebergForeignCatalogCreate:
+      properties:
+        type:
+          type: string
+          const: UNITY_ICEBERG
+          title: Type
+          description: Type of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        serverUrl:
+          type: string
+          title: Serverurl
+          description: URL of the Unity Iceberg server.
+        oauthClientId:
+          type: string
+          title: Oauthclientid
+          description: OAuth client ID for authentication.
+        oauthClientSecret:
+          type: string
+          title: Oauthclientsecret
+          description: OAuth client secret for authentication.
+        alias:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Alias
+          description: Optional alias for the catalog. If specified, it will be used instead of the `name` to reference the catalog inside a workload.
+      type: object
+      required:
+      - type
+      - name
+      - serverUrl
+      - oauthClientId
+      - oauthClientSecret
+      title: UnityIcebergForeignCatalogCreate
+      description: Request model for creating a Unity Iceberg foreign catalog.
+    UnityIcebergForeignCatalogUpdate:
+      properties:
+        type:
+          type: string
+          const: UNITY_ICEBERG
+          title: Type
+          description: Type of the foreign catalog. Must be 'UNITY_ICEBERG'.
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Updated name of the foreign catalog.
+        serverUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Serverurl
+          description: Updated URL of the Unity Iceberg server.
+        oauthClientId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Oauthclientid
+          description: Updated OAuth client ID.
+        oauthClientSecret:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Oauthclientsecret
+          description: Updated OAuth client secret.
+        alias:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Alias
+          description: Updated optional alias.
+      type: object
+      required:
+      - type
+      title: UnityIcebergForeignCatalogUpdate
+      description: 'Request model for updating a Unity Iceberg foreign catalog.
+
+        Used for OpenAPI schema generation.'
+    CloudConnectionBinding:
+      properties:
+        kind:
+          type: string
+          enum:
+          - storage_integration
+          - glue_catalog
+          - s3tables_catalog
+          title: Kind
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - kind
+      - id
+      - name
+      title: CloudConnectionBinding
+      description: 'A resource that references (is "bound" to) a cloud connection.
+
+
+        The binding kinds live in different databases (storage integrations in
+
+        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
+
+        only the minimal cross-db-friendly shape: kind, id, and display name.'
+    UnityDeltaForeignCatalogCreate:
+      properties:
+        type:
+          type: string
+          const: UNITY_DELTA
+          title: Type
+          description: Type of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        serverUrl:
+          type: string
+          title: Serverurl
+          description: URL of the Unity Delta server.
+        token:
+          type: string
+          title: Token
+          description: Personal access token for authentication.
+      type: object
+      required:
+      - type
+      - name
+      - serverUrl
+      - token
+      title: UnityDeltaForeignCatalogCreate
+      description: Request model for creating a Unity Delta foreign catalog.
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

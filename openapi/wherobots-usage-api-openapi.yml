@@ -1,0 +1,853 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey usage API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: usage
+paths:
+  /usage/workloads/chart:
+    get:
+      tags:
+      - usage
+      summary: Get workload usage chart data
+      operationId: getWorkloadUsageChart
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: timerange
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/TimerangeOption'
+          description: The time range for the usage chart.
+          choices:
+          - 24h
+          - 7d
+          - 30d
+          default: 24h
+        description: The time range for the usage chart.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChartSlice'
+                title: Response Getworkloadusagechart
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /usage/workloads/info:
+    get:
+      tags:
+      - usage
+      summary: Get workload usage summary info
+      operationId: getWorkloadUsageInfo
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: startTime
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Starttime
+      - name: endTime
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Endtime
+      - name: includeStatuses
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppStatus'
+          default: []
+          title: Includestatuses
+      - name: excludeStatuses
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppStatus'
+          default: []
+          title: Excludestatuses
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/jsonl: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /usage/workloads:
+    get:
+      tags:
+      - usage
+      summary: Get workload usage (deprecated)
+      operationId: getWorkloadUsage
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: startTime
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Starttime
+      - name: endTime
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Endtime
+      - name: includeStatuses
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppStatus'
+          default: []
+          title: Includestatuses
+      - name: excludeStatuses
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppStatus'
+          default: []
+          title: Excludestatuses
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/jsonl: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /usage/history:
+    get:
+      tags:
+      - usage
+      summary: Get workload usage history
+      description: Return a unified history of KubeApp workloads and Union workflow executions.
+      operationId: getWorkloadHistory
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: startTime
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Starttime
+      - name: endTime
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Endtime
+      - name: workloadType
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/WorkloadType'
+          - type: 'null'
+          title: Workloadtype
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkloadHistoryItem'
+                title: Response Getworkloadhistory
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /usage/costs:
+    post:
+      tags:
+      - usage
+      summary: Get workload cost breakdown
+      operationId: getWorkloadCosts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetKubeAppCostsInput'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkloadCostsOutput'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+components:
+  schemas:
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    WorkloadType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      - RASTERFLOW_RUN
+      title: WorkloadType
+    WorkloadCostsOutput:
+      properties:
+        costs:
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/WorkloadCostAvailable'
+            - $ref: '#/components/schemas/WorkloadCostUnavailable'
+            discriminator:
+              propertyName: kind
+              mapping:
+                available: '#/components/schemas/WorkloadCostAvailable'
+                unavailable: '#/components/schemas/WorkloadCostUnavailable'
+          type: object
+          title: Costs
+      type: object
+      title: WorkloadCostsOutput
+      description: 'Batch response envelope.
+
+
+        Contract (enforced by the service that constructs this, not by the
+
+        schema): `costs.keys() == set(input.kube_app_ids)`. Every requested
+
+        id appears in the response exactly once, either as Available or
+
+        Unavailable. The service layer is responsible for upholding this;
+
+        the wire shape is intentionally permissive so it doesn''t add runtime
+
+        cost on every serialization.'
+    AppStatus:
+      type: string
+      enum:
+      - PENDING
+      - PREPARING
+      - PREPARE_FAILED
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOY_FAILED
+      - DEPLOYED
+      - INITIALIZING
+      - INIT_FAILED
+      - READY
+      - DESTROY_REQUESTED
+      - DESTROYING
+      - DESTROY_FAILED
+      - DESTROYED
+      title: AppStatus
+    WorkloadCostStatus:
+      type: string
+      enum:
+      - live
+      - settling
+      - final
+      title: WorkloadCostStatus
+      description: "Lifecycle status of a materialized workload cost record.\n\nLIVE     - Workload is still running; cost may continue to accumulate.\n           Refreshed from the upstream billing system on read if older\n           than the settling window.\nSETTLING - Workload finished recently; cost is approaching its final\n           value but the upstream may still emit late events. Continues\n           to be refreshed until the settling window elapses.\nFINAL    - Cost is sealed. No further refreshes; FINAL never reverts\n           to LIVE or SETTLING regardless of update_time ordering."
+    UsageKey:
+      properties:
+        user:
+          type: string
+          title: User
+        region:
+          type: string
+          title: Region
+        app_type:
+          $ref: '#/components/schemas/AppType'
+        runtime:
+          type: string
+          title: Runtime
+      type: object
+      required:
+      - user
+      - region
+      - app_type
+      - runtime
+      title: UsageKey
+    AppType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      title: AppType
+    TimerangeOption:
+      type: string
+      enum:
+      - 24h
+      - 7d
+      - 30d
+      title: TimerangeOption
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    RunStatus:
+      type: string
+      enum:
+      - PENDING
+      - RUNNING
+      - FAILED
+      - COMPLETED
+      - CANCELLED
+      - TIMED_OUT
+      title: RunStatus
+    GetKubeAppCostsInput:
+      properties:
+        kubeAppIds:
+          items:
+            type: string
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Kubeappids
+          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
+      type: object
+      required:
+      - kubeAppIds
+      title: GetKubeAppCostsInput
+    UsageSlice:
+      properties:
+        key:
+          $ref: '#/components/schemas/UsageKey'
+        usage:
+          type: integer
+          title: Usage
+      type: object
+      required:
+      - key
+      - usage
+      title: UsageSlice
+    WorkloadCostUnavailableReason:
+      type: string
+      enum:
+      - not_found
+      - upstream_error
+      - upstream_rate_limit
+      title: WorkloadCostUnavailableReason
+      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
+    ChartSlice:
+      properties:
+        start:
+          type: string
+          format: date-time
+          title: Start
+        end:
+          type: string
+          format: date-time
+          title: End
+        usage:
+          additionalProperties:
+            $ref: '#/components/schemas/UsageSlice'
+          type: object
+          title: Usage
+      type: object
+      required:
+      - start
+      - end
+      - usage
+      title: ChartSlice
+    WorkloadCostAvailable:
+      properties:
+        kind:
+          type: string
+          const: available
+          title: Kind
+          default: available
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        organization_id:
+          type: string
+          title: Organization Id
+        cost:
+          type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
+          title: Cost
+        currency:
+          type: string
+          const: USD
+          title: Currency
+          default: USD
+        spatial_units:
+          type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
+          title: Spatial Units
+        status:
+          $ref: '#/components/schemas/WorkloadCostStatus'
+        settled_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Settled At
+        last_evaluated_at:
+          type: string
+          format: date-time
+          title: Last Evaluated At
+      type: object
+      required:
+      - kube_app_id
+      - organization_id
+      - cost
+      - spatial_units
+      - status
+      - settled_at
+      - last_evaluated_at
+      title: WorkloadCostAvailable
+      description: A workload cost we were able to resolve.
+    WorkloadHistoryItem:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        workloadType:
+          $ref: '#/components/schemas/WorkloadType'
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        status:
+          $ref: '#/components/schemas/WorkloadStatus'
+        createdById:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Createdbyid
+        startTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Starttime
+        endTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Endtime
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+        sourceClient:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sourceclient
+        sourceClientChain:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Sourceclientchain
+        appType:
+          anyOf:
+          - $ref: '#/components/schemas/AppType'
+          - type: 'null'
+        runtimeId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Runtimeid
+        regionName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Regionname
+        runId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Runid
+        runName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Runname
+        runStatus:
+          anyOf:
+          - $ref: '#/components/schemas/RunStatus'
+          - type: 'null'
+        workflowName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workflowname
+        workflowProject:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workflowproject
+        executionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Executionid
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - workloadType
+      - status
+      title: WorkloadHistoryItem
+      description: Unified workload history item representing either a KubeApp or a Union workflow execution.
+    WorkloadStatus:
+      type: string
+      enum:
+      - PENDING
+      - RUNNING
+      - SUCCEEDED
+      - FAILED
+      - CANCELLING
+      - UNKNOWN
+      title: WorkloadStatus
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    WorkloadCostUnavailable:
+      properties:
+        kind:
+          type: string
+          const: unavailable
+          title: Kind
+          default: unavailable
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        reason:
+          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
+      type: object
+      required:
+      - kube_app_id
+      - reason
+      title: WorkloadCostUnavailable
+      description: A workload cost we could not resolve, with a structured reason.
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

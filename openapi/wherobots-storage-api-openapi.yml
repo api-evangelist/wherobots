@@ -1,0 +1,1662 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey storage API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: storage
+paths:
+  /storage:
+    get:
+      tags:
+      - storage
+      summary: List storage integrations
+      operationId: listIntegration
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/StorageSource'
+                type: array
+                title: Response Listintegration
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+    post:
+      tags:
+      - storage
+      summary: Create a storage integration
+      operationId: createIntegration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStorageIntegrationAPIPayload'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageSource'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /storage/{integration_id}:
+    delete:
+      tags:
+      - storage
+      summary: Delete a storage integration
+      operationId: deleteIntegration
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: integration_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Integration Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    get:
+      tags:
+      - storage
+      summary: Get a storage integration
+      operationId: getIntegration
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: integration_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Integration Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageSource'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /storage/trust-relationship:
+    get:
+      tags:
+      - storage
+      summary: Get IAM trust relationship
+      operationId: getTrustRelationship
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: trustedAccountIds
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: 'null'
+          title: Trustedaccountids
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /storage/s3-access-type:
+    get:
+      tags:
+      - storage
+      summary: Check S3 bucket access type
+      operationId: getS3AccessType
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: s3_path
+        in: query
+        required: true
+        schema:
+          type: string
+          title: S3 Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3AccessApiResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /storage/{integration_id}/sample-policy:
+    get:
+      tags:
+      - storage
+      summary: Get sample IAM policy
+      operationId: getSamplePolicy
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: integration_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Integration Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /storage/credentials:
+    post:
+      tags:
+      - storage
+      summary: Get Storage Credentials
+      description: 'Return temporary AWS credentials scoped to the requested S3 path.
+
+
+        Resolution order:
+
+        1. Managed storage (org file store bucket)
+
+        2. WherobotsDB releases bucket (if the org has the feature)
+
+        3. User-defined storage integrations (prefix match)
+
+
+        `payload.access_mode` controls whether returned credentials are read-only
+
+        or include write permissions.
+
+
+        Returns empty credentials for public buckets (no role_arn).'
+      operationId: getStorageCredentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageCredentialsRequest'
+        required: true
+      responses:
+        '200':
+          description: Temporary credentials scoped to the requested path with read or read/write access
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemporaryAwsCredentials'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: No storage source matches the requested path
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /storage/{integration_id}/access:
+    post:
+      tags:
+      - storage
+      summary: Verify storage integration access
+      operationId: verifyIntegrationAccess
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: integration_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Integration Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageIntegrationAccess'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /storage/{integration_id}/abacaccess:
+    post:
+      tags:
+      - storage
+      summary: Verify ABAC storage access
+      operationId: verifyAbacAccess
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: integration_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Integration Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageIntegrationAccess'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /storage/{storage_id}/file-upload-url/{path}:
+    post:
+      tags:
+      - storage
+      summary: Create a presigned file upload URL
+      operationId: createFileUploadUrl
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: storage_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Storage Id
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/src__routers__storageintegration__UploadUrlResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: false
+  /storage/{storage_id}/file-rename/{path}:
+    post:
+      tags:
+      - storage
+      summary: Rename a file in storage
+      operationId: renameFileInStorage
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: storage_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Storage Id
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      - name: new_name
+        in: query
+        required: true
+        schema:
+          type: string
+          title: New Name
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /storage/{storage_id}/files/{path}:
+    get:
+      tags:
+      - storage
+      summary: Download a file from storage
+      operationId: downloadFileFromStorage
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: storage_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Storage Id
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: File downloaded successfully
+          content:
+            application/json:
+              schema: {}
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    delete:
+      tags:
+      - storage
+      summary: Delete a file from storage
+      operationId: deleteFileFromStorage
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: storage_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Storage Id
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /storage/{storage_id}/directories/{path}:
+    delete:
+      tags:
+      - storage
+      summary: Delete a directory from storage
+      operationId: deleteDirectory
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: storage_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Storage Id
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    get:
+      tags:
+      - storage
+      summary: List directory contents
+      operationId: listDirectoryContents
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: storage_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Storage Id
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Cursor
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          title: Limit
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectoryListingResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    put:
+      tags:
+      - storage
+      summary: Create a directory in storage
+      operationId: createDirectory
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: storage_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Storage Id
+      - name: path
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+components:
+  schemas:
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    src__routers__storageintegration__UploadUrlResponse:
+      properties:
+        destination:
+          type: string
+          title: Destination
+        uploadUrl:
+          type: string
+          title: Uploadurl
+      type: object
+      required:
+      - destination
+      - uploadUrl
+      title: UploadUrlResponse
+    StorageIntegrationAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: StorageIntegrationAccessType
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
+    TemporaryAwsCredentials:
+      properties:
+        accessKeyId:
+          type: string
+          title: Accesskeyid
+        secretAccessKey:
+          type: string
+          title: Secretaccesskey
+        sessionToken:
+          type: string
+          title: Sessiontoken
+        expiration:
+          type: string
+          format: date-time
+          title: Expiration
+        region:
+          type: string
+          title: Region
+      type: object
+      required:
+      - accessKeyId
+      - secretAccessKey
+      - sessionToken
+      - expiration
+      - region
+      title: TemporaryAwsCredentials
+      description: Temporary AWS STS credentials with an expiration timestamp and region.
+    S3AccessType:
+      type: string
+      enum:
+      - free
+      - requester_pays
+      - private
+      title: S3AccessType
+    DirectoryListingResult:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/FileEntry'
+          type: array
+          title: Items
+        path:
+          type: string
+          title: Path
+        name:
+          type: string
+          title: Name
+        mutate_protected:
+          type: boolean
+          title: Mutate Protected
+          default: false
+        upload_protected:
+          type: boolean
+          title: Upload Protected
+          default: false
+        current_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - items
+      - path
+      - name
+      title: DirectoryListingResult
+      description: Result of a directory listing operation.
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
+    CloudConnectionRead:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        cloudProvider:
+          $ref: '#/components/schemas/CloudProvider'
+        managedBy:
+          anyOf:
+          - $ref: '#/components/schemas/CloudConnectionManagedBy'
+          - type: 'null'
+        roleArn:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rolearn
+        awsAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Awsaccountid
+        trustedAccountIds:
+          items:
+            type: string
+          type: array
+          title: Trustedaccountids
+        allowSaas:
+          type: boolean
+          title: Allowsaas
+          default: true
+        stackName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Stackname
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
+        bindings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/CloudConnectionBinding'
+            type: array
+          - type: 'null'
+          title: Bindings
+      type: object
+      required:
+      - id
+      - name
+      - cloudProvider
+      - managedBy
+      - createdAt
+      title: CloudConnectionRead
+    FileEntryType:
+      type: string
+      enum:
+      - FILE
+      - FOLDER
+      title: FileEntryType
+    FileEntry:
+      properties:
+        name:
+          type: string
+          title: Name
+        path:
+          type: string
+          title: Path
+        type:
+          $ref: '#/components/schemas/FileEntryType'
+        lastModified:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lastmodified
+        size:
+          type: integer
+          title: Size
+          default: 0
+        protected:
+          type: boolean
+          title: Protected
+          default: false
+      type: object
+      required:
+      - name
+      - path
+      - type
+      title: FileEntry
+    CreateStorageIntegrationAPIPayload:
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          pattern: '[A-Za-z]+'
+          title: Name
+        path:
+          type: string
+          maxLength: 512
+          minLength: 6
+          pattern: ^s3:\/\/([a-zA-Z0-9\-_]{3,63})(?:\/?|\/([a-zA-Z0-9!_.*'()/&=-]+))?$
+          title: Path
+        roleArn:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rolearn
+        cloudConnectionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Cloudconnectionid
+        accessType:
+          anyOf:
+          - $ref: '#/components/schemas/StorageIntegrationAccessType'
+          - type: 'null'
+        trustedAccountIds:
+          items:
+            type: string
+          type: array
+          title: Trustedaccountids
+      type: object
+      required:
+      - name
+      - path
+      title: CreateStorageIntegrationAPIPayload
+    S3AccessApiResponse:
+      properties:
+        accessType:
+          $ref: '#/components/schemas/S3AccessType'
+      type: object
+      required:
+      - accessType
+      title: S3AccessApiResponse
+    CloudConnectionBinding:
+      properties:
+        kind:
+          type: string
+          enum:
+          - storage_integration
+          - glue_catalog
+          - s3tables_catalog
+          title: Kind
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - kind
+      - id
+      - name
+      title: CloudConnectionBinding
+      description: 'A resource that references (is "bound" to) a cloud connection.
+
+
+        The binding kinds live in different databases (storage integrations in
+
+        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
+
+        only the minimal cross-db-friendly shape: kind, id, and display name.'
+    StorageCredentialsRequest:
+      properties:
+        path:
+          type: string
+          maxLength: 1024
+          minLength: 6
+          pattern: ^s3:\/\/([a-zA-Z0-9\-_]{3,63})(?:\/?|\/([a-zA-Z0-9!_.*'()/&=-]+))?$
+          title: Path
+          description: S3 URI (e.g. s3://bucket/prefix) to obtain credentials for.
+        access_mode:
+          type: string
+          enum:
+          - read
+          - read_write
+          title: Access Mode
+          description: Access mode for the credentials. 'read' returns read-only credentials; 'read_write' returns credentials that also allow writing.
+          default: read
+      type: object
+      required:
+      - path
+      title: StorageCredentialsRequest
+      description: Request body for the unified storage credentials endpoint.
+    StorageSourceType:
+      type: string
+      enum:
+      - INTEGRATION
+      - MANAGED
+      title: StorageSourceType
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    StorageIntegrationAccess:
+      properties:
+        listAccess:
+          type: boolean
+          title: Listaccess
+          default: false
+        getAccess:
+          type: boolean
+          title: Getaccess
+          default: false
+        putAccess:
+          type: boolean
+          title: Putaccess
+          default: false
+        deleteAccess:
+          type: boolean
+          title: Deleteaccess
+          default: false
+      type: object
+      title: StorageIntegrationAccess
+    StorageSource:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        path:
+          type: string
+          title: Path
+        roleArn:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rolearn
+        region:
+          type: string
+          title: Region
+        stackName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Stackname
+        type:
+          $ref: '#/components/schemas/StorageSourceType'
+        defaultDirectory:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Defaultdirectory
+        readOnly:
+          type: boolean
+          title: Readonly
+          default: false
+        cloudConnection:
+          anyOf:
+          - $ref: '#/components/schemas/CloudConnectionRead'
+          - type: 'null'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - path
+      - region
+      - type
+      title: StorageSource
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

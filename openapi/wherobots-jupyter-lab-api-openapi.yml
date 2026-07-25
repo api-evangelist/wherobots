@@ -1,0 +1,1107 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey jupyter_lab API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: jupyter_lab
+paths:
+  /me/jupyter/lab/instance/{notebook_id}:
+    get:
+      tags:
+      - jupyter_lab
+      summary: Get a notebook instance
+      operationId: getNotebookInstance
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: notebook_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Notebook Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JupyterKubeApp'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /me/jupyter/lab/instance-latest:
+    get:
+      tags:
+      - jupyter_lab
+      summary: Get user's latest notebook instance
+      operationId: latestNotebookInstance
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/JupyterKubeApp'
+                - type: 'null'
+                title: Response Latestnotebookinstance
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /me/jupyter/lab/instance:
+    get:
+      tags:
+      - jupyter_lab
+      summary: List notebook instances
+      operationId: listNotebookInstances
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+          title: Limit
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          title: Offset
+      - name: desc
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: true
+          title: Desc
+      - name: exclude_statuses
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppStatus'
+          default: []
+          title: Exclude Statuses
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JupyterListModel'
+                title: Response Listnotebookinstances
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    post:
+      tags:
+      - jupyter_lab
+      summary: Create a notebook instance
+      operationId: createNotebookInstance
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: region
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Region
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JupyterAPIPayload'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JupyterKubeApp'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /me/jupyter/lab/instance/{notebook_id}/destroy:
+    post:
+      tags:
+      - jupyter_lab
+      summary: Destroy a notebook instance
+      operationId: destroyNotebookInstance
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: notebook_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Notebook Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JupyterKubeApp'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /me/jupyter/lab/config-hint:
+    get:
+      tags:
+      - jupyter_lab
+      summary: Get notebook config hints
+      operationId: getNotebookConfigHint
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JupyterConfigHint'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+components:
+  schemas:
+    RuntimesHint:
+      properties:
+        hint:
+          items:
+            $ref: '#/components/schemas/RuntimeHintItem'
+          type: array
+          title: Hint
+      type: object
+      required:
+      - hint
+      title: RuntimesHint
+    JupyterListModelEvent:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
+          type: string
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - code
+      title: JupyterListModelEvent
+    RuntimeHintItem:
+      properties:
+        id:
+          $ref: '#/components/schemas/RuntimeId'
+        description:
+          type: string
+          title: Description
+        name:
+          type: string
+          title: Name
+        size:
+          $ref: '#/components/schemas/RuntimeSize'
+        minimumSpatialUnitsPerHour:
+          type: integer
+          title: Minimumspatialunitsperhour
+        maximumSpatialUnitsPerHour:
+          type: integer
+          title: Maximumspatialunitsperhour
+        tags:
+          items:
+            $ref: '#/components/schemas/RuntimeTag'
+          type: array
+          title: Tags
+          default: []
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+        instanceDetails:
+          $ref: '#/components/schemas/InstanceDetailsHint'
+      type: object
+      required:
+      - id
+      - description
+      - name
+      - size
+      - minimumSpatialUnitsPerHour
+      - maximumSpatialUnitsPerHour
+      - instanceDetails
+      title: RuntimeHintItem
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    RuntimeSize:
+      type: string
+      enum:
+      - MICRO
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - XXXXLARGE
+      title: RuntimeSize
+    GpuType:
+      type: string
+      enum:
+      - NVIDIA A10G
+      title: GpuType
+    AppStatus:
+      type: string
+      enum:
+      - PENDING
+      - PREPARING
+      - PREPARE_FAILED
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOY_FAILED
+      - DEPLOYED
+      - INITIALIZING
+      - INIT_FAILED
+      - READY
+      - DESTROY_REQUESTED
+      - DESTROYING
+      - DESTROY_FAILED
+      - DESTROYED
+      title: AppStatus
+    JupyterListModel:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        instanceId:
+          type: string
+          title: Instanceid
+        status:
+          $ref: '#/components/schemas/AppStatus'
+        createdById:
+          type: string
+          title: Createdbyid
+        apiPayload:
+          anyOf:
+          - $ref: '#/components/schemas/JupyterAPIPayload'
+          - type: 'null'
+        appMeta:
+          anyOf:
+          - $ref: '#/components/schemas/JupyterAppMeta'
+          - type: 'null'
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+        events:
+          items:
+            $ref: '#/components/schemas/JupyterListModelEvent'
+          type: array
+          title: Events
+          default: []
+        regionName:
+          type: string
+          title: Regionname
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - instanceId
+      - status
+      - createdById
+      - expiresAt
+      - regionName
+      title: JupyterListModel
+    KubeAppCreationMeta:
+      properties:
+        use_v2_workflow:
+          type: boolean
+          title: Use V2 Workflow
+          default: false
+      type: object
+      title: KubeAppCreationMeta
+      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
+
+
+        Captures decisions pinned at kube_app creation time so cancel/destroy can
+
+        consult them later without re-deriving. Currently only carries the v2
+
+        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
+
+        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
+
+        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
+
+        constructed; cleanup at v2 100% rollout deletes this class.'
+    AppType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      title: AppType
+    ComputeClusterAvailability:
+      type: string
+      enum:
+      - AVAILABLE
+      - DEGRADED
+      - UNAVAILABLE
+      - DISABLED
+      title: ComputeClusterAvailability
+    JupyterKubeApp:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        instanceId:
+          type: string
+          title: Instanceid
+        appType:
+          $ref: '#/components/schemas/AppType'
+        status:
+          $ref: '#/components/schemas/AppStatus'
+        createdById:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Createdbyid
+        apiPayload:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Apipayload
+        appMeta:
+          anyOf:
+          - $ref: '#/components/schemas/JupyterAppMeta'
+          - type: 'null'
+        events:
+          items:
+            $ref: '#/components/schemas/KubeAppEvent'
+          type: array
+          title: Events
+          default: []
+        cpuUsage:
+          type: integer
+          title: Cpuusage
+        regionName:
+          type: string
+          title: Regionname
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Return the latest trace info that is valuable for troubleshooting
+          readOnly: true
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - instanceId
+      - appType
+      - status
+      - createdById
+      - cpuUsage
+      - regionName
+      - message
+      title: JupyterKubeApp
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    RuntimeTag:
+      type: string
+      enum:
+      - GPU
+      - HIMEM
+      - HICPU
+      - MATCHER
+      title: RuntimeTag
+    InstanceDetailsHint:
+      properties:
+        gpu:
+          type: integer
+          title: Gpu
+          default: 0
+        gpu_type:
+          anyOf:
+          - $ref: '#/components/schemas/GpuType'
+          - type: 'null'
+        gpu_vram:
+          type: integer
+          title: Gpu Vram
+          default: 0
+      type: object
+      title: InstanceDetailsHint
+    RuntimeId:
+      type: string
+      enum:
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - micro
+      - tiny
+      - small
+      - medium
+      - large
+      - x-large
+      - 2x-large
+      - 4x-large
+      - medium-himem
+      - large-himem
+      - x-large-himem
+      - 2x-large-himem
+      - 4x-large-himem
+      - x-large-hicpu
+      - 2x-large-hicpu
+      - x-large-matcher
+      - 2x-large-matcher
+      - micro-a10-gpu
+      - tiny-a10-gpu
+      - small-a10-gpu
+      - medium-a10-gpu
+      - large-a10-gpu
+      - x-large-a10-gpu
+      title: RuntimeId
+    Region:
+      properties:
+        regionName:
+          type: string
+          title: Regionname
+        enabled:
+          type: boolean
+          title: Enabled
+        availability:
+          $ref: '#/components/schemas/ComputeClusterAvailability'
+        externalAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Externalaccountid
+      type: object
+      required:
+      - regionName
+      - enabled
+      - availability
+      title: Region
+    JupyterConfigHint:
+      properties:
+        diskSizeGB:
+          $ref: '#/components/schemas/IntHint'
+        versions:
+          $ref: '#/components/schemas/VersionHint'
+        regions:
+          $ref: '#/components/schemas/RegionsHint'
+        runtimes:
+          $ref: '#/components/schemas/RuntimesHint'
+        runtimeTags:
+          $ref: '#/components/schemas/RuntimeTagsHint'
+        idleTimeoutMinutes:
+          $ref: '#/components/schemas/IntHint'
+      type: object
+      required:
+      - diskSizeGB
+      - versions
+      - regions
+      - runtimes
+      - runtimeTags
+      - idleTimeoutMinutes
+      title: JupyterConfigHint
+    RegionsHint:
+      properties:
+        description:
+          type: string
+          title: Description
+        hint:
+          items:
+            $ref: '#/components/schemas/Region'
+          type: array
+          title: Hint
+      type: object
+      required:
+      - description
+      - hint
+      title: RegionsHint
+    NodeSchedulingMeta:
+      properties:
+        node_preexisted:
+          type: boolean
+          title: Node Preexisted
+        node_name:
+          type: string
+          title: Node Name
+        pod_creation_time:
+          type: string
+          title: Pod Creation Time
+        node_creation_time:
+          type: string
+          title: Node Creation Time
+      type: object
+      required:
+      - node_preexisted
+      - node_name
+      - pod_creation_time
+      - node_creation_time
+      title: NodeSchedulingMeta
+      description: 'Metadata captured at node-scheduling time.
+
+
+        ``node_preexisted`` is True when the pod landed on a node that existed
+
+        before the pod was created, False when the node was provisioned for
+
+        the pod (cold start).'
+    KubeAppEvent:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+        eventMeta:
+          anyOf:
+          - $ref: '#/components/schemas/RunEventMeta'
+          - $ref: '#/components/schemas/KubeAppCreationMeta'
+          - $ref: '#/components/schemas/NodeSchedulingMeta'
+          - type: 'null'
+          title: Eventmeta
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      title: KubeAppEvent
+    RunEventMeta:
+      properties:
+        end_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Timestamp
+        start_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start Timestamp
+      type: object
+      title: RunEventMeta
+    JupyterAPIPayload:
+      properties:
+        runtimeId:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Version
+        environmentPresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentpresetid
+        environmentOverridePresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentoverridepresetid
+        idleTimeoutMinutes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Idletimeoutminutes
+        name:
+          anyOf:
+          - type: string
+            maxLength: 50
+          - type: 'null'
+          title: Name
+      type: object
+      title: JupyterAPIPayload
+    VersionHint:
+      properties:
+        hint:
+          items:
+            $ref: '#/components/schemas/WherobotsVersion'
+          type: array
+          title: Hint
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - hint
+      - description
+      title: VersionHint
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    IntHint:
+      properties:
+        hint:
+          type: integer
+          title: Hint
+        min:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Min
+        max:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Max
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - hint
+      - description
+      title: IntHint
+    JupyterAppMeta:
+      properties:
+        jupyter_url:
+          type: string
+          title: Jupyter Url
+          default: ''
+        spark_ui_url:
+          type: string
+          title: Spark Ui Url
+          default: ''
+        spark_eventlogs_url:
+          type: string
+          title: Spark Eventlogs Url
+          default: ''
+        resolved_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Resolved Version
+      type: object
+      title: JupyterAppMeta
+      description: Jupyter-specific metadata fields
+    WherobotsVersion:
+      properties:
+        description:
+          type: string
+          title: Description
+        version:
+          type: string
+          title: Version
+        aliases:
+          items:
+            type: string
+          type: array
+          title: Aliases
+          default: []
+      type: object
+      required:
+      - description
+      - version
+      title: WherobotsVersion
+    RuntimeTagsHint:
+      properties:
+        hint:
+          items:
+            $ref: '#/components/schemas/RuntimeTag'
+          type: array
+          title: Hint
+      type: object
+      required:
+      - hint
+      title: RuntimeTagsHint
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

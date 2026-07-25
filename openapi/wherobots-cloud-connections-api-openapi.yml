@@ -1,0 +1,1408 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey cloud-connections API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: cloud-connections
+paths:
+  /cloud-connections:
+    get:
+      tags:
+      - cloud-connections
+      summary: List cloud connections
+      operationId: listCloudConnections
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CloudConnectionRead'
+                type: array
+                title: Response Listcloudconnections
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+    post:
+      tags:
+      - cloud-connections
+      summary: Create a cloud connection
+      operationId: createCloudConnection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AwsCloudConnectionCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudConnectionRead'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /cloud-connections/{connection_id}:
+    get:
+      tags:
+      - cloud-connections
+      summary: Get a cloud connection
+      operationId: getCloudConnection
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudConnectionRead'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    delete:
+      tags:
+      - cloud-connections
+      summary: Delete a cloud connection
+      operationId: deleteCloudConnection
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/verify:
+    post:
+      tags:
+      - cloud-connections
+      summary: Verify a cloud connection (optionally with a proposed binding)
+      operationId: verifyCloudConnection
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloudConnectionVerifyRequest'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudConnectionVerifyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/create-link/connection:
+    get:
+      tags:
+      - cloud-connections
+      summary: Get a CloudFormation Quick-Create link for the connection stack
+      operationId: getCloudConnectionCreateLink
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuickCreateLinkResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/create-link/storage:
+    get:
+      tags:
+      - cloud-connections
+      summary: Get a CloudFormation Quick-Create link for an S3 binding stack
+      operationId: getCloudConnectionStorageCreateLink
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      - name: bucket
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 63
+          pattern: ^[a-z0-9.\-]+$
+          description: Name of the S3 bucket to grant access to (not an ARN or s3:// URL)
+          title: Bucket
+        description: Name of the S3 bucket to grant access to (not an ARN or s3:// URL)
+      - name: prefix
+        in: query
+        required: false
+        schema:
+          type: string
+          maxLength: 1024
+          pattern: ^[^&#\x00-\x1f\x7f]*$
+          description: Optional key prefix to scope access to; empty grants the whole bucket
+          default: ''
+          title: Prefix
+        description: Optional key prefix to scope access to; empty grants the whole bucket
+      - name: access
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/CftAccessType'
+          description: Access level for the S3 binding stack
+        description: Access level for the S3 binding stack
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuickCreateLinkResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/cft/connection:
+    get:
+      tags:
+      - cloud-connections
+      summary: Download the rendered CloudFormation template for the connection stack
+      operationId: downloadCloudConnectionTemplate
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      responses:
+        '200':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/cft/storage:
+    get:
+      tags:
+      - cloud-connections
+      summary: Download the rendered CloudFormation template for an S3 binding stack
+      operationId: downloadCloudConnectionStorageTemplate
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      - name: bucket
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 3
+          maxLength: 63
+          pattern: ^[a-z0-9.\-]+$
+          description: Name of the S3 bucket to grant access to (not an ARN or s3:// URL)
+          title: Bucket
+        description: Name of the S3 bucket to grant access to (not an ARN or s3:// URL)
+      - name: prefix
+        in: query
+        required: false
+        schema:
+          type: string
+          maxLength: 1024
+          pattern: ^[^&#\x00-\x1f\x7f]*$
+          description: Optional key prefix to scope access to; empty grants the whole bucket
+          default: ''
+          title: Prefix
+        description: Optional key prefix to scope access to; empty grants the whole bucket
+      - name: access
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/CftAccessType'
+          description: Access level for the S3 binding stack
+        description: Access level for the S3 binding stack
+      responses:
+        '200':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/create-link/glue:
+    get:
+      tags:
+      - cloud-connections
+      summary: Get a CloudFormation Quick-Create link for a Glue binding stack
+      operationId: getCloudConnectionGlueCreateLink
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          description: Name of the Glue binding/catalog; feeds the recommended stack name
+          title: Name
+        description: Name of the Glue binding/catalog; feeds the recommended stack name
+      - name: access
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/CftAccessType'
+          description: Access level for the Glue binding stack
+        description: Access level for the Glue binding stack
+      - name: region
+        in: query
+        required: true
+        schema:
+          type: string
+          pattern: ^[a-z]{2}(-[a-z]+)+-\d$
+          description: AWS region where the Glue catalog lives
+          title: Region
+        description: AWS region where the Glue catalog lives
+      - name: awsAccountId
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            pattern: ^\d{12}$
+          - type: 'null'
+          description: AWS account ID hosting the Glue catalog; defaults to the connection's account
+          title: Awsaccountid
+        description: AWS account ID hosting the Glue catalog; defaults to the connection's account
+      - name: bucket
+        in: query
+        required: false
+        schema:
+          type: string
+          pattern: ^$|^[a-z0-9.\-]{3,63}$
+          description: Optional S3 bucket for direct data access; empty grants no extra S3 access
+          default: ''
+          title: Bucket
+        description: Optional S3 bucket for direct data access; empty grants no extra S3 access
+      - name: prefix
+        in: query
+        required: false
+        schema:
+          type: string
+          maxLength: 1024
+          pattern: ^[^&#\x00-\x1f\x7f]*$
+          description: Optional key prefix to scope access to; empty grants the whole bucket
+          default: ''
+          title: Prefix
+        description: Optional key prefix to scope access to; empty grants the whole bucket
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuickCreateLinkResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/cft/glue:
+    get:
+      tags:
+      - cloud-connections
+      summary: Download the rendered CloudFormation template for a Glue binding stack
+      operationId: downloadCloudConnectionGlueTemplate
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+          minLength: 1
+          description: Name of the Glue binding/catalog; feeds the recommended stack name
+          title: Name
+        description: Name of the Glue binding/catalog; feeds the recommended stack name
+      - name: access
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/CftAccessType'
+          description: Access level for the Glue binding stack
+        description: Access level for the Glue binding stack
+      - name: region
+        in: query
+        required: true
+        schema:
+          type: string
+          pattern: ^[a-z]{2}(-[a-z]+)+-\d$
+          description: AWS region where the Glue catalog lives
+          title: Region
+        description: AWS region where the Glue catalog lives
+      - name: awsAccountId
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            pattern: ^\d{12}$
+          - type: 'null'
+          description: AWS account ID hosting the Glue catalog; defaults to the connection's account
+          title: Awsaccountid
+        description: AWS account ID hosting the Glue catalog; defaults to the connection's account
+      - name: bucket
+        in: query
+        required: false
+        schema:
+          type: string
+          pattern: ^$|^[a-z0-9.\-]{3,63}$
+          description: Optional S3 bucket for direct data access; empty grants no extra S3 access
+          default: ''
+          title: Bucket
+        description: Optional S3 bucket for direct data access; empty grants no extra S3 access
+      - name: prefix
+        in: query
+        required: false
+        schema:
+          type: string
+          maxLength: 1024
+          pattern: ^[^&#\x00-\x1f\x7f]*$
+          description: Optional key prefix to scope access to; empty grants the whole bucket
+          default: ''
+          title: Prefix
+        description: Optional key prefix to scope access to; empty grants the whole bucket
+      responses:
+        '200':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/create-link/s3tables:
+    get:
+      tags:
+      - cloud-connections
+      summary: Get a CloudFormation Quick-Create link for an S3 Tables binding stack
+      operationId: getCloudConnectionS3TablesCreateLink
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      - name: tableBucketArn
+        in: query
+        required: true
+        schema:
+          type: string
+          pattern: ^arn:aws:s3tables:[a-z0-9\-]+:\d{12}:bucket/[a-z0-9][a-z0-9\-]{1,61}[a-z0-9]$
+          description: ARN of the S3 Table Bucket to grant access to
+          title: Tablebucketarn
+        description: ARN of the S3 Table Bucket to grant access to
+      - name: access
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/CftAccessType'
+          description: Access level for the S3 Tables binding stack
+        description: Access level for the S3 Tables binding stack
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuickCreateLinkResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /cloud-connections/{connection_id}/cft/s3tables:
+    get:
+      tags:
+      - cloud-connections
+      summary: Download the rendered CloudFormation template for an S3 Tables binding stack
+      operationId: downloadCloudConnectionS3TablesTemplate
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: connection_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Connection Id
+      - name: tableBucketArn
+        in: query
+        required: true
+        schema:
+          type: string
+          pattern: ^arn:aws:s3tables:[a-z0-9\-]+:\d{12}:bucket/[a-z0-9][a-z0-9\-]{1,61}[a-z0-9]$
+          description: ARN of the S3 Table Bucket to grant access to
+          title: Tablebucketarn
+        description: ARN of the S3 Table Bucket to grant access to
+      - name: access
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/CftAccessType'
+          description: Access level for the S3 Tables binding stack
+        description: Access level for the S3 Tables binding stack
+      responses:
+        '200':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+components:
+  schemas:
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    RoleAssumptionStatus:
+      type: string
+      enum:
+      - OK
+      - FAILED
+      title: RoleAssumptionStatus
+    StorageIntegrationAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: StorageIntegrationAccessType
+    BindingAccessResult:
+      properties:
+        status:
+          $ref: '#/components/schemas/BindingAccessStatus'
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reason
+        checks:
+          $ref: '#/components/schemas/BindingAccessChecks'
+      type: object
+      required:
+      - status
+      - checks
+      title: BindingAccessResult
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
+    CloudConnectionVerifyRequest:
+      properties:
+        binding:
+          anyOf:
+          - $ref: '#/components/schemas/VerifyBindingPayload'
+          - type: 'null'
+      type: object
+      title: CloudConnectionVerifyRequest
+    CloudConnectionVerifyResponse:
+      properties:
+        roleAssumption:
+          $ref: '#/components/schemas/RoleAssumptionResult'
+        bindingAccess:
+          anyOf:
+          - $ref: '#/components/schemas/BindingAccessResult'
+          - type: 'null'
+      type: object
+      required:
+      - roleAssumption
+      - bindingAccess
+      title: CloudConnectionVerifyResponse
+    CloudConnectionRead:
+      properties:
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+        cloudProvider:
+          $ref: '#/components/schemas/CloudProvider'
+        managedBy:
+          anyOf:
+          - $ref: '#/components/schemas/CloudConnectionManagedBy'
+          - type: 'null'
+        roleArn:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rolearn
+        awsAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Awsaccountid
+        trustedAccountIds:
+          items:
+            type: string
+          type: array
+          title: Trustedaccountids
+        allowSaas:
+          type: boolean
+          title: Allowsaas
+          default: true
+        stackName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Stackname
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
+        bindings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/CloudConnectionBinding'
+            type: array
+          - type: 'null'
+          title: Bindings
+      type: object
+      required:
+      - id
+      - name
+      - cloudProvider
+      - managedBy
+      - createdAt
+      title: CloudConnectionRead
+    QuickCreateLinkResponse:
+      properties:
+        url:
+          type: string
+          title: Url
+          description: CloudFormation Quick-Create console URL
+        stackName:
+          type: string
+          title: Stackname
+          description: Recommended CloudFormation stack name
+      type: object
+      required:
+      - url
+      - stackName
+      title: QuickCreateLinkResponse
+      description: A CloudFormation Quick-Create console URL and its recommended stack name.
+    RoleAssumptionResult:
+      properties:
+        status:
+          $ref: '#/components/schemas/RoleAssumptionStatus'
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reason
+      type: object
+      required:
+      - status
+      title: RoleAssumptionResult
+    CftAccessType:
+      type: string
+      enum:
+      - read-only
+      - read-write
+      title: CftAccessType
+      description: Access level requested for an S3 binding stack (API-facing values).
+    BindingAccessStatus:
+      type: string
+      enum:
+      - OK
+      - DENIED
+      - FAILED
+      title: BindingAccessStatus
+    VerifyBindingPayload:
+      properties:
+        type:
+          type: string
+          const: storage
+          title: Type
+          default: storage
+        path:
+          type: string
+          title: Path
+          description: S3 path or prefix to verify access against
+        accessType:
+          $ref: '#/components/schemas/StorageIntegrationAccessType'
+      type: object
+      required:
+      - path
+      - accessType
+      title: VerifyBindingPayload
+      description: 'Optional binding the user is about to persist.
+
+
+        Only `storage` is supported in this phase. Glue resource bindings are
+
+        handled in a later stream and are intentionally rejected here.'
+    CloudConnectionBinding:
+      properties:
+        kind:
+          type: string
+          enum:
+          - storage_integration
+          - glue_catalog
+          - s3tables_catalog
+          title: Kind
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - kind
+      - id
+      - name
+      title: CloudConnectionBinding
+      description: 'A resource that references (is "bound" to) a cloud connection.
+
+
+        The binding kinds live in different databases (storage integrations in
+
+        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
+
+        only the minimal cross-db-friendly shape: kind, id, and display name.'
+    AwsCloudConnectionCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+          minLength: 1
+          title: Name
+          description: Display name for the cloud connection
+        awsAccountId:
+          type: string
+          title: Awsaccountid
+          description: The AWS account ID to connect
+        trustedAccountIds:
+          anyOf:
+          - items:
+              type: string
+            type: array
+            maxItems: 20
+          - type: 'null'
+          title: Trustedaccountids
+          description: BYOC compute AWS accounts whose workloads may assume this connection's role
+        allowSaas:
+          type: boolean
+          title: Allowsaas
+          description: Whether Wherobots SaaS-hosted compute may use this connection (trusts the control-plane account)
+          default: true
+      type: object
+      required:
+      - name
+      - awsAccountId
+      title: AwsCloudConnectionCreate
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    BindingAccessChecks:
+      properties:
+        list:
+          type: boolean
+          title: List
+        get:
+          type: boolean
+          title: Get
+        put:
+          type: boolean
+          title: Put
+        delete:
+          type: boolean
+          title: Delete
+      type: object
+      required:
+      - list
+      - get
+      - put
+      - delete
+      title: BindingAccessChecks
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

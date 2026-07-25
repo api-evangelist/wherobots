@@ -1,0 +1,1234 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey catalogs API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: catalogs
+paths:
+  /catalogs:
+    get:
+      tags:
+      - catalogs
+      summary: List all catalogs
+      description: Lists all catalogs
+      operationId: listCatalogs
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCatalogsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+    post:
+      tags:
+      - catalogs
+      summary: Create a new managed catalog
+      description: Creates a new managed catalog.
+      operationId: createCatalog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCatalogRequest'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExplorerUICatalog'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+  /catalogs/{catalog_id}/namespaces:
+    get:
+      tags:
+      - catalogs
+      summary: List namespaces in a catalog
+      description: Lists all namespaces for a given catalog.
+      operationId: listNamespaces
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the catalog.
+          title: Catalog Id
+        description: The ID of the catalog.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListNamespacesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /catalogs/{catalog_id}/namespaces/{namespace_name}/tables:
+    get:
+      tags:
+      - catalogs
+      summary: List tables in a namespace
+      description: Lists all tables for a given namespace.
+      operationId: listTables
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the catalog.
+          title: Catalog Id
+        description: The ID of the catalog.
+      - name: namespace_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the namespace. Must be URL-encoded.
+          title: Namespace Name
+        description: The name of the namespace. Must be URL-encoded.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTablesResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /catalogs/{catalog_id}/namespaces/{namespace_name}/tables/{table_name}:
+    get:
+      tags:
+      - catalogs
+      summary: Get table details
+      description: Gets detailed information about a single table.
+      operationId: getTable
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the catalog.
+          title: Catalog Id
+        description: The ID of the catalog.
+      - name: namespace_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the namespace. Must be URL-encoded.
+          title: Namespace Name
+        description: The name of the namespace. Must be URL-encoded.
+      - name: table_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the table. Must be URL-encoded.
+          title: Table Name
+        description: The name of the table. Must be URL-encoded.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableDetail'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    delete:
+      tags:
+      - catalogs
+      summary: Delete a table
+      description: Removes a table from the catalog. **This operation does not purge the underlying data files** — only the catalog entry is removed. If the table's metadata file is broken or missing, the deletion will fail. In that case, set `force_delete_catalog_entry=true` to forcibly remove the catalog database entry. When force-deleting, data files are left intact and the user is responsible for cleaning them up. Requires admin privileges.
+      operationId: deleteTable
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the catalog.
+          title: Catalog Id
+        description: The ID of the catalog.
+      - name: namespace_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the namespace. Must be URL-encoded.
+          title: Namespace Name
+        description: The name of the namespace. Must be URL-encoded.
+      - name: table_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the table. Must be URL-encoded.
+          title: Table Name
+        description: The name of the table. Must be URL-encoded.
+      - name: force_delete_catalog_entry
+        in: query
+        required: false
+        schema:
+          type: boolean
+          description: If true, forcibly removes the catalog database entry even when the table's metadata file is broken or missing. Data files will NOT be purged; the user is responsible for cleaning them up.
+          default: false
+          title: Force Delete Catalog Entry
+        description: If true, forcibly removes the catalog database entry even when the table's metadata file is broken or missing. Data files will NOT be purged; the user is responsible for cleaning them up.
+      responses:
+        '204':
+          description: Successful Response
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /catalogs/{catalog_id}/namespaces/{namespace_name}/tables/{table_name}/credentials:
+    post:
+      tags:
+      - catalogs
+      summary: Get temporary table storage credentials
+      description: Generates temporary credentials to access the underlying storage of a table.
+      operationId: getTableCredentials
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the catalog.
+          title: Catalog Id
+        description: The ID of the catalog.
+      - name: namespace_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the namespace. Must be URL-encoded.
+          title: Namespace Name
+        description: The name of the namespace. Must be URL-encoded.
+      - name: table_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the table. Must be URL-encoded.
+          title: Table Name
+        description: The name of the table. Must be URL-encoded.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TableCredentials'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /catalogs/{catalog_id}/namespaces/{namespace_name}/views/{view_name}:
+    get:
+      tags:
+      - catalogs
+      summary: Get view details
+      description: Gets detailed information about a single view.
+      operationId: getView
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: catalog_id
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The ID of the catalog.
+          title: Catalog Id
+        description: The ID of the catalog.
+      - name: namespace_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the namespace. Must be URL-encoded.
+          title: Namespace Name
+        description: The name of the namespace. Must be URL-encoded.
+      - name: view_name
+        in: path
+        required: true
+        schema:
+          type: string
+          description: The name of the view. Must be URL-encoded.
+          title: View Name
+        description: The name of the view. Must be URL-encoded.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewDetail'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /catalogs/hierarchy:
+    get:
+      tags:
+      - catalogs
+      summary: Get full catalog hierarchy
+      description: Gets the complete catalog hierarchy including all databases and tables.
+      operationId: getCatalogHierarchy
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCatalogHierarchyResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-excluded: true
+components:
+  schemas:
+    ListNamespacesResponse:
+      properties:
+        namespaces:
+          items:
+            $ref: '#/components/schemas/Namespace'
+          type: array
+          title: Namespaces
+      type: object
+      required:
+      - namespaces
+      title: ListNamespacesResponse
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    Catalog:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique identifier for the catalog.
+        name:
+          type: string
+          title: Name
+          description: The user-friendly name of the catalog.
+        type:
+          $ref: '#/components/schemas/CatalogType'
+          description: The type of the catalog.
+      type: object
+      required:
+      - id
+      - name
+      - type
+      title: Catalog
+    SnapshotRefType:
+      type: string
+      enum:
+      - branch
+      - tag
+      title: SnapshotRefType
+    ListTablesResponse:
+      properties:
+        tables:
+          items:
+            $ref: '#/components/schemas/TableListItem'
+          type: array
+          title: Tables
+      type: object
+      required:
+      - tables
+      title: ListTablesResponse
+    TableCredentials:
+      properties:
+        accessKey:
+          type: string
+          title: Accesskey
+          description: The temporary access key.
+        secretKey:
+          type: string
+          title: Secretkey
+          description: The temporary secret key.
+        sessionToken:
+          type: string
+          title: Sessiontoken
+          description: The temporary session token.
+        expiration:
+          type: string
+          format: date-time
+          title: Expiration
+          description: The ISO timestamp when the credentials expire.
+        region:
+          type: string
+          title: Region
+          description: The AWS region of the table's storage bucket.
+      type: object
+      required:
+      - accessKey
+      - secretKey
+      - sessionToken
+      - expiration
+      - region
+      title: TableCredentials
+    TableStatistics:
+      properties:
+        rowCount:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Rowcount
+          description: The number of rows in the table.
+      type: object
+      required:
+      - rowCount
+      title: TableStatistics
+    Namespace:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the namespace.
+      type: object
+      required:
+      - name
+      title: Namespace
+    GetCatalogHierarchyResponse:
+      properties:
+        catalogs:
+          items:
+            $ref: '#/components/schemas/ExplorerUICatalog'
+          type: array
+          title: Catalogs
+      type: object
+      required:
+      - catalogs
+      title: GetCatalogHierarchyResponse
+    ViewDetail:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the view.
+        schema:
+          $ref: '#/components/schemas/Schema'
+          description: The view schema definition.
+        definition:
+          type: string
+          title: Definition
+          description: The SQL definition of the view.
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+          title: Properties
+          description: Key-value pairs that define view properties.
+      type: object
+      required:
+      - name
+      - schema
+      - definition
+      - properties
+      title: ViewDetail
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    TableFormat:
+      type: string
+      enum:
+      - ICEBERG
+      - DELTA
+      title: TableFormat
+    Schema:
+      properties:
+        type:
+          type: string
+          const: struct
+          title: Type
+          default: struct
+        fields:
+          items:
+            $ref: '#/components/schemas/NestedField'
+          type: array
+          title: Fields
+        schema-id:
+          type: integer
+          title: Schema-Id
+          default: 0
+        identifier-field-ids:
+          items:
+            type: integer
+          type: array
+          title: Identifier-Field-Ids
+      type: object
+      title: Schema
+      description: "A table Schema.\n\nExample:\n    >>> from pyiceberg import schema\n    >>> from pyiceberg import types"
+    Summary:
+      additionalProperties:
+        type: string
+      type: object
+    ExplorerUIDatabase:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the database.
+        location:
+          type: string
+          title: Location
+          description: The location of the database.
+          default: ''
+        tables:
+          items:
+            $ref: '#/components/schemas/ExplorerUITable'
+          type: array
+          title: Tables
+          description: List of tables in the database.
+      type: object
+      required:
+      - name
+      title: ExplorerUIDatabase
+    ExplorerUITable:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the table.
+        location:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Location
+          description: The location of the table.
+      type: object
+      required:
+      - name
+      title: ExplorerUITable
+    CreateCatalogRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the catalog.
+        location:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Location
+          description: The S3 location for the catalog. If empty, a default location will be created in managed storage.
+        organizationId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Organizationid
+          description: The organization ID. If not provided, uses the current user's organization.
+      type: object
+      required:
+      - name
+      title: CreateCatalogRequest
+    ExplorerUICatalog:
+      properties:
+        id:
+          type: integer
+          title: Id
+          description: Unique identifier for the catalog.
+        extId:
+          type: string
+          title: Extid
+          description: External identifier for the catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the catalog.
+        location:
+          type: string
+          title: Location
+          description: The cloud storage URL of the catalog.
+        databases:
+          items:
+            $ref: '#/components/schemas/ExplorerUIDatabase'
+          type: array
+          title: Databases
+          description: List of databases.
+      type: object
+      required:
+      - id
+      - extId
+      - name
+      - location
+      title: ExplorerUICatalog
+    Snapshot:
+      properties:
+        snapshot-id:
+          type: integer
+          title: Snapshot-Id
+        parent-snapshot-id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Parent-Snapshot-Id
+        sequence-number:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sequence-Number
+          default: 0
+        timestamp-ms:
+          type: integer
+          title: Timestamp-Ms
+        manifest-list:
+          type: string
+          title: Manifest-List
+          description: Location of the snapshot's manifest list file
+        summary:
+          anyOf:
+          - $ref: '#/components/schemas/Summary'
+          - type: 'null'
+        schema-id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Schema-Id
+        first-row-id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: First-Row-Id
+          description: assigned to the first row in the first data file in the first manifest
+        added-rows:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Added-Rows
+          description: The upper bound of the number of rows with assigned row IDs
+      type: object
+      required:
+      - snapshot-id
+      - manifest-list
+      title: Snapshot
+    CatalogType:
+      type: string
+      enum:
+      - MANAGED
+      - FOREIGN_DATABRICKS
+      - FOREIGN_AWS_GLUE
+      - FOREIGN_AWS_S3_TABLES
+      title: CatalogType
+    TableListItem:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the table.
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+          description: The last time the table was updated.
+        format:
+          $ref: '#/components/schemas/TableFormat'
+          description: The format of the table.
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+          title: Properties
+          description: Key-value pairs that define table properties.
+        table_type:
+          $ref: '#/components/schemas/TableType'
+          description: The type of the table, if available. i.e. table or view.
+          default: TABLE
+      type: object
+      required:
+      - name
+      - updateTime
+      - format
+      - properties
+      title: TableListItem
+    TableType:
+      type: string
+      enum:
+      - TABLE
+      - VIEW
+      title: TableType
+    ListCatalogsResponse:
+      properties:
+        catalogs:
+          items:
+            $ref: '#/components/schemas/Catalog'
+          type: array
+          title: Catalogs
+      type: object
+      required:
+      - catalogs
+      title: ListCatalogsResponse
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    TableDetail:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the table.
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+          description: The last time the table was updated.
+        format:
+          $ref: '#/components/schemas/TableFormat'
+          description: The format of the table.
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+          title: Properties
+          description: Key-value pairs that define table properties.
+        table_type:
+          $ref: '#/components/schemas/TableType'
+          description: The type of the table, if available. i.e. table or view.
+          default: TABLE
+        location:
+          type: string
+          title: Location
+          description: The cloud storage URL of the table's underlying files.
+        schema:
+          $ref: '#/components/schemas/Schema'
+          description: The table schema definition.
+        snapshots:
+          items:
+            $ref: '#/components/schemas/Snapshot'
+          type: array
+          title: Snapshots
+          description: Snapshot history of this table.
+        refs:
+          additionalProperties:
+            $ref: '#/components/schemas/SnapshotRef'
+          type: object
+          title: Refs
+          description: Snapshot tag dictionary.
+        statistics:
+          $ref: '#/components/schemas/TableStatistics'
+          description: Summary statistics about the table.
+      type: object
+      required:
+      - name
+      - updateTime
+      - format
+      - properties
+      - location
+      - schema
+      - statistics
+      title: TableDetail
+    SnapshotRef:
+      properties:
+        snapshot-id:
+          type: integer
+          title: Snapshot-Id
+        type:
+          $ref: '#/components/schemas/SnapshotRefType'
+        min-snapshots-to-keep:
+          anyOf:
+          - type: integer
+            exclusiveMinimum: 0.0
+          - type: 'null'
+          title: Min-Snapshots-To-Keep
+        max-snapshot-age-ms:
+          anyOf:
+          - type: integer
+            exclusiveMinimum: 0.0
+          - type: 'null'
+          title: Max-Snapshot-Age-Ms
+        max-ref-age-ms:
+          anyOf:
+          - type: integer
+            exclusiveMinimum: 0.0
+          - type: 'null'
+          title: Max-Ref-Age-Ms
+      type: object
+      required:
+      - snapshot-id
+      - type
+      title: SnapshotRef
+    NestedField:
+      additionalProperties: true
+      type: object
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

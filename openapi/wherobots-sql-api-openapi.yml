@@ -1,0 +1,670 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey sql API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: sql
+paths:
+  /sql/sessions:
+    get:
+      tags:
+      - sql
+      summary: Returns a list of the callers SQL sessions
+      operationId: listSqlSessions
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: region
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Region
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SqlSessionKubeApp'
+                title: Response Listsqlsessions
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /sql/session/{session_id}:
+    get:
+      tags:
+      - sql
+      summary: Returns the callers' SQL session by ID
+      operationId: getSqlSession
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: session_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Session Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/SqlSessionKubeApp'
+                - type: 'null'
+                title: Response Getsqlsession
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+    delete:
+      tags:
+      - sql
+      summary: Deletes a SQL session owned by the caller, by ID
+      operationId: deleteSqlSession
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: session_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Session Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /sql/session:
+    post:
+      tags:
+      - sql
+      summary: Creates a SQL session for the user (if needed)
+      operationId: createSqlSession
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: force_new
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+          title: Force New
+      - name: region
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Region
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SqlSessionAPIPayload'
+      responses:
+        '303':
+          description: Returns a HTTP status code 303 to the GET api (PRG pattern)
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+components:
+  schemas:
+    SqlSessionKubeApp:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        instanceId:
+          type: string
+          title: Instanceid
+        appType:
+          $ref: '#/components/schemas/AppType'
+        status:
+          $ref: '#/components/schemas/AppStatus'
+        createdById:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Createdbyid
+        apiPayload:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Apipayload
+        appMeta:
+          anyOf:
+          - $ref: '#/components/schemas/SqlSessionAppMeta'
+          - type: 'null'
+        events:
+          items:
+            $ref: '#/components/schemas/KubeAppEvent'
+          type: array
+          title: Events
+          default: []
+        cpuUsage:
+          type: integer
+          title: Cpuusage
+        regionName:
+          type: string
+          title: Regionname
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Return the latest trace info that is valuable for troubleshooting
+          readOnly: true
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - instanceId
+      - appType
+      - status
+      - createdById
+      - cpuUsage
+      - regionName
+      - message
+      title: SqlSessionKubeApp
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    AppType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      title: AppType
+    SessionType:
+      type: string
+      enum:
+      - single
+      - multi
+      title: SessionType
+    RuntimeId:
+      type: string
+      enum:
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - micro
+      - tiny
+      - small
+      - medium
+      - large
+      - x-large
+      - 2x-large
+      - 4x-large
+      - medium-himem
+      - large-himem
+      - x-large-himem
+      - 2x-large-himem
+      - 4x-large-himem
+      - x-large-hicpu
+      - 2x-large-hicpu
+      - x-large-matcher
+      - 2x-large-matcher
+      - micro-a10-gpu
+      - tiny-a10-gpu
+      - small-a10-gpu
+      - medium-a10-gpu
+      - large-a10-gpu
+      - x-large-a10-gpu
+      title: RuntimeId
+    SqlSessionAppMeta:
+      properties:
+        url:
+          type: string
+          title: Url
+          default: ''
+        resolved_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Resolved Version
+      type: object
+      title: SqlSessionAppMeta
+      description: SQL Session-specific metadata fields
+    NodeSchedulingMeta:
+      properties:
+        node_preexisted:
+          type: boolean
+          title: Node Preexisted
+        node_name:
+          type: string
+          title: Node Name
+        pod_creation_time:
+          type: string
+          title: Pod Creation Time
+        node_creation_time:
+          type: string
+          title: Node Creation Time
+      type: object
+      required:
+      - node_preexisted
+      - node_name
+      - pod_creation_time
+      - node_creation_time
+      title: NodeSchedulingMeta
+      description: 'Metadata captured at node-scheduling time.
+
+
+        ``node_preexisted`` is True when the pod landed on a node that existed
+
+        before the pod was created, False when the node was provisioned for
+
+        the pod (cold start).'
+    KubeAppEvent:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+        eventMeta:
+          anyOf:
+          - $ref: '#/components/schemas/RunEventMeta'
+          - $ref: '#/components/schemas/KubeAppCreationMeta'
+          - $ref: '#/components/schemas/NodeSchedulingMeta'
+          - type: 'null'
+          title: Eventmeta
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      title: KubeAppEvent
+    AppStatus:
+      type: string
+      enum:
+      - PENDING
+      - PREPARING
+      - PREPARE_FAILED
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOY_FAILED
+      - DEPLOYED
+      - INITIALIZING
+      - INIT_FAILED
+      - READY
+      - DESTROY_REQUESTED
+      - DESTROYING
+      - DESTROY_FAILED
+      - DESTROYED
+      title: AppStatus
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    KubeAppCreationMeta:
+      properties:
+        use_v2_workflow:
+          type: boolean
+          title: Use V2 Workflow
+          default: false
+      type: object
+      title: KubeAppCreationMeta
+      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
+
+
+        Captures decisions pinned at kube_app creation time so cancel/destroy can
+
+        consult them later without re-deriving. Currently only carries the v2
+
+        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
+
+        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
+
+        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
+
+        constructed; cleanup at v2 100% rollout deletes this class.'
+    RunEventMeta:
+      properties:
+        end_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Timestamp
+        start_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start Timestamp
+      type: object
+      title: RunEventMeta
+    SqlSessionAPIPayload:
+      properties:
+        runtimeId:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Version
+        environmentPresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentpresetid
+        environmentOverridePresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentoverridepresetid
+        idleTimeoutMinutes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Idletimeoutminutes
+        shutdownAfterInactiveSeconds:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Shutdownafterinactiveseconds
+        sessionType:
+          $ref: '#/components/schemas/SessionType'
+          default: multi
+      type: object
+      title: SqlSessionAPIPayload
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

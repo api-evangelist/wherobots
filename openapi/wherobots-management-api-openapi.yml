@@ -1,0 +1,1651 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey management API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: management
+paths:
+  /management/organization/{organization_id}/subscription:
+    get:
+      tags:
+      - management
+      summary: Get organization subscription
+      description: 'Get organization''s active subscription details.
+
+
+        This endpoint is for superusers only and returns the active subscription
+
+        information including type-specific details (AWS Marketplace, Stripe, etc.).'
+      operationId: getOrganizationSubscription
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                anyOf:
+                - $ref: '#/components/schemas/SubscriptionInfo'
+                - type: 'null'
+                title: Response Getorganizationsubscription
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/usage/costs:
+    post:
+      tags:
+      - management
+      summary: Get organization workload costs
+      description: 'Get Orb-calculated workload costs for any organization.
+
+
+        This endpoint is for superusers only. Unlike the org-scoped
+
+        ``POST /usage/costs``, it resolves costs for an arbitrary organization
+
+        identified by ``organization_id``.'
+      operationId: getOrganizationWorkloadCosts
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetKubeAppCostsInput'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkloadCostsOutput'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/quotas/all:
+    get:
+      tags:
+      - management
+      summary: List all organization quotas
+      operationId: listAllQuotas
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  additionalProperties:
+                    type: integer
+                  propertyNames:
+                    $ref: '#/components/schemas/QuotaType'
+                  type: object
+                type: object
+                title: Response Listallquotas
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/quotas:
+    get:
+      tags:
+      - management
+      summary: Get quotas for an organization
+      operationId: getOrganizationQuotas
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                propertyNames:
+                  $ref: '#/components/schemas/QuotaType'
+                title: Response Getorganizationquotas
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/update-quota:
+    post:
+      tags:
+      - management
+      summary: Update a quota for an organization
+      operationId: updateOrganizationQuota
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: quota_type
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/QuotaType'
+      - name: quota_value
+        in: query
+        required: true
+        schema:
+          type: integer
+          title: Quota Value
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                propertyNames:
+                  $ref: '#/components/schemas/QuotaType'
+                title: Response Updateorganizationquota
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/refresh-quotas:
+    post:
+      tags:
+      - management
+      summary: Refresh org resource quotas in K8s
+      operationId: refreshOrganizationQuotas
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/refresh-users:
+    post:
+      tags:
+      - management
+      summary: Refresh users in an organization
+      operationId: refreshOrganizationUsers
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/verify:
+    post:
+      tags:
+      - management
+      summary: Verify an organization
+      operationId: verifyOrganization
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/mark-fraudulent:
+    post:
+      tags:
+      - management
+      summary: Mark organization as fraudulent
+      operationId: markOrganizationFraudulent
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/update-plan:
+    post:
+      tags:
+      - management
+      summary: Update organization plan and subscription
+      description: 'Update an organization''s plan and optionally change its subscription type.
+
+
+        If subscription_type is provided and the org already has an active subscription
+
+        of a different type, the old subscription will be stopped and a new one created.'
+      operationId: updateOrganizationPlan
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      - name: plan
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/Plan'
+      - name: subscription_type
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/SubscriptionType'
+          - type: 'null'
+          title: Subscription Type
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/refresh-catalogs:
+    post:
+      tags:
+      - management
+      summary: Refresh catalogs for an organization
+      description: 'Refresh catalogs for a specific organization.
+
+        Only accessible by super users.'
+      operationId: refreshOrganizationCatalogs
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/kube_app/{kube_app_id}/destroy:
+    post:
+      tags:
+      - management
+      summary: Destroy a workload
+      operationId: destroyWorkload
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: kube_app_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Kube App Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/feature-overrides:
+    get:
+      tags:
+      - management
+      summary: Get feature flag overrides for an org
+      operationId: getFeatureOverrides
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/FeatureEnabledState'
+                propertyNames:
+                  $ref: '#/components/schemas/WherobotsCloudFeature'
+                title: Response Getfeatureoverrides
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}/update-feature-override:
+    post:
+      tags:
+      - management
+      summary: Update a feature flag override
+      operationId: updateFeatureOverride
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Body_updateFeatureOverride'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/organization/{organization_id}:
+    delete:
+      tags:
+      - management
+      summary: Delete an organization
+      operationId: deleteOrganization
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: organization_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Organization Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-exclude-from-cli: true
+      x-excluded: true
+  /management/async_operation_task:
+    post:
+      tags:
+      - management
+      summary: Create an async operation task
+      operationId: createAsyncOperationTask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OperationTaskPayload'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                title: Response Createasyncoperationtask
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+components:
+  schemas:
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    QuotaType:
+      type: string
+      enum:
+      - CPU
+      - HUMAN_USER_COUNT
+      - WORKLOAD_LIFETIME_HOUR
+      - DISK_PER_NODE_GB
+      - FOREIGN_CATALOG_COUNT
+      title: QuotaType
+    WherobotsCloudFeature:
+      type: string
+      enum:
+      - SAML
+      - SERVICE_PRINCIPALS
+      - STORAGE_INTEGRATION
+      - PROFESSIONAL_DATA
+      - AUDIT_LOGS
+      - RUNS
+      - FOREIGN_CATALOGS
+      - RASTERFLOW
+      - MCP_ACCESS
+      - STANDALONE_WHEROBOTSDB
+      - CLOUD_CONNECTIONS
+      - MICRO_RUNTIME
+      - SMALL_RUNTIME
+      - MEDIUM_RUNTIME
+      - LARGE_RUNTIME
+      - X_LARGE_RUNTIME
+      - XX_LARGE_RUNTIME
+      - MEDIUM_HIMEM_RUNTIME
+      - LARGE_HIMEM_RUNTIME
+      - X_LARGE_HIMEM_RUNTIME
+      - XX_LARGE_HIMEM_RUNTIME
+      - X_LARGE_HICPU_RUNTIME
+      - XX_LARGE_HICPU_RUNTIME
+      - MICRO_A10_GPU_RUNTIME
+      - TINY_A10_GPU_RUNTIME
+      - SMALL_A10_GPU_RUNTIME
+      - MEDIUM_A10_GPU_RUNTIME
+      - LARGE_A10_GPU_RUNTIME
+      - X_LARGE_A10_GPU_RUNTIME
+      - X_LARGE_MATCHER_RUNTIME
+      - XX_LARGE_MATCHER_RUNTIME
+      - REGION_AWS_US_WEST_2
+      - REGION_AWS_EU_WEST_1
+      - REGION_AWS_US_EAST_1
+      - REGION_AWS_AP_SOUTH_1
+      - REGION_AWS_US_EAST_2
+      title: WherobotsCloudFeature
+    SubscriptionInfo:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        awsMarketplaceSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/AwsMarketplaceSubscription'
+          - type: 'null'
+        stripeSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/StripeSubscription'
+          - type: 'null'
+        internalDevelopmentSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/InternalDevelopmentSubscription'
+          - type: 'null'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: SubscriptionInfo
+      description: 'Detailed subscription information including type-specific fields.
+
+
+        This model is used across endpoints to return comprehensive subscription data,
+
+        with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
+    SubscriptionType:
+      type: string
+      enum:
+      - INTERNAL_DEVELOPMENT
+      - MANUAL_CONTRACT
+      - MANUALLY_COMPED
+      title: SubscriptionType
+      description: 'Subscription type for paid plans (Professional/Enterprise).
+
+
+        INTERNAL_DEVELOPMENT: For internal Wherobots developers, no metering/billing.
+
+        MANUAL_CONTRACT: For customers with manual contracts.
+
+        MANUALLY_COMPED: For customers given free access, no metering/billing.'
+    WorkloadCostsOutput:
+      properties:
+        costs:
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/WorkloadCostAvailable'
+            - $ref: '#/components/schemas/WorkloadCostUnavailable'
+            discriminator:
+              propertyName: kind
+              mapping:
+                available: '#/components/schemas/WorkloadCostAvailable'
+                unavailable: '#/components/schemas/WorkloadCostUnavailable'
+          type: object
+          title: Costs
+      type: object
+      title: WorkloadCostsOutput
+      description: 'Batch response envelope.
+
+
+        Contract (enforced by the service that constructs this, not by the
+
+        schema): `costs.keys() == set(input.kube_app_ids)`. Every requested
+
+        id appears in the response exactly once, either as Available or
+
+        Unavailable. The service layer is responsible for upholding this;
+
+        the wire shape is intentionally permissive so it doesn''t add runtime
+
+        cost on every serialization.'
+    StripeSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        stripeCustomerId:
+          type: string
+          title: Stripecustomerid
+        intentSecret:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Intentsecret
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      - stripeCustomerId
+      title: StripeSubscription
+    Plan:
+      type: string
+      enum:
+      - COMMUNITY
+      - PROFESSIONAL
+      - BUILDER
+      - ENTERPRISE
+      title: Plan
+    Body_updateFeatureOverride:
+      properties:
+        feature:
+          $ref: '#/components/schemas/WherobotsCloudFeature'
+        access:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Access
+      type: object
+      required:
+      - feature
+      title: Body_updateFeatureOverride
+    WorkloadCostStatus:
+      type: string
+      enum:
+      - live
+      - settling
+      - final
+      title: WorkloadCostStatus
+      description: "Lifecycle status of a materialized workload cost record.\n\nLIVE     - Workload is still running; cost may continue to accumulate.\n           Refreshed from the upstream billing system on read if older\n           than the settling window.\nSETTLING - Workload finished recently; cost is approaching its final\n           value but the upstream may still emit late events. Continues\n           to be refreshed until the settling window elapses.\nFINAL    - Cost is sealed. No further refreshes; FINAL never reverts\n           to LIVE or SETTLING regardless of update_time ordering."
+    OperationTaskPayload:
+      properties:
+        taskName:
+          $ref: '#/components/schemas/OperationTaskName'
+        taskParams:
+          anyOf:
+          - $ref: '#/components/schemas/OperationTaskParams'
+          - type: 'null'
+      type: object
+      required:
+      - taskName
+      title: OperationTaskPayload
+    InternalDevelopmentSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: InternalDevelopmentSubscription
+    AwsMarketplaceSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        customerAWSAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Customerawsaccountid
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      - customerAWSAccountId
+      title: AwsMarketplaceSubscription
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    FeatureEnabledState:
+      type: string
+      enum:
+      - enabled_by_plan
+      - enabled_by_override
+      - disabled
+      title: FeatureEnabledState
+    GetKubeAppCostsInput:
+      properties:
+        kubeAppIds:
+          items:
+            type: string
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Kubeappids
+          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
+      type: object
+      required:
+      - kubeAppIds
+      title: GetKubeAppCostsInput
+    SubscriptionState:
+      type: string
+      enum:
+      - PENDING
+      - ACTIVE
+      - ACTIVE_PROBATION
+      - FAILED
+      - STOPPED
+      title: SubscriptionState
+    WorkloadCostUnavailableReason:
+      type: string
+      enum:
+      - not_found
+      - upstream_error
+      - upstream_rate_limit
+      title: WorkloadCostUnavailableReason
+      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
+    WorkloadCostAvailable:
+      properties:
+        kind:
+          type: string
+          const: available
+          title: Kind
+          default: available
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        organization_id:
+          type: string
+          title: Organization Id
+        cost:
+          type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
+          title: Cost
+        currency:
+          type: string
+          const: USD
+          title: Currency
+          default: USD
+        spatial_units:
+          type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
+          title: Spatial Units
+        status:
+          $ref: '#/components/schemas/WorkloadCostStatus'
+        settled_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Settled At
+        last_evaluated_at:
+          type: string
+          format: date-time
+          title: Last Evaluated At
+      type: object
+      required:
+      - kube_app_id
+      - organization_id
+      - cost
+      - spatial_units
+      - status
+      - settled_at
+      - last_evaluated_at
+      title: WorkloadCostAvailable
+      description: A workload cost we were able to resolve.
+    OperationTaskName:
+      type: string
+      enum:
+      - bulk-set-eks-resource-quota
+      - backfill-audit-logs
+      title: OperationTaskName
+      description: Enum for all operation task names
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    OperationTaskParams:
+      properties:
+        timestamp:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Timestamp
+        region:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Region
+      type: object
+      title: OperationTaskParams
+    WorkloadCostUnavailable:
+      properties:
+        kind:
+          type: string
+          const: unavailable
+          title: Kind
+          default: unavailable
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        reason:
+          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
+      type: object
+      required:
+      - kube_app_id
+      - reason
+      title: WorkloadCostUnavailable
+      description: A workload cost we could not resolve, with a structured reason.
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

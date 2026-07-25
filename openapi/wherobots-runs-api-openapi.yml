@@ -1,0 +1,1400 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey runs API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: runs
+paths:
+  /runs:
+    get:
+      tags:
+      - runs
+      summary: List job runs
+      operationId: listJobRuns
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: name
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            maxLength: 255
+            pattern: ^[a-zA-Z0-9_\-\.]*\*?[a-zA-Z0-9_\-\.]*$
+          - type: 'null'
+          title: Name
+      - name: created_after
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Created After
+      - name: status
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/RunStatus'
+          - type: 'null'
+          title: Status
+      - name: region
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Region
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Cursor for the next page
+          title: Cursor
+        description: Cursor for the next page
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 0
+          description: Page size
+          default: 50
+          title: Size
+        description: Page size
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CursorPage__T_Customized_RunView_'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+    post:
+      tags:
+      - runs
+      summary: Create a job run
+      operationId: createJobRun
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: region
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Region
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRunPayload-Input'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunView'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: false
+  /runs/{run_id}:
+    get:
+      tags:
+      - runs
+      summary: Get a job run
+      operationId: getJobRun
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Run Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunView'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /runs/{run_id}/cancel:
+    post:
+      tags:
+      - runs
+      summary: Cancel a job run
+      operationId: cancelJobRun
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Run Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunView'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /runs/{run_id}/logs:
+    get:
+      tags:
+      - runs
+      summary: Get job run logs
+      operationId: getJobRunLogs
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Run Id
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+          title: Size
+      - name: cursor
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Cursor
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+  /runs/{run_id}/metrics:
+    get:
+      tags:
+      - runs
+      summary: Get job run metrics
+      operationId: getJobRunMetrics
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      parameters:
+      - name: run_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Run Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunMetricsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      x-excluded: true
+components:
+  schemas:
+    RunEnvironment-Input:
+      properties:
+        sparkDriverDiskGB:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sparkdriverdiskgb
+        sparkExecutorDiskGB:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sparkexecutordiskgb
+        sparkConfigs:
+          additionalProperties:
+            type: string
+          type: object
+          title: Sparkconfigs
+        dependencies:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/PyPiDependency'
+            - $ref: '#/components/schemas/FileDependency-Input'
+          type: array
+          title: Dependencies
+      type: object
+      title: RunEnvironment
+      description: 'Model for runtime environment configs, include spark cluster configs, dependencies.
+
+        When we have new configs like Dax configs, env vars, etc, we can add them here.'
+    RunMetricsResponse:
+      properties:
+        series_metrics:
+          additionalProperties:
+            $ref: '#/components/schemas/MetricDetails_SeriesMetric_'
+          propertyNames:
+            $ref: '#/components/schemas/WorkloadMetric'
+          type: object
+          title: Series Metrics
+        instant_metrics:
+          additionalProperties:
+            $ref: '#/components/schemas/MetricDetails_InstantMetric_'
+          propertyNames:
+            $ref: '#/components/schemas/WorkloadMetric'
+          type: object
+          title: Instant Metrics
+      type: object
+      required:
+      - series_metrics
+      - instant_metrics
+      title: RunMetricsResponse
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    InstantMetric:
+      properties:
+        data:
+          $ref: '#/components/schemas/DataValue'
+        format:
+          $ref: '#/components/schemas/DataFormat'
+      type: object
+      required:
+      - data
+      - format
+      title: InstantMetric
+    RunAppMeta:
+      properties:
+        spark_ui_url:
+          type: string
+          title: Spark Ui Url
+          default: ''
+        spark_eventlogs_url:
+          type: string
+          title: Spark Eventlogs Url
+          default: ''
+        resolved_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Resolved Version
+      type: object
+      title: RunAppMeta
+      description: Run-specific metadata fields
+    FileDependency-Output:
+      properties:
+        sourceType:
+          $ref: '#/components/schemas/DependencySourceType'
+          default: FILE
+        filePath:
+          type: string
+          title: Filepath
+        fileType:
+          $ref: '#/components/schemas/DependencyFileType'
+          description: Get the type of the file
+          readOnly: true
+      type: object
+      required:
+      - filePath
+      - fileType
+      title: FileDependency
+      description: Model for the dependency of a run
+    RunEnvironment-Output:
+      properties:
+        sparkDriverDiskGB:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sparkdriverdiskgb
+        sparkExecutorDiskGB:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sparkexecutordiskgb
+        sparkConfigs:
+          additionalProperties:
+            type: string
+          type: object
+          title: Sparkconfigs
+        dependencies:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/PyPiDependency'
+            - $ref: '#/components/schemas/FileDependency-Output'
+          type: array
+          title: Dependencies
+      type: object
+      title: RunEnvironment
+      description: 'Model for runtime environment configs, include spark cluster configs, dependencies.
+
+        When we have new configs like Dax configs, env vars, etc, we can add them here.'
+    FileDependency-Input:
+      properties:
+        sourceType:
+          $ref: '#/components/schemas/DependencySourceType'
+          default: FILE
+        filePath:
+          type: string
+          title: Filepath
+      type: object
+      required:
+      - filePath
+      title: FileDependency
+      description: Model for the dependency of a run
+    DataValue:
+      properties:
+        value:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Value
+        timestamp:
+          type: integer
+          title: Timestamp
+      type: object
+      required:
+      - value
+      - timestamp
+      title: DataValue
+    AppStatus:
+      type: string
+      enum:
+      - PENDING
+      - PREPARING
+      - PREPARE_FAILED
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOY_FAILED
+      - DEPLOYED
+      - INITIALIZING
+      - INIT_FAILED
+      - READY
+      - DESTROY_REQUESTED
+      - DESTROYING
+      - DESTROY_FAILED
+      - DESTROYED
+      title: AppStatus
+    LogItem:
+      properties:
+        timestamp:
+          type: string
+          title: Timestamp
+        raw:
+          type: string
+          title: Raw
+      type: object
+      required:
+      - timestamp
+      - raw
+      title: LogItem
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
+    KubeAppCreationMeta:
+      properties:
+        use_v2_workflow:
+          type: boolean
+          title: Use V2 Workflow
+          default: false
+      type: object
+      title: KubeAppCreationMeta
+      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
+
+
+        Captures decisions pinned at kube_app creation time so cancel/destroy can
+
+        consult them later without re-deriving. Currently only carries the v2
+
+        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
+
+        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
+
+        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
+
+        constructed; cleanup at v2 100% rollout deletes this class.'
+    RunJarPayload:
+      properties:
+        uri:
+          type: string
+          title: Uri
+        args:
+          items:
+            type: string
+          type: array
+          title: Args
+          default: []
+        mainClass:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Mainclass
+      type: object
+      required:
+      - uri
+      title: RunJarPayload
+      description: Model for the payload of Run with type == "python"
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
+    AppType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      title: AppType
+    RunKubeApp:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        instanceId:
+          type: string
+          title: Instanceid
+        appType:
+          $ref: '#/components/schemas/AppType'
+        status:
+          $ref: '#/components/schemas/AppStatus'
+        createdById:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Createdbyid
+        apiPayload:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Apipayload
+        appMeta:
+          anyOf:
+          - $ref: '#/components/schemas/RunAppMeta'
+          - type: 'null'
+        events:
+          items:
+            $ref: '#/components/schemas/KubeAppEvent'
+          type: array
+          title: Events
+          default: []
+        cpuUsage:
+          type: integer
+          title: Cpuusage
+        regionName:
+          type: string
+          title: Regionname
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+          description: Return the latest trace info that is valuable for troubleshooting
+          readOnly: true
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - instanceId
+      - appType
+      - status
+      - createdById
+      - cpuUsage
+      - regionName
+      - message
+      title: RunKubeApp
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
+    DataFormat:
+      type: string
+      enum:
+      - NUMBER
+      - PERCENTAGE
+      - BYTES
+      - CURRENCY
+      title: DataFormat
+    DependencyFileType:
+      type: string
+      enum:
+      - JAR
+      - PYTHON_WHEEL
+      - ZIP
+      - OTHER
+      title: DependencyFileType
+      description: Enum for the file type of dependency
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    RunView:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        status:
+          $ref: '#/components/schemas/RunStatus'
+        triggeredBy:
+          $ref: '#/components/schemas/OrganizationCustomer'
+        startTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Starttime
+        completeTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Completetime
+        kubeApp:
+          anyOf:
+          - $ref: '#/components/schemas/RunKubeApp'
+          - type: 'null'
+        payload:
+          $ref: '#/components/schemas/CreateRunPayload-Output'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - status
+      - triggeredBy
+      - payload
+      title: RunView
+    RunStatus:
+      type: string
+      enum:
+      - PENDING
+      - RUNNING
+      - FAILED
+      - COMPLETED
+      - CANCELLED
+      - TIMED_OUT
+      title: RunStatus
+    MetricDetails_SeriesMetric_:
+      properties:
+        display_name:
+          type: string
+          title: Display Name
+        metric:
+          $ref: '#/components/schemas/SeriesMetric'
+      type: object
+      required:
+      - display_name
+      - metric
+      title: MetricDetails[SeriesMetric]
+    SeriesMetric:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DataValue'
+          type: array
+          title: Data
+        format:
+          $ref: '#/components/schemas/DataFormat'
+      type: object
+      required:
+      - data
+      - format
+      title: SeriesMetric
+    RuntimeId:
+      type: string
+      enum:
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - micro
+      - tiny
+      - small
+      - medium
+      - large
+      - x-large
+      - 2x-large
+      - 4x-large
+      - medium-himem
+      - large-himem
+      - x-large-himem
+      - 2x-large-himem
+      - 4x-large-himem
+      - x-large-hicpu
+      - 2x-large-hicpu
+      - x-large-matcher
+      - 2x-large-matcher
+      - micro-a10-gpu
+      - tiny-a10-gpu
+      - small-a10-gpu
+      - medium-a10-gpu
+      - large-a10-gpu
+      - x-large-a10-gpu
+      title: RuntimeId
+    NodeSchedulingMeta:
+      properties:
+        node_preexisted:
+          type: boolean
+          title: Node Preexisted
+        node_name:
+          type: string
+          title: Node Name
+        pod_creation_time:
+          type: string
+          title: Pod Creation Time
+        node_creation_time:
+          type: string
+          title: Node Creation Time
+      type: object
+      required:
+      - node_preexisted
+      - node_name
+      - pod_creation_time
+      - node_creation_time
+      title: NodeSchedulingMeta
+      description: 'Metadata captured at node-scheduling time.
+
+
+        ``node_preexisted`` is True when the pod landed on a node that existed
+
+        before the pod was created, False when the node was provisioned for
+
+        the pod (cold start).'
+    KubeAppEvent:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+        eventMeta:
+          anyOf:
+          - $ref: '#/components/schemas/RunEventMeta'
+          - $ref: '#/components/schemas/KubeAppCreationMeta'
+          - $ref: '#/components/schemas/NodeSchedulingMeta'
+          - type: 'null'
+          title: Eventmeta
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      title: KubeAppEvent
+    RunPythonPayload:
+      properties:
+        uri:
+          type: string
+          title: Uri
+        args:
+          items:
+            type: string
+          type: array
+          title: Args
+          default: []
+      type: object
+      required:
+      - uri
+      title: RunPythonPayload
+      description: Model for the payload of Run with type == "python"
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
+    OrganizationCustomer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - roles
+      title: OrganizationCustomer
+    PyPiDependency:
+      properties:
+        sourceType:
+          $ref: '#/components/schemas/DependencySourceType'
+          default: PYPI
+        libraryName:
+          type: string
+          title: Libraryname
+        libraryVersion:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Libraryversion
+      type: object
+      required:
+      - libraryName
+      title: PyPiDependency
+      description: Model for the dependency of a run
+    CreateRunPayload-Output:
+      properties:
+        runtime:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Version
+        name:
+          type: string
+          maxLength: 255
+          minLength: 8
+          pattern: ^[a-zA-Z0-9_\-\.]+$
+          title: Name
+        runPython:
+          anyOf:
+          - $ref: '#/components/schemas/RunPythonPayload'
+          - type: 'null'
+        runJar:
+          anyOf:
+          - $ref: '#/components/schemas/RunJarPayload'
+          - type: 'null'
+        timeoutSeconds:
+          type: integer
+          title: Timeoutseconds
+          default: 3600
+        environment:
+          $ref: '#/components/schemas/RunEnvironment-Output'
+          default:
+            sparkConfigs: {}
+            dependencies: []
+      type: object
+      required:
+      - name
+      title: CreateRunPayload
+    RunEventMeta:
+      properties:
+        end_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Timestamp
+        start_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start Timestamp
+      type: object
+      title: RunEventMeta
+    DependencySourceType:
+      type: string
+      enum:
+      - PYPI
+      - FILE
+      title: DependencySourceType
+      description: Enum for the source type of dependency
+    WorkloadMetric:
+      type: string
+      enum:
+      - CPU_UTILIZATION_PERCENT
+      - MEMORY_UTILIZATION_PERCENT
+      - GPU_UTILIZATION_PERCENT
+      - GPU_MEMORY_UTILIZATION_PERCENT
+      - COST_USD
+      - CONSUMED_SPATIAL_UNITS
+      title: WorkloadMetric
+    MetricDetails_InstantMetric_:
+      properties:
+        display_name:
+          type: string
+          title: Display Name
+        metric:
+          $ref: '#/components/schemas/InstantMetric'
+      type: object
+      required:
+      - display_name
+      - metric
+      title: MetricDetails[InstantMetric]
+    LogsResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/LogItem'
+          type: array
+          title: Items
+        current_page:
+          type: string
+          title: Current Page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - items
+      - current_page
+      title: LogsResponse
+    CreateRunPayload-Input:
+      properties:
+        runtime:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Version
+        name:
+          type: string
+          maxLength: 255
+          minLength: 8
+          pattern: ^[a-zA-Z0-9_\-\.]+$
+          title: Name
+        runPython:
+          anyOf:
+          - $ref: '#/components/schemas/RunPythonPayload'
+          - type: 'null'
+        runJar:
+          anyOf:
+          - $ref: '#/components/schemas/RunJarPayload'
+          - type: 'null'
+        timeoutSeconds:
+          type: integer
+          title: Timeoutseconds
+          default: 3600
+        environment:
+          $ref: '#/components/schemas/RunEnvironment-Input'
+          default:
+            sparkConfigs: {}
+            dependencies: []
+      type: object
+      required:
+      - name
+      title: CreateRunPayload
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    CursorPage__T_Customized_RunView_:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/RunView'
+          type: array
+          title: Items
+        total:
+          type: integer
+          minimum: 0.0
+          title: Total
+        current_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page
+          description: Cursor to refetch the current page
+        current_page_backwards:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page Backwards
+          description: Cursor to refetch the current page starting from the last item
+        previous_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previous Page
+          description: Cursor for the previous page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+          description: Cursor for the next page
+      type: object
+      required:
+      - items
+      - total
+      title: CursorPage[~T]Customized[RunView]
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key

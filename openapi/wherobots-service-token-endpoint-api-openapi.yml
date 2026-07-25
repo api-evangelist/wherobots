@@ -1,0 +1,377 @@
+openapi: 3.1.0
+info:
+  title: Wherobots Cloud apikey service_token_endpoint API
+  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  version: 0.0.1
+servers:
+- url: https://api.cloud.wherobots.com
+  description: Wherobots Cloud API
+tags:
+- name: service_token_endpoint
+paths:
+  /ste/.well-known/jwks.json:
+    get:
+      tags:
+      - service_token_endpoint
+      summary: Get JWKS for token verification
+      operationId: getSteJwks
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+  /ste/oauth2/token:
+    post:
+      tags:
+      - service_token_endpoint
+      summary: Exchange refresh token for access token
+      description: Exchange credentials for an access token. Currently only support refresh_token
+      operationId: exchangeAccessToken
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ExchangeTokenRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+  /ste/v2/oauth2/tokens:
+    post:
+      tags:
+      - service_token_endpoint
+      summary: Exchange token for Iceberg REST access
+      description: "Exchange credentials for Open Source (OSS) Iceberg REST Client (IRC).\n\nOSS IRC (< 1.10.x) uses 2 grant types:\n- token-exchange: Defined by the OAuth 2.0 Token Exchange spec (RFC 8693).\n  Exchange a valid, unexpired (OAuth) access token for a new access token with the same or smaller scopes.\n- client_credentials: Defined by the OAuth 2.0 Authorization Framework spec (RFC 6749).\n  Exchange a client credential (i.e. Wherobots API Key) for an access token.\n\nUse cases:\n1. [client_credentials] Users who has an API key yet no OAuth JWT token.\nRequest format:\n    {\n        \"grant_type\": \"client_credentials\",\n        \"client_id\": \"<customer_id>\", (Wherobots Customer Ext ID)\n        \"client_secret\": \"<api_key>\", (Wherobots API Key)\n        \"scope\": \"<requested_scope>\" (\"catalog\" for now, to be extended in the future)\n    }\n2. [token-exchange] Users who already has an valid, unexpired OAuth JWT token.\nRequest format:\n    {\n        \"grant_type\": \"urn:ietf:params:oauth:grant-type:token-exchange\", (OSS IRC always use this exact string)\n        \"scope\": \"<requested_scope>\",\n        \"subject_token\": \"<current_unexpired_access_token>\",\n        \"subject_token_type\": \"urn:ietf:params:oauth:token-type:access_token\", (OSS IRC always use this exact string)\n        \"actor_token\": \"<optional_actor_token>\", (not used currently)\n        \"actor_token_type\": \"<actor_token_type>\" (not used currently)\n    }\nNote: the optional actor_token is used for permission delegation, which is NOT\ncurrently supported, and thus has no effect even if provided. The \"subject_token_type\"\nhas to be \"access_token\" at the moment - we currently only support exchanging access tokens."
+      operationId: exchangeIcebergToken
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              anyOf:
+              - $ref: '#/components/schemas/ClientCredIssuanceRequest'
+              - $ref: '#/components/schemas/SubjectTokenExchangeRequest'
+              title: Form Data
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+      security:
+      - bearerToken: []
+      - wherobotsApiKey: []
+      x-exclude-from-cli: true
+      x-excluded: true
+components:
+  schemas:
+    ClientCredIssuanceRequest:
+      properties:
+        grant_type:
+          type: string
+          const: client_credentials
+          title: Grant Type
+        scope:
+          type: string
+          title: Scope
+        client_id:
+          type: string
+          title: Client Id
+        client_secret:
+          type: string
+          title: Client Secret
+        expires_in:
+          type: integer
+          minimum: 0.0
+          title: Expires In
+          default: 0
+      type: object
+      required:
+      - grant_type
+      - scope
+      - client_id
+      - client_secret
+      title: ClientCredIssuanceRequest
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    ExchangeTokenRequest:
+      properties:
+        scope:
+          type: string
+          title: Scope
+        grant_type:
+          type: string
+          const: refresh_token
+          title: Grant Type
+        refresh_token:
+          type: string
+          title: Refresh Token
+      type: object
+      required:
+      - scope
+      - grant_type
+      - refresh_token
+      title: ExchangeTokenRequest
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    SubjectTokenExchangeRequest:
+      properties:
+        grant_type:
+          type: string
+          const: urn:ietf:params:oauth:grant-type:token-exchange
+          title: Grant Type
+        scope:
+          type: string
+          title: Scope
+        subject_token:
+          type: string
+          title: Subject Token
+        subject_token_type:
+          type: string
+          const: urn:ietf:params:oauth:token-type:access_token
+          title: Subject Token Type
+        actor_token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Actor Token
+        actor_token_type:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Actor Token Type
+        expires_in:
+          type: integer
+          minimum: 0.0
+          title: Expires In
+          default: 0
+      type: object
+      required:
+      - grant_type
+      - scope
+      - subject_token
+      - subject_token_type
+      title: SubjectTokenExchangeRequest
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+    wherobotsApiKey:
+      type: apiKey
+      description: A Wherobots-generated API key
+      in: header
+      name: X-API-Key
