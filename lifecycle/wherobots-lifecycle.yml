@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wherobots.com/changelog/
+versioning:
+  api:
+    scheme: unversioned-path
+    host: https://api.cloud.wherobots.com
+    spec_version: 0.0.1
+  engine:
+    scheme: session-selected
+    current: v2 (latest)
+    lines: [WherobotsDB v2 (latest), WherobotsDB v1 (1.11.x maintenance)]
+    docs: https://docs.wherobots.com/develop/spatial-sql-api/
+deprecation:
+  policy: true
+  details:
+  - Community Edition Inactivity & Retirement Policy (auto-retirement of inactive Community orgs)
+  - '"preview" engine selector is deprecating in favor of "latest"'
+  - Raster Inference deprecated in favor of RasterFlow (changelog 2026-03-18)
+  policy_url: https://docs.wherobots.com/auto-retirement-community/
+sla:
+  url: https://docs.wherobots.com/availability/
+  availability: Enterprise Edition only; Community and Professional editions carry no SLA guarantee.
+status_page: https://status.wherobots.com
+changelog: https://docs.wherobots.com/changelog/
+changelog_artifact: changelog/wherobots-changelog.yml
+deprecated_operations: []

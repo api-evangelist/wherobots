@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+note: >-
+  Probed /.well-known/ discovery surface on the Wherobots hosts. No well-known
+  documents are published; cloud.wherobots.com 307-redirects all paths to the
+  WorkOS login flow (login.cloud.wherobots.com), i.e. no anonymous security.txt
+  or OIDC discovery document. Recorded for auditability (negative result).
+hosts:
+- host: https://api.cloud.wherobots.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://cloud.wherobots.com
+  documents:
+  - {path: /.well-known/security.txt, status: 307, redirect: login.cloud.wherobots.com}
+  - {path: /.well-known/openid-configuration, status: 307, redirect: login.cloud.wherobots.com}
+- host: https://wherobots.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}

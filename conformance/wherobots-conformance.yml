@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://wherobots.com/security/
+derived_from: openapi/wherobots-cloud-openapi-original.json
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: openapi/wherobots-cloud-openapi-original.json declares openapi 3.1.0
+- id: oauth2
+  conforms: true
+  evidence: Browser OAuth (WorkOS AuthKit) for MCP/console sign-in; bearer token accepted by API
+- id: apikey-auth
+  conforms: true
+  evidence: X-API-Key header scheme in OpenAPI securitySchemes
+- id: saml-sso
+  conforms: true
+  evidence: SAML-based SSO documented for enterprise organizations
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use FastAPI default {detail} envelope, not application/problem+json
+- id: cursor-pagination
+  conforms: true
+  evidence: CursorPage__* response schemas with cursor/limit/offset params
+- id: pep-0249-dbapi
+  conforms: true
+  evidence: wherobots-python-dbapi is a PEP-0249 compatible driver
+- id: jdbc-type4
+  conforms: true
+  evidence: wherobots-jdbc-driver implements a JDBC Type 4 driver
+- id: apache-arrow
+  conforms: true
+  evidence: SQL API returns results as Apache Arrow tables (default arrow/brotli encoding)
+- id: apache-iceberg
+  conforms: true
+  evidence: Havasu tables are compatible with Apache Iceberg; Unity/Glue Iceberg catalog federation
+- id: soc2
+  conforms: true
+  evidence: SOC 2 stated on https://wherobots.com/security/
+- id: gdpr
+  conforms: true
+  evidence: GDPR stated on https://wherobots.com/security/
+compliance:
+  program_url: https://wherobots.com/security/
+  certifications: [SOC 2, GDPR]

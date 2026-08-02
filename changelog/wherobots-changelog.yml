@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wherobots.com/changelog/
+scheme: dated-updates
+current_engine_version: WherobotsDB 2.1.0 (v2 default)
+note: Recent window captured from the dated product changelog. Not exhaustive history.
+entries:
+- date: '2026-07-01'
+  title: Glue Catalog Connection + easier S3 setup
+  type: addition
+  highlights: AWS Glue Catalog connection wizard from Data Hub; reusable Cloud Connection model; BYOC-compatible.
+- date: '2026-05-22'
+  title: OAuth authentication for MCP Server
+  type: addition
+  highlights: OAuth sign-in for the MCP server across Claude, ChatGPT, and Codex (web + desktop).
+- date: '2026-05-05'
+  title: AWS us-east-2 (Ohio) region support
+  type: addition
+  highlights: Paid organizations can deploy compute in us-east-2.
+- date: '2026-04-08'
+  title: Wherobots CLI (Public Preview)
+  type: addition
+  highlights: Terminal CLI for session lifecycle, job submission, log streaming; built for agentic terminals.
+- date: '2026-04-01'
+  title: SAM3 text-prompted object detection
+  type: addition
+  highlights: RasterFlow text-prompted segmentation model.
+- date: '2026-03-18'
+  title: Raster Inference deprecated in favor of RasterFlow
+  type: deprecation
+  highlights: Raster Inference superseded by RasterFlow.
+- date: '2026-03-11'
+  title: WherobotsDB v2 is now the default
+  type: change
+  highlights: New sessions default to the WherobotsDB v2 line.
+- date: '2026-03-09'
+  title: Wherobots VS Code Extension
+  type: addition
+  highlights: Spatial AI coding assistant extension (bundles MCP server + agent skills).
+- date: '2025-12-24'
+  title: Wherobots MCP Server
+  type: addition
+  highlights: Initial release of the hosted MCP server.

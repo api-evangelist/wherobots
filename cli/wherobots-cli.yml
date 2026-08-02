@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wherobots.com/develop/cli/
+name: wherobots
+status: public-preview
+repo: https://github.com/wherobots/wherobots-cli
+description: >-
+  Single-binary CLI that wraps the entire Wherobots Cloud API. Commands are
+  generated dynamically from the OpenAPI spec, so every API endpoint is a CLI
+  command and new capabilities appear without a CLI update. Designed for
+  interactive and agent-driven use from any terminal (VS Code, Cursor, Claude
+  Code, OpenCode, or a plain shell).
+install:
+- method: script
+  command: 'curl -fsSL https://raw.githubusercontent.com/wherobots/wherobots-cli/main/scripts/install-release.sh | bash'
+  installs_to: ~/.local/bin/wherobots
+authentication:
+  env: WHEROBOTS_API_KEY
+  scheme: Wherobots API key (X-API-Key)
+environment_variables:
+- {name: WHEROBOTS_API_KEY, required: true, description: API key}
+- {name: WHEROBOTS_API_URL, default: 'https://api.cloud.wherobots.com', description: API base URL}
+- {name: WHEROBOTS_UPLOAD_PATH, default: auto-resolved, description: S3 root for file uploads}
+- {name: OPENAPI_CACHE_TTL, default: 15m, description: OpenAPI spec cache duration}
+- {name: OPENAPI_HTTP_TIMEOUT, default: 30s, description: Spec fetch timeout}
+surface:
+  note: >-
+    Commands mirror the OpenAPI operation set (138 paths / 165 operations across
+    tags apikey, catalogs, cloud-connections, files, runs, sql, storage,
+    organization, usage, and more). Run `wherobots --tree` to print the full
+    command tree.
+key_flows:
+- Submit and manage job runs (createJobRun, listJobRuns, getJobRun, cancelJobRun)
+- Stream job run logs in real time (getJobRunLogs) and read metrics (getJobRunMetrics)
+- Run Spatial SQL sessions (createSqlSession, listSqlSessions)
+- Manage API keys, catalogs, storage, and cloud connections
+global_flags:
+- {flag: --tree, description: Print the available command tree}
+- {flag: --dry-run, description: Print the equivalent curl command instead of executing}
+- {flag: --json, description: JSON output for scripting/automation (vs human table output)}
+caveat: >-
+  Public Preview — commands and underlying APIs may change between releases;
+  not recommended as a dependency for recurring production pipelines.

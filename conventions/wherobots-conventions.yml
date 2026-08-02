@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wherobots.com/develop/spatial-sql-api/
+derived_from: openapi/wherobots-cloud-openapi-original.json
+summary: >-
+  Cross-cutting request/response semantics for the Wherobots Cloud API (FastAPI /
+  OpenAPI 3.1) and the Spatial SQL API/SDKs.
+authentication:
+  style: API key in X-API-Key header (or WHEROBOTS_API_KEY env); OAuth bearer for MCP/console
+  see: authentication/wherobots-authentication.yml
+base_url: https://api.cloud.wherobots.com
+pagination:
+  style: cursor
+  params: [cursor, limit, offset]
+  in: query
+  response_shape: CursorPage envelope (e.g. CursorPage__T_Customized_RunView_) with items + next cursor
+  evidence: openapi components.schemas CursorPage__* wrappers on list endpoints
+idempotency:
+  supported: false
+  note: >-
+    The OpenAPI declares no Idempotency-Key header/parameter on any operation and
+    the docs document no idempotency contract. Writes are conventional REST
+    (POST/PUT/PATCH/DELETE). No Idempotency pointer is emitted (honest absence).
+error_envelope:
+  format: FastAPI default
+  shape: '{ "detail": <string | array of validation errors> }'
+  validation: 422 responses carry HTTPValidationError (detail[] with loc/msg/type)
+  see: errors/wherobots-problem-types.yml
+result_limits:
+  sql_api_row_cap: 1000
+  note: The Spatial SQL API/drivers cap returned results at 1000 rows on the wire (does not affect cluster-side computation).
+result_encoding:
+  default_format: arrow
+  default_compression: brotli
+  default_geometry_representation: ewkt
+versioning:
+  api: OpenAPI info.version 0.0.1 (unversioned URL path; single api.cloud.wherobots.com host)
+  engine: WherobotsDB version selectable per SQL session (latest -> v2 line; explicit e.g. 2.1.0 / 1.11.8; preview deprecating)
+  see: lifecycle/wherobots-lifecycle.yml
+regions:
+  aws: [us-west-2 (default), us-east-1, us-east-2, eu-west-1, ap-south-1]
+  note: SQL sessions are region-selectable via the Region enum in the SDKs.
+rate_limiting:
+  documented: false
+  note: No published rate-limit headers/quotas found; runtime concurrency governed by session/runtime sizing and org edition.

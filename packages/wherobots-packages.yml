@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wherobots.com/develop/spatial-sql-api/
+notes: >-
+  First-party Wherobots client libraries and drivers for the Spatial SQL API,
+  all open-source under github.com/wherobots and published to public registries.
+  Package existence verified against PyPI / npm / the Wherobots GitHub org.
+packages:
+- language: python
+  registry: pypi
+  name: wherobots-python-dbapi
+  url: https://pypi.org/project/wherobots-python-dbapi/
+  install: pip install wherobots-python-dbapi
+  repo: https://github.com/wherobots/wherobots-python-dbapi
+  description: PEP-0249 (DB-API 2.0) driver connecting to a WherobotsDB runtime to run Spatial SQL.
+  official: true
+- language: java
+  registry: maven
+  name: com.wherobots:wherobots-jdbc-driver
+  url: https://github.com/wherobots/wherobots-jdbc-driver
+  install: 'implementation "com.wherobots:wherobots-jdbc-driver"'
+  repo: https://github.com/wherobots/wherobots-jdbc-driver
+  description: Open-source JDBC (Type 4) driver for connecting to WherobotsDB from Java.
+  official: true
+- language: typescript
+  registry: npm
+  name: wherobots-sql-driver
+  url: https://www.npmjs.com/package/wherobots-sql-driver
+  install: npm install wherobots-sql-driver
+  description: Node.js/TypeScript SDK that connects to a WherobotsDB runtime and executes Spatial SQL, returning Apache Arrow tables.
+  official: true
+- language: python
+  registry: pypi
+  name: harlequin-wherobots
+  url: https://pypi.org/project/harlequin-wherobots/
+  install: pip install harlequin-wherobots
+  description: Wherobots adapter for the Harlequin terminal SQL IDE (built on the Python DB-API driver).
+  official: true
+- language: python
+  registry: pypi
+  name: airflow-provider-wherobots
+  url: https://docs.wherobots.com/develop/airflow-provider/
+  description: Apache Airflow provider exposing WherobotsRunOperator / WherobotsSqlOperator to build spatial ETL DAGs.
+  official: true
+- language: go
+  registry: github-release
+  name: wherobots-cli
+  url: https://github.com/wherobots/wherobots-cli
+  install: 'curl -fsSL https://raw.githubusercontent.com/wherobots/wherobots-cli/main/scripts/install-release.sh | bash'
+  description: Single-binary CLI wrapping the entire Wherobots Cloud API (commands generated from the OpenAPI spec). Command surface catalogued in cli/wherobots-cli.yml.
+  official: true

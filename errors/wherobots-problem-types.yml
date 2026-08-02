@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/wherobots-cloud-openapi-original.json
+format: fastapi-detail
+envelope: '{ "detail": <string | HTTPValidationError.detail[]> }'
+note: >-
+  Derived from the Wherobots Cloud OpenAPI. Every operation (165 across 138 paths)
+  declares the same uniform error set below. Responses are application/json (not
+  application/problem+json / RFC 9457); validation errors (422) carry the FastAPI
+  HTTPValidationError schema (detail[] of {loc, msg, type}).
+problems:
+- status: 400
+  title: Bad Request
+  meaning: Malformed request (invalid body, parameters, or state).
+- status: 401
+  title: Unauthorized
+  meaning: Missing or invalid API key / bearer token. Generate a new key if expired.
+- status: 403
+  title: Forbidden
+  meaning: Authenticated but not permitted (role / organization / edition restriction).
+- status: 404
+  title: Not Found
+  meaning: The referenced resource (run, table, catalog, key, connection, ...) does not exist.
+- status: 409
+  title: Conflict
+  meaning: Request conflicts with current resource state (e.g. duplicate or concurrent modification).
+- status: 422
+  title: Unprocessable Entity
+  meaning: Request validation failed. detail[] lists field-level errors (loc, msg, type) per HTTPValidationError.
+  schema: HTTPValidationError
+- status: 500
+  title: Internal Server Error
+  meaning: Unexpected server-side error.

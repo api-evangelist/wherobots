@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: generated
+api: openapi/wherobots-cloud-openapi-original.json
+note: >-
+  Packaged Agent Skills grounded in real Wherobots Cloud API operationIds. Wherobots
+  also publishes first-party agent skills at github.com/wherobots/agent-skills
+  (install via `npx skills add -g wherobots/agent-skills`, e.g. the wherobots-usage
+  skill; bundled automatically by the Wherobots VS Code extension) — see published_skills.
+published_skills:
+  repo: https://github.com/wherobots/agent-skills
+  install_all: npx skills add -g wherobots/agent-skills
+  install_one: npx skills add wherobots/agent-skills --skill wherobots-usage
+  format: SKILL.md files
+  docs: https://docs.wherobots.com/develop/agent-skills/
+skills:
+- file: wherobots-run-spatial-sql.md
+  name: Run a Spatial SQL query
+  api: openapi/wherobots-cloud-openapi-original.json
+  operations: [createApiKey, createSqlSession, listSqlSessions, getSqlSession, deleteSqlSession]
+- file: wherobots-submit-job-run.md
+  name: Submit and monitor a job run
+  api: openapi/wherobots-cloud-openapi-original.json
+  operations: [createUploadUrl, createJobRun, getJobRun, getJobRunLogs, getJobRunMetrics, cancelJobRun]
+- file: wherobots-explore-catalog.md
+  name: Explore the spatial data catalog
+  api: openapi/wherobots-cloud-openapi-original.json
+  operations: [listCatalogs, listNamespaces, listTables, getTable, getCatalogHierarchy]

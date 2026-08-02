@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+source: https://wherobots.com/security/
+url: https://wherobots.com/security/
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://wherobots.com/security/
+  keywords:
+  - soc 2
+  - soc2
+  - trust center
+  - gdpr

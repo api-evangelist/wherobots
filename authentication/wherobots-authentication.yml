@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/wherobots-cloud-openapi-original.json
+docs: https://docs.wherobots.com/get-started/wherobots-cloud/api-keys/
+summary:
+  types:
+  - apiKey
+  - http
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: wherobotsApiKey
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: >-
+    Primary programmatic auth. A Wherobots-generated API key passed in the
+    X-API-Key header (also read from the WHEROBOTS_API_KEY env var by the CLI
+    and SDKs). Keys are created in Settings > API Keys, carry an expiration
+    (default 1 year; presets 1h..4y), and can be created under a Service
+    Principal for machine/service workloads. Any org member can create; admins
+    can revoke org-wide.
+  sources:
+  - openapi/wherobots-cloud-openapi-original.json
+  docs: https://docs.wherobots.com/get-started/wherobots-cloud/api-keys/
+- name: bearerToken
+  type: http
+  scheme: bearer
+  description: >-
+    Bearer access token accepted on the Wherobots Cloud API (used by the
+    interactive API docs Authorize flow and OAuth-authenticated clients).
+  sources:
+  - openapi/wherobots-cloud-openapi-original.json
+- name: oauth2
+  type: oauth2
+  flow: authorizationCode
+  description: >-
+    Browser OAuth sign-in (WorkOS AuthKit) used by the hosted MCP Server and
+    the Wherobots Cloud console. On first connect the MCP client opens a browser
+    to sign in to Wherobots and select an organization. Requires an existing
+    account. Not declared in the OpenAPI securitySchemes (surfaced via the
+    login.cloud.wherobots.com authorization endpoint).
+  authorization_endpoint: https://login.cloud.wherobots.com/
+  docs: https://docs.wherobots.com/develop/mcp/mcp-server-overview/
+identity:
+  service_principals: https://docs.wherobots.com/get-started/wherobots-cloud/service-principals/
+  sso: SAML-based SSO + passkeys (enterprise); https://docs.wherobots.com/get-started/organization-management/configuring-saml/
+  provider: WorkOS
