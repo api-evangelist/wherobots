@@ -1,0 +1,2358 @@
+{
+  "item": [
+    {
+      "id": "5e5831c6-1246-4315-83db-85d1646d4982",
+      "name": "service",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3c892c1-3a2b-4ac2-9084-b217b48029e2",
+          "name": "List service principals",
+          "request": {
+            "name": "List service principals",
+            "description": {},
+            "url": {
+              "path": [
+                "service"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b7149b3c-7bf6-4580-abc7-71338e04035e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"createTime\": \"2000-09-27T18:44:08.606Z\",\n    \"updateTime\": \"1993-06-28T18:09:39.648Z\",\n    \"organizationId\": \"string\",\n    \"roles\": [\n      {\n        \"id\": \"string\",\n        \"createTime\": \"2003-11-27T06:26:54.616Z\",\n        \"updateTime\": \"2022-02-21T02:43:25.996Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"createTime\": \"2016-12-23T11:42:20.652Z\",\n        \"updateTime\": \"2007-08-04T09:15:57.612Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"policies\": [\n      {\n        \"provider\": \"AWS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"DENY\",\n        \"id\": \"string\",\n        \"createTime\": \"2016-01-17T13:45:05.148Z\",\n        \"updateTime\": \"1969-07-21T20:47:48.817Z\"\n      },\n      {\n        \"provider\": \"AWS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"ALLOW\",\n        \"id\": \"string\",\n        \"createTime\": \"1951-04-09T06:44:53.472Z\",\n        \"updateTime\": \"1967-04-09T03:47:41.862Z\"\n      }\n    ],\n    \"name\": \"string\",\n    \"deletedAt\": \"2024-03-06T12:41:24.754Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"createTime\": \"2025-04-05T23:50:59.111Z\",\n    \"updateTime\": \"2001-07-04T08:32:34.679Z\",\n    \"organizationId\": \"string\",\n    \"roles\": [\n      {\n        \"id\": \"string\",\n        \"createTime\": \"1954-09-13T10:54:17.771Z\",\n        \"updateTime\": \"1962-01-07T18:26:53.902Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"createTime\": \"2023-06-13T16:36:51.006Z\",\n        \"updateTime\": \"2025-05-22T07:09:51.801Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"policies\": [\n      {\n        \"provider\": \"AWS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"ALLOW\",\n        \"id\": \"string\",\n        \"createTime\": \"2022-08-26T00:26:41.780Z\",\n        \"updateTime\": \"1980-08-22T20:03:03.982Z\"\n      },\n      {\n        \"provider\": \"WHEROBOTS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"DENY\",\n        \"id\": \"string\",\n        \"createTime\": \"1958-12-18T14:46:30.256Z\",\n        \"updateTime\": \"2007-05-09T20:06:53.706Z\"\n      }\n    ],\n    \"name\": \"string\",\n    \"deletedAt\": \"1997-11-13T02:27:23.116Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "566d5bd3-3450-47ac-af21-88cb3fbf3f79",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc944f45-2269-4292-87a6-8ec98584b54e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba27fa8c-e8bd-4442-adbb-7b60f02fc968",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5328786f-b66b-4b43-8ff5-a8094ce22086",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "daedc23a-6278-44a4-97a8-de1b94928ba5",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c478e46d-85c6-4837-8a75-46d8b2d0430f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0ae9d1e-728c-42ce-8d1b-8a80421c5bf0",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19dd0b15-e16c-4269-8822-d9ecec979790",
+          "name": "Get a service principal",
+          "request": {
+            "name": "Get a service principal",
+            "description": {},
+            "url": {
+              "path": [
+                "service",
+                ":service_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3557b47d-4bb8-4020-bdc7-bbc8cec55f49",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createTime\": \"1964-02-07T16:30:57.842Z\",\n  \"updateTime\": \"1948-11-16T01:44:33.826Z\",\n  \"organizationId\": \"string\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1984-07-26T11:44:02.571Z\",\n      \"updateTime\": \"1976-02-24T00:15:14.853Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"1972-08-29T16:46:45.390Z\",\n          \"updateTime\": \"1965-09-14T11:21:55.968Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"1997-09-26T20:54:12.491Z\",\n          \"updateTime\": \"1977-03-08T14:18:41.456Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1992-05-20T02:36:21.635Z\",\n      \"updateTime\": \"1963-06-12T02:23:29.987Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1973-01-02T05:33:33.604Z\",\n          \"updateTime\": \"2007-10-04T03:30:26.189Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"2011-01-28T00:12:34.695Z\",\n          \"updateTime\": \"1966-07-08T05:52:27.243Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2003-06-19T12:07:24.065Z\",\n      \"updateTime\": \"1979-03-14T04:04:40.565Z\"\n    },\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2006-04-21T23:25:43.098Z\",\n      \"updateTime\": \"2015-11-05T10:23:17.038Z\"\n    }\n  ],\n  \"name\": \"string\",\n  \"deletedAt\": \"1972-03-09T23:47:54.654Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a081c150-a776-49fd-9479-dc35f8fb4a74",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a97b31e1-ca7f-4b4b-814e-3c7374d66987",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee638a84-ca48-4ec2-a026-2fe124b0c5fa",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9117912-580b-469c-bb07-07bb71407c42",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da52a066-d776-4066-9d38-04affc6a654d",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "417df6dc-97d8-4040-b621-4cde5957f2da",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c9638ae-e4d2-4ce4-9e7a-c79332bd7299",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72cce2db-1232-480a-972a-8a975cf5e139",
+          "name": "Update a service principal",
+          "request": {
+            "name": "Update a service principal",
+            "description": {},
+            "url": {
+              "path": [
+                "service",
+                ":service_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"policies\": [\n        {\n          \"provider\": \"<string>\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"<string>\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        },\n        {\n          \"provider\": \"<string>\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"<string>\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"policies\": [\n        {\n          \"provider\": \"<string>\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"<string>\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        },\n        {\n          \"provider\": \"<string>\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"<string>\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"<string>\",\n      \"locator\": \"<string>\",\n      \"action\": \"<string>\",\n      \"effect\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    {\n      \"provider\": \"<string>\",\n      \"locator\": \"<string>\",\n      \"action\": \"<string>\",\n      \"effect\": \"<string>\",\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5655ccbc-2da8-4f8d-8207-afc5552984f7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createTime\": \"1964-02-07T16:30:57.842Z\",\n  \"updateTime\": \"1948-11-16T01:44:33.826Z\",\n  \"organizationId\": \"string\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1984-07-26T11:44:02.571Z\",\n      \"updateTime\": \"1976-02-24T00:15:14.853Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"1972-08-29T16:46:45.390Z\",\n          \"updateTime\": \"1965-09-14T11:21:55.968Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"1997-09-26T20:54:12.491Z\",\n          \"updateTime\": \"1977-03-08T14:18:41.456Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1992-05-20T02:36:21.635Z\",\n      \"updateTime\": \"1963-06-12T02:23:29.987Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1973-01-02T05:33:33.604Z\",\n          \"updateTime\": \"2007-10-04T03:30:26.189Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"2011-01-28T00:12:34.695Z\",\n          \"updateTime\": \"1966-07-08T05:52:27.243Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2003-06-19T12:07:24.065Z\",\n      \"updateTime\": \"1979-03-14T04:04:40.565Z\"\n    },\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2006-04-21T23:25:43.098Z\",\n      \"updateTime\": \"2015-11-05T10:23:17.038Z\"\n    }\n  ],\n  \"name\": \"string\",\n  \"deletedAt\": \"1972-03-09T23:47:54.654Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "178937da-46ec-48f1-9811-5ed7b62e07d8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65f024a2-b851-44f2-b3de-19c8e0319612",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4741a59-266d-46f0-9635-e4b2a200c862",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7385d23d-35f7-44c7-bf62-473abc0619f6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67118d2a-1ed4-42c7-9810-2bbc6da41cca",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "039e14fb-d59a-4df1-8284-cbcd02cefee3",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "209a2170-fcf9-4c26-a3ab-2d84abc2c342",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2022-05-08T20:26:06.601Z\",\n      \"updateTime\": \"2025-12-27T20:19:57.558Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2025-12-01T10:29:23.742Z\",\n          \"updateTime\": \"2019-06-10T07:50:06.368Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"2001-10-14T00:30:42.679Z\",\n          \"updateTime\": \"1992-05-02T08:39:11.904Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1975-09-29T21:51:36.864Z\",\n      \"updateTime\": \"1976-02-20T18:56:07.563Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-01-02T13:59:46.252Z\",\n          \"updateTime\": \"2002-05-20T17:51:03.204Z\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1951-11-22T21:08:31.006Z\",\n          \"updateTime\": \"1979-11-10T21:14:59.667Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1955-11-12T22:37:16.903Z\",\n      \"updateTime\": \"1951-06-03T09:02:45.824Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2008-04-01T13:42:45.445Z\",\n      \"updateTime\": \"1972-09-20T19:49:40.341Z\"\n    }\n  ],\n  \"deletedAt\": \"<dateTime>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b660276-9d3e-4f2a-89c0-3ce9dd5850b8",
+          "name": "Delete a service principal",
+          "request": {
+            "name": "Delete a service principal",
+            "description": {},
+            "url": {
+              "path": [
+                "service",
+                ":service_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "service_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a91224eb-09b3-465c-93eb-eafe2ee5de04",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48e67d5f-8be9-496f-b57c-820de48fbbdd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b44a6a9a-cbfb-4444-945a-cf62d8f01308",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c335894b-4b62-4c1b-95ca-eb1c16117aca",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd29c500-6f7e-4591-88dd-f442100107c0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7506c516-d0dd-479b-a22d-5c86c677cee1",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fde78e23-5b8e-4e95-a296-eb2ff12321ee",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f25584e-cc85-409b-b4b2-fe42f38a4878",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":service_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "service_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd12c4ab-330f-4741-bd41-f60c72bb8c64",
+          "name": "Register a new service principal",
+          "request": {
+            "name": "Register a new service principal",
+            "description": {},
+            "url": {
+              "path": [
+                "service",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00566069-9262-4556-a79b-5c4be1be8d1a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"createTime\": \"1964-02-07T16:30:57.842Z\",\n  \"updateTime\": \"1948-11-16T01:44:33.826Z\",\n  \"organizationId\": \"string\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1984-07-26T11:44:02.571Z\",\n      \"updateTime\": \"1976-02-24T00:15:14.853Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"1972-08-29T16:46:45.390Z\",\n          \"updateTime\": \"1965-09-14T11:21:55.968Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"1997-09-26T20:54:12.491Z\",\n          \"updateTime\": \"1977-03-08T14:18:41.456Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1992-05-20T02:36:21.635Z\",\n      \"updateTime\": \"1963-06-12T02:23:29.987Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1973-01-02T05:33:33.604Z\",\n          \"updateTime\": \"2007-10-04T03:30:26.189Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"2011-01-28T00:12:34.695Z\",\n          \"updateTime\": \"1966-07-08T05:52:27.243Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2003-06-19T12:07:24.065Z\",\n      \"updateTime\": \"1979-03-14T04:04:40.565Z\"\n    },\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"string\",\n      \"createTime\": \"2006-04-21T23:25:43.098Z\",\n      \"updateTime\": \"2015-11-05T10:23:17.038Z\"\n    }\n  ],\n  \"name\": \"string\",\n  \"deletedAt\": \"1972-03-09T23:47:54.654Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4659975b-b7fb-4b7b-80b9-0b2b6ad81386",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46197e0e-dff3-4a39-b118-0048912350be",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8934a928-f343-452c-96e4-8c81fef9d512",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "982dc559-3de8-4de2-8488-c0f8780fab87",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "469b67b7-13ff-4a06-a6ca-b7d14ec36989",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81031a9e-fb4f-4464-8b13-a30dbb1cbb02",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db9d442-3427-4457-a267-5b9e44111a79",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    "register"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.cloud.wherobots.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f946e8f4-4ccd-47b0-b1fa-fc6e223ad6a5",
+    "name": "Wherobots Cloud apikey service API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
+      "type": "text/plain"
+    }
+  }
+}

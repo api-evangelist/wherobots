@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey files API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List integration storage directory (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/files/integration-dir",
+            "params": [
+              {
+                "name": "integration_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dir",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List integration storage directory (legacy)"
+        },
+        {
+          "info": {
+            "name": "List managed storage directory (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/files/dir",
+            "params": [
+              {
+                "name": "dir",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List managed storage directory (legacy)"
+        },
+        {
+          "info": {
+            "name": "Create a file upload URL (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/files/upload-url",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a file upload URL (legacy)"
+        },
+        {
+          "info": {
+            "name": "Delete files from managed storage (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/files",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete files from managed storage (legacy)"
+        },
+        {
+          "info": {
+            "name": "Create a folder in managed storage (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/files/folder",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dir",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a folder in managed storage (legacy)"
+        },
+        {
+          "info": {
+            "name": "Download a file from managed storage (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/files/download",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download a file from managed storage (legacy)"
+        },
+        {
+          "info": {
+            "name": "Rename a file in managed storage (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/files/rename",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "new_name",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rename a file in managed storage (legacy)"
+        },
+        {
+          "info": {
+            "name": "Create temporary ingest credentials (legacy)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/files/ingest-credentials",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create temporary ingest credentials (legacy)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

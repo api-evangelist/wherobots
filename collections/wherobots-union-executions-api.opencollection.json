@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey union-executions API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "union-executions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get detailed Union execution info by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/union-executions/:execution_id",
+            "params": [
+              {
+                "name": "execution_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Return detailed information for a Union/Flyte workflow execution,\nincluding live inputs and outputs fetched from the Union API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

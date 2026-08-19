@@ -1,0 +1,429 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey storage API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List storage integrations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/storage",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List storage integrations"
+        },
+        {
+          "info": {
+            "name": "Create a storage integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/storage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a storage integration"
+        },
+        {
+          "info": {
+            "name": "Get a storage integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/storage/:integration_id",
+            "params": [
+              {
+                "name": "integration_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a storage integration"
+        },
+        {
+          "info": {
+            "name": "Delete a storage integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/storage/:integration_id",
+            "params": [
+              {
+                "name": "integration_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a storage integration"
+        },
+        {
+          "info": {
+            "name": "Get IAM trust relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/storage/trust-relationship",
+            "params": [
+              {
+                "name": "trustedAccountIds",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get IAM trust relationship"
+        },
+        {
+          "info": {
+            "name": "Check S3 bucket access type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/storage/s3-access-type",
+            "params": [
+              {
+                "name": "s3_path",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Check S3 bucket access type"
+        },
+        {
+          "info": {
+            "name": "Get sample IAM policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/storage/:integration_id/sample-policy",
+            "params": [
+              {
+                "name": "integration_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get sample IAM policy"
+        },
+        {
+          "info": {
+            "name": "Get Storage Credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/storage/credentials",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Return temporary AWS credentials scoped to the requested S3 path.\n\nResolution order:\n1. Managed storage (org file store bucket)\n2. WherobotsDB releases bucket (if the org has the feature)\n3. User-defined storage integrations (prefix match)\n\n`payload.access_mode` controls whether returned credentials are read-only\nor include write permissions.\n\nReturns empty credentials for public buckets (no role_arn)."
+        },
+        {
+          "info": {
+            "name": "Verify storage integration access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/storage/:integration_id/access",
+            "params": [
+              {
+                "name": "integration_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Verify storage integration access"
+        },
+        {
+          "info": {
+            "name": "Verify ABAC storage access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/storage/:integration_id/abacaccess",
+            "params": [
+              {
+                "name": "integration_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Verify ABAC storage access"
+        },
+        {
+          "info": {
+            "name": "Create a presigned file upload URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/storage/:storage_id/file-upload-url/:path",
+            "params": [
+              {
+                "name": "storage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a presigned file upload URL"
+        },
+        {
+          "info": {
+            "name": "Rename a file in storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/storage/:storage_id/file-rename/:path",
+            "params": [
+              {
+                "name": "storage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "new_name",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Rename a file in storage"
+        },
+        {
+          "info": {
+            "name": "Download a file from storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/storage/:storage_id/files/:path",
+            "params": [
+              {
+                "name": "storage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download a file from storage"
+        },
+        {
+          "info": {
+            "name": "Delete a file from storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/storage/:storage_id/files/:path",
+            "params": [
+              {
+                "name": "storage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a file from storage"
+        },
+        {
+          "info": {
+            "name": "List directory contents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/storage/:storage_id/directories/:path",
+            "params": [
+              {
+                "name": "storage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List directory contents"
+        },
+        {
+          "info": {
+            "name": "Create a directory in storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/storage/:storage_id/directories/:path",
+            "params": [
+              {
+                "name": "storage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a directory in storage"
+        },
+        {
+          "info": {
+            "name": "Delete a directory from storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/storage/:storage_id/directories/:path",
+            "params": [
+              {
+                "name": "storage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a directory from storage"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

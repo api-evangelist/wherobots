@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey stripe API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "stripe",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Stripe Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/webhook/stripe/subscriptions",
+            "headers": [
+              {
+                "name": "stripe-signature",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Stripe Webhook"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

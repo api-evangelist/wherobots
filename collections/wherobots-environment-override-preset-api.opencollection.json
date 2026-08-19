@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey environment-override--preset API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "environment-override--preset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List environment override presets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/environment-override-preset",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List environment override presets"
+        },
+        {
+          "info": {
+            "name": "Create or update an env override preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/environment-override-preset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create or update an env override preset"
+        },
+        {
+          "info": {
+            "name": "Delete an environment override preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/environment-override-preset/:environment_override_preset_id",
+            "params": [
+              {
+                "name": "environment_override_preset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an environment override preset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

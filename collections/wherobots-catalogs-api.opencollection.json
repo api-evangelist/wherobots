@@ -1,0 +1,265 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey catalogs API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "catalogs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/catalogs",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Lists all catalogs"
+        },
+        {
+          "info": {
+            "name": "Create a new managed catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/catalogs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new managed catalog."
+        },
+        {
+          "info": {
+            "name": "List namespaces in a catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/catalogs/:catalog_id/namespaces",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the catalog."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Lists all namespaces for a given catalog."
+        },
+        {
+          "info": {
+            "name": "List tables in a namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/catalogs/:catalog_id/namespaces/:namespace_name/tables",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the catalog."
+              },
+              {
+                "name": "namespace_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the namespace. Must be URL-encoded."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Lists all tables for a given namespace."
+        },
+        {
+          "info": {
+            "name": "Get table details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/catalogs/:catalog_id/namespaces/:namespace_name/tables/:table_name",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the catalog."
+              },
+              {
+                "name": "namespace_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the namespace. Must be URL-encoded."
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the table. Must be URL-encoded."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets detailed information about a single table."
+        },
+        {
+          "info": {
+            "name": "Delete a table",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/catalogs/:catalog_id/namespaces/:namespace_name/tables/:table_name",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the catalog."
+              },
+              {
+                "name": "namespace_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the namespace. Must be URL-encoded."
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the table. Must be URL-encoded."
+              },
+              {
+                "name": "force_delete_catalog_entry",
+                "value": "",
+                "type": "query",
+                "description": "If true, forcibly removes the catalog database entry even when the table's metadata file is broken or missing. Data files will NOT be purged; the user is responsible for cleaning them up."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a table from the catalog. **This operation does not purge the underlying data files** — only the catalog entry is removed. If the table's metadata file is broken or missing, the deletion will fail. In that case, set `force_delete_catalog_entry=true` to forcibly remove the catalog database entry. When force-deleting, data files are left intact and the user is responsible for cleaning them up. Requires admin privileges."
+        },
+        {
+          "info": {
+            "name": "Get temporary table storage credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/catalogs/:catalog_id/namespaces/:namespace_name/tables/:table_name/credentials",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the catalog."
+              },
+              {
+                "name": "namespace_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the namespace. Must be URL-encoded."
+              },
+              {
+                "name": "table_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the table. Must be URL-encoded."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generates temporary credentials to access the underlying storage of a table."
+        },
+        {
+          "info": {
+            "name": "Get view details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/catalogs/:catalog_id/namespaces/:namespace_name/views/:view_name",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the catalog."
+              },
+              {
+                "name": "namespace_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the namespace. Must be URL-encoded."
+              },
+              {
+                "name": "view_name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the view. Must be URL-encoded."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets detailed information about a single view."
+        },
+        {
+          "info": {
+            "name": "Get full catalog hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/catalogs/hierarchy",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the complete catalog hierarchy including all databases and tables."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

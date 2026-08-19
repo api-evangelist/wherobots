@@ -1,0 +1,430 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey cloud-connections API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "cloud-connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List cloud connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List cloud connections"
+        },
+        {
+          "info": {
+            "name": "Create a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/cloud-connections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a cloud connection"
+        },
+        {
+          "info": {
+            "name": "Get a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a cloud connection"
+        },
+        {
+          "info": {
+            "name": "Delete a cloud connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a cloud connection"
+        },
+        {
+          "info": {
+            "name": "Verify a cloud connection (optionally with a proposed binding)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/verify",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Verify a cloud connection (optionally with a proposed binding)"
+        },
+        {
+          "info": {
+            "name": "Get a CloudFormation Quick-Create link for the connection stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/create-link/connection",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a CloudFormation Quick-Create link for the connection stack"
+        },
+        {
+          "info": {
+            "name": "Get a CloudFormation Quick-Create link for an S3 binding stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/create-link/storage",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Name of the S3 bucket to grant access to (not an ARN or s3:// URL)"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "Optional key prefix to scope access to; empty grants the whole bucket"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Access level for the S3 binding stack"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a CloudFormation Quick-Create link for an S3 binding stack"
+        },
+        {
+          "info": {
+            "name": "Download the rendered CloudFormation template for the connection stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/cft/connection",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download the rendered CloudFormation template for the connection stack"
+        },
+        {
+          "info": {
+            "name": "Download the rendered CloudFormation template for an S3 binding stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/cft/storage",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Name of the S3 bucket to grant access to (not an ARN or s3:// URL)"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "Optional key prefix to scope access to; empty grants the whole bucket"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Access level for the S3 binding stack"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download the rendered CloudFormation template for an S3 binding stack"
+        },
+        {
+          "info": {
+            "name": "Get a CloudFormation Quick-Create link for a Glue binding stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/create-link/glue",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Name of the Glue binding/catalog; feeds the recommended stack name"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Access level for the Glue binding stack"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "AWS region where the Glue catalog lives"
+              },
+              {
+                "name": "awsAccountId",
+                "value": "",
+                "type": "query",
+                "description": "AWS account ID hosting the Glue catalog; defaults to the connection's account"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Optional S3 bucket for direct data access; empty grants no extra S3 access"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "Optional key prefix to scope access to; empty grants the whole bucket"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a CloudFormation Quick-Create link for a Glue binding stack"
+        },
+        {
+          "info": {
+            "name": "Download the rendered CloudFormation template for a Glue binding stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/cft/glue",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Name of the Glue binding/catalog; feeds the recommended stack name"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Access level for the Glue binding stack"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "AWS region where the Glue catalog lives"
+              },
+              {
+                "name": "awsAccountId",
+                "value": "",
+                "type": "query",
+                "description": "AWS account ID hosting the Glue catalog; defaults to the connection's account"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query",
+                "description": "Optional S3 bucket for direct data access; empty grants no extra S3 access"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "Optional key prefix to scope access to; empty grants the whole bucket"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download the rendered CloudFormation template for a Glue binding stack"
+        },
+        {
+          "info": {
+            "name": "Get a CloudFormation Quick-Create link for an S3 Tables binding stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/create-link/s3tables",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tableBucketArn",
+                "value": "",
+                "type": "query",
+                "description": "ARN of the S3 Table Bucket to grant access to"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Access level for the S3 Tables binding stack"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a CloudFormation Quick-Create link for an S3 Tables binding stack"
+        },
+        {
+          "info": {
+            "name": "Download the rendered CloudFormation template for an S3 Tables binding stack",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/cloud-connections/:connection_id/cft/s3tables",
+            "params": [
+              {
+                "name": "connection_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tableBucketArn",
+                "value": "",
+                "type": "query",
+                "description": "ARN of the S3 Table Bucket to grant access to"
+              },
+              {
+                "name": "access",
+                "value": "",
+                "type": "query",
+                "description": "Access level for the S3 Tables binding stack"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Download the rendered CloudFormation template for an S3 Tables binding stack"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey jupyter_lab API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "jupyter_lab",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a notebook instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/me/jupyter/lab/instance/:notebook_id",
+            "params": [
+              {
+                "name": "notebook_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a notebook instance"
+        },
+        {
+          "info": {
+            "name": "Get user's latest notebook instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/me/jupyter/lab/instance-latest",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get user's latest notebook instance"
+        },
+        {
+          "info": {
+            "name": "List notebook instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/me/jupyter/lab/instance",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "desc",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_statuses",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List notebook instances"
+        },
+        {
+          "info": {
+            "name": "Create a notebook instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/me/jupyter/lab/instance",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a notebook instance"
+        },
+        {
+          "info": {
+            "name": "Destroy a notebook instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/me/jupyter/lab/instance/:notebook_id/destroy",
+            "params": [
+              {
+                "name": "notebook_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Destroy a notebook instance"
+        },
+        {
+          "info": {
+            "name": "Get notebook config hints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/me/jupyter/lab/config-hint",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get notebook config hints"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

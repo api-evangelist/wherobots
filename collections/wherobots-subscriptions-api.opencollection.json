@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey subscriptions API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get AWS Marketplace customer details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/subscriptions/amazon-marketplace-customer",
+            "headers": [
+              {
+                "name": "x-amzn-marketplace-token",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get AWS Marketplace customer details"
+        },
+        {
+          "info": {
+            "name": "Link organization to AWS Marketplace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/subscriptions/aws-marketplace",
+            "headers": [
+              {
+                "name": "x-amzn-marketplace-token",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Link organization to AWS Marketplace"
+        },
+        {
+          "info": {
+            "name": "Get current organization subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/subscriptions",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get current organization subscription"
+        },
+        {
+          "info": {
+            "name": "Initiate a subscription upgrade",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/subscriptions/upgrade",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Initiates the upgrade process for the organization's subscription with\nStripe-based payments.\n\nThis creates a new Stripe SetupIntent and a PENDING StripeSubscription to\ninitiate the upgrade flow. The client will use the returned intent secret to\ncomplete the payment method setup on the frontend. The PENDING StripeSubscription\ndoes not become the organization's active subscription as a result of this call\n(see the upgrade_confirmation endpoint below).\n\nThe Stripe subscription webhook handler will"
+        },
+        {
+          "info": {
+            "name": "Confirm subscription upgrade with Stripe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/subscriptions/upgrade-confirmation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Confirms the subscription upgrade process for the organization's Stripe-based subscription.\n\nCalled by the frontend after the Stripe SetupIntent process is completed, as notification to the\nbackend that the pending StripeSubscription can now be considered the active subscription for the organization.\n\nThis is a UX optimization so that the user will see the pending state immediately after completing the SetupIntent,\ninstead of having to wait for the Stripe webhook to be processed. The upgrade wil"
+        },
+        {
+          "info": {
+            "name": "Cancel organization Stripe subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/subscriptions/cancel",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancels the organization's Stripe subscription.\n\nThis will cancel the subscription in Orb (stopping billing), downgrade the\norganization to the Community plan, and mark the subscription as stopped."
+        },
+        {
+          "info": {
+            "name": "Get billing portal URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/subscriptions/portal",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get billing portal URL"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

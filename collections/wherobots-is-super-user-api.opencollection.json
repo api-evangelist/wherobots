@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey Is Super User API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Is Super User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check if current user is a superuser",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/is-super-user",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Check if current user is a superuser"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

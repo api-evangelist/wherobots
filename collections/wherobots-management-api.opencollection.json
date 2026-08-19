@@ -1,0 +1,388 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey management API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get organization subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/subscription",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get organization's active subscription details.\n\nThis endpoint is for superusers only and returns the active subscription\ninformation including type-specific details (AWS Marketplace, Stripe, etc.)."
+        },
+        {
+          "info": {
+            "name": "Get organization workload costs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/usage/costs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Orb-calculated workload costs for any organization.\n\nThis endpoint is for superusers only. Unlike the org-scoped\n``POST /usage/costs``, it resolves costs for an arbitrary organization\nidentified by ``organization_id``."
+        },
+        {
+          "info": {
+            "name": "List all organization quotas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/management/quotas/all",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all organization quotas"
+        },
+        {
+          "info": {
+            "name": "Get quotas for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/quotas",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get quotas for an organization"
+        },
+        {
+          "info": {
+            "name": "Update a quota for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/update-quota",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "quota_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "quota_value",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a quota for an organization"
+        },
+        {
+          "info": {
+            "name": "Refresh org resource quotas in K8s",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/refresh-quotas",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Refresh org resource quotas in K8s"
+        },
+        {
+          "info": {
+            "name": "Refresh users in an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/refresh-users",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Refresh users in an organization"
+        },
+        {
+          "info": {
+            "name": "Verify an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/verify",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Verify an organization"
+        },
+        {
+          "info": {
+            "name": "Mark organization as fraudulent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/mark-fraudulent",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mark organization as fraudulent"
+        },
+        {
+          "info": {
+            "name": "Update organization plan and subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/update-plan",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "plan",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_type",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an organization's plan and optionally change its subscription type.\n\nIf subscription_type is provided and the org already has an active subscription\nof a different type, the old subscription will be stopped and a new one created."
+        },
+        {
+          "info": {
+            "name": "Refresh catalogs for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/refresh-catalogs",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Refresh catalogs for a specific organization.\nOnly accessible by super users."
+        },
+        {
+          "info": {
+            "name": "Destroy a workload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/kube_app/:kube_app_id/destroy",
+            "params": [
+              {
+                "name": "kube_app_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Destroy a workload"
+        },
+        {
+          "info": {
+            "name": "Get feature flag overrides for an org",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/feature-overrides",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get feature flag overrides for an org"
+        },
+        {
+          "info": {
+            "name": "Update a feature flag override",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id/update-feature-override",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a feature flag override"
+        },
+        {
+          "info": {
+            "name": "Delete an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/management/organization/:organization_id",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an organization"
+        },
+        {
+          "info": {
+            "name": "Create an async operation task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/management/async_operation_task",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an async operation task"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

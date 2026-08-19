@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey audit-log API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "audit-log",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query audit log events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/audit-log",
+            "params": [
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "searchTerm",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for the next page"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Page size"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Query audit log events"
+        },
+        {
+          "info": {
+            "name": "Export audit log as CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/audit-log/export",
+            "params": [
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "searchTerm",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Export audit log as CSV"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey sql API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "sql",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Returns a list of the callers SQL sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/sql/sessions",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of the callers SQL sessions"
+        },
+        {
+          "info": {
+            "name": "Returns the callers' SQL session by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/sql/session/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the callers' SQL session by ID"
+        },
+        {
+          "info": {
+            "name": "Deletes a SQL session owned by the caller, by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/sql/session/:session_id",
+            "params": [
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a SQL session owned by the caller, by ID"
+        },
+        {
+          "info": {
+            "name": "Creates a SQL session for the user (if needed)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/sql/session",
+            "params": [
+              {
+                "name": "force_new",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a SQL session for the user (if needed)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

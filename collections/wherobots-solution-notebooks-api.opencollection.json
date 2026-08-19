@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey solution_notebooks API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "solution_notebooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List solution notebooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/solution-notebooks",
+            "params": [
+              {
+                "name": "showInGalleryOnly",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List solution notebooks"
+        },
+        {
+          "info": {
+            "name": "Create a solution notebook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/solution-notebooks",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a solution notebook"
+        },
+        {
+          "info": {
+            "name": "Get a solution notebook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/solution-notebooks/:notebookId",
+            "params": [
+              {
+                "name": "notebookId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a solution notebook"
+        },
+        {
+          "info": {
+            "name": "Replace a solution notebook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/solution-notebooks/:notebookId",
+            "params": [
+              {
+                "name": "notebookId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Replace a solution notebook"
+        },
+        {
+          "info": {
+            "name": "Delete a solution notebook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/solution-notebooks/:notebookId",
+            "params": [
+              {
+                "name": "notebookId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a solution notebook"
+        },
+        {
+          "info": {
+            "name": "Get solution notebook thumbnail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/solution-notebooks/:notebookId/thumbnail",
+            "params": [
+              {
+                "name": "notebookId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get solution notebook thumbnail"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

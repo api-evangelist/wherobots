@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey environment-preset API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "environment-preset",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List environment presets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/environment-preset",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List environment presets"
+        },
+        {
+          "info": {
+            "name": "Create or update an environment preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/environment-preset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create or update an environment preset"
+        },
+        {
+          "info": {
+            "name": "Delete an environment preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/environment-preset/:environment_preset_id",
+            "params": [
+              {
+                "name": "environment_preset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an environment preset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

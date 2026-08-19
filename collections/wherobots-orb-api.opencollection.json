@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey orb API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "orb",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Orb Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/webhook/orb",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Orb Webhook"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

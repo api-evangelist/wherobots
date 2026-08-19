@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey usage API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get workload usage chart data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/usage/workloads/chart",
+            "params": [
+              {
+                "name": "timerange",
+                "value": "",
+                "type": "query",
+                "description": "The time range for the usage chart."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get workload usage chart data"
+        },
+        {
+          "info": {
+            "name": "Get workload usage summary info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/usage/workloads/info",
+            "params": [
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "excludeStatuses",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get workload usage summary info"
+        },
+        {
+          "info": {
+            "name": "Get workload usage (deprecated)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/usage/workloads",
+            "params": [
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeStatuses",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "excludeStatuses",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get workload usage (deprecated)"
+        },
+        {
+          "info": {
+            "name": "Get workload usage history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/usage/history",
+            "params": [
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workloadType",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Return a unified history of KubeApp workloads and Union workflow executions."
+        },
+        {
+          "info": {
+            "name": "Get workload cost breakdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/usage/costs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get workload cost breakdown"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

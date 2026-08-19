@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey Health API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/health"
+          },
+          "docs": "Health check endpoint with detailed component status.\n\nReturns status=\"ok\" always for k8s probe compatibility.\nIndividual component failures are reported in the checks dict.\n\nNote: DB connections use pool_pre_ping=True for automatic validation\non checkout. This endpoint reports pool status without making DB queries."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

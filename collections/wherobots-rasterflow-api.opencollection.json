@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey rasterflow API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "rasterflow",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel a running Rasterflow workflow run by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/rasterflow/runs/:run_id",
+            "params": [
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Abort a running Union/Flyte workflow run.\n\nThe run and its Union project/domain are resolved from the local copy of\nthe run. Cancelling an already-terminal run is a no-op."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

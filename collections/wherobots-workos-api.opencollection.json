@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey workos API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "workos",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Workos User Registration Action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/webhook/workos/actions/user-registration",
+            "headers": [
+              {
+                "name": "WorkOS-Signature",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Handle a WorkOS AuthKit User Registration Action.\n\nWorkOS POSTs a signed payload at sign-up time; we verify the signature, then\nreturn a *signed* Allow/Deny verdict. Signature verification always runs and\nalways fails closed (bad signature -> 401, missing secret -> 500) regardless\nof environment. The domain restriction itself is only enforced when the\nrunning environment is in ``signup_restricted_environments`` and an allowlist\nis configured; otherwise the action is a pass-through (always Allow)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

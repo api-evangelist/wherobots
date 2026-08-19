@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey coupon API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "coupon",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Redeem an organization coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/coupon/redeem",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Redeem an organization coupon"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

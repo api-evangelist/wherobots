@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey quota API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "quota",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organization quotas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/quota/organization",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List organization quotas"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "apikey",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List API keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/apikey",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List API keys"
+        },
+        {
+          "info": {
+            "name": "Create an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/apikey",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an API key"
+        },
+        {
+          "info": {
+            "name": "Update API key expiry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/apikey/:api_key_id",
+            "params": [
+              {
+                "name": "api_key_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update API key expiry"
+        },
+        {
+          "info": {
+            "name": "Revoke an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/apikey/:api_key_id",
+            "params": [
+              {
+                "name": "api_key_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Revoke an API key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

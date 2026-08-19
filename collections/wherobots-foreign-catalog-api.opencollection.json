@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey foreign-catalog API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "foreign-catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List foreign catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/foreign-catalog",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Lists all foreign catalogs visible to the current user."
+        },
+        {
+          "info": {
+            "name": "Create a foreign catalog connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/foreign-catalog",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new foreign catalog.\n\nThis endpoint allows for the creation of a new foreign catalog connection.\nThe number of foreign catalogs is limited by the organization's plan."
+        },
+        {
+          "info": {
+            "name": "Get a foreign catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/foreign-catalog/:catalog_id",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the foreign catalog to retrieve."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets a specific foreign catalog by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a foreign catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/foreign-catalog/:catalog_id",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the foreign catalog to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates an existing foreign catalog."
+        },
+        {
+          "info": {
+            "name": "Delete a foreign catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/foreign-catalog/:catalog_id",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the foreign catalog to delete."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a foreign catalog by its ID."
+        },
+        {
+          "info": {
+            "name": "Test a new foreign catalog connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/foreign-catalog/test-connection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Tests the connection to a foreign catalog.\n\nThis endpoint allows users to test the connection details of a foreign catalog\nbefore creating it."
+        },
+        {
+          "info": {
+            "name": "Test an existing foreign catalog connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/foreign-catalog/:catalog_id/test-connection",
+            "params": [
+              {
+                "name": "catalog_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the foreign catalog to test."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Tests the connection to a foreign catalog.\n\nThis endpoint allows users to test the connection details of an existing\nforeign catalog."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

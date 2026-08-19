@@ -7,12 +7,10 @@ server:
   transport: http
   hosting: remote
   region: us-west-2
-  description: >-
-    Hosted Wherobots Cloud MCP Server for geospatial data exploration and Spatial
-    SQL query generation. Enables intelligent catalog exploration, natural-language
-    query generation, and query execution from AI assistants (Claude, ChatGPT,
-    Codex, Cursor, VS Code, Claude Code, OpenCode, and more). Requires a
-    Professional or Enterprise organization.
+  description: Hosted Wherobots Cloud MCP Server for geospatial data exploration and Spatial SQL query
+    generation. Enables intelligent catalog exploration, natural-language query generation, and query
+    execution from AI assistants (Claude, ChatGPT, Codex, Cursor, VS Code, Claude Code, OpenCode, and
+    more). Requires a Professional or Enterprise organization.
 authentication:
   methods:
   - oauth: browser sign-in (Cursor, Claude, ChatGPT, Codex, Claude Code, OpenCode)
@@ -25,7 +23,11 @@ capabilities:
 related:
   cli: cli/wherobots-cli.yml
   agent_skills: skills/_index.yml
-notes: >-
-  Official hosted MCP server (published, not a derived candidate). The companion
-  Wherobots CLI additionally exposes the full API to agentic terminals; agent
-  skills (github.com/wherobots/agent-skills) add domain context.
+notes: Official hosted MCP server (published, not a derived candidate). The companion Wherobots CLI additionally
+  exposes the full API to agentic terminals; agent skills (github.com/wherobots/agent-skills) add domain
+  context.
+deployment:
+  mode: remote
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census

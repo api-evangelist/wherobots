@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey service_token_endpoint API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "service_token_endpoint",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get JWKS for token verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/ste/.well-known/jwks.json",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get JWKS for token verification"
+        },
+        {
+          "info": {
+            "name": "Exchange refresh token for access token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/ste/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Exchange credentials for an access token. Currently only support refresh_token"
+        },
+        {
+          "info": {
+            "name": "Exchange token for Iceberg REST access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/ste/v2/oauth2/tokens",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Exchange credentials for Open Source (OSS) Iceberg REST Client (IRC).\n\nOSS IRC (< 1.10.x) uses 2 grant types:\n- token-exchange: Defined by the OAuth 2.0 Token Exchange spec (RFC 8693).\n  Exchange a valid, unexpired (OAuth) access token for a new access token with the same or smaller scopes.\n- client_credentials: Defined by the OAuth 2.0 Authorization Framework spec (RFC 6749).\n  Exchange a client credential (i.e. Wherobots API Key) for an access token.\n\nUse cases:\n1. [client_credentials] Users w"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

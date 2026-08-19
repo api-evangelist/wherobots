@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey Flags API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Flags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List feature flags (debug only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/flags",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List feature flags (debug only)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

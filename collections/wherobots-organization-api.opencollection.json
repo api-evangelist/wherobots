@@ -1,0 +1,561 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Wherobots Cloud apikey organization API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organization quotas",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/quota/organization",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List organization quotas"
+        },
+        {
+          "info": {
+            "name": "Redeem an organization coupon",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/coupon/redeem",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Redeem an organization coupon"
+        },
+        {
+          "info": {
+            "name": "Get pending organization invitations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/:organization_id/users/invitations",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get pending organization invitations"
+        },
+        {
+          "info": {
+            "name": "Get current user's organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get current user's organization"
+        },
+        {
+          "info": {
+            "name": "Update current organization settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.cloud.wherobots.com/organization",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update current organization settings"
+        },
+        {
+          "info": {
+            "name": "Delete the current organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/organization",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete the current organization"
+        },
+        {
+          "info": {
+            "name": "Invite users to the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/organization/invite",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Invite users to the organization"
+        },
+        {
+          "info": {
+            "name": "Cancel a pending invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/organization/organization/invite/:email",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel a pending invitation"
+        },
+        {
+          "info": {
+            "name": "Register a new organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/register",
+            "headers": [
+              {
+                "name": "x-amzn-marketplace-token",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Register a new organization"
+        },
+        {
+          "info": {
+            "name": "Restore a deleted organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/undelete",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Restore a deleted organization"
+        },
+        {
+          "info": {
+            "name": "Register a new user in an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/:organization_id/register",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Register a new user in an organization"
+        },
+        {
+          "info": {
+            "name": "List quotas for an organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/:organization_id/quotas",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List quotas for an organization"
+        },
+        {
+          "info": {
+            "name": "Bootstrap Union tenant for an org",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/:organization_id/union-bootstrap",
+            "params": [
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "compute_region_name",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Bootstrap Union tenant for an org"
+        },
+        {
+          "info": {
+            "name": "Export organization users as CSV",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/users/export",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Export organization users as CSV"
+        },
+        {
+          "info": {
+            "name": "Change a user's role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/organization/users/:customer_id/role",
+            "params": [
+              {
+                "name": "customer_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "new_role_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Change a user's role"
+        },
+        {
+          "info": {
+            "name": "Remove a user from the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.cloud.wherobots.com/organization/users/:user_email",
+            "params": [
+              {
+                "name": "user_email",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove a user from the organization"
+        },
+        {
+          "info": {
+            "name": "Refresh current org catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/refresh-catalogs",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Refresh current org catalogs"
+        },
+        {
+          "info": {
+            "name": "List all API keys in the organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/apikeys",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all API keys in the organization"
+        },
+        {
+          "info": {
+            "name": "Set default environment preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/organization/default-environment-preset",
+            "params": [
+              {
+                "name": "preset_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set default environment preset"
+        },
+        {
+          "info": {
+            "name": "Set default environment override preset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/organization/default-environment-override-preset",
+            "params": [
+              {
+                "name": "preset_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set default environment override preset"
+        },
+        {
+          "info": {
+            "name": "Set the default compute region",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/organization/default-region",
+            "params": [
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set the default compute region"
+        },
+        {
+          "info": {
+            "name": "Set the default compute runtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.cloud.wherobots.com/organization/default-runtime",
+            "params": [
+              {
+                "name": "runtime_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set the default compute runtime"
+        },
+        {
+          "info": {
+            "name": "Search organizations by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/by-name/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Search organizations by name"
+        },
+        {
+          "info": {
+            "name": "Get an organization by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/by-id/:org_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get an organization by ID"
+        },
+        {
+          "info": {
+            "name": "List all organizations for current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.cloud.wherobots.com/organization/all",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a list of all organizations the current user belongs to."
+        },
+        {
+          "info": {
+            "name": "Create a new organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new organization"
+        },
+        {
+          "info": {
+            "name": "Ensure current user has a human principal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.cloud.wherobots.com/organization/ensure-currentuser-humanprincipal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Ensure current user has a human principal"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
