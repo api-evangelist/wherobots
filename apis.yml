@@ -67,7 +67,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - apikey
+  - APIKeys
   tags_raw:
   - apikey
   properties:
@@ -81,7 +81,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - audit-log
+  - Audit Log
   tags_raw:
   - audit-log
   properties:
@@ -109,7 +109,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - cloud-connections
+  - Cloud Connections
   tags_raw:
   - cloud-connections
   properties:
@@ -123,7 +123,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - coupon
+  - Coupon
   tags_raw:
   - coupon
   properties:
@@ -223,7 +223,8 @@ apis:
   description: The jupyter_lab API from Wherobots — 5 operation(s) for jupyter_lab.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
-  tags: []
+  tags:
+  - JupyterLab
   tags_raw:
   - jupyter_lab
   properties:
@@ -291,7 +292,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - quota
+  - Quota
   tags_raw:
   - quota
   properties:
@@ -317,7 +318,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - runs
+  - Runs
   tags_raw:
   - runs
   properties:
@@ -400,7 +401,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - stripe
+  - Stripe
   tags_raw:
   - stripe
   properties:
@@ -466,7 +467,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - user-management
+  - User Management
   tags_raw:
   - user-management
   properties:
