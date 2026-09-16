@@ -61,20 +61,6 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 apis:
-- aid: wherobots:wherobots-apikey-api
-  name: Wherobots apikey API
-  description: The apikey API from Wherobots — 2 operation(s) for apikey.
-  humanURL: https://docs.wherobots.com/api-playground/
-  baseURL: https://api.cloud.wherobots.com
-  tags:
-  - APIKeys
-  tags_raw:
-  - apikey
-  properties:
-  - type: OpenAPI
-    url: openapi/wherobots-apikey-api-openapi.yml
-  - type: Documentation
-    url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-audit-log-api
   name: Wherobots audit-log API
   description: The audit-log API from Wherobots — 2 operation(s) for audit-log.
@@ -513,6 +499,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/wherobots-workos-api-openapi.yml
+  - type: Documentation
+    url: https://docs.wherobots.com/develop/spatial-sql-api/
+- aid: wherobots:wherobots-api-key-api
+  name: Wherobots API Key API
+  description: The API Key API from Wherobots — 2 operation(s) for api key.
+  humanURL: https://docs.wherobots.com/api-playground/
+  baseURL: https://api.cloud.wherobots.com
+  tags:
+  - API Key
+  properties:
+  - type: OpenAPI
+    url: openapi/wherobots-api-key-api-openapi.yml
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 common:
