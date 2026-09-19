@@ -67,7 +67,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - Audit Log
+  - Audit Logs
   tags_raw:
   - audit-log
   properties:
@@ -81,7 +81,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - Catalogs
+  - Catalog
   tags_raw:
   - catalogs
   properties:
@@ -318,7 +318,7 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - Service
+  - Services
   tags_raw:
   - service
   properties:
@@ -507,6 +507,8 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
+  - APIKeys
+  tags_raw:
   - API Key
   properties:
   - type: OpenAPI
