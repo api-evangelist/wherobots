@@ -10,6 +10,12 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: developer-api
 pricing_basis: usage-other
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-09-20'
+  evidence: Bring Your Own Cloud — deploy the Wherobots compute plane in your own VPC
+  managed_tier: Professional
 published: true
 note: Consumption-based Spatial Unit pricing plus tiered plans; Enterprise is contact sales.
 plan_count: 11
