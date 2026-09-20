@@ -25,7 +25,8 @@ edges:
     marketplace linkage and billing portal access; spans modification, cancellation and billing so no
     single L2 is chosen.
 - tag: apikey
-  spec_file: wherobots-apikey-api-openapi.yml
+  spec_file: wherobots-api-key-api-openapi.yml
+  reanchored_from: wherobots-apikey-api-openapi.yml
   capability_id: BC-4270.40
   capability_id_l1: BC-4270
   capability_name: Developer Identity & Credential Management
