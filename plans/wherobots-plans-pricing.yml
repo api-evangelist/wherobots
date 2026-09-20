@@ -1,0 +1,90 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://wherobots.com/pricing/
+sources:
+- https://wherobots.com/pricing/
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+published: true
+note: Consumption-based Spatial Unit pricing plus tiered plans; Enterprise is contact sales.
+plan_count: 11
+currency: USD
+plans:
+- name: Professional
+  price_text: $0 to Start
+  price: 0
+  currency: USD
+  period: month
+  included_quota: 14 day free trial for up to $95 in usage; post trial, $95/month in prepaid usage credits
+    with 90-day expiration; up to 10 users
+  overage: On-demand with $95 minimum invoiced monthly
+- name: Premium Support add-on
+  price_text: $1,000/month
+  price: 1000
+  currency: USD
+  period: month
+  included_quota: 8×5 Priority Support (Slack or Teams)
+- name: Innovation
+  price_text: from $3000/MO
+  price: 3000
+  currency: USD
+  period: month
+  included_quota: Includes $3,000 / month in usage credits; up to 50 users; 12 month+ contract
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Everything in Innovation, 99.5% SLA, 24×7 support, unlimited users
+  overage: Volume based discounts
+- name: WherobotsDB SU — AWS US West (Oregon)
+  price_text: $1.50
+  price: 1.5
+  currency: USD
+  period: per-use
+  unit: per WherobotsDB Spatial Unit
+- name: WherobotsDB SU — AWS EU West (Ireland)
+  price_text: $1.67
+  price: 1.67
+  currency: USD
+  period: per-use
+  unit: per WherobotsDB Spatial Unit
+- name: WherobotsDB SU — AWS AP South (Mumbai)
+  price_text: $1.58
+  price: 1.58
+  currency: USD
+  period: per-use
+  unit: per WherobotsDB Spatial Unit
+- name: RasterFlow Mosaic Generation
+  price_text: $0.75
+  price: 0.75
+  currency: USD
+  period: per-use
+  unit: per RasterFlow SU
+  overage: Each task is billed a minimum of 1 SU
+- name: RasterFlow Inference
+  price_text: $1.50
+  price: 1.5
+  currency: USD
+  period: per-use
+  unit: per RasterFlow SU
+- name: RasterFlow Build Multiscales
+  price_text: $0.25
+  price: 0.25
+  currency: USD
+  period: per-use
+  unit: per RasterFlow SU
+- name: RasterFlow Mosaic Vectorization
+  price_text: $0.25
+  price: 0.25
+  currency: USD
+  period: per-use
+  unit: per RasterFlow SU
+rate_limit_statements:
+- Each task is billed a minimum of 1 SU.
+- Users included Up to 10
+- Up to 50
+- Unlimited
