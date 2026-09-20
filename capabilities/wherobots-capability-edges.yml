@@ -1,0 +1,79 @@
+slug: wherobots
+provider: Wherobots
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: subscriptions
+  spec_file: wherobots-subscriptions-api-openapi.yml
+  capability_id: BC-4240
+  capability_id_l1: BC-4240
+  capability_name: Subscription Lifecycle Management
+  confidence: 0.85
+  evidence: POST /subscriptions/upgrade 'Initiate a subscription upgrade'; POST /subscriptions/cancel
+    'Cancel organization Stripe subscription'; GET /subscriptions 'Get current organization subscription'
+  reason: Plainly the commercial subscription lifecycle for the SaaS offering — upgrade, cancellation,
+    marketplace linkage and billing portal access; spans modification, cancellation and billing so no
+    single L2 is chosen.
+- tag: apikey
+  spec_file: wherobots-apikey-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.78
+  evidence: POST /apikey  createApiKey  Create an API key; DELETE /apikey/{api_key_id}  revokeApiKey  Revoke
+    an API key
+  reason: Issuance, expiry update and revocation of API keys used by developers to authenticate against
+    the Wherobots Cloud API, with `ApiKey`, `Role-Output` and `Policy` schemas. That is developer credential
+    stewardship on a developer-facing cloud platform; the alternative reading (generic enterprise IAM,
+    BC-620.20) is possible, hence not higher.
+- tag: organization
+  spec_file: wherobots-organization-api-openapi.yml
+  capability_id: BC-4230.10
+  capability_id_l1: BC-4230
+  capability_name: Tenant Provisioning & Lifecycle
+  confidence: 0.72
+  evidence: POST /organization/register organizationRegister 'Register a new organization'; DELETE /organization
+    'Delete the current organization'; POST /organization/undelete 'Restore a deleted organization'
+  reason: The organization is the tenant unit of this multi-tenant cloud platform; operations create,
+    update, delete and restore organizations and register/invite their users, which is tenant provisioning
+    and lifecycle rather than any HR or CRM notion of 'organization'.
+- tag: service
+  spec_file: wherobots-service-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /service/register registerServicePrincipal 'Register a new service principal'; schemas
+    ServicePrincipal, Role-Output, Policy, Effect
+  reason: Lifecycle of machine/service identities with attached roles and policies is identity and access
+    management; it is not a customer-facing 'service' offering despite the tag string.
+- tag: user-management
+  spec_file: wherobots-user-management-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: GET /user-management/{user_id} 'Get user by ID'; DELETE 'Delete a user'; schemas HumanPrincipal,
+    Role-Output, Policy, Effect
+  reason: Administrative user account lifecycle with roles and policies on a platform — identity and access
+    management; could also read as tenant user administration but IAM is the safer fit.
+- tag: usage
+  spec_file: wherobots-usage-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.7
+  evidence: GET /usage/workloads/info 'Get workload usage summary info'; POST /usage/costs 'Get workload
+    cost breakdown'; schemas WorkloadCostsOutput, UsageSlice
+  reason: Aggregation and reporting of platform workload usage and cost per customer maps to usage metering
+    for the consumption-based SaaS commercial model; some ambiguity vs. IT financial management/showback.
