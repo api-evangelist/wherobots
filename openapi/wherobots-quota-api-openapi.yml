@@ -1,18 +1,28 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wherobots Cloud apikey quota API
-  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  title: Wherobots Cloud Quota API
+  description: 'Wherobots Cloud API OpenAPI specification.
+
+
+    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.
+
+    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.
+
+
+    The Authorize button below will allow you to input an access token to authenticate to our API.
+
+    Then all of the requests on the page should work.'
   version: 0.0.1
 servers:
 - url: https://api.cloud.wherobots.com
   description: Wherobots Cloud API
 tags:
-- name: quota
+- name: Quota
 paths:
   /organization/quota/organization:
     get:
       tags:
-      - quota
+      - Quota
       summary: List organization quotas
       operationId: listQuotas
       responses:
@@ -92,6 +102,26 @@ components:
       - errors
       - requestId
       title: ErrorBody
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
     ErrorInfo:
       properties:
         code:
@@ -133,26 +163,6 @@ components:
       - details
       - path
       title: ErrorInfo
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
     QuotaType:
       type: string
       enum:

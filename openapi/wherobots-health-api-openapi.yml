@@ -1,7 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wherobots Cloud apikey Health API
-  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  title: Wherobots Cloud Health API
+  description: 'Wherobots Cloud API OpenAPI specification.
+
+
+    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.
+
+    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.
+
+
+    The Authorize button below will allow you to input an access token to authenticate to our API.
+
+    Then all of the requests on the page should work.'
   version: 0.0.1
 servers:
 - url: https://api.cloud.wherobots.com
@@ -79,23 +89,6 @@ paths:
       - Health
 components:
   schemas:
-    HealthResponse:
-      properties:
-        status:
-          type: string
-          title: Status
-        checks:
-          anyOf:
-          - additionalProperties:
-              $ref: '#/components/schemas/HealthCheckDetail'
-            type: object
-          - type: 'null'
-          title: Checks
-      type: object
-      required:
-      - status
-      title: HealthResponse
-      description: Health check response with optional detailed component checks.
     ErrorInfo:
       properties:
         code:
@@ -137,21 +130,23 @@ components:
       - details
       - path
       title: ErrorInfo
-    HealthCheckDetail:
+    HealthResponse:
       properties:
         status:
           type: string
           title: Status
-        message:
+        checks:
           anyOf:
-          - type: string
+          - additionalProperties:
+              $ref: '#/components/schemas/HealthCheckDetail'
+            type: object
           - type: 'null'
-          title: Message
+          title: Checks
       type: object
       required:
       - status
-      title: HealthCheckDetail
-      description: Detail for an individual health check component.
+      title: HealthResponse
+      description: Health check response with optional detailed component checks.
     ErrorClass:
       type: string
       enum:
@@ -189,6 +184,21 @@ components:
       - errors
       - requestId
       title: ErrorBody
+    HealthCheckDetail:
+      properties:
+        status:
+          type: string
+          title: Status
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+      type: object
+      required:
+      - status
+      title: HealthCheckDetail
+      description: Detail for an individual health check component.
   securitySchemes:
     bearerToken:
       type: http

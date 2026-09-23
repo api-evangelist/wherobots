@@ -1,18 +1,28 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wherobots Cloud apikey catalogs API
-  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  title: Wherobots Cloud Catalogs API
+  description: 'Wherobots Cloud API OpenAPI specification.
+
+
+    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.
+
+    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.
+
+
+    The Authorize button below will allow you to input an access token to authenticate to our API.
+
+    Then all of the requests on the page should work.'
   version: 0.0.1
 servers:
 - url: https://api.cloud.wherobots.com
   description: Wherobots Cloud API
 tags:
-- name: catalogs
+- name: Catalogs
 paths:
   /catalogs:
     get:
       tags:
-      - catalogs
+      - Catalogs
       summary: List all catalogs
       description: Lists all catalogs
       operationId: listCatalogs
@@ -71,7 +81,7 @@ paths:
       x-excluded: true
     post:
       tags:
-      - catalogs
+      - Catalogs
       summary: Create a new managed catalog
       description: Creates a new managed catalog.
       operationId: createCatalog
@@ -137,7 +147,7 @@ paths:
   /catalogs/{catalog_id}/namespaces:
     get:
       tags:
-      - catalogs
+      - Catalogs
       summary: List namespaces in a catalog
       description: Lists all namespaces for a given catalog.
       operationId: listNamespaces
@@ -206,7 +216,7 @@ paths:
   /catalogs/{catalog_id}/namespaces/{namespace_name}/tables:
     get:
       tags:
-      - catalogs
+      - Catalogs
       summary: List tables in a namespace
       description: Lists all tables for a given namespace.
       operationId: listTables
@@ -283,7 +293,7 @@ paths:
   /catalogs/{catalog_id}/namespaces/{namespace_name}/tables/{table_name}:
     get:
       tags:
-      - catalogs
+      - Catalogs
       summary: Get table details
       description: Gets detailed information about a single table.
       operationId: getTable
@@ -367,7 +377,7 @@ paths:
       x-excluded: true
     delete:
       tags:
-      - catalogs
+      - Catalogs
       summary: Delete a table
       description: Removes a table from the catalog. **This operation does not purge the underlying data files** — only the catalog entry is removed. If the table's metadata file is broken or missing, the deletion will fail. In that case, set `force_delete_catalog_entry=true` to forcibly remove the catalog database entry. When force-deleting, data files are left intact and the user is responsible for cleaning them up. Requires admin privileges.
       operationId: deleteTable
@@ -457,7 +467,7 @@ paths:
   /catalogs/{catalog_id}/namespaces/{namespace_name}/tables/{table_name}/credentials:
     post:
       tags:
-      - catalogs
+      - Catalogs
       summary: Get temporary table storage credentials
       description: Generates temporary credentials to access the underlying storage of a table.
       operationId: getTableCredentials
@@ -542,7 +552,7 @@ paths:
   /catalogs/{catalog_id}/namespaces/{namespace_name}/views/{view_name}:
     get:
       tags:
-      - catalogs
+      - Catalogs
       summary: Get view details
       description: Gets detailed information about a single view.
       operationId: getView
@@ -627,7 +637,7 @@ paths:
   /catalogs/hierarchy:
     get:
       tags:
-      - catalogs
+      - Catalogs
       summary: Get full catalog hierarchy
       description: Gets the complete catalog hierarchy including all databases and tables.
       operationId: getCatalogHierarchy
@@ -686,17 +696,85 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ListNamespacesResponse:
+    TableType:
+      type: string
+      enum:
+      - TABLE
+      - VIEW
+      title: TableType
+    GetCatalogHierarchyResponse:
       properties:
-        namespaces:
+        catalogs:
           items:
-            $ref: '#/components/schemas/Namespace'
+            $ref: '#/components/schemas/ExplorerUICatalog'
           type: array
-          title: Namespaces
+          title: Catalogs
       type: object
       required:
-      - namespaces
-      title: ListNamespacesResponse
+      - catalogs
+      title: GetCatalogHierarchyResponse
+    SnapshotRefType:
+      type: string
+      enum:
+      - branch
+      - tag
+      title: SnapshotRefType
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    TableListItem:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the table.
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+          description: The last time the table was updated.
+        format:
+          $ref: '#/components/schemas/TableFormat'
+          description: The format of the table.
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+          title: Properties
+          description: Key-value pairs that define table properties.
+        table_type:
+          $ref: '#/components/schemas/TableType'
+          description: The type of the table, if available. i.e. table or view.
+          default: TABLE
+      type: object
+      required:
+      - name
+      - updateTime
+      - format
+      - properties
+      title: TableListItem
+    NestedField:
+      additionalProperties: true
+      type: object
     ErrorInfo:
       properties:
         code:
@@ -738,42 +816,34 @@ components:
       - details
       - path
       title: ErrorInfo
-    Catalog:
+    TableStatistics:
       properties:
-        id:
-          type: string
-          title: Id
-          description: Unique identifier for the catalog.
+        rowCount:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Rowcount
+          description: The number of rows in the table.
+      type: object
+      required:
+      - rowCount
+      title: TableStatistics
+    ExplorerUITable:
+      properties:
         name:
           type: string
           title: Name
-          description: The user-friendly name of the catalog.
-        type:
-          $ref: '#/components/schemas/CatalogType'
-          description: The type of the catalog.
+          description: The name of the table.
+        location:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Location
+          description: The location of the table.
       type: object
       required:
-      - id
       - name
-      - type
-      title: Catalog
-    SnapshotRefType:
-      type: string
-      enum:
-      - branch
-      - tag
-      title: SnapshotRefType
-    ListTablesResponse:
-      properties:
-        tables:
-          items:
-            $ref: '#/components/schemas/TableListItem'
-          type: array
-          title: Tables
-      type: object
-      required:
-      - tables
-      title: ListTablesResponse
+      title: ExplorerUITable
     TableCredentials:
       properties:
         accessKey:
@@ -805,39 +875,47 @@ components:
       - expiration
       - region
       title: TableCredentials
-    TableStatistics:
+    ListNamespacesResponse:
       properties:
-        rowCount:
+        namespaces:
+          items:
+            $ref: '#/components/schemas/Namespace'
+          type: array
+          title: Namespaces
+      type: object
+      required:
+      - namespaces
+      title: ListNamespacesResponse
+    SnapshotRef:
+      properties:
+        snapshot-id:
+          type: integer
+          title: Snapshot-Id
+        type:
+          $ref: '#/components/schemas/SnapshotRefType'
+        min-snapshots-to-keep:
           anyOf:
           - type: integer
+            exclusiveMinimum: 0.0
           - type: 'null'
-          title: Rowcount
-          description: The number of rows in the table.
+          title: Min-Snapshots-To-Keep
+        max-snapshot-age-ms:
+          anyOf:
+          - type: integer
+            exclusiveMinimum: 0.0
+          - type: 'null'
+          title: Max-Snapshot-Age-Ms
+        max-ref-age-ms:
+          anyOf:
+          - type: integer
+            exclusiveMinimum: 0.0
+          - type: 'null'
+          title: Max-Ref-Age-Ms
       type: object
       required:
-      - rowCount
-      title: TableStatistics
-    Namespace:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the namespace.
-      type: object
-      required:
-      - name
-      title: Namespace
-    GetCatalogHierarchyResponse:
-      properties:
-        catalogs:
-          items:
-            $ref: '#/components/schemas/ExplorerUICatalog'
-          type: array
-          title: Catalogs
-      type: object
-      required:
-      - catalogs
-      title: GetCatalogHierarchyResponse
+      - snapshot-id
+      - type
+      title: SnapshotRef
     ViewDetail:
       properties:
         name:
@@ -881,257 +959,16 @@ components:
       - errors
       - requestId
       title: ErrorBody
+    Summary:
+      additionalProperties:
+        type: string
+      type: object
     TableFormat:
       type: string
       enum:
       - ICEBERG
       - DELTA
       title: TableFormat
-    Schema:
-      properties:
-        type:
-          type: string
-          const: struct
-          title: Type
-          default: struct
-        fields:
-          items:
-            $ref: '#/components/schemas/NestedField'
-          type: array
-          title: Fields
-        schema-id:
-          type: integer
-          title: Schema-Id
-          default: 0
-        identifier-field-ids:
-          items:
-            type: integer
-          type: array
-          title: Identifier-Field-Ids
-      type: object
-      title: Schema
-      description: "A table Schema.\n\nExample:\n    >>> from pyiceberg import schema\n    >>> from pyiceberg import types"
-    Summary:
-      additionalProperties:
-        type: string
-      type: object
-    ExplorerUIDatabase:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the database.
-        location:
-          type: string
-          title: Location
-          description: The location of the database.
-          default: ''
-        tables:
-          items:
-            $ref: '#/components/schemas/ExplorerUITable'
-          type: array
-          title: Tables
-          description: List of tables in the database.
-      type: object
-      required:
-      - name
-      title: ExplorerUIDatabase
-    ExplorerUITable:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the table.
-        location:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Location
-          description: The location of the table.
-      type: object
-      required:
-      - name
-      title: ExplorerUITable
-    CreateCatalogRequest:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the catalog.
-        location:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Location
-          description: The S3 location for the catalog. If empty, a default location will be created in managed storage.
-        organizationId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Organizationid
-          description: The organization ID. If not provided, uses the current user's organization.
-      type: object
-      required:
-      - name
-      title: CreateCatalogRequest
-    ExplorerUICatalog:
-      properties:
-        id:
-          type: integer
-          title: Id
-          description: Unique identifier for the catalog.
-        extId:
-          type: string
-          title: Extid
-          description: External identifier for the catalog.
-        name:
-          type: string
-          title: Name
-          description: Name of the catalog.
-        location:
-          type: string
-          title: Location
-          description: The cloud storage URL of the catalog.
-        databases:
-          items:
-            $ref: '#/components/schemas/ExplorerUIDatabase'
-          type: array
-          title: Databases
-          description: List of databases.
-      type: object
-      required:
-      - id
-      - extId
-      - name
-      - location
-      title: ExplorerUICatalog
-    Snapshot:
-      properties:
-        snapshot-id:
-          type: integer
-          title: Snapshot-Id
-        parent-snapshot-id:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Parent-Snapshot-Id
-        sequence-number:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Sequence-Number
-          default: 0
-        timestamp-ms:
-          type: integer
-          title: Timestamp-Ms
-        manifest-list:
-          type: string
-          title: Manifest-List
-          description: Location of the snapshot's manifest list file
-        summary:
-          anyOf:
-          - $ref: '#/components/schemas/Summary'
-          - type: 'null'
-        schema-id:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Schema-Id
-        first-row-id:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: First-Row-Id
-          description: assigned to the first row in the first data file in the first manifest
-        added-rows:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Added-Rows
-          description: The upper bound of the number of rows with assigned row IDs
-      type: object
-      required:
-      - snapshot-id
-      - manifest-list
-      title: Snapshot
-    CatalogType:
-      type: string
-      enum:
-      - MANAGED
-      - FOREIGN_DATABRICKS
-      - FOREIGN_AWS_GLUE
-      - FOREIGN_AWS_S3_TABLES
-      title: CatalogType
-    TableListItem:
-      properties:
-        name:
-          type: string
-          title: Name
-          description: The name of the table.
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-          description: The last time the table was updated.
-        format:
-          $ref: '#/components/schemas/TableFormat'
-          description: The format of the table.
-        properties:
-          additionalProperties:
-            type: string
-          type: object
-          title: Properties
-          description: Key-value pairs that define table properties.
-        table_type:
-          $ref: '#/components/schemas/TableType'
-          description: The type of the table, if available. i.e. table or view.
-          default: TABLE
-      type: object
-      required:
-      - name
-      - updateTime
-      - format
-      - properties
-      title: TableListItem
-    TableType:
-      type: string
-      enum:
-      - TABLE
-      - VIEW
-      title: TableType
-    ListCatalogsResponse:
-      properties:
-        catalogs:
-          items:
-            $ref: '#/components/schemas/Catalog'
-          type: array
-          title: Catalogs
-      type: object
-      required:
-      - catalogs
-      title: ListCatalogsResponse
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
     TableDetail:
       properties:
         name:
@@ -1190,39 +1027,212 @@ components:
       - schema
       - statistics
       title: TableDetail
-    SnapshotRef:
+    ListCatalogsResponse:
+      properties:
+        catalogs:
+          items:
+            $ref: '#/components/schemas/Catalog'
+          type: array
+          title: Catalogs
+      type: object
+      required:
+      - catalogs
+      title: ListCatalogsResponse
+    Snapshot:
       properties:
         snapshot-id:
           type: integer
           title: Snapshot-Id
-        type:
-          $ref: '#/components/schemas/SnapshotRefType'
-        min-snapshots-to-keep:
+        parent-snapshot-id:
           anyOf:
           - type: integer
-            exclusiveMinimum: 0.0
           - type: 'null'
-          title: Min-Snapshots-To-Keep
-        max-snapshot-age-ms:
+          title: Parent-Snapshot-Id
+        sequence-number:
           anyOf:
           - type: integer
-            exclusiveMinimum: 0.0
           - type: 'null'
-          title: Max-Snapshot-Age-Ms
-        max-ref-age-ms:
+          title: Sequence-Number
+          default: 0
+        timestamp-ms:
+          type: integer
+          title: Timestamp-Ms
+        manifest-list:
+          type: string
+          title: Manifest-List
+          description: Location of the snapshot's manifest list file
+        summary:
+          anyOf:
+          - $ref: '#/components/schemas/Summary'
+          - type: 'null'
+        schema-id:
           anyOf:
           - type: integer
-            exclusiveMinimum: 0.0
           - type: 'null'
-          title: Max-Ref-Age-Ms
+          title: Schema-Id
+        first-row-id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: First-Row-Id
+          description: assigned to the first row in the first data file in the first manifest
+        added-rows:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Added-Rows
+          description: The upper bound of the number of rows with assigned row IDs
       type: object
       required:
       - snapshot-id
-      - type
-      title: SnapshotRef
-    NestedField:
-      additionalProperties: true
+      - manifest-list
+      title: Snapshot
+    ListTablesResponse:
+      properties:
+        tables:
+          items:
+            $ref: '#/components/schemas/TableListItem'
+          type: array
+          title: Tables
       type: object
+      required:
+      - tables
+      title: ListTablesResponse
+    Schema:
+      properties:
+        type:
+          type: string
+          const: struct
+          title: Type
+          default: struct
+        fields:
+          items:
+            $ref: '#/components/schemas/NestedField'
+          type: array
+          title: Fields
+        schema-id:
+          type: integer
+          title: Schema-Id
+          default: 0
+        identifier-field-ids:
+          items:
+            type: integer
+          type: array
+          title: Identifier-Field-Ids
+      type: object
+      title: Schema
+      description: "A table Schema.\n\nExample:\n    >>> from pyiceberg import schema\n    >>> from pyiceberg import types"
+    CatalogType:
+      type: string
+      enum:
+      - MANAGED
+      - FOREIGN_DATABRICKS
+      - FOREIGN_AWS_GLUE
+      - FOREIGN_AWS_S3_TABLES
+      title: CatalogType
+    ExplorerUICatalog:
+      properties:
+        id:
+          type: integer
+          title: Id
+          description: Unique identifier for the catalog.
+        extId:
+          type: string
+          title: Extid
+          description: External identifier for the catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the catalog.
+        location:
+          type: string
+          title: Location
+          description: The cloud storage URL of the catalog.
+        databases:
+          items:
+            $ref: '#/components/schemas/ExplorerUIDatabase'
+          type: array
+          title: Databases
+          description: List of databases.
+      type: object
+      required:
+      - id
+      - extId
+      - name
+      - location
+      title: ExplorerUICatalog
+    Namespace:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the namespace.
+      type: object
+      required:
+      - name
+      title: Namespace
+    ExplorerUIDatabase:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the database.
+        location:
+          type: string
+          title: Location
+          description: The location of the database.
+          default: ''
+        tables:
+          items:
+            $ref: '#/components/schemas/ExplorerUITable'
+          type: array
+          title: Tables
+          description: List of tables in the database.
+      type: object
+      required:
+      - name
+      title: ExplorerUIDatabase
+    Catalog:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique identifier for the catalog.
+        name:
+          type: string
+          title: Name
+          description: The user-friendly name of the catalog.
+        type:
+          $ref: '#/components/schemas/CatalogType'
+          description: The type of the catalog.
+      type: object
+      required:
+      - id
+      - name
+      - type
+      title: Catalog
+    CreateCatalogRequest:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the catalog.
+        location:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Location
+          description: The S3 location for the catalog. If empty, a default location will be created in managed storage.
+        organizationId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Organizationid
+          description: The organization ID. If not provided, uses the current user's organization.
+      type: object
+      required:
+      - name
+      title: CreateCatalogRequest
   securitySchemes:
     bearerToken:
       type: http

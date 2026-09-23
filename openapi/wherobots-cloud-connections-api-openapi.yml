@@ -1,18 +1,28 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wherobots Cloud apikey cloud-connections API
-  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  title: Wherobots Cloud Cloud Connections API
+  description: 'Wherobots Cloud API OpenAPI specification.
+
+
+    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.
+
+    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.
+
+
+    The Authorize button below will allow you to input an access token to authenticate to our API.
+
+    Then all of the requests on the page should work.'
   version: 0.0.1
 servers:
 - url: https://api.cloud.wherobots.com
   description: Wherobots Cloud API
 tags:
-- name: cloud-connections
+- name: Cloud Connections
 paths:
   /cloud-connections:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: List cloud connections
       operationId: listCloudConnections
       responses:
@@ -73,7 +83,7 @@ paths:
       x-excluded: true
     post:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Create a cloud connection
       operationId: createCloudConnection
       requestBody:
@@ -138,7 +148,7 @@ paths:
   /cloud-connections/{connection_id}:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Get a cloud connection
       operationId: getCloudConnection
       security:
@@ -203,7 +213,7 @@ paths:
       x-excluded: true
     delete:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Delete a cloud connection
       operationId: deleteCloudConnection
       security:
@@ -268,7 +278,7 @@ paths:
   /cloud-connections/{connection_id}/verify:
     post:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Verify a cloud connection (optionally with a proposed binding)
       operationId: verifyCloudConnection
       security:
@@ -340,7 +350,7 @@ paths:
   /cloud-connections/{connection_id}/create-link/connection:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Get a CloudFormation Quick-Create link for the connection stack
       operationId: getCloudConnectionCreateLink
       security:
@@ -406,7 +416,7 @@ paths:
   /cloud-connections/{connection_id}/create-link/storage:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Get a CloudFormation Quick-Create link for an S3 binding stack
       operationId: getCloudConnectionStorageCreateLink
       security:
@@ -501,7 +511,7 @@ paths:
   /cloud-connections/{connection_id}/cft/connection:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Download the rendered CloudFormation template for the connection stack
       operationId: downloadCloudConnectionTemplate
       security:
@@ -563,7 +573,7 @@ paths:
   /cloud-connections/{connection_id}/cft/storage:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Download the rendered CloudFormation template for an S3 binding stack
       operationId: downloadCloudConnectionStorageTemplate
       security:
@@ -654,7 +664,7 @@ paths:
   /cloud-connections/{connection_id}/create-link/glue:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Get a CloudFormation Quick-Create link for a Glue binding stack
       operationId: getCloudConnectionGlueCreateLink
       security:
@@ -777,7 +787,7 @@ paths:
   /cloud-connections/{connection_id}/cft/glue:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Download the rendered CloudFormation template for a Glue binding stack
       operationId: downloadCloudConnectionGlueTemplate
       security:
@@ -896,7 +906,7 @@ paths:
   /cloud-connections/{connection_id}/create-link/s3tables:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Get a CloudFormation Quick-Create link for an S3 Tables binding stack
       operationId: getCloudConnectionS3TablesCreateLink
       security:
@@ -978,7 +988,7 @@ paths:
   /cloud-connections/{connection_id}/cft/s3tables:
     get:
       tags:
-      - cloud-connections
+      - Cloud Connections
       summary: Download the rendered CloudFormation template for an S3 Tables binding stack
       operationId: downloadCloudConnectionS3TablesTemplate
       security:
@@ -1055,118 +1065,46 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorInfo:
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
-          type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
-      type: object
-      required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    RoleAssumptionStatus:
+    BindingAccessStatus:
       type: string
       enum:
       - OK
+      - DENIED
       - FAILED
-      title: RoleAssumptionStatus
-    StorageIntegrationAccessType:
-      type: string
-      enum:
-      - READ
-      - READ_WRITE
-      title: StorageIntegrationAccessType
-    BindingAccessResult:
+      title: BindingAccessStatus
+    RoleAssumptionResult:
       properties:
         status:
-          $ref: '#/components/schemas/BindingAccessStatus'
+          $ref: '#/components/schemas/RoleAssumptionStatus'
         reason:
           anyOf:
           - type: string
           - type: 'null'
           title: Reason
-        checks:
-          $ref: '#/components/schemas/BindingAccessChecks'
       type: object
       required:
       - status
-      - checks
-      title: BindingAccessResult
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    CloudProvider:
+      title: RoleAssumptionResult
+    ErrorClass:
       type: string
       enum:
-      - AWS
-      title: CloudProvider
-    CloudConnectionVerifyRequest:
-      properties:
-        binding:
-          anyOf:
-          - $ref: '#/components/schemas/VerifyBindingPayload'
-          - type: 'null'
-      type: object
-      title: CloudConnectionVerifyRequest
-    CloudConnectionVerifyResponse:
-      properties:
-        roleAssumption:
-          $ref: '#/components/schemas/RoleAssumptionResult'
-        bindingAccess:
-          anyOf:
-          - $ref: '#/components/schemas/BindingAccessResult'
-          - type: 'null'
-      type: object
-      required:
-      - roleAssumption
-      - bindingAccess
-      title: CloudConnectionVerifyResponse
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
     CloudConnectionRead:
       properties:
         id:
@@ -1240,57 +1178,6 @@ components:
       - stackName
       title: QuickCreateLinkResponse
       description: A CloudFormation Quick-Create console URL and its recommended stack name.
-    RoleAssumptionResult:
-      properties:
-        status:
-          $ref: '#/components/schemas/RoleAssumptionStatus'
-        reason:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Reason
-      type: object
-      required:
-      - status
-      title: RoleAssumptionResult
-    CftAccessType:
-      type: string
-      enum:
-      - read-only
-      - read-write
-      title: CftAccessType
-      description: Access level requested for an S3 binding stack (API-facing values).
-    BindingAccessStatus:
-      type: string
-      enum:
-      - OK
-      - DENIED
-      - FAILED
-      title: BindingAccessStatus
-    VerifyBindingPayload:
-      properties:
-        type:
-          type: string
-          const: storage
-          title: Type
-          default: storage
-        path:
-          type: string
-          title: Path
-          description: S3 path or prefix to verify access against
-        accessType:
-          $ref: '#/components/schemas/StorageIntegrationAccessType'
-      type: object
-      required:
-      - path
-      - accessType
-      title: VerifyBindingPayload
-      description: 'Optional binding the user is about to persist.
-
-
-        Only `storage` is supported in this phase. Glue resource bindings are
-
-        handled in a later stream and are intentionally rejected here.'
     CloudConnectionBinding:
       properties:
         kind:
@@ -1320,6 +1207,11 @@ components:
         api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
 
         only the minimal cross-db-friendly shape: kind, id, and display name.'
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
     AwsCloudConnectionCreate:
       properties:
         name:
@@ -1351,26 +1243,96 @@ components:
       - name
       - awsAccountId
       title: AwsCloudConnectionCreate
-    ErrorClass:
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    CftAccessType:
       type: string
       enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
+      - read-only
+      - read-write
+      title: CftAccessType
+      description: Access level requested for an S3 binding stack (API-facing values).
+    CloudConnectionVerifyResponse:
+      properties:
+        roleAssumption:
+          $ref: '#/components/schemas/RoleAssumptionResult'
+        bindingAccess:
+          anyOf:
+          - $ref: '#/components/schemas/BindingAccessResult'
+          - type: 'null'
+      type: object
+      required:
+      - roleAssumption
+      - bindingAccess
+      title: CloudConnectionVerifyResponse
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    RoleAssumptionStatus:
+      type: string
+      enum:
+      - OK
+      - FAILED
+      title: RoleAssumptionStatus
+    StorageIntegrationAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: StorageIntegrationAccessType
     BindingAccessChecks:
       properties:
         list:
@@ -1392,11 +1354,59 @@ components:
       - put
       - delete
       title: BindingAccessChecks
+    CloudConnectionVerifyRequest:
+      properties:
+        binding:
+          anyOf:
+          - $ref: '#/components/schemas/VerifyBindingPayload'
+          - type: 'null'
+      type: object
+      title: CloudConnectionVerifyRequest
     CloudConnectionManagedBy:
       type: string
       enum:
       - CLOUDFORMATION
       title: CloudConnectionManagedBy
+    BindingAccessResult:
+      properties:
+        status:
+          $ref: '#/components/schemas/BindingAccessStatus'
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reason
+        checks:
+          $ref: '#/components/schemas/BindingAccessChecks'
+      type: object
+      required:
+      - status
+      - checks
+      title: BindingAccessResult
+    VerifyBindingPayload:
+      properties:
+        type:
+          type: string
+          const: storage
+          title: Type
+          default: storage
+        path:
+          type: string
+          title: Path
+          description: S3 path or prefix to verify access against
+        accessType:
+          $ref: '#/components/schemas/StorageIntegrationAccessType'
+      type: object
+      required:
+      - path
+      - accessType
+      title: VerifyBindingPayload
+      description: 'Optional binding the user is about to persist.
+
+
+        Only `storage` is supported in this phase. Glue resource bindings are
+
+        handled in a later stream and are intentionally rejected here.'
   securitySchemes:
     bearerToken:
       type: http

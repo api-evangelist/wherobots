@@ -1,18 +1,28 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wherobots Cloud apikey runs API
-  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  title: Wherobots Cloud Runs API
+  description: 'Wherobots Cloud API OpenAPI specification.
+
+
+    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.
+
+    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.
+
+
+    The Authorize button below will allow you to input an access token to authenticate to our API.
+
+    Then all of the requests on the page should work.'
   version: 0.0.1
 servers:
 - url: https://api.cloud.wherobots.com
   description: Wherobots Cloud API
 tags:
-- name: runs
+- name: Runs
 paths:
   /runs:
     get:
       tags:
-      - runs
+      - Runs
       summary: List job runs
       operationId: listJobRuns
       security:
@@ -129,7 +139,7 @@ paths:
       x-excluded: true
     post:
       tags:
-      - runs
+      - Runs
       summary: Create a job run
       operationId: createJobRun
       security:
@@ -203,7 +213,7 @@ paths:
   /runs/{run_id}:
     get:
       tags:
-      - runs
+      - Runs
       summary: Get a job run
       operationId: getJobRun
       security:
@@ -269,7 +279,7 @@ paths:
   /runs/{run_id}/cancel:
     post:
       tags:
-      - runs
+      - Runs
       summary: Cancel a job run
       operationId: cancelJobRun
       security:
@@ -335,7 +345,7 @@ paths:
   /runs/{run_id}/logs:
     get:
       tags:
-      - runs
+      - Runs
       summary: Get job run logs
       operationId: getJobRunLogs
       security:
@@ -416,7 +426,7 @@ paths:
   /runs/{run_id}/metrics:
     get:
       tags:
-      - runs
+      - Runs
       summary: Get job run metrics
       operationId: getJobRunMetrics
       security:
@@ -481,56 +491,217 @@ paths:
       x-excluded: true
 components:
   schemas:
-    RunEnvironment-Input:
+    MetricDetails_InstantMetric_:
       properties:
-        sparkDriverDiskGB:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Sparkdriverdiskgb
-        sparkExecutorDiskGB:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Sparkexecutordiskgb
-        sparkConfigs:
-          additionalProperties:
-            type: string
-          type: object
-          title: Sparkconfigs
-        dependencies:
-          items:
-            anyOf:
-            - $ref: '#/components/schemas/PyPiDependency'
-            - $ref: '#/components/schemas/FileDependency-Input'
-          type: array
-          title: Dependencies
-      type: object
-      title: RunEnvironment
-      description: 'Model for runtime environment configs, include spark cluster configs, dependencies.
-
-        When we have new configs like Dax configs, env vars, etc, we can add them here.'
-    RunMetricsResponse:
-      properties:
-        series_metrics:
-          additionalProperties:
-            $ref: '#/components/schemas/MetricDetails_SeriesMetric_'
-          propertyNames:
-            $ref: '#/components/schemas/WorkloadMetric'
-          type: object
-          title: Series Metrics
-        instant_metrics:
-          additionalProperties:
-            $ref: '#/components/schemas/MetricDetails_InstantMetric_'
-          propertyNames:
-            $ref: '#/components/schemas/WorkloadMetric'
-          type: object
-          title: Instant Metrics
+        display_name:
+          type: string
+          title: Display Name
+        metric:
+          $ref: '#/components/schemas/InstantMetric'
       type: object
       required:
-      - series_metrics
-      - instant_metrics
-      title: RunMetricsResponse
+      - display_name
+      - metric
+      title: MetricDetails[InstantMetric]
+    MetricDetails_SeriesMetric_:
+      properties:
+        display_name:
+          type: string
+          title: Display Name
+        metric:
+          $ref: '#/components/schemas/SeriesMetric'
+      type: object
+      required:
+      - display_name
+      - metric
+      title: MetricDetails[SeriesMetric]
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
+    RunStatus:
+      type: string
+      enum:
+      - PENDING
+      - RUNNING
+      - FAILED
+      - COMPLETED
+      - CANCELLED
+      - TIMED_OUT
+      title: RunStatus
+    SeriesMetric:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DataValue'
+          type: array
+          title: Data
+        format:
+          $ref: '#/components/schemas/DataFormat'
+      type: object
+      required:
+      - data
+      - format
+      title: SeriesMetric
+    LogItem:
+      properties:
+        timestamp:
+          type: string
+          title: Timestamp
+        raw:
+          type: string
+          title: Raw
+      type: object
+      required:
+      - timestamp
+      - raw
+      title: LogItem
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
+    CursorPage__T_Customized_RunView_:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/RunView'
+          type: array
+          title: Items
+        total:
+          type: integer
+          minimum: 0.0
+          title: Total
+        current_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page
+          description: Cursor to refetch the current page
+        current_page_backwards:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page Backwards
+          description: Cursor to refetch the current page starting from the last item
+        previous_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previous Page
+          description: Cursor for the previous page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+          description: Cursor for the next page
+      type: object
+      required:
+      - items
+      - total
+      title: CursorPage[~T]Customized[RunView]
+    DataFormat:
+      type: string
+      enum:
+      - NUMBER
+      - PERCENTAGE
+      - BYTES
+      - CURRENCY
+      title: DataFormat
+    FileDependency-Input:
+      properties:
+        sourceType:
+          $ref: '#/components/schemas/DependencySourceType'
+          default: FILE
+        filePath:
+          type: string
+          title: Filepath
+      type: object
+      required:
+      - filePath
+      title: FileDependency
+      description: Model for the dependency of a run
     ErrorInfo:
       properties:
         code:
@@ -572,54 +743,96 @@ components:
       - details
       - path
       title: ErrorInfo
-    InstantMetric:
+    KubeAppEvent:
       properties:
-        data:
-          $ref: '#/components/schemas/DataValue'
-        format:
-          $ref: '#/components/schemas/DataFormat'
-      type: object
-      required:
-      - data
-      - format
-      title: InstantMetric
-    RunAppMeta:
-      properties:
-        spark_ui_url:
+        id:
           type: string
-          title: Spark Ui Url
-          default: ''
-        spark_eventlogs_url:
+          title: Id
+        createTime:
           type: string
-          title: Spark Eventlogs Url
-          default: ''
-        resolved_version:
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
           anyOf:
           - type: string
           - type: 'null'
-          title: Resolved Version
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+        eventMeta:
+          anyOf:
+          - $ref: '#/components/schemas/RunEventMeta'
+          - $ref: '#/components/schemas/KubeAppCreationMeta'
+          - $ref: '#/components/schemas/NodeSchedulingMeta'
+          - type: 'null'
+          title: Eventmeta
       type: object
-      title: RunAppMeta
-      description: Run-specific metadata fields
-    FileDependency-Output:
+      required:
+      - id
+      - createTime
+      - updateTime
+      title: KubeAppEvent
+    PyPiDependency:
       properties:
         sourceType:
           $ref: '#/components/schemas/DependencySourceType'
-          default: FILE
-        filePath:
+          default: PYPI
+        libraryName:
           type: string
-          title: Filepath
-        fileType:
-          $ref: '#/components/schemas/DependencyFileType'
-          description: Get the type of the file
-          readOnly: true
+          title: Libraryname
+        libraryVersion:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Libraryversion
       type: object
       required:
-      - filePath
-      - fileType
-      title: FileDependency
+      - libraryName
+      title: PyPiDependency
       description: Model for the dependency of a run
-    RunEnvironment-Output:
+    OrganizationCustomer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - roles
+      title: OrganizationCustomer
+    RunEnvironment-Input:
       properties:
         sparkDriverDiskGB:
           anyOf:
@@ -640,7 +853,7 @@ components:
           items:
             anyOf:
             - $ref: '#/components/schemas/PyPiDependency'
-            - $ref: '#/components/schemas/FileDependency-Output'
+            - $ref: '#/components/schemas/FileDependency-Input'
           type: array
           title: Dependencies
       type: object
@@ -648,101 +861,27 @@ components:
       description: 'Model for runtime environment configs, include spark cluster configs, dependencies.
 
         When we have new configs like Dax configs, env vars, etc, we can add them here.'
-    FileDependency-Input:
+    RunJarPayload:
       properties:
-        sourceType:
-          $ref: '#/components/schemas/DependencySourceType'
-          default: FILE
-        filePath:
+        uri:
           type: string
-          title: Filepath
-      type: object
-      required:
-      - filePath
-      title: FileDependency
-      description: Model for the dependency of a run
-    DataValue:
-      properties:
-        value:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Value
-        timestamp:
-          type: integer
-          title: Timestamp
-      type: object
-      required:
-      - value
-      - timestamp
-      title: DataValue
-    AppStatus:
-      type: string
-      enum:
-      - PENDING
-      - PREPARING
-      - PREPARE_FAILED
-      - REQUESTED
-      - DEPLOYING
-      - DEPLOY_FAILED
-      - DEPLOYED
-      - INITIALIZING
-      - INIT_FAILED
-      - READY
-      - DESTROY_REQUESTED
-      - DESTROYING
-      - DESTROY_FAILED
-      - DESTROYED
-      title: AppStatus
-    LogItem:
-      properties:
-        timestamp:
-          type: string
-          title: Timestamp
-        raw:
-          type: string
-          title: Raw
-      type: object
-      required:
-      - timestamp
-      - raw
-      title: LogItem
-    Policy:
-      properties:
-        id:
+          title: Uri
+        args:
+          items:
+            type: string
+          type: array
+          title: Args
+          default: []
+        mainClass:
           anyOf:
           - type: string
           - type: 'null'
-          title: Id
-        createTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Createtime
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-        provider:
-          $ref: '#/components/schemas/Provider'
-        locator:
-          type: string
-          title: Locator
-        action:
-          type: string
-          title: Action
-        effect:
-          $ref: '#/components/schemas/Effect'
+          title: Mainclass
       type: object
       required:
-      - provider
-      - locator
-      - action
-      - effect
-      title: Policy
+      - uri
+      title: RunJarPayload
+      description: Model for the payload of Run with type == "python"
     KubeAppCreationMeta:
       properties:
         use_v2_workflow:
@@ -765,33 +904,65 @@ components:
         Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
 
         constructed; cleanup at v2 100% rollout deletes this class.'
-    RunJarPayload:
+    CreateRunPayload-Output:
       properties:
-        uri:
-          type: string
-          title: Uri
-        args:
-          items:
-            type: string
-          type: array
-          title: Args
-          default: []
-        mainClass:
+        runtime:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
           anyOf:
           - type: string
           - type: 'null'
-          title: Mainclass
+          title: Version
+        name:
+          type: string
+          maxLength: 255
+          minLength: 8
+          pattern: ^[a-zA-Z0-9_\-\.]+$
+          title: Name
+        runPython:
+          anyOf:
+          - $ref: '#/components/schemas/RunPythonPayload'
+          - type: 'null'
+        runJar:
+          anyOf:
+          - $ref: '#/components/schemas/RunJarPayload'
+          - type: 'null'
+        timeoutSeconds:
+          type: integer
+          title: Timeoutseconds
+          default: 3600
+        environment:
+          $ref: '#/components/schemas/RunEnvironment-Output'
+          default:
+            sparkConfigs: {}
+            dependencies: []
       type: object
       required:
-      - uri
-      title: RunJarPayload
-      description: Model for the payload of Run with type == "python"
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
+      - name
+      title: CreateRunPayload
+    RunMetricsResponse:
+      properties:
+        series_metrics:
+          additionalProperties:
+            $ref: '#/components/schemas/MetricDetails_SeriesMetric_'
+          propertyNames:
+            $ref: '#/components/schemas/WorkloadMetric'
+          type: object
+          title: Series Metrics
+        instant_metrics:
+          additionalProperties:
+            $ref: '#/components/schemas/MetricDetails_InstantMetric_'
+          propertyNames:
+            $ref: '#/components/schemas/WorkloadMetric'
+          type: object
+          title: Instant Metrics
+      type: object
+      required:
+      - series_metrics
+      - instant_metrics
+      title: RunMetricsResponse
     AppType:
       type: string
       enum:
@@ -799,6 +970,61 @@ components:
       - SQL_SESSION
       - RUN
       title: AppType
+    AppStatus:
+      type: string
+      enum:
+      - PENDING
+      - PREPARING
+      - PREPARE_FAILED
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOY_FAILED
+      - DEPLOYED
+      - INITIALIZING
+      - INIT_FAILED
+      - READY
+      - DESTROY_REQUESTED
+      - DESTROYING
+      - DESTROY_FAILED
+      - DESTROYED
+      title: AppStatus
+    LogsResponse:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/LogItem'
+          type: array
+          title: Items
+        current_page:
+          type: string
+          title: Current Page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - items
+      - current_page
+      title: LogsResponse
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
     RunKubeApp:
       properties:
         id:
@@ -866,73 +1092,181 @@ components:
       - regionName
       - message
       title: RunKubeApp
-    Role-Output:
+    DataValue:
       properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
+        value:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Value
+        timestamp:
+          type: integer
+          title: Timestamp
+      type: object
+      required:
+      - value
+      - timestamp
+      title: DataValue
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
+    DependencySourceType:
+      type: string
+      enum:
+      - PYPI
+      - FILE
+      title: DependencySourceType
+      description: Enum for the source type of dependency
+    InstantMetric:
+      properties:
+        data:
+          $ref: '#/components/schemas/DataValue'
+        format:
+          $ref: '#/components/schemas/DataFormat'
+      type: object
+      required:
+      - data
+      - format
+      title: InstantMetric
+    RunEnvironment-Output:
+      properties:
+        sparkDriverDiskGB:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sparkdriverdiskgb
+        sparkExecutorDiskGB:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Sparkexecutordiskgb
+        sparkConfigs:
+          additionalProperties:
+            type: string
+          type: object
+          title: Sparkconfigs
+        dependencies:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/PyPiDependency'
+            - $ref: '#/components/schemas/FileDependency-Output'
+          type: array
+          title: Dependencies
+      type: object
+      title: RunEnvironment
+      description: 'Model for runtime environment configs, include spark cluster configs, dependencies.
+
+        When we have new configs like Dax configs, env vars, etc, we can add them here.'
+    CreateRunPayload-Input:
+      properties:
+        runtime:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Version
         name:
           type: string
+          maxLength: 255
+          minLength: 8
+          pattern: ^[a-zA-Z0-9_\-\.]+$
           title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
+        runPython:
+          anyOf:
+          - $ref: '#/components/schemas/RunPythonPayload'
+          - type: 'null'
+        runJar:
+          anyOf:
+          - $ref: '#/components/schemas/RunJarPayload'
+          - type: 'null'
+        timeoutSeconds:
+          type: integer
+          title: Timeoutseconds
+          default: 3600
+        environment:
+          $ref: '#/components/schemas/RunEnvironment-Input'
+          default:
+            sparkConfigs: {}
+            dependencies: []
       type: object
       required:
-      - id
-      - createTime
-      - updateTime
       - name
-      - organizationId
-      - policies
-      title: Role
-    DataFormat:
-      type: string
-      enum:
-      - NUMBER
-      - PERCENTAGE
-      - BYTES
-      - CURRENCY
-      title: DataFormat
-    DependencyFileType:
-      type: string
-      enum:
-      - JAR
-      - PYTHON_WHEEL
-      - ZIP
-      - OTHER
-      title: DependencyFileType
-      description: Enum for the file type of dependency
-    ErrorBody:
+      title: CreateRunPayload
+    RunAppMeta:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        spark_ui_url:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+          title: Spark Ui Url
+          default: ''
+        spark_eventlogs_url:
+          type: string
+          title: Spark Eventlogs Url
+          default: ''
+        resolved_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Resolved Version
+      type: object
+      title: RunAppMeta
+      description: Run-specific metadata fields
+    NodeSchedulingMeta:
+      properties:
+        node_preexisted:
+          type: boolean
+          title: Node Preexisted
+        node_name:
+          type: string
+          title: Node Name
+        pod_creation_time:
+          type: string
+          title: Pod Creation Time
+        node_creation_time:
+          type: string
+          title: Node Creation Time
       type: object
       required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - node_preexisted
+      - node_name
+      - pod_creation_time
+      - node_creation_time
+      title: NodeSchedulingMeta
+      description: 'Metadata captured at node-scheduling time.
+
+
+        ``node_preexisted`` is True when the pod landed on a node that existed
+
+        before the pod was created, False when the node was provisioned for
+
+        the pod (cold start).'
+    RunPythonPayload:
+      properties:
+        uri:
+          type: string
+          title: Uri
+        args:
+          items:
+            type: string
+          type: array
+          title: Args
+          default: []
+      type: object
+      required:
+      - uri
+      title: RunPythonPayload
+      description: Model for the payload of Run with type == "python"
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
     RunView:
       properties:
         id:
@@ -981,42 +1315,38 @@ components:
       - triggeredBy
       - payload
       title: RunView
-    RunStatus:
-      type: string
-      enum:
-      - PENDING
-      - RUNNING
-      - FAILED
-      - COMPLETED
-      - CANCELLED
-      - TIMED_OUT
-      title: RunStatus
-    MetricDetails_SeriesMetric_:
+    FileDependency-Output:
       properties:
-        display_name:
+        sourceType:
+          $ref: '#/components/schemas/DependencySourceType'
+          default: FILE
+        filePath:
           type: string
-          title: Display Name
-        metric:
-          $ref: '#/components/schemas/SeriesMetric'
+          title: Filepath
+        fileType:
+          $ref: '#/components/schemas/DependencyFileType'
+          description: Get the type of the file
+          readOnly: true
       type: object
       required:
-      - display_name
-      - metric
-      title: MetricDetails[SeriesMetric]
-    SeriesMetric:
+      - filePath
+      - fileType
+      title: FileDependency
+      description: Model for the dependency of a run
+    RunEventMeta:
       properties:
-        data:
-          items:
-            $ref: '#/components/schemas/DataValue'
-          type: array
-          title: Data
-        format:
-          $ref: '#/components/schemas/DataFormat'
+        end_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Timestamp
+        start_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start Timestamp
       type: object
-      required:
-      - data
-      - format
-      title: SeriesMetric
+      title: RunEventMeta
     RuntimeId:
       type: string
       enum:
@@ -1050,205 +1380,15 @@ components:
       - large-a10-gpu
       - x-large-a10-gpu
       title: RuntimeId
-    NodeSchedulingMeta:
-      properties:
-        node_preexisted:
-          type: boolean
-          title: Node Preexisted
-        node_name:
-          type: string
-          title: Node Name
-        pod_creation_time:
-          type: string
-          title: Pod Creation Time
-        node_creation_time:
-          type: string
-          title: Node Creation Time
-      type: object
-      required:
-      - node_preexisted
-      - node_name
-      - pod_creation_time
-      - node_creation_time
-      title: NodeSchedulingMeta
-      description: 'Metadata captured at node-scheduling time.
-
-
-        ``node_preexisted`` is True when the pod landed on a node that existed
-
-        before the pod was created, False when the node was provisioned for
-
-        the pod (cold start).'
-    KubeAppEvent:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        code:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Code
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-        eventMeta:
-          anyOf:
-          - $ref: '#/components/schemas/RunEventMeta'
-          - $ref: '#/components/schemas/KubeAppCreationMeta'
-          - $ref: '#/components/schemas/NodeSchedulingMeta'
-          - type: 'null'
-          title: Eventmeta
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      title: KubeAppEvent
-    RunPythonPayload:
-      properties:
-        uri:
-          type: string
-          title: Uri
-        args:
-          items:
-            type: string
-          type: array
-          title: Args
-          default: []
-      type: object
-      required:
-      - uri
-      title: RunPythonPayload
-      description: Model for the payload of Run with type == "python"
-    Effect:
+    DependencyFileType:
       type: string
       enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    OrganizationCustomer:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - roles
-      title: OrganizationCustomer
-    PyPiDependency:
-      properties:
-        sourceType:
-          $ref: '#/components/schemas/DependencySourceType'
-          default: PYPI
-        libraryName:
-          type: string
-          title: Libraryname
-        libraryVersion:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Libraryversion
-      type: object
-      required:
-      - libraryName
-      title: PyPiDependency
-      description: Model for the dependency of a run
-    CreateRunPayload-Output:
-      properties:
-        runtime:
-          anyOf:
-          - $ref: '#/components/schemas/RuntimeId'
-          - type: 'null'
-        version:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Version
-        name:
-          type: string
-          maxLength: 255
-          minLength: 8
-          pattern: ^[a-zA-Z0-9_\-\.]+$
-          title: Name
-        runPython:
-          anyOf:
-          - $ref: '#/components/schemas/RunPythonPayload'
-          - type: 'null'
-        runJar:
-          anyOf:
-          - $ref: '#/components/schemas/RunJarPayload'
-          - type: 'null'
-        timeoutSeconds:
-          type: integer
-          title: Timeoutseconds
-          default: 3600
-        environment:
-          $ref: '#/components/schemas/RunEnvironment-Output'
-          default:
-            sparkConfigs: {}
-            dependencies: []
-      type: object
-      required:
-      - name
-      title: CreateRunPayload
-    RunEventMeta:
-      properties:
-        end_timestamp:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: End Timestamp
-        start_timestamp:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Start Timestamp
-      type: object
-      title: RunEventMeta
-    DependencySourceType:
-      type: string
-      enum:
-      - PYPI
-      - FILE
-      title: DependencySourceType
-      description: Enum for the source type of dependency
+      - JAR
+      - PYTHON_WHEEL
+      - ZIP
+      - OTHER
+      title: DependencyFileType
+      description: Enum for the file type of dependency
     WorkloadMetric:
       type: string
       enum:
@@ -1259,136 +1399,6 @@ components:
       - COST_USD
       - CONSUMED_SPATIAL_UNITS
       title: WorkloadMetric
-    MetricDetails_InstantMetric_:
-      properties:
-        display_name:
-          type: string
-          title: Display Name
-        metric:
-          $ref: '#/components/schemas/InstantMetric'
-      type: object
-      required:
-      - display_name
-      - metric
-      title: MetricDetails[InstantMetric]
-    LogsResponse:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/LogItem'
-          type: array
-          title: Items
-        current_page:
-          type: string
-          title: Current Page
-        next_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Next Page
-      type: object
-      required:
-      - items
-      - current_page
-      title: LogsResponse
-    CreateRunPayload-Input:
-      properties:
-        runtime:
-          anyOf:
-          - $ref: '#/components/schemas/RuntimeId'
-          - type: 'null'
-        version:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Version
-        name:
-          type: string
-          maxLength: 255
-          minLength: 8
-          pattern: ^[a-zA-Z0-9_\-\.]+$
-          title: Name
-        runPython:
-          anyOf:
-          - $ref: '#/components/schemas/RunPythonPayload'
-          - type: 'null'
-        runJar:
-          anyOf:
-          - $ref: '#/components/schemas/RunJarPayload'
-          - type: 'null'
-        timeoutSeconds:
-          type: integer
-          title: Timeoutseconds
-          default: 3600
-        environment:
-          $ref: '#/components/schemas/RunEnvironment-Input'
-          default:
-            sparkConfigs: {}
-            dependencies: []
-      type: object
-      required:
-      - name
-      title: CreateRunPayload
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    CursorPage__T_Customized_RunView_:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/RunView'
-          type: array
-          title: Items
-        total:
-          type: integer
-          minimum: 0.0
-          title: Total
-        current_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Current Page
-          description: Cursor to refetch the current page
-        current_page_backwards:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Current Page Backwards
-          description: Cursor to refetch the current page starting from the last item
-        previous_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Previous Page
-          description: Cursor for the previous page
-        next_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Next Page
-          description: Cursor for the next page
-      type: object
-      required:
-      - items
-      - total
-      title: CursorPage[~T]Customized[RunView]
   securitySchemes:
     bearerToken:
       type: http

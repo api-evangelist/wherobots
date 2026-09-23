@@ -1,18 +1,28 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Wherobots Cloud apikey organization API
-  description: "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    "
+  title: Wherobots Cloud Organization API
+  description: 'Wherobots Cloud API OpenAPI specification.
+
+
+    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.
+
+    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.
+
+
+    The Authorize button below will allow you to input an access token to authenticate to our API.
+
+    Then all of the requests on the page should work.'
   version: 0.0.1
 servers:
 - url: https://api.cloud.wherobots.com
   description: Wherobots Cloud API
 tags:
-- name: organization
+- name: Organization
 paths:
   /organization/quota/organization:
     get:
       tags:
-      - organization
+      - Organization
       summary: List organization quotas
       operationId: listQuotas
       responses:
@@ -76,7 +86,7 @@ paths:
   /organization/coupon/redeem:
     post:
       tags:
-      - organization
+      - Organization
       summary: Redeem an organization coupon
       operationId: redeemCoupon
       requestBody:
@@ -142,7 +152,7 @@ paths:
   /organization/{organization_id}/users/invitations:
     get:
       tags:
-      - organization
+      - Organization
       summary: Get pending organization invitations
       operationId: getOrganizationInvitations
       security:
@@ -212,7 +222,7 @@ paths:
   /organization:
     get:
       tags:
-      - organization
+      - Organization
       summary: Get current user's organization
       operationId: getMyOrganization
       responses:
@@ -270,7 +280,7 @@ paths:
       x-excluded: true
     delete:
       tags:
-      - organization
+      - Organization
       summary: Delete the current organization
       operationId: deleteMyOrganization
       responses:
@@ -327,7 +337,7 @@ paths:
       x-excluded: true
     patch:
       tags:
-      - organization
+      - Organization
       summary: Update current organization settings
       operationId: updateMyOrganization
       requestBody:
@@ -392,7 +402,7 @@ paths:
   /organization/organization/invite:
     post:
       tags:
-      - organization
+      - Organization
       summary: Invite users to the organization
       operationId: inviteUsers
       requestBody:
@@ -460,7 +470,7 @@ paths:
   /organization/organization/invite/{email}:
     delete:
       tags:
-      - organization
+      - Organization
       summary: Cancel a pending invitation
       operationId: cancelInvitation
       security:
@@ -525,7 +535,7 @@ paths:
   /organization/register:
     post:
       tags:
-      - organization
+      - Organization
       summary: Register a new organization
       operationId: organizationRegister
       security:
@@ -602,7 +612,7 @@ paths:
   /organization/undelete:
     post:
       tags:
-      - organization
+      - Organization
       summary: Restore a deleted organization
       operationId: undeleteMyOrganization
       responses:
@@ -660,7 +670,7 @@ paths:
   /organization/{organization_id}/register:
     post:
       tags:
-      - organization
+      - Organization
       summary: Register a new user in an organization
       operationId: userRegister
       security:
@@ -727,7 +737,7 @@ paths:
   /organization/{organization_id}/quotas:
     get:
       tags:
-      - organization
+      - Organization
       summary: List quotas for an organization
       operationId: listOrganizationQuotas
       security:
@@ -799,7 +809,7 @@ paths:
   /organization/{organization_id}/union-bootstrap:
     post:
       tags:
-      - organization
+      - Organization
       summary: Bootstrap Union tenant for an org
       operationId: unionBootstrap
       security:
@@ -873,7 +883,7 @@ paths:
   /organization/users/export:
     get:
       tags:
-      - organization
+      - Organization
       summary: Export organization users as CSV
       operationId: exportOrganizationUsers
       security:
@@ -939,7 +949,7 @@ paths:
   /organization/users/{customer_id}/role:
     put:
       tags:
-      - organization
+      - Organization
       summary: Change a user's role
       operationId: switchCustomerRole
       security:
@@ -1010,7 +1020,7 @@ paths:
   /organization/users/{user_email}:
     delete:
       tags:
-      - organization
+      - Organization
       summary: Remove a user from the organization
       operationId: deleteCustomer
       security:
@@ -1075,7 +1085,7 @@ paths:
   /organization/refresh-catalogs:
     post:
       tags:
-      - organization
+      - Organization
       summary: Refresh current org catalogs
       operationId: refreshCatalogs
       responses:
@@ -1134,7 +1144,7 @@ paths:
   /organization/apikeys:
     get:
       tags:
-      - organization
+      - Organization
       summary: List all API keys in the organization
       operationId: getOrganizationApiKeys
       responses:
@@ -1196,7 +1206,7 @@ paths:
   /organization/default-environment-preset:
     put:
       tags:
-      - organization
+      - Organization
       summary: Set default environment preset
       operationId: setDefaultEnvironmentPreset
       security:
@@ -1263,7 +1273,7 @@ paths:
   /organization/default-environment-override-preset:
     put:
       tags:
-      - organization
+      - Organization
       summary: Set default environment override preset
       operationId: setDefaultEnvironmentOverridePreset
       security:
@@ -1330,7 +1340,7 @@ paths:
   /organization/default-region:
     put:
       tags:
-      - organization
+      - Organization
       summary: Set the default compute region
       operationId: setDefaultRegion
       security:
@@ -1395,7 +1405,7 @@ paths:
   /organization/default-runtime:
     put:
       tags:
-      - organization
+      - Organization
       summary: Set the default compute runtime
       operationId: setDefaultRuntime
       security:
@@ -1460,7 +1470,7 @@ paths:
   /organization/by-name/{name}:
     get:
       tags:
-      - organization
+      - Organization
       summary: Search organizations by name
       operationId: getOrganizationsByName
       security:
@@ -1530,7 +1540,7 @@ paths:
   /organization/by-id/{org_id}:
     get:
       tags:
-      - organization
+      - Organization
       summary: Get an organization by ID
       operationId: getOrganization
       security:
@@ -1597,7 +1607,7 @@ paths:
   /organization/all:
     get:
       tags:
-      - organization
+      - Organization
       summary: List all organizations for current user
       description: Get a list of all organizations the current user belongs to.
       operationId: getAllOrganizationsForUser
@@ -1661,7 +1671,7 @@ paths:
   /organization/create:
     post:
       tags:
-      - organization
+      - Organization
       summary: Create a new organization
       operationId: createOrganization
       requestBody:
@@ -1727,7 +1737,7 @@ paths:
   /organization/ensure-currentuser-humanprincipal:
     post:
       tags:
-      - organization
+      - Organization
       summary: Ensure current user has a human principal
       operationId: ensureCurrentUserHumanPrincipal
       requestBody:
@@ -1791,172 +1801,35 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorInfo:
+    EnsureHumanPrincipalInput:
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
+        workos_organization_id:
           type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
+          title: Workos Organization Id
       type: object
       required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    QuotaType:
+      - workos_organization_id
+      title: EnsureHumanPrincipalInput
+    ErrorClass:
       type: string
       enum:
-      - CPU
-      - HUMAN_USER_COUNT
-      - WORKLOAD_LIFETIME_HOUR
-      - DISK_PER_NODE_GB
-      - FOREIGN_CATALOG_COUNT
-      title: QuotaType
-    WherobotsCloudFeature:
-      type: string
-      enum:
-      - SAML
-      - SERVICE_PRINCIPALS
-      - STORAGE_INTEGRATION
-      - PROFESSIONAL_DATA
-      - AUDIT_LOGS
-      - RUNS
-      - FOREIGN_CATALOGS
-      - RASTERFLOW
-      - MCP_ACCESS
-      - STANDALONE_WHEROBOTSDB
-      - CLOUD_CONNECTIONS
-      - MICRO_RUNTIME
-      - SMALL_RUNTIME
-      - MEDIUM_RUNTIME
-      - LARGE_RUNTIME
-      - X_LARGE_RUNTIME
-      - XX_LARGE_RUNTIME
-      - MEDIUM_HIMEM_RUNTIME
-      - LARGE_HIMEM_RUNTIME
-      - X_LARGE_HIMEM_RUNTIME
-      - XX_LARGE_HIMEM_RUNTIME
-      - X_LARGE_HICPU_RUNTIME
-      - XX_LARGE_HICPU_RUNTIME
-      - MICRO_A10_GPU_RUNTIME
-      - TINY_A10_GPU_RUNTIME
-      - SMALL_A10_GPU_RUNTIME
-      - MEDIUM_A10_GPU_RUNTIME
-      - LARGE_A10_GPU_RUNTIME
-      - X_LARGE_A10_GPU_RUNTIME
-      - X_LARGE_MATCHER_RUNTIME
-      - XX_LARGE_MATCHER_RUNTIME
-      - REGION_AWS_US_WEST_2
-      - REGION_AWS_EU_WEST_1
-      - REGION_AWS_US_EAST_1
-      - REGION_AWS_AP_SOUTH_1
-      - REGION_AWS_US_EAST_2
-      title: WherobotsCloudFeature
-    FileStore:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        bucketName:
-          type: string
-          title: Bucketname
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - bucketName
-      title: FileStore
-    HumanPrincipal:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        organizationId:
-          type: string
-          title: Organizationid
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-        deletedAt:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Deletedat
-        email:
-          type: string
-          title: Email
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - organizationId
-      - roles
-      - policies
-      - email
-      title: HumanPrincipal
-    Plan:
-      type: string
-      enum:
-      - COMMUNITY
-      - PROFESSIONAL
-      - BUILDER
-      - ENTERPRISE
-      title: Plan
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
     Policy:
       properties:
         id:
@@ -1993,235 +1866,6 @@ components:
       - action
       - effect
       title: Policy
-    EnsureHumanPrincipalInput:
-      properties:
-        workos_organization_id:
-          type: string
-          title: Workos Organization Id
-      type: object
-      required:
-      - workos_organization_id
-      title: EnsureHumanPrincipalInput
-    OrganizationCreateInput:
-      properties:
-        name:
-          anyOf:
-          - type: string
-            maxLength: 50
-            minLength: 3
-          - type: 'null'
-          title: Name
-      type: object
-      required:
-      - name
-      title: OrganizationCreateInput
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
-    Role-Output:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    Invitation:
-      properties:
-        id:
-          type: string
-          title: Id
-        email:
-          type: string
-          title: Email
-        state:
-          type: string
-          enum:
-          - pending
-          - expired
-          title: State
-          default: pending
-        expiresAt:
-          type: string
-          format: date-time
-          title: Expiresat
-        createdAt:
-          type: string
-          format: date-time
-          title: Createdat
-      type: object
-      required:
-      - id
-      - email
-      - expiresAt
-      - createdAt
-      title: Invitation
-    OrganizationRegisterInput:
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          minLength: 3
-          title: Name
-      type: object
-      required:
-      - name
-      title: OrganizationRegisterInput
-    StorageIntegrationDetails:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        path:
-          type: string
-          title: Path
-        roleArn:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Rolearn
-        region:
-          type: string
-          title: Region
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - path
-      - region
-      title: StorageIntegrationDetails
-    RuntimeId:
-      type: string
-      enum:
-      - TINY
-      - SMALL
-      - MEDIUM
-      - LARGE
-      - XLARGE
-      - XXLARGE
-      - micro
-      - tiny
-      - small
-      - medium
-      - large
-      - x-large
-      - 2x-large
-      - 4x-large
-      - medium-himem
-      - large-himem
-      - x-large-himem
-      - 2x-large-himem
-      - 4x-large-himem
-      - x-large-hicpu
-      - 2x-large-hicpu
-      - x-large-matcher
-      - 2x-large-matcher
-      - micro-a10-gpu
-      - tiny-a10-gpu
-      - small-a10-gpu
-      - medium-a10-gpu
-      - large-a10-gpu
-      - x-large-a10-gpu
-      title: RuntimeId
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    OrganizationCustomer:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - roles
-      title: OrganizationCustomer
     Organization:
       properties:
         id:
@@ -2348,36 +1992,36 @@ components:
       - state
       - allowedRegions
       title: Organization
-    Coupon:
+    Invitation:
       properties:
-        plans:
-          items:
-            $ref: '#/components/schemas/Plan'
-          type: array
-          uniqueItems: true
-          title: Plans
-          description: The plans this coupon can be applied to
-        features:
-          items:
-            $ref: '#/components/schemas/WherobotsCloudFeature'
-          type: array
-          uniqueItems: true
-          title: Features
-          description: The features enabled by this coupon
-        quotas:
-          additionalProperties:
-            type: integer
-          propertyNames:
-            $ref: '#/components/schemas/QuotaType'
-          type: object
-          title: Quotas
-          description: The quotas granted by this coupon
+        id:
+          type: string
+          title: Id
+        email:
+          type: string
+          title: Email
+        state:
+          type: string
+          enum:
+          - pending
+          - expired
+          title: State
+          default: pending
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
       type: object
       required:
-      - plans
-      - features
-      - quotas
-      title: Coupon
+      - id
+      - email
+      - expiresAt
+      - createdAt
+      title: Invitation
     ApiKey:
       properties:
         id:
@@ -2440,26 +2084,123 @@ components:
       - createdById
       - createdBy
       title: ApiKey
-    ErrorClass:
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
+    Plan:
       type: string
       enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
+      - COMMUNITY
+      - PROFESSIONAL
+      - BUILDER
+      - ENTERPRISE
+      title: Plan
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    OrganizationCustomer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - roles
+      title: OrganizationCustomer
     OrgListingEntry:
       properties:
         id:
@@ -2499,22 +2240,83 @@ components:
       - verified
       - state
       title: OrgListingEntry
-    OrganizationState:
-      type: string
-      enum:
-      - ACTIVE
-      - SUSPENDED
-      - CLOSED
-      - EXPIRED
-      title: OrganizationState
-    SamlSsoStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      - PENDING
-      - FAILED
-      title: SamlSsoStatus
+    OrganizationRegisterInput:
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          minLength: 3
+          title: Name
+      type: object
+      required:
+      - name
+      title: OrganizationRegisterInput
+    StorageIntegrationDetails:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        path:
+          type: string
+          title: Path
+        roleArn:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rolearn
+        region:
+          type: string
+          title: Region
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - path
+      - region
+      title: StorageIntegrationDetails
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    OrganizationCreateInput:
+      properties:
+        name:
+          anyOf:
+          - type: string
+            maxLength: 50
+            minLength: 3
+          - type: 'null'
+          title: Name
+      type: object
+      required:
+      - name
+      title: OrganizationCreateInput
     Body_redeemCoupon:
       properties:
         code:
@@ -2530,6 +2332,60 @@ components:
       required:
       - code
       title: Body_redeemCoupon
+    OrganizationState:
+      type: string
+      enum:
+      - ACTIVE
+      - SUSPENDED
+      - CLOSED
+      - EXPIRED
+      title: OrganizationState
+    FileStore:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        bucketName:
+          type: string
+          title: Bucketname
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - bucketName
+      title: FileStore
+    QuotaType:
+      type: string
+      enum:
+      - CPU
+      - HUMAN_USER_COUNT
+      - WORKLOAD_LIFETIME_HOUR
+      - DISK_PER_NODE_GB
+      - FOREIGN_CATALOG_COUNT
+      title: QuotaType
+    SamlSsoStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - PENDING
+      - FAILED
+      title: SamlSsoStatus
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
     OrganizationUpdateInput:
       properties:
         name:
@@ -2547,6 +2403,160 @@ components:
           title: Billingcontact
       type: object
       title: OrganizationUpdateInput
+    HumanPrincipal:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        organizationId:
+          type: string
+          title: Organizationid
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+        deletedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Deletedat
+        email:
+          type: string
+          title: Email
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - organizationId
+      - roles
+      - policies
+      - email
+      title: HumanPrincipal
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
+    RuntimeId:
+      type: string
+      enum:
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - micro
+      - tiny
+      - small
+      - medium
+      - large
+      - x-large
+      - 2x-large
+      - 4x-large
+      - medium-himem
+      - large-himem
+      - x-large-himem
+      - 2x-large-himem
+      - 4x-large-himem
+      - x-large-hicpu
+      - 2x-large-hicpu
+      - x-large-matcher
+      - 2x-large-matcher
+      - micro-a10-gpu
+      - tiny-a10-gpu
+      - small-a10-gpu
+      - medium-a10-gpu
+      - large-a10-gpu
+      - x-large-a10-gpu
+      title: RuntimeId
+    WherobotsCloudFeature:
+      type: string
+      enum:
+      - SAML
+      - SERVICE_PRINCIPALS
+      - STORAGE_INTEGRATION
+      - PROFESSIONAL_DATA
+      - AUDIT_LOGS
+      - RUNS
+      - FOREIGN_CATALOGS
+      - RASTERFLOW
+      - MCP_ACCESS
+      - STANDALONE_WHEROBOTSDB
+      - CLOUD_CONNECTIONS
+      - MICRO_RUNTIME
+      - SMALL_RUNTIME
+      - MEDIUM_RUNTIME
+      - LARGE_RUNTIME
+      - X_LARGE_RUNTIME
+      - XX_LARGE_RUNTIME
+      - MEDIUM_HIMEM_RUNTIME
+      - LARGE_HIMEM_RUNTIME
+      - X_LARGE_HIMEM_RUNTIME
+      - XX_LARGE_HIMEM_RUNTIME
+      - X_LARGE_HICPU_RUNTIME
+      - XX_LARGE_HICPU_RUNTIME
+      - MICRO_A10_GPU_RUNTIME
+      - TINY_A10_GPU_RUNTIME
+      - SMALL_A10_GPU_RUNTIME
+      - MEDIUM_A10_GPU_RUNTIME
+      - LARGE_A10_GPU_RUNTIME
+      - X_LARGE_A10_GPU_RUNTIME
+      - X_LARGE_MATCHER_RUNTIME
+      - XX_LARGE_MATCHER_RUNTIME
+      - REGION_AWS_US_WEST_2
+      - REGION_AWS_EU_WEST_1
+      - REGION_AWS_US_EAST_1
+      - REGION_AWS_AP_SOUTH_1
+      - REGION_AWS_US_EAST_2
+      title: WherobotsCloudFeature
+    Coupon:
+      properties:
+        plans:
+          items:
+            $ref: '#/components/schemas/Plan'
+          type: array
+          uniqueItems: true
+          title: Plans
+          description: The plans this coupon can be applied to
+        features:
+          items:
+            $ref: '#/components/schemas/WherobotsCloudFeature'
+          type: array
+          uniqueItems: true
+          title: Features
+          description: The features enabled by this coupon
+        quotas:
+          additionalProperties:
+            type: integer
+          propertyNames:
+            $ref: '#/components/schemas/QuotaType'
+          type: object
+          title: Quotas
+          description: The quotas granted by this coupon
+      type: object
+      required:
+      - plans
+      - features
+      - quotas
+      title: Coupon
   securitySchemes:
     bearerToken:
       type: http

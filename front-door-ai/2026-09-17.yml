@@ -1,0 +1,34 @@
+# Front Door AI Index — wherobots — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: wherobots
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: wherobots.com
+  final_host: wherobots.com
+  ownership: own
+  owner: wherobots
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 52
+  host_score: 52
+  density: 21.05
+  words: 2470
+  tiers:
+    agentic: 11
+    core: 40
+    model: 1
+  ambiguous: 5
+  top_terms:
+    AI: 34
+    MCP: 5
+    ML: 5
+    intelligence: 4
+    inference: 3
+    agentic: 2
+    AI agent: 1
+    Claude: 1
+    agent: 1
+    machine learning: 1
