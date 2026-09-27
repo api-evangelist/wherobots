@@ -1161,6 +1161,15 @@ paths:
       x-excluded: true
 components:
   schemas:
+    QuotaType:
+      type: string
+      enum:
+      - CPU
+      - HUMAN_USER_COUNT
+      - WORKLOAD_LIFETIME_HOUR
+      - DISK_PER_NODE_GB
+      - FOREIGN_CATALOG_COUNT
+      title: QuotaType
     AwsMarketplaceSubscription:
       properties:
         id:
@@ -1196,95 +1205,6 @@ components:
       - state
       - customerAWSAccountId
       title: AwsMarketplaceSubscription
-    SubscriptionInfo:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        stoppedTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Stoppedtime
-        state:
-          $ref: '#/components/schemas/SubscriptionState'
-        awsMarketplaceSubscription:
-          anyOf:
-          - $ref: '#/components/schemas/AwsMarketplaceSubscription'
-          - type: 'null'
-        stripeSubscription:
-          anyOf:
-          - $ref: '#/components/schemas/StripeSubscription'
-          - type: 'null'
-        internalDevelopmentSubscription:
-          anyOf:
-          - $ref: '#/components/schemas/InternalDevelopmentSubscription'
-          - type: 'null'
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - stoppedTime
-      - state
-      title: SubscriptionInfo
-      description: 'Detailed subscription information including type-specific fields.
-
-
-        This model is used across endpoints to return comprehensive subscription data,
-
-        with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
-    GetKubeAppCostsInput:
-      properties:
-        kubeAppIds:
-          items:
-            type: string
-          type: array
-          maxItems: 100
-          minItems: 1
-          title: Kubeappids
-          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
-      type: object
-      required:
-      - kubeAppIds
-      title: GetKubeAppCostsInput
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    WorkloadCostUnavailableReason:
-      type: string
-      enum:
-      - not_found
-      - upstream_error
-      - upstream_rate_limit
-      title: WorkloadCostUnavailableReason
-      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
     SubscriptionType:
       type: string
       enum:
@@ -1300,51 +1220,6 @@ components:
         MANUAL_CONTRACT: For customers with manual contracts.
 
         MANUALLY_COMPED: For customers given free access, no metering/billing.'
-    OperationTaskName:
-      type: string
-      enum:
-      - bulk-set-eks-resource-quota
-      - backfill-audit-logs
-      title: OperationTaskName
-      description: Enum for all operation task names
-    WorkloadCostsOutput:
-      properties:
-        costs:
-          additionalProperties:
-            oneOf:
-            - $ref: '#/components/schemas/WorkloadCostAvailable'
-            - $ref: '#/components/schemas/WorkloadCostUnavailable'
-            discriminator:
-              propertyName: kind
-              mapping:
-                available: '#/components/schemas/WorkloadCostAvailable'
-                unavailable: '#/components/schemas/WorkloadCostUnavailable'
-          type: object
-          title: Costs
-      type: object
-      title: WorkloadCostsOutput
-      description: 'Batch response envelope.
-
-
-        Contract (enforced by the service that constructs this, not by the
-
-        schema): `costs.keys() == set(input.kube_app_ids)`. Every requested
-
-        id appears in the response exactly once, either as Available or
-
-        Unavailable. The service layer is responsible for upholding this;
-
-        the wire shape is intentionally permissive so it doesn''t add runtime
-
-        cost on every serialization.'
-    Plan:
-      type: string
-      enum:
-      - COMMUNITY
-      - PROFESSIONAL
-      - BUILDER
-      - ENTERPRISE
-      title: Plan
     ErrorInfo:
       properties:
         code:
@@ -1393,68 +1268,43 @@ components:
       - enabled_by_override
       - disabled
       title: FeatureEnabledState
-    OperationTaskPayload:
-      properties:
-        taskName:
-          $ref: '#/components/schemas/OperationTaskName'
-        taskParams:
-          anyOf:
-          - $ref: '#/components/schemas/OperationTaskParams'
-          - type: 'null'
-      type: object
-      required:
-      - taskName
-      title: OperationTaskPayload
-    SubscriptionState:
+    WorkloadCostUnavailableReason:
       type: string
       enum:
-      - PENDING
-      - ACTIVE
-      - ACTIVE_PROBATION
-      - FAILED
-      - STOPPED
-      title: SubscriptionState
-    ErrorBody:
+      - not_found
+      - upstream_error
+      - upstream_rate_limit
+      title: WorkloadCostUnavailableReason
+      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
+    InternalDevelopmentSubscription:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        id:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    OperationTaskParams:
-      properties:
-        timestamp:
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
           anyOf:
           - type: string
             format: date-time
           - type: 'null'
-          title: Timestamp
-        region:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Region
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
       type: object
-      title: OperationTaskParams
-    QuotaType:
-      type: string
-      enum:
-      - CPU
-      - HUMAN_USER_COUNT
-      - WORKLOAD_LIFETIME_HOUR
-      - DISK_PER_NODE_GB
-      - FOREIGN_CATALOG_COUNT
-      title: QuotaType
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: InternalDevelopmentSubscription
     WorkloadCostAvailable:
       properties:
         kind:
@@ -1504,61 +1354,23 @@ components:
       - last_evaluated_at
       title: WorkloadCostAvailable
       description: A workload cost we were able to resolve.
-    WorkloadCostUnavailable:
+    ErrorBody:
       properties:
-        kind:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
           type: string
-          const: unavailable
-          title: Kind
-          default: unavailable
-        kube_app_id:
-          type: string
-          title: Kube App Id
-        reason:
-          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
       required:
-      - kube_app_id
-      - reason
-      title: WorkloadCostUnavailable
-      description: A workload cost we could not resolve, with a structured reason.
-    WorkloadCostStatus:
-      type: string
-      enum:
-      - live
-      - settling
-      - final
-      title: WorkloadCostStatus
-      description: "Lifecycle status of a materialized workload cost record.\n\nLIVE     - Workload is still running; cost may continue to accumulate.\n           Refreshed from the upstream billing system on read if older\n           than the settling window.\nSETTLING - Workload finished recently; cost is approaching its final\n           value but the upstream may still emit late events. Continues\n           to be refreshed until the settling window elapses.\nFINAL    - Cost is sealed. No further refreshes; FINAL never reverts\n           to LIVE or SETTLING regardless of update_time ordering."
-    InternalDevelopmentSubscription:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        stoppedTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Stoppedtime
-        state:
-          $ref: '#/components/schemas/SubscriptionState'
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - stoppedTime
-      - state
-      title: InternalDevelopmentSubscription
+      - errors
+      - requestId
+      title: ErrorBody
     Body_updateFeatureOverride:
       properties:
         feature:
@@ -1572,6 +1384,30 @@ components:
       required:
       - feature
       title: Body_updateFeatureOverride
+    SubscriptionState:
+      type: string
+      enum:
+      - PENDING
+      - ACTIVE
+      - ACTIVE_PROBATION
+      - FAILED
+      - STOPPED
+      title: SubscriptionState
+    OperationTaskParams:
+      properties:
+        timestamp:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Timestamp
+        region:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Region
+      type: object
+      title: OperationTaskParams
     WherobotsCloudFeature:
       type: string
       enum:
@@ -1612,6 +1448,135 @@ components:
       - REGION_AWS_AP_SOUTH_1
       - REGION_AWS_US_EAST_2
       title: WherobotsCloudFeature
+    SubscriptionInfo:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        awsMarketplaceSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/AwsMarketplaceSubscription'
+          - type: 'null'
+        stripeSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/StripeSubscription'
+          - type: 'null'
+        internalDevelopmentSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/InternalDevelopmentSubscription'
+          - type: 'null'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: SubscriptionInfo
+      description: 'Detailed subscription information including type-specific fields.
+
+
+        This model is used across endpoints to return comprehensive subscription data,
+
+        with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
+    WorkloadCostsOutput:
+      properties:
+        costs:
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/WorkloadCostAvailable'
+            - $ref: '#/components/schemas/WorkloadCostUnavailable'
+            discriminator:
+              propertyName: kind
+              mapping:
+                available: '#/components/schemas/WorkloadCostAvailable'
+                unavailable: '#/components/schemas/WorkloadCostUnavailable'
+          type: object
+          title: Costs
+      type: object
+      title: WorkloadCostsOutput
+      description: 'Batch response envelope.
+
+
+        Contract (enforced by the service that constructs this, not by the
+
+        schema): `costs.keys() == set(input.kube_app_ids)`. Every requested
+
+        id appears in the response exactly once, either as Available or
+
+        Unavailable. The service layer is responsible for upholding this;
+
+        the wire shape is intentionally permissive so it doesn''t add runtime
+
+        cost on every serialization.'
+    WorkloadCostStatus:
+      type: string
+      enum:
+      - live
+      - settling
+      - final
+      title: WorkloadCostStatus
+      description: "Lifecycle status of a materialized workload cost record.\n\nLIVE     - Workload is still running; cost may continue to accumulate.\n           Refreshed from the upstream billing system on read if older\n           than the settling window.\nSETTLING - Workload finished recently; cost is approaching its final\n           value but the upstream may still emit late events. Continues\n           to be refreshed until the settling window elapses.\nFINAL    - Cost is sealed. No further refreshes; FINAL never reverts\n           to LIVE or SETTLING regardless of update_time ordering."
+    WorkloadCostUnavailable:
+      properties:
+        kind:
+          type: string
+          const: unavailable
+          title: Kind
+          default: unavailable
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        reason:
+          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
+      type: object
+      required:
+      - kube_app_id
+      - reason
+      title: WorkloadCostUnavailable
+      description: A workload cost we could not resolve, with a structured reason.
+    GetKubeAppCostsInput:
+      properties:
+        kubeAppIds:
+          items:
+            type: string
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Kubeappids
+          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
+      type: object
+      required:
+      - kubeAppIds
+      title: GetKubeAppCostsInput
+    OperationTaskPayload:
+      properties:
+        taskName:
+          $ref: '#/components/schemas/OperationTaskName'
+        taskParams:
+          anyOf:
+          - $ref: '#/components/schemas/OperationTaskParams'
+          - type: 'null'
+      type: object
+      required:
+      - taskName
+      title: OperationTaskPayload
     StripeSubscription:
       properties:
         id:
@@ -1650,6 +1615,41 @@ components:
       - state
       - stripeCustomerId
       title: StripeSubscription
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    Plan:
+      type: string
+      enum:
+      - COMMUNITY
+      - PROFESSIONAL
+      - BUILDER
+      - ENTERPRISE
+      title: Plan
+    OperationTaskName:
+      type: string
+      enum:
+      - bulk-set-eks-resource-quota
+      - backfill-audit-logs
+      title: OperationTaskName
+      description: Enum for all operation task names
   securitySchemes:
     bearerToken:
       type: http

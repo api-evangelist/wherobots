@@ -428,120 +428,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    GetKubeAppCostsInput:
-      properties:
-        kubeAppIds:
-          items:
-            type: string
-          type: array
-          maxItems: 100
-          minItems: 1
-          title: Kubeappids
-          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
-      type: object
-      required:
-      - kubeAppIds
-      title: GetKubeAppCostsInput
-    UsageKey:
-      properties:
-        user:
-          type: string
-          title: User
-        region:
-          type: string
-          title: Region
-        app_type:
-          $ref: '#/components/schemas/AppType'
-        runtime:
-          type: string
-          title: Runtime
-      type: object
-      required:
-      - user
-      - region
-      - app_type
-      - runtime
-      title: UsageKey
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    WorkloadCostUnavailableReason:
-      type: string
-      enum:
-      - not_found
-      - upstream_error
-      - upstream_rate_limit
-      title: WorkloadCostUnavailableReason
-      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
-    RunStatus:
-      type: string
-      enum:
-      - PENDING
-      - RUNNING
-      - FAILED
-      - COMPLETED
-      - CANCELLED
-      - TIMED_OUT
-      title: RunStatus
-    UsageSlice:
-      properties:
-        key:
-          $ref: '#/components/schemas/UsageKey'
-        usage:
-          type: integer
-          title: Usage
-      type: object
-      required:
-      - key
-      - usage
-      title: UsageSlice
-    WorkloadCostsOutput:
-      properties:
-        costs:
-          additionalProperties:
-            oneOf:
-            - $ref: '#/components/schemas/WorkloadCostAvailable'
-            - $ref: '#/components/schemas/WorkloadCostUnavailable'
-            discriminator:
-              propertyName: kind
-              mapping:
-                available: '#/components/schemas/WorkloadCostAvailable'
-                unavailable: '#/components/schemas/WorkloadCostUnavailable'
-          type: object
-          title: Costs
-      type: object
-      title: WorkloadCostsOutput
-      description: 'Batch response envelope.
-
-
-        Contract (enforced by the service that constructs this, not by the
-
-        schema): `costs.keys() == set(input.kube_app_ids)`. Every requested
-
-        id appears in the response exactly once, either as Available or
-
-        Unavailable. The service layer is responsible for upholding this;
-
-        the wire shape is intentionally permissive so it doesn''t add runtime
-
-        cost on every serialization.'
     ErrorInfo:
       properties:
         code:
@@ -583,6 +469,71 @@ components:
       - details
       - path
       title: ErrorInfo
+    WorkloadCostUnavailableReason:
+      type: string
+      enum:
+      - not_found
+      - upstream_error
+      - upstream_rate_limit
+      title: WorkloadCostUnavailableReason
+      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
+    WorkloadType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      - RASTERFLOW_RUN
+      title: WorkloadType
+    WorkloadCostAvailable:
+      properties:
+        kind:
+          type: string
+          const: available
+          title: Kind
+          default: available
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        organization_id:
+          type: string
+          title: Organization Id
+        cost:
+          type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
+          title: Cost
+        currency:
+          type: string
+          const: USD
+          title: Currency
+          default: USD
+        spatial_units:
+          type: string
+          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
+          title: Spatial Units
+        status:
+          $ref: '#/components/schemas/WorkloadCostStatus'
+        settled_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Settled At
+        last_evaluated_at:
+          type: string
+          format: date-time
+          title: Last Evaluated At
+      type: object
+      required:
+      - kube_app_id
+      - organization_id
+      - cost
+      - spatial_units
+      - status
+      - settled_at
+      - last_evaluated_at
+      title: WorkloadCostAvailable
+      description: A workload cost we were able to resolve.
     WorkloadStatus:
       type: string
       enum:
@@ -635,14 +586,96 @@ components:
       - DESTROY_FAILED
       - DESTROYED
       title: AppStatus
-    WorkloadType:
+    WorkloadCostsOutput:
+      properties:
+        costs:
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/WorkloadCostAvailable'
+            - $ref: '#/components/schemas/WorkloadCostUnavailable'
+            discriminator:
+              propertyName: kind
+              mapping:
+                available: '#/components/schemas/WorkloadCostAvailable'
+                unavailable: '#/components/schemas/WorkloadCostUnavailable'
+          type: object
+          title: Costs
+      type: object
+      title: WorkloadCostsOutput
+      description: 'Batch response envelope.
+
+
+        Contract (enforced by the service that constructs this, not by the
+
+        schema): `costs.keys() == set(input.kube_app_ids)`. Every requested
+
+        id appears in the response exactly once, either as Available or
+
+        Unavailable. The service layer is responsible for upholding this;
+
+        the wire shape is intentionally permissive so it doesn''t add runtime
+
+        cost on every serialization.'
+    WorkloadCostStatus:
       type: string
       enum:
-      - JUPYTER
-      - SQL_SESSION
-      - RUN
-      - RASTERFLOW_RUN
-      title: WorkloadType
+      - live
+      - settling
+      - final
+      title: WorkloadCostStatus
+      description: "Lifecycle status of a materialized workload cost record.\n\nLIVE     - Workload is still running; cost may continue to accumulate.\n           Refreshed from the upstream billing system on read if older\n           than the settling window.\nSETTLING - Workload finished recently; cost is approaching its final\n           value but the upstream may still emit late events. Continues\n           to be refreshed until the settling window elapses.\nFINAL    - Cost is sealed. No further refreshes; FINAL never reverts\n           to LIVE or SETTLING regardless of update_time ordering."
+    UsageKey:
+      properties:
+        user:
+          type: string
+          title: User
+        region:
+          type: string
+          title: Region
+        app_type:
+          $ref: '#/components/schemas/AppType'
+        runtime:
+          type: string
+          title: Runtime
+      type: object
+      required:
+      - user
+      - region
+      - app_type
+      - runtime
+      title: UsageKey
+    WorkloadCostUnavailable:
+      properties:
+        kind:
+          type: string
+          const: unavailable
+          title: Kind
+          default: unavailable
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        reason:
+          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
+      type: object
+      required:
+      - kube_app_id
+      - reason
+      title: WorkloadCostUnavailable
+      description: A workload cost we could not resolve, with a structured reason.
+    GetKubeAppCostsInput:
+      properties:
+        kubeAppIds:
+          items:
+            type: string
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Kubeappids
+          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
+      type: object
+      required:
+      - kubeAppIds
+      title: GetKubeAppCostsInput
     WorkloadHistoryItem:
       properties:
         id:
@@ -749,6 +782,55 @@ components:
       - status
       title: WorkloadHistoryItem
       description: Unified workload history item representing either a KubeApp or a Union workflow execution.
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    TimerangeOption:
+      type: string
+      enum:
+      - 24h
+      - 7d
+      - 30d
+      title: TimerangeOption
+    UsageSlice:
+      properties:
+        key:
+          $ref: '#/components/schemas/UsageKey'
+        usage:
+          type: integer
+          title: Usage
+      type: object
+      required:
+      - key
+      - usage
+      title: UsageSlice
+    RunStatus:
+      type: string
+      enum:
+      - PENDING
+      - RUNNING
+      - FAILED
+      - COMPLETED
+      - CANCELLED
+      - TIMED_OUT
+      title: RunStatus
     ChartSlice:
       properties:
         start:
@@ -770,88 +852,6 @@ components:
       - end
       - usage
       title: ChartSlice
-    WorkloadCostAvailable:
-      properties:
-        kind:
-          type: string
-          const: available
-          title: Kind
-          default: available
-        kube_app_id:
-          type: string
-          title: Kube App Id
-        organization_id:
-          type: string
-          title: Organization Id
-        cost:
-          type: string
-          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
-          title: Cost
-        currency:
-          type: string
-          const: USD
-          title: Currency
-          default: USD
-        spatial_units:
-          type: string
-          pattern: ^(?!^[-+.]*$)[+-]?0*\d*\.?\d*$
-          title: Spatial Units
-        status:
-          $ref: '#/components/schemas/WorkloadCostStatus'
-        settled_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Settled At
-        last_evaluated_at:
-          type: string
-          format: date-time
-          title: Last Evaluated At
-      type: object
-      required:
-      - kube_app_id
-      - organization_id
-      - cost
-      - spatial_units
-      - status
-      - settled_at
-      - last_evaluated_at
-      title: WorkloadCostAvailable
-      description: A workload cost we were able to resolve.
-    WorkloadCostUnavailable:
-      properties:
-        kind:
-          type: string
-          const: unavailable
-          title: Kind
-          default: unavailable
-        kube_app_id:
-          type: string
-          title: Kube App Id
-        reason:
-          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
-      type: object
-      required:
-      - kube_app_id
-      - reason
-      title: WorkloadCostUnavailable
-      description: A workload cost we could not resolve, with a structured reason.
-    WorkloadCostStatus:
-      type: string
-      enum:
-      - live
-      - settling
-      - final
-      title: WorkloadCostStatus
-      description: "Lifecycle status of a materialized workload cost record.\n\nLIVE     - Workload is still running; cost may continue to accumulate.\n           Refreshed from the upstream billing system on read if older\n           than the settling window.\nSETTLING - Workload finished recently; cost is approaching its final\n           value but the upstream may still emit late events. Continues\n           to be refreshed until the settling window elapses.\nFINAL    - Cost is sealed. No further refreshes; FINAL never reverts\n           to LIVE or SETTLING regardless of update_time ordering."
-    TimerangeOption:
-      type: string
-      enum:
-      - 24h
-      - 7d
-      - 30d
-      title: TimerangeOption
   securitySchemes:
     bearerToken:
       type: http

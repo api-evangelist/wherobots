@@ -62,7 +62,7 @@ maintainers:
   email: info@apis.io
 apis:
 - aid: wherobots:wherobots-audit-log-api
-  name: Wherobots audit-log API
+  name: Wherobots Audit Log API
   description: The audit-log API from Wherobots — 2 operation(s) for audit-log.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -76,7 +76,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-catalogs-api
-  name: Wherobots catalogs API
+  name: Wherobots Catalogs API
   description: The catalogs API from Wherobots — 7 operation(s) for catalogs.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -90,7 +90,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-cloud-connections-api
-  name: Wherobots cloud-connections API
+  name: Wherobots Cloud Connections API
   description: The cloud-connections API from Wherobots — 11 operation(s) for cloud-connections.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -104,7 +104,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-coupon-api
-  name: Wherobots coupon API
+  name: Wherobots Coupon API
   description: The coupon API from Wherobots — 1 operation(s) for coupon.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -118,7 +118,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-environment-override-preset-api
-  name: Wherobots environment-override--preset API
+  name: Wherobots Environment Override Preset API
   description: >-
     The environment-override--preset API from Wherobots — 2 operation(s) for environment-override--preset.
   humanURL: https://docs.wherobots.com/api-playground/
@@ -131,7 +131,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-environment-preset-api
-  name: Wherobots environment-preset API
+  name: Wherobots Environment Preset API
   description: The environment-preset API from Wherobots — 2 operation(s) for environment-preset.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -143,7 +143,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-files-api
-  name: Wherobots files API
+  name: Wherobots Files API
   description: The files API from Wherobots — 8 operation(s) for files.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -169,7 +169,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-foreign-catalog-api
-  name: Wherobots foreign-catalog API
+  name: Wherobots Foreign Catalog API
   description: The foreign-catalog API from Wherobots — 4 operation(s) for foreign-catalog.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -205,7 +205,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-jupyter-lab-api
-  name: Wherobots jupyter_lab API
+  name: Wherobots Jupyter Lab API
   description: The jupyter_lab API from Wherobots — 5 operation(s) for jupyter_lab.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -219,7 +219,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-management-api
-  name: Wherobots management API
+  name: Wherobots Management API
   description: The management API from Wherobots — 16 operation(s) for management.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -233,7 +233,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-me-api
-  name: Wherobots me API
+  name: Wherobots Me API
   description: The me API from Wherobots — 3 operation(s) for me.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -247,7 +247,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-orb-api
-  name: Wherobots orb API
+  name: Wherobots Orb API
   description: The orb API from Wherobots — 1 operation(s) for orb.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -259,7 +259,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-organization-api
-  name: Wherobots organization API
+  name: Wherobots Organization API
   description: The organization API from Wherobots — 25 operation(s) for organization.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -273,7 +273,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-quota-api
-  name: Wherobots quota API
+  name: Wherobots Quota API
   description: The quota API from Wherobots — 1 operation(s) for quota.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -287,7 +287,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-rasterflow-api
-  name: Wherobots rasterflow API
+  name: Wherobots Rasterflow API
   description: The rasterflow API from Wherobots — 1 operation(s) for rasterflow.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -299,7 +299,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-runs-api
-  name: Wherobots runs API
+  name: Wherobots Runs API
   description: The runs API from Wherobots — 5 operation(s) for runs.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -313,7 +313,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-service-api
-  name: Wherobots service API
+  name: Wherobots Service API
   description: The service API from Wherobots — 3 operation(s) for service.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -327,7 +327,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-service-token-endpoint-api
-  name: Wherobots service_token_endpoint API
+  name: Wherobots Service Token Endpoint API
   description: >-
     The service_token_endpoint API from Wherobots — 3 operation(s) for service_token_endpoint.
   humanURL: https://docs.wherobots.com/api-playground/
@@ -341,7 +341,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-solution-notebooks-api
-  name: Wherobots solution_notebooks API
+  name: Wherobots Solution Notebooks API
   description: The solution_notebooks API from Wherobots — 3 operation(s) for solution_notebooks.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -354,7 +354,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-sql-api
-  name: Wherobots sql API
+  name: Wherobots Sql API
   description: The sql API from Wherobots — 3 operation(s) for sql.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -368,7 +368,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-storage-api
-  name: Wherobots storage API
+  name: Wherobots Storage API
   description: The storage API from Wherobots — 12 operation(s) for storage.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -382,7 +382,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-stripe-api
-  name: Wherobots stripe API
+  name: Wherobots Stripe API
   description: The stripe API from Wherobots — 1 operation(s) for stripe.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -396,7 +396,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-subscriptions-api
-  name: Wherobots subscriptions API
+  name: Wherobots Subscriptions API
   description: The subscriptions API from Wherobots — 7 operation(s) for subscriptions.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -410,7 +410,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-superuser-api
-  name: Wherobots superuser API
+  name: Wherobots Superuser API
   description: The superuser API from Wherobots — 18 operation(s) for superuser.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -422,7 +422,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-union-executions-api
-  name: Wherobots union-executions API
+  name: Wherobots Union Executions API
   description: The union-executions API from Wherobots — 1 operation(s) for union-executions.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -434,7 +434,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-usage-api
-  name: Wherobots usage API
+  name: Wherobots Usage API
   description: The usage API from Wherobots — 5 operation(s) for usage.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -448,7 +448,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-user-management-api
-  name: Wherobots user-management API
+  name: Wherobots User Management API
   description: The user-management API from Wherobots — 2 operation(s) for user-management.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -462,7 +462,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-users-api
-  name: Wherobots users API
+  name: Wherobots Users API
   description: The users API from Wherobots — 4 operation(s) for users.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -476,7 +476,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-webhook-api
-  name: Wherobots webhook API
+  name: Wherobots Webhook API
   description: The webhook API from Wherobots — 3 operation(s) for webhook.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -490,7 +490,7 @@ apis:
   - type: Documentation
     url: https://docs.wherobots.com/develop/spatial-sql-api/
 - aid: wherobots:wherobots-workos-api
-  name: Wherobots workos API
+  name: Wherobots Workos API
   description: The workos API from Wherobots — 1 operation(s) for workos.
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
@@ -507,8 +507,6 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - APIKeys
-  tags_raw:
   - API Key
   properties:
   - type: OpenAPI

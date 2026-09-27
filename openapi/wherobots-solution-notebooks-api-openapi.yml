@@ -431,6 +431,44 @@ paths:
       x-excluded: true
 components:
   schemas:
+    Body_createSolutionNotebook:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        description:
+          anyOf:
+          - type: string
+            maxLength: 1024
+          - type: 'null'
+          title: Description
+        efsPath:
+          type: string
+          maxLength: 512
+          title: Efspath
+        recommendedRuntime:
+          $ref: '#/components/schemas/RuntimeId'
+          default: tiny
+        thumbnailImage:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Thumbnailimage
+        galleryOrder:
+          type: integer
+          title: Galleryorder
+          default: 0
+        showInGallery:
+          type: boolean
+          title: Showingallery
+          default: true
+      type: object
+      required:
+      - name
+      - efsPath
+      title: Body_createSolutionNotebook
     ErrorInfo:
       properties:
         code:
@@ -472,26 +510,59 @@ components:
       - details
       - path
       title: ErrorInfo
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
+    NotebookMetadata:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        efsPath:
+          type: string
+          title: Efspath
+        thumbnailImageDataBase64:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Thumbnailimagedatabase64
+        thumbnailImageMediaType:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Thumbnailimagemediatype
+        recommendedRuntime:
+          $ref: '#/components/schemas/RuntimeId'
+          default: tiny
+        galleryOrder:
+          type: integer
+          title: Galleryorder
+        showInGallery:
+          type: boolean
+          title: Showingallery
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - efsPath
+      - galleryOrder
+      - showInGallery
+      title: NotebookMetadata
     RuntimeId:
       type: string
       enum:
@@ -563,97 +634,26 @@ components:
       - name
       - efsPath
       title: Body_replaceSolutionNotebook
-    NotebookMetadata:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        description:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Description
-        efsPath:
-          type: string
-          title: Efspath
-        thumbnailImageDataBase64:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Thumbnailimagedatabase64
-        thumbnailImageMediaType:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Thumbnailimagemediatype
-        recommendedRuntime:
-          $ref: '#/components/schemas/RuntimeId'
-          default: tiny
-        galleryOrder:
-          type: integer
-          title: Galleryorder
-        showInGallery:
-          type: boolean
-          title: Showingallery
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - efsPath
-      - galleryOrder
-      - showInGallery
-      title: NotebookMetadata
-    Body_createSolutionNotebook:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-        description:
-          anyOf:
-          - type: string
-            maxLength: 1024
-          - type: 'null'
-          title: Description
-        efsPath:
-          type: string
-          maxLength: 512
-          title: Efspath
-        recommendedRuntime:
-          $ref: '#/components/schemas/RuntimeId'
-          default: tiny
-        thumbnailImage:
-          anyOf:
-          - type: string
-            contentMediaType: application/octet-stream
-          - type: 'null'
-          title: Thumbnailimage
-        galleryOrder:
-          type: integer
-          title: Galleryorder
-          default: 0
-        showInGallery:
-          type: boolean
-          title: Showingallery
-          default: true
-      type: object
-      required:
-      - name
-      - efsPath
-      title: Body_createSolutionNotebook
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
     ErrorBody:
       properties:
         errors:

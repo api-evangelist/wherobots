@@ -250,6 +250,71 @@ paths:
       x-excluded: true
 components:
   schemas:
+    ClientCredIssuanceRequest:
+      properties:
+        grant_type:
+          type: string
+          const: client_credentials
+          title: Grant Type
+        scope:
+          type: string
+          title: Scope
+        client_id:
+          type: string
+          title: Client Id
+        client_secret:
+          type: string
+          title: Client Secret
+        expires_in:
+          type: integer
+          minimum: 0.0
+          title: Expires In
+          default: 0
+      type: object
+      required:
+      - grant_type
+      - scope
+      - client_id
+      - client_secret
+      title: ClientCredIssuanceRequest
+    SubjectTokenExchangeRequest:
+      properties:
+        grant_type:
+          type: string
+          const: urn:ietf:params:oauth:grant-type:token-exchange
+          title: Grant Type
+        scope:
+          type: string
+          title: Scope
+        subject_token:
+          type: string
+          title: Subject Token
+        subject_token_type:
+          type: string
+          const: urn:ietf:params:oauth:token-type:access_token
+          title: Subject Token Type
+        actor_token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Actor Token
+        actor_token_type:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Actor Token Type
+        expires_in:
+          type: integer
+          minimum: 0.0
+          title: Expires In
+          default: 0
+      type: object
+      required:
+      - grant_type
+      - scope
+      - subject_token
+      - subject_token_type
+      title: SubjectTokenExchangeRequest
     ErrorInfo:
       properties:
         code:
@@ -309,44 +374,6 @@ components:
       - grant_type
       - refresh_token
       title: ExchangeTokenRequest
-    SubjectTokenExchangeRequest:
-      properties:
-        grant_type:
-          type: string
-          const: urn:ietf:params:oauth:grant-type:token-exchange
-          title: Grant Type
-        scope:
-          type: string
-          title: Scope
-        subject_token:
-          type: string
-          title: Subject Token
-        subject_token_type:
-          type: string
-          const: urn:ietf:params:oauth:token-type:access_token
-          title: Subject Token Type
-        actor_token:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Actor Token
-        actor_token_type:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Actor Token Type
-        expires_in:
-          type: integer
-          minimum: 0.0
-          title: Expires In
-          default: 0
-      type: object
-      required:
-      - grant_type
-      - scope
-      - subject_token
-      - subject_token_type
-      title: SubjectTokenExchangeRequest
     ErrorClass:
       type: string
       enum:
@@ -367,33 +394,6 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    ClientCredIssuanceRequest:
-      properties:
-        grant_type:
-          type: string
-          const: client_credentials
-          title: Grant Type
-        scope:
-          type: string
-          title: Scope
-        client_id:
-          type: string
-          title: Client Id
-        client_secret:
-          type: string
-          title: Client Secret
-        expires_in:
-          type: integer
-          minimum: 0.0
-          title: Expires In
-          default: 0
-      type: object
-      required:
-      - grant_type
-      - scope
-      - client_id
-      - client_secret
-      title: ClientCredIssuanceRequest
     ErrorBody:
       properties:
         errors:

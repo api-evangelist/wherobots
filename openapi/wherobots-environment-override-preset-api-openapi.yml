@@ -259,6 +259,72 @@ components:
       - ALLOW
       - DENY
       title: Effect
+    EnvironmentOverridePresetInput:
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          minLength: 1
+          title: Name
+        driverDiskSize:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Driverdisksize
+        executorDiskSize:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Executordisksize
+        sparkConfiguration:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Sparkconfiguration
+      type: object
+      required:
+      - name
+      title: EnvironmentOverridePresetInput
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
     ErrorClass:
       type: string
       enum:
@@ -279,6 +345,42 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
     OrganizationCustomer:
       properties:
         id:
@@ -363,48 +465,6 @@ components:
       - sparkConfiguration
       - createdBy
       title: EnvironmentOverridePreset
-    Policy:
-      properties:
-        id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Id
-        createTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Createtime
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-        provider:
-          $ref: '#/components/schemas/Provider'
-        locator:
-          type: string
-          title: Locator
-        action:
-          type: string
-          title: Action
-        effect:
-          $ref: '#/components/schemas/Effect'
-      type: object
-      required:
-      - provider
-      - locator
-      - action
-      - effect
-      title: Policy
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
     ErrorBody:
       properties:
         errors:
@@ -422,66 +482,6 @@ components:
       - errors
       - requestId
       title: ErrorBody
-    EnvironmentOverridePresetInput:
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          minLength: 1
-          title: Name
-        driverDiskSize:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Driverdisksize
-        executorDiskSize:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Executordisksize
-        sparkConfiguration:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Sparkconfiguration
-      type: object
-      required:
-      - name
-      title: EnvironmentOverridePresetInput
-    Role-Output:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
   securitySchemes:
     bearerToken:
       type: http

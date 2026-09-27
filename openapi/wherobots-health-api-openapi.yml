@@ -167,6 +167,21 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
+    HealthCheckDetail:
+      properties:
+        status:
+          type: string
+          title: Status
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+      type: object
+      required:
+      - status
+      title: HealthCheckDetail
+      description: Detail for an individual health check component.
     ErrorBody:
       properties:
         errors:
@@ -184,21 +199,6 @@ components:
       - errors
       - requestId
       title: ErrorBody
-    HealthCheckDetail:
-      properties:
-        status:
-          type: string
-          title: Status
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-      type: object
-      required:
-      - status
-      title: HealthCheckDetail
-      description: Detail for an individual health check component.
   securitySchemes:
     bearerToken:
       type: http

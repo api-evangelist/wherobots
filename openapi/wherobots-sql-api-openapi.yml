@@ -309,23 +309,42 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorBody:
+    SqlSessionAPIPayload:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+        runtimeId:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Version
+        environmentPresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentpresetid
+        environmentOverridePresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentoverridepresetid
+        idleTimeoutMinutes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Idletimeoutminutes
+        shutdownAfterInactiveSeconds:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Shutdownafterinactiveseconds
+        sessionType:
+          $ref: '#/components/schemas/SessionType'
+          default: multi
       type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
+      title: SqlSessionAPIPayload
     ErrorInfo:
       properties:
         code:
@@ -367,71 +386,41 @@ components:
       - details
       - path
       title: ErrorInfo
-    NodeSchedulingMeta:
+    AppType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      title: AppType
+    SessionType:
+      type: string
+      enum:
+      - single
+      - multi
+      title: SessionType
+    KubeAppCreationMeta:
       properties:
-        node_preexisted:
+        use_v2_workflow:
           type: boolean
-          title: Node Preexisted
-        node_name:
-          type: string
-          title: Node Name
-        pod_creation_time:
-          type: string
-          title: Pod Creation Time
-        node_creation_time:
-          type: string
-          title: Node Creation Time
+          title: Use V2 Workflow
+          default: false
       type: object
-      required:
-      - node_preexisted
-      - node_name
-      - pod_creation_time
-      - node_creation_time
-      title: NodeSchedulingMeta
-      description: 'Metadata captured at node-scheduling time.
+      title: KubeAppCreationMeta
+      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
 
 
-        ``node_preexisted`` is True when the pod landed on a node that existed
+        Captures decisions pinned at kube_app creation time so cancel/destroy can
 
-        before the pod was created, False when the node was provisioned for
+        consult them later without re-deriving. Currently only carries the v2
 
-        the pod (cold start).'
-    KubeAppEvent:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        code:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Code
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-        eventMeta:
-          anyOf:
-          - $ref: '#/components/schemas/RunEventMeta'
-          - $ref: '#/components/schemas/KubeAppCreationMeta'
-          - $ref: '#/components/schemas/NodeSchedulingMeta'
-          - type: 'null'
-          title: Eventmeta
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      title: KubeAppEvent
+        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
+
+        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
+
+        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
+
+        constructed; cleanup at v2 100% rollout deletes this class.'
     SqlSessionKubeApp:
       properties:
         id:
@@ -499,103 +488,6 @@ components:
       - regionName
       - message
       title: SqlSessionKubeApp
-    SessionType:
-      type: string
-      enum:
-      - single
-      - multi
-      title: SessionType
-    SqlSessionAppMeta:
-      properties:
-        url:
-          type: string
-          title: Url
-          default: ''
-        resolved_version:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Resolved Version
-      type: object
-      title: SqlSessionAppMeta
-      description: SQL Session-specific metadata fields
-    AppType:
-      type: string
-      enum:
-      - JUPYTER
-      - SQL_SESSION
-      - RUN
-      title: AppType
-    SqlSessionAPIPayload:
-      properties:
-        runtimeId:
-          anyOf:
-          - $ref: '#/components/schemas/RuntimeId'
-          - type: 'null'
-        version:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Version
-        environmentPresetId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Environmentpresetid
-        environmentOverridePresetId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Environmentoverridepresetid
-        idleTimeoutMinutes:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Idletimeoutminutes
-        shutdownAfterInactiveSeconds:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Shutdownafterinactiveseconds
-        sessionType:
-          $ref: '#/components/schemas/SessionType'
-          default: multi
-      type: object
-      title: SqlSessionAPIPayload
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    RunEventMeta:
-      properties:
-        end_timestamp:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: End Timestamp
-        start_timestamp:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Start Timestamp
-      type: object
-      title: RunEventMeta
     RuntimeId:
       type: string
       enum:
@@ -629,28 +521,6 @@ components:
       - large-a10-gpu
       - x-large-a10-gpu
       title: RuntimeId
-    KubeAppCreationMeta:
-      properties:
-        use_v2_workflow:
-          type: boolean
-          title: Use V2 Workflow
-          default: false
-      type: object
-      title: KubeAppCreationMeta
-      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
-
-
-        Captures decisions pinned at kube_app creation time so cancel/destroy can
-
-        consult them later without re-deriving. Currently only carries the v2
-
-        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
-
-        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
-
-        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
-
-        constructed; cleanup at v2 100% rollout deletes this class.'
     AppStatus:
       type: string
       enum:
@@ -669,6 +539,136 @@ components:
       - DESTROY_FAILED
       - DESTROYED
       title: AppStatus
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    KubeAppEvent:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+        eventMeta:
+          anyOf:
+          - $ref: '#/components/schemas/RunEventMeta'
+          - $ref: '#/components/schemas/KubeAppCreationMeta'
+          - $ref: '#/components/schemas/NodeSchedulingMeta'
+          - type: 'null'
+          title: Eventmeta
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      title: KubeAppEvent
+    NodeSchedulingMeta:
+      properties:
+        node_preexisted:
+          type: boolean
+          title: Node Preexisted
+        node_name:
+          type: string
+          title: Node Name
+        pod_creation_time:
+          type: string
+          title: Pod Creation Time
+        node_creation_time:
+          type: string
+          title: Node Creation Time
+      type: object
+      required:
+      - node_preexisted
+      - node_name
+      - pod_creation_time
+      - node_creation_time
+      title: NodeSchedulingMeta
+      description: 'Metadata captured at node-scheduling time.
+
+
+        ``node_preexisted`` is True when the pod landed on a node that existed
+
+        before the pod was created, False when the node was provisioned for
+
+        the pod (cold start).'
+    SqlSessionAppMeta:
+      properties:
+        url:
+          type: string
+          title: Url
+          default: ''
+        resolved_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Resolved Version
+      type: object
+      title: SqlSessionAppMeta
+      description: SQL Session-specific metadata fields
+    RunEventMeta:
+      properties:
+        end_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Timestamp
+        start_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start Timestamp
+      type: object
+      title: RunEventMeta
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
   securitySchemes:
     bearerToken:
       type: http

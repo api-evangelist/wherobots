@@ -438,83 +438,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    RuntimeSize:
-      type: string
-      enum:
-      - MICRO
-      - TINY
-      - SMALL
-      - MEDIUM
-      - LARGE
-      - XLARGE
-      - XXLARGE
-      - XXXXLARGE
-      title: RuntimeSize
-    WherobotsVersion:
-      properties:
-        description:
-          type: string
-          title: Description
-        version:
-          type: string
-          title: Version
-        aliases:
-          items:
-            type: string
-          type: array
-          title: Aliases
-          default: []
-      type: object
-      required:
-      - description
-      - version
-      title: WherobotsVersion
-    RegionsHint:
-      properties:
-        description:
-          type: string
-          title: Description
-        hint:
-          items:
-            $ref: '#/components/schemas/Region'
-          type: array
-          title: Hint
-      type: object
-      required:
-      - description
-      - hint
-      title: RegionsHint
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    RuntimeTagsHint:
-      properties:
-        hint:
-          items:
-            $ref: '#/components/schemas/RuntimeTag'
-          type: array
-          title: Hint
-      type: object
-      required:
-      - hint
-      title: RuntimeTagsHint
     ErrorInfo:
       properties:
         code:
@@ -556,103 +479,23 @@ components:
       - details
       - path
       title: ErrorInfo
-    KubeAppEvent:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        code:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Code
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-        eventMeta:
-          anyOf:
-          - $ref: '#/components/schemas/RunEventMeta'
-          - $ref: '#/components/schemas/KubeAppCreationMeta'
-          - $ref: '#/components/schemas/NodeSchedulingMeta'
-          - type: 'null'
-          title: Eventmeta
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      title: KubeAppEvent
-    IntHint:
-      properties:
-        hint:
-          type: integer
-          title: Hint
-        min:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Min
-        max:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Max
-        description:
-          type: string
-          title: Description
-      type: object
-      required:
-      - hint
-      - description
-      title: IntHint
-    JupyterAppMeta:
-      properties:
-        jupyter_url:
-          type: string
-          title: Jupyter Url
-          default: ''
-        spark_ui_url:
-          type: string
-          title: Spark Ui Url
-          default: ''
-        spark_eventlogs_url:
-          type: string
-          title: Spark Eventlogs Url
-          default: ''
-        resolved_version:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Resolved Version
-      type: object
-      title: JupyterAppMeta
-      description: Jupyter-specific metadata fields
-    InstanceDetailsHint:
-      properties:
-        gpu:
-          type: integer
-          title: Gpu
-          default: 0
-        gpu_type:
-          anyOf:
-          - $ref: '#/components/schemas/GpuType'
-          - type: 'null'
-        gpu_vram:
-          type: integer
-          title: Gpu Vram
-          default: 0
-      type: object
-      title: InstanceDetailsHint
+    GpuType:
+      type: string
+      enum:
+      - NVIDIA A10G
+      title: GpuType
+    RuntimeSize:
+      type: string
+      enum:
+      - MICRO
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - XXXXLARGE
+      title: RuntimeSize
     JupyterAPIPayload:
       properties:
         runtimeId:
@@ -687,92 +530,6 @@ components:
           title: Name
       type: object
       title: JupyterAPIPayload
-    RuntimesHint:
-      properties:
-        hint:
-          items:
-            $ref: '#/components/schemas/RuntimeHintItem'
-          type: array
-          title: Hint
-      type: object
-      required:
-      - hint
-      title: RuntimesHint
-    JupyterListModel:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        instanceId:
-          type: string
-          title: Instanceid
-        status:
-          $ref: '#/components/schemas/AppStatus'
-        createdById:
-          type: string
-          title: Createdbyid
-        apiPayload:
-          anyOf:
-          - $ref: '#/components/schemas/JupyterAPIPayload'
-          - type: 'null'
-        appMeta:
-          anyOf:
-          - $ref: '#/components/schemas/JupyterAppMeta'
-          - type: 'null'
-        expiresAt:
-          type: string
-          format: date-time
-          title: Expiresat
-        events:
-          items:
-            $ref: '#/components/schemas/JupyterListModelEvent'
-          type: array
-          title: Events
-          default: []
-        regionName:
-          type: string
-          title: Regionname
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - instanceId
-      - status
-      - createdById
-      - expiresAt
-      - regionName
-      title: JupyterListModel
-    KubeAppCreationMeta:
-      properties:
-        use_v2_workflow:
-          type: boolean
-          title: Use V2 Workflow
-          default: false
-      type: object
-      title: KubeAppCreationMeta
-      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
-
-
-        Captures decisions pinned at kube_app creation time so cancel/destroy can
-
-        consult them later without re-deriving. Currently only carries the v2
-
-        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
-
-        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
-
-        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
-
-        constructed; cleanup at v2 100% rollout deletes this class.'
     ErrorBody:
       properties:
         errors:
@@ -790,142 +547,6 @@ components:
       - errors
       - requestId
       title: ErrorBody
-    AppType:
-      type: string
-      enum:
-      - JUPYTER
-      - SQL_SESSION
-      - RUN
-      title: AppType
-    AppStatus:
-      type: string
-      enum:
-      - PENDING
-      - PREPARING
-      - PREPARE_FAILED
-      - REQUESTED
-      - DEPLOYING
-      - DEPLOY_FAILED
-      - DEPLOYED
-      - INITIALIZING
-      - INIT_FAILED
-      - READY
-      - DESTROY_REQUESTED
-      - DESTROYING
-      - DESTROY_FAILED
-      - DESTROYED
-      title: AppStatus
-    RuntimeHintItem:
-      properties:
-        id:
-          $ref: '#/components/schemas/RuntimeId'
-        description:
-          type: string
-          title: Description
-        name:
-          type: string
-          title: Name
-        size:
-          $ref: '#/components/schemas/RuntimeSize'
-        minimumSpatialUnitsPerHour:
-          type: integer
-          title: Minimumspatialunitsperhour
-        maximumSpatialUnitsPerHour:
-          type: integer
-          title: Maximumspatialunitsperhour
-        tags:
-          items:
-            $ref: '#/components/schemas/RuntimeTag'
-          type: array
-          title: Tags
-          default: []
-        enabled:
-          type: boolean
-          title: Enabled
-          default: true
-        instanceDetails:
-          $ref: '#/components/schemas/InstanceDetailsHint'
-      type: object
-      required:
-      - id
-      - description
-      - name
-      - size
-      - minimumSpatialUnitsPerHour
-      - maximumSpatialUnitsPerHour
-      - instanceDetails
-      title: RuntimeHintItem
-    VersionHint:
-      properties:
-        hint:
-          items:
-            $ref: '#/components/schemas/WherobotsVersion'
-          type: array
-          title: Hint
-        description:
-          type: string
-          title: Description
-      type: object
-      required:
-      - hint
-      - description
-      title: VersionHint
-    GpuType:
-      type: string
-      enum:
-      - NVIDIA A10G
-      title: GpuType
-    JupyterListModelEvent:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        code:
-          type: string
-          title: Code
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - code
-      title: JupyterListModelEvent
-    JupyterConfigHint:
-      properties:
-        diskSizeGB:
-          $ref: '#/components/schemas/IntHint'
-        versions:
-          $ref: '#/components/schemas/VersionHint'
-        regions:
-          $ref: '#/components/schemas/RegionsHint'
-        runtimes:
-          $ref: '#/components/schemas/RuntimesHint'
-        runtimeTags:
-          $ref: '#/components/schemas/RuntimeTagsHint'
-        idleTimeoutMinutes:
-          $ref: '#/components/schemas/IntHint'
-      type: object
-      required:
-      - diskSizeGB
-      - versions
-      - regions
-      - runtimes
-      - runtimeTags
-      - idleTimeoutMinutes
-      title: JupyterConfigHint
     JupyterKubeApp:
       properties:
         id:
@@ -993,6 +614,328 @@ components:
       - regionName
       - message
       title: JupyterKubeApp
+    AppType:
+      type: string
+      enum:
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      title: AppType
+    WherobotsVersion:
+      properties:
+        description:
+          type: string
+          title: Description
+        version:
+          type: string
+          title: Version
+        aliases:
+          items:
+            type: string
+          type: array
+          title: Aliases
+          default: []
+      type: object
+      required:
+      - description
+      - version
+      title: WherobotsVersion
+    JupyterConfigHint:
+      properties:
+        diskSizeGB:
+          $ref: '#/components/schemas/IntHint'
+        versions:
+          $ref: '#/components/schemas/VersionHint'
+        regions:
+          $ref: '#/components/schemas/RegionsHint'
+        runtimes:
+          $ref: '#/components/schemas/RuntimesHint'
+        runtimeTags:
+          $ref: '#/components/schemas/RuntimeTagsHint'
+        idleTimeoutMinutes:
+          $ref: '#/components/schemas/IntHint'
+      type: object
+      required:
+      - diskSizeGB
+      - versions
+      - regions
+      - runtimes
+      - runtimeTags
+      - idleTimeoutMinutes
+      title: JupyterConfigHint
+    ComputeClusterAvailability:
+      type: string
+      enum:
+      - AVAILABLE
+      - DEGRADED
+      - UNAVAILABLE
+      - DISABLED
+      title: ComputeClusterAvailability
+    AppStatus:
+      type: string
+      enum:
+      - PENDING
+      - PREPARING
+      - PREPARE_FAILED
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOY_FAILED
+      - DEPLOYED
+      - INITIALIZING
+      - INIT_FAILED
+      - READY
+      - DESTROY_REQUESTED
+      - DESTROYING
+      - DESTROY_FAILED
+      - DESTROYED
+      title: AppStatus
+    InstanceDetailsHint:
+      properties:
+        gpu:
+          type: integer
+          title: Gpu
+          default: 0
+        gpu_type:
+          anyOf:
+          - $ref: '#/components/schemas/GpuType'
+          - type: 'null'
+        gpu_vram:
+          type: integer
+          title: Gpu Vram
+          default: 0
+      type: object
+      title: InstanceDetailsHint
+    VersionHint:
+      properties:
+        hint:
+          items:
+            $ref: '#/components/schemas/WherobotsVersion'
+          type: array
+          title: Hint
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - hint
+      - description
+      title: VersionHint
+    JupyterAppMeta:
+      properties:
+        jupyter_url:
+          type: string
+          title: Jupyter Url
+          default: ''
+        spark_ui_url:
+          type: string
+          title: Spark Ui Url
+          default: ''
+        spark_eventlogs_url:
+          type: string
+          title: Spark Eventlogs Url
+          default: ''
+        resolved_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Resolved Version
+      type: object
+      title: JupyterAppMeta
+      description: Jupyter-specific metadata fields
+    KubeAppCreationMeta:
+      properties:
+        use_v2_workflow:
+          type: boolean
+          title: Use V2 Workflow
+          default: false
+      type: object
+      title: KubeAppCreationMeta
+      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
+
+
+        Captures decisions pinned at kube_app creation time so cancel/destroy can
+
+        consult them later without re-deriving. Currently only carries the v2
+
+        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
+
+        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
+
+        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
+
+        constructed; cleanup at v2 100% rollout deletes this class.'
+    IntHint:
+      properties:
+        hint:
+          type: integer
+          title: Hint
+        min:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Min
+        max:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Max
+        description:
+          type: string
+          title: Description
+      type: object
+      required:
+      - hint
+      - description
+      title: IntHint
+    RuntimeHintItem:
+      properties:
+        id:
+          $ref: '#/components/schemas/RuntimeId'
+        description:
+          type: string
+          title: Description
+        name:
+          type: string
+          title: Name
+        size:
+          $ref: '#/components/schemas/RuntimeSize'
+        minimumSpatialUnitsPerHour:
+          type: integer
+          title: Minimumspatialunitsperhour
+        maximumSpatialUnitsPerHour:
+          type: integer
+          title: Maximumspatialunitsperhour
+        tags:
+          items:
+            $ref: '#/components/schemas/RuntimeTag'
+          type: array
+          title: Tags
+          default: []
+        enabled:
+          type: boolean
+          title: Enabled
+          default: true
+        instanceDetails:
+          $ref: '#/components/schemas/InstanceDetailsHint'
+      type: object
+      required:
+      - id
+      - description
+      - name
+      - size
+      - minimumSpatialUnitsPerHour
+      - maximumSpatialUnitsPerHour
+      - instanceDetails
+      title: RuntimeHintItem
+    JupyterListModel:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        instanceId:
+          type: string
+          title: Instanceid
+        status:
+          $ref: '#/components/schemas/AppStatus'
+        createdById:
+          type: string
+          title: Createdbyid
+        apiPayload:
+          anyOf:
+          - $ref: '#/components/schemas/JupyterAPIPayload'
+          - type: 'null'
+        appMeta:
+          anyOf:
+          - $ref: '#/components/schemas/JupyterAppMeta'
+          - type: 'null'
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+        events:
+          items:
+            $ref: '#/components/schemas/JupyterListModelEvent'
+          type: array
+          title: Events
+          default: []
+        regionName:
+          type: string
+          title: Regionname
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - instanceId
+      - status
+      - createdById
+      - expiresAt
+      - regionName
+      title: JupyterListModel
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    KubeAppEvent:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+        eventMeta:
+          anyOf:
+          - $ref: '#/components/schemas/RunEventMeta'
+          - $ref: '#/components/schemas/KubeAppCreationMeta'
+          - $ref: '#/components/schemas/NodeSchedulingMeta'
+          - type: 'null'
+          title: Eventmeta
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      title: KubeAppEvent
     NodeSchedulingMeta:
       properties:
         node_preexisted:
@@ -1036,6 +979,68 @@ components:
           title: Start Timestamp
       type: object
       title: RunEventMeta
+    RegionsHint:
+      properties:
+        description:
+          type: string
+          title: Description
+        hint:
+          items:
+            $ref: '#/components/schemas/Region'
+          type: array
+          title: Hint
+      type: object
+      required:
+      - description
+      - hint
+      title: RegionsHint
+    JupyterListModelEvent:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        code:
+          type: string
+          title: Code
+        message:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Message
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - code
+      title: JupyterListModelEvent
+    RuntimeTag:
+      type: string
+      enum:
+      - GPU
+      - HIMEM
+      - HICPU
+      - MATCHER
+      title: RuntimeTag
+    RuntimeTagsHint:
+      properties:
+        hint:
+          items:
+            $ref: '#/components/schemas/RuntimeTag'
+          type: array
+          title: Hint
+      type: object
+      required:
+      - hint
+      title: RuntimeTagsHint
     RuntimeId:
       type: string
       enum:
@@ -1090,22 +1095,17 @@ components:
       - enabled
       - availability
       title: Region
-    RuntimeTag:
-      type: string
-      enum:
-      - GPU
-      - HIMEM
-      - HICPU
-      - MATCHER
-      title: RuntimeTag
-    ComputeClusterAvailability:
-      type: string
-      enum:
-      - AVAILABLE
-      - DEGRADED
-      - UNAVAILABLE
-      - DISABLED
-      title: ComputeClusterAvailability
+    RuntimesHint:
+      properties:
+        hint:
+          items:
+            $ref: '#/components/schemas/RuntimeHintItem'
+          type: array
+          title: Hint
+      type: object
+      required:
+      - hint
+      title: RuntimesHint
   securitySchemes:
     bearerToken:
       type: http

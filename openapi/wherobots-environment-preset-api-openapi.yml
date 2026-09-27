@@ -212,14 +212,119 @@ paths:
       x-excluded: true
 components:
   schemas:
-    FileType:
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    DependantLibrary:
+      properties:
+        sourceType:
+          $ref: '#/components/schemas/SourceType'
+        fileType:
+          anyOf:
+          - $ref: '#/components/schemas/FileType'
+          - type: 'null'
+        filePath:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filepath
+        libraryName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Libraryname
+        libraryVersion:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Libraryversion
+      type: object
+      required:
+      - sourceType
+      title: DependantLibrary
+    SourceType:
       type: string
       enum:
-      - JAR
-      - PYTHON_WHEEL
-      - ZIP
-      - OTHER
-      title: FileType
+      - PYPI
+      - FILE
+      title: SourceType
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
     EnvironmentPreset:
       properties:
         id:
@@ -269,59 +374,12 @@ components:
       - dependencies
       - createdBy
       title: EnvironmentPreset
-    ErrorInfo:
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
-          type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
-      type: object
-      required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    SourceType:
+    Provider:
       type: string
       enum:
-      - PYPI
-      - FILE
-      title: SourceType
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
+      - WHEROBOTS
+      - AWS
+      title: Provider
     ErrorClass:
       type: string
       enum:
@@ -342,41 +400,14 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    OrganizationCustomer:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - roles
-      title: OrganizationCustomer
+    FileType:
+      type: string
+      enum:
+      - JAR
+      - PYTHON_WHEEL
+      - ZIP
+      - OTHER
+      title: FileType
     Policy:
       properties:
         id:
@@ -413,12 +444,41 @@ components:
       - action
       - effect
       title: Policy
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
+    OrganizationCustomer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - roles
+      title: OrganizationCustomer
     EnvironmentPresetInput:
       properties:
         name:
@@ -446,39 +506,6 @@ components:
       - name
       - version
       title: EnvironmentPresetInput
-    Role-Output:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
     ErrorBody:
       properties:
         errors:
@@ -496,33 +523,6 @@ components:
       - errors
       - requestId
       title: ErrorBody
-    DependantLibrary:
-      properties:
-        sourceType:
-          $ref: '#/components/schemas/SourceType'
-        fileType:
-          anyOf:
-          - $ref: '#/components/schemas/FileType'
-          - type: 'null'
-        filePath:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filepath
-        libraryName:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Libraryname
-        libraryVersion:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Libraryversion
-      type: object
-      required:
-      - sourceType
-      title: DependantLibrary
   securitySchemes:
     bearerToken:
       type: http

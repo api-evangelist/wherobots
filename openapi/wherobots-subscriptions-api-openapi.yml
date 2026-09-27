@@ -505,6 +505,15 @@ paths:
       x-excluded: true
 components:
   schemas:
+    SubscriptionState:
+      type: string
+      enum:
+      - PENDING
+      - ACTIVE
+      - ACTIVE_PROBATION
+      - FAILED
+      - STOPPED
+      title: SubscriptionState
     AwsMarketplaceSubscription:
       properties:
         id:
@@ -540,6 +549,47 @@ components:
       - state
       - customerAWSAccountId
       title: AwsMarketplaceSubscription
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
     SubscriptionInfo:
       properties:
         id:
@@ -587,56 +637,19 @@ components:
         This model is used across endpoints to return comprehensive subscription data,
 
         with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
-    ErrorInfo:
+    AmazonMarketplaceCustomerDetails:
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
+        customer_identifier:
           type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
+          title: Customer Identifier
+        customer_aws_account_id:
           type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
+          title: Customer Aws Account Id
       type: object
       required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    UpgradeConfirmationRequest:
-      properties:
-        setup_intent_id:
-          type: string
-          title: Setup Intent Id
-      type: object
-      required:
-      - setup_intent_id
-      title: UpgradeConfirmationRequest
+      - customer_identifier
+      - customer_aws_account_id
+      title: AmazonMarketplaceCustomerDetails
     InternalDevelopmentSubscription:
       properties:
         id:
@@ -666,65 +679,6 @@ components:
       - stoppedTime
       - state
       title: InternalDevelopmentSubscription
-    AmazonMarketplaceCustomerDetails:
-      properties:
-        customer_identifier:
-          type: string
-          title: Customer Identifier
-        customer_aws_account_id:
-          type: string
-          title: Customer Aws Account Id
-      type: object
-      required:
-      - customer_identifier
-      - customer_aws_account_id
-      title: AmazonMarketplaceCustomerDetails
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    SubscriptionState:
-      type: string
-      enum:
-      - PENDING
-      - ACTIVE
-      - ACTIVE_PROBATION
-      - FAILED
-      - STOPPED
-      title: SubscriptionState
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
     StripeSubscription:
       properties:
         id:
@@ -763,6 +717,52 @@ components:
       - state
       - stripeCustomerId
       title: StripeSubscription
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    UpgradeConfirmationRequest:
+      properties:
+        setup_intent_id:
+          type: string
+          title: Setup Intent Id
+      type: object
+      required:
+      - setup_intent_id
+      title: UpgradeConfirmationRequest
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
   securitySchemes:
     bearerToken:
       type: http

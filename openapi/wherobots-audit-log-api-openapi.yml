@@ -242,6 +242,66 @@ components:
       - details
       - path
       title: ErrorInfo
+    CursorPage__T_Customized_AuditLogEventPublic_:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/AuditLogEventPublic'
+          type: array
+          title: Items
+        total:
+          type: integer
+          minimum: 0.0
+          title: Total
+        current_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page
+          description: Cursor to refetch the current page
+        current_page_backwards:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page Backwards
+          description: Cursor to refetch the current page starting from the last item
+        previous_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previous Page
+          description: Cursor for the previous page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+          description: Cursor for the next page
+      type: object
+      required:
+      - items
+      - total
+      title: CursorPage[~T]Customized[AuditLogEventPublic]
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
     AuditLogEventPublic:
       properties:
         event_id:
@@ -303,66 +363,6 @@ components:
       required:
       - action_name
       title: AuditLogEventPublic
-    CursorPage__T_Customized_AuditLogEventPublic_:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/AuditLogEventPublic'
-          type: array
-          title: Items
-        total:
-          type: integer
-          minimum: 0.0
-          title: Total
-        current_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Current Page
-          description: Cursor to refetch the current page
-        current_page_backwards:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Current Page Backwards
-          description: Cursor to refetch the current page starting from the last item
-        previous_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Previous Page
-          description: Cursor for the previous page
-        next_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Next Page
-          description: Cursor for the next page
-      type: object
-      required:
-      - items
-      - total
-      title: CursorPage[~T]Customized[AuditLogEventPublic]
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
     ErrorBody:
       properties:
         errors:

@@ -572,6 +572,33 @@ paths:
       x-excluded: true
 components:
   schemas:
+    Directory:
+      properties:
+        name:
+          type: string
+          title: Name
+        path:
+          type: string
+          title: Path
+        mutateProtected:
+          type: boolean
+          title: Mutateprotected
+          default: false
+        uploadProtected:
+          type: boolean
+          title: Uploadprotected
+          default: false
+        files:
+          items:
+            $ref: '#/components/schemas/FileEntry'
+          type: array
+          title: Files
+          default: []
+      type: object
+      required:
+      - name
+      - path
+      title: Directory
     ErrorInfo:
       properties:
         code:
@@ -613,39 +640,15 @@ components:
       - details
       - path
       title: ErrorInfo
-    Directory:
+    src__routers__files__UploadUrlResponse:
       properties:
-        name:
+        uploadUrl:
           type: string
-          title: Name
-        path:
-          type: string
-          title: Path
-        mutateProtected:
-          type: boolean
-          title: Mutateprotected
-          default: false
-        uploadProtected:
-          type: boolean
-          title: Uploadprotected
-          default: false
-        files:
-          items:
-            $ref: '#/components/schemas/FileEntry'
-          type: array
-          title: Files
-          default: []
+          title: Uploadurl
       type: object
       required:
-      - name
-      - path
-      title: Directory
-    FileEntryType:
-      type: string
-      enum:
-      - FILE
-      - FOLDER
-      title: FileEntryType
+      - uploadUrl
+      title: UploadUrlResponse
     IngestCredentials:
       properties:
         accessKeyId:
@@ -668,6 +671,12 @@ components:
       - sessionToken
       - expiration
       title: IngestCredentials
+    FileEntryType:
+      type: string
+      enum:
+      - FILE
+      - FOLDER
+      title: FileEntryType
     ErrorClass:
       type: string
       enum:
@@ -688,32 +697,6 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    src__routers__files__UploadUrlResponse:
-      properties:
-        uploadUrl:
-          type: string
-          title: Uploadurl
-      type: object
-      required:
-      - uploadUrl
-      title: UploadUrlResponse
     FileEntry:
       properties:
         name:
@@ -744,6 +727,23 @@ components:
       - path
       - type
       title: FileEntry
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
   securitySchemes:
     bearerToken:
       type: http
