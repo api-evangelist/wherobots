@@ -581,168 +581,50 @@ paths:
       x-excluded: true
 components:
   schemas:
-    CloudConnectionBinding:
-      properties:
-        kind:
-          type: string
-          enum:
-          - storage_integration
-          - glue_catalog
-          - s3tables_catalog
-          title: Kind
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - kind
-      - id
-      - name
-      title: CloudConnectionBinding
-      description: 'A resource that references (is "bound" to) a cloud connection.
-
-
-        The binding kinds live in different databases (storage integrations in
-
-        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
-
-        only the minimal cross-db-friendly shape: kind, id, and display name.'
-    ErrorInfo:
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
-          type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
-      type: object
-      required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    AwsGlueForeignCatalogRead:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Unique external ID of the foreign catalog.
-        name:
-          type: string
-          title: Name
-          description: Name of the foreign catalog.
-        type:
-          type: string
-          const: AWS_GLUE
-          title: Type
-          description: Type of the foreign catalog. Must be 'AWS_GLUE'.
-        region:
-          type: string
-          title: Region
-          description: AWS region where the Glue catalog lives.
-        s3Path:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: S3Path
-        accessType:
-          $ref: '#/components/schemas/ForeignCatalogAccessType'
-        stackName:
-          type: string
-          title: Stackname
-          description: CloudFormation stack name backing this Glue catalog.
-        cloudConnection:
-          $ref: '#/components/schemas/CloudConnectionRead'
-          description: Resolved cloud connection details.
-      type: object
-      required:
-      - id
-      - name
-      - type
-      - region
-      - accessType
-      - stackName
-      - cloudConnection
-      title: AwsGlueForeignCatalogRead
-    CloudProvider:
-      type: string
-      enum:
-      - AWS
-      title: CloudProvider
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    UnityDeltaForeignCatalogCreate:
+    UnityIcebergForeignCatalogUpdate:
       properties:
         type:
           type: string
-          const: UNITY_DELTA
+          const: UNITY_ICEBERG
           title: Type
-          description: Type of the foreign catalog.
+          description: Type of the foreign catalog. Must be 'UNITY_ICEBERG'.
         name:
-          type: string
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Name
-          description: Name of the foreign catalog.
+          description: Updated name of the foreign catalog.
         serverUrl:
-          type: string
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Serverurl
-          description: URL of the Unity Delta server.
-        token:
-          type: string
-          title: Token
-          description: Personal access token for authentication.
+          description: Updated URL of the Unity Iceberg server.
+        oauthClientId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Oauthclientid
+          description: Updated OAuth client ID.
+        oauthClientSecret:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Oauthclientsecret
+          description: Updated OAuth client secret.
+        alias:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Alias
+          description: Updated optional alias.
       type: object
       required:
       - type
-      - name
-      - serverUrl
-      - token
-      title: UnityDeltaForeignCatalogCreate
-      description: Request model for creating a Unity Delta foreign catalog.
+      title: UnityIcebergForeignCatalogUpdate
+      description: 'Request model for updating a Unity Iceberg foreign catalog.
+
+        Used for OpenAPI schema generation.'
     S3TablesForeignCatalogCreate:
       properties:
         type:
@@ -775,6 +657,24 @@ components:
       - accessType
       title: S3TablesForeignCatalogCreate
       description: Request model for creating an Amazon S3 Tables foreign catalog.
+    AwsGlueForeignCatalogUpdate:
+      properties:
+        type:
+          type: string
+          const: AWS_GLUE
+          title: Type
+          description: Type of the foreign catalog. Must be 'AWS_GLUE'.
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Updated name of the foreign catalog.
+      type: object
+      required:
+      - type
+      title: AwsGlueForeignCatalogUpdate
+      description: Request model for updating an AWS Glue foreign catalog.
     UnityDeltaForeignCatalogUpdate:
       properties:
         type:
@@ -807,6 +707,123 @@ components:
       description: 'Request model for updating a Unity Delta foreign catalog.
 
         Used for OpenAPI schema generation.'
+    ForeignCatalogAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: ForeignCatalogAccessType
+      description: Enum for foreign catalog access modes (e.g. read-only vs. read-write).
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    S3TablesForeignCatalogRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique external ID of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        type:
+          type: string
+          const: S3_TABLES
+          title: Type
+          description: Type of the foreign catalog. Must be 'S3_TABLES'.
+        region:
+          type: string
+          title: Region
+          description: AWS region where the table bucket lives.
+        tableBucketArn:
+          type: string
+          title: Tablebucketarn
+          description: ARN of the S3 Tables table bucket this catalog exposes.
+        accessType:
+          $ref: '#/components/schemas/ForeignCatalogAccessType'
+        stackName:
+          type: string
+          title: Stackname
+          description: CloudFormation stack name backing this S3 Tables catalog.
+        cloudConnection:
+          $ref: '#/components/schemas/CloudConnectionRead'
+          description: Resolved cloud connection details.
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - region
+      - tableBucketArn
+      - accessType
+      - stackName
+      - cloudConnection
+      title: S3TablesForeignCatalogRead
+    S3TablesForeignCatalogUpdate:
+      properties:
+        type:
+          type: string
+          const: S3_TABLES
+          title: Type
+          description: Type of the foreign catalog. Must be 'S3_TABLES'.
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+          description: Updated name of the foreign catalog.
+      type: object
+      required:
+      - type
+      title: S3TablesForeignCatalogUpdate
+      description: Request model for updating an Amazon S3 Tables foreign catalog.
+    IcebergForeignCatalogRead:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique external ID of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        serverUrl:
+          type: string
+          title: Serverurl
+          description: URL of the foreign catalog server.
+        type:
+          type: string
+          const: UNITY_ICEBERG
+          title: Type
+          description: Type of the foreign catalog. Must be 'UNITY_DELTA'.
+        oauthClientId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Oauthclientid
+          description: OAuth client ID.
+      type: object
+      required:
+      - id
+      - name
+      - serverUrl
+      - type
+      title: IcebergForeignCatalogRead
     CloudConnectionRead:
       properties:
         id:
@@ -864,6 +881,38 @@ components:
       - managedBy
       - createdAt
       title: CloudConnectionRead
+    UnityDeltaForeignCatalogCreate:
+      properties:
+        type:
+          type: string
+          const: UNITY_DELTA
+          title: Type
+          description: Type of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
+        serverUrl:
+          type: string
+          title: Serverurl
+          description: URL of the Unity Delta server.
+        token:
+          type: string
+          title: Token
+          description: Personal access token for authentication.
+      type: object
+      required:
+      - type
+      - name
+      - serverUrl
+      - token
+      title: UnityDeltaForeignCatalogCreate
+      description: Request model for creating a Unity Delta foreign catalog.
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
     AwsGlueForeignCatalogCreate:
       properties:
         type:
@@ -901,38 +950,26 @@ components:
       - accessType
       title: AwsGlueForeignCatalogCreate
       description: Request model for creating an AWS Glue foreign catalog.
-    IcebergForeignCatalogRead:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Unique external ID of the foreign catalog.
-        name:
-          type: string
-          title: Name
-          description: Name of the foreign catalog.
-        serverUrl:
-          type: string
-          title: Serverurl
-          description: URL of the foreign catalog server.
-        type:
-          type: string
-          const: UNITY_ICEBERG
-          title: Type
-          description: Type of the foreign catalog. Must be 'UNITY_DELTA'.
-        oauthClientId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Oauthclientid
-          description: OAuth client ID.
-      type: object
-      required:
-      - id
-      - name
-      - serverUrl
-      - type
-      title: IcebergForeignCatalogRead
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
     UnityIcebergForeignCatalogCreate:
       properties:
         type:
@@ -971,113 +1008,76 @@ components:
       - oauthClientSecret
       title: UnityIcebergForeignCatalogCreate
       description: Request model for creating a Unity Iceberg foreign catalog.
-    S3TablesForeignCatalogRead:
+    ErrorInfo:
       properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    CloudConnectionBinding:
+      properties:
+        kind:
+          type: string
+          enum:
+          - storage_integration
+          - glue_catalog
+          - s3tables_catalog
+          title: Kind
         id:
           type: string
           title: Id
-          description: Unique external ID of the foreign catalog.
         name:
           type: string
           title: Name
-          description: Name of the foreign catalog.
-        type:
-          type: string
-          const: S3_TABLES
-          title: Type
-          description: Type of the foreign catalog. Must be 'S3_TABLES'.
-        region:
-          type: string
-          title: Region
-          description: AWS region where the table bucket lives.
-        tableBucketArn:
-          type: string
-          title: Tablebucketarn
-          description: ARN of the S3 Tables table bucket this catalog exposes.
-        accessType:
-          $ref: '#/components/schemas/ForeignCatalogAccessType'
-        stackName:
-          type: string
-          title: Stackname
-          description: CloudFormation stack name backing this S3 Tables catalog.
-        cloudConnection:
-          $ref: '#/components/schemas/CloudConnectionRead'
-          description: Resolved cloud connection details.
       type: object
       required:
+      - kind
       - id
       - name
-      - type
-      - region
-      - tableBucketArn
-      - accessType
-      - stackName
-      - cloudConnection
-      title: S3TablesForeignCatalogRead
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    UnityIcebergForeignCatalogUpdate:
-      properties:
-        type:
-          type: string
-          const: UNITY_ICEBERG
-          title: Type
-          description: Type of the foreign catalog. Must be 'UNITY_ICEBERG'.
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-          description: Updated name of the foreign catalog.
-        serverUrl:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Serverurl
-          description: Updated URL of the Unity Iceberg server.
-        oauthClientId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Oauthclientid
-          description: Updated OAuth client ID.
-        oauthClientSecret:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Oauthclientsecret
-          description: Updated OAuth client secret.
-        alias:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Alias
-          description: Updated optional alias.
-      type: object
-      required:
-      - type
-      title: UnityIcebergForeignCatalogUpdate
-      description: 'Request model for updating a Unity Iceberg foreign catalog.
+      title: CloudConnectionBinding
+      description: 'A resource that references (is "bound" to) a cloud connection.
 
-        Used for OpenAPI schema generation.'
+
+        The binding kinds live in different databases (storage integrations in
+
+        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
+
+        only the minimal cross-db-friendly shape: kind, id, and display name.'
     DeltaForeignCatalogRead:
       properties:
         id:
@@ -1104,54 +1104,54 @@ components:
       - serverUrl
       - type
       title: DeltaForeignCatalogRead
-    CloudConnectionManagedBy:
-      type: string
-      enum:
-      - CLOUDFORMATION
-      title: CloudConnectionManagedBy
-    AwsGlueForeignCatalogUpdate:
+    AwsGlueForeignCatalogRead:
       properties:
+        id:
+          type: string
+          title: Id
+          description: Unique external ID of the foreign catalog.
+        name:
+          type: string
+          title: Name
+          description: Name of the foreign catalog.
         type:
           type: string
           const: AWS_GLUE
           title: Type
           description: Type of the foreign catalog. Must be 'AWS_GLUE'.
-        name:
+        region:
+          type: string
+          title: Region
+          description: AWS region where the Glue catalog lives.
+        s3Path:
           anyOf:
           - type: string
           - type: 'null'
-          title: Name
-          description: Updated name of the foreign catalog.
+          title: S3Path
+        accessType:
+          $ref: '#/components/schemas/ForeignCatalogAccessType'
+        stackName:
+          type: string
+          title: Stackname
+          description: CloudFormation stack name backing this Glue catalog.
+        cloudConnection:
+          $ref: '#/components/schemas/CloudConnectionRead'
+          description: Resolved cloud connection details.
       type: object
       required:
+      - id
+      - name
       - type
-      title: AwsGlueForeignCatalogUpdate
-      description: Request model for updating an AWS Glue foreign catalog.
-    ForeignCatalogAccessType:
+      - region
+      - accessType
+      - stackName
+      - cloudConnection
+      title: AwsGlueForeignCatalogRead
+    CloudProvider:
       type: string
       enum:
-      - READ
-      - READ_WRITE
-      title: ForeignCatalogAccessType
-      description: Enum for foreign catalog access modes (e.g. read-only vs. read-write).
-    S3TablesForeignCatalogUpdate:
-      properties:
-        type:
-          type: string
-          const: S3_TABLES
-          title: Type
-          description: Type of the foreign catalog. Must be 'S3_TABLES'.
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-          description: Updated name of the foreign catalog.
-      type: object
-      required:
-      - type
-      title: S3TablesForeignCatalogUpdate
-      description: Request model for updating an Amazon S3 Tables foreign catalog.
+      - AWS
+      title: CloudProvider
   securitySchemes:
     bearerToken:
       type: http

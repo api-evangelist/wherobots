@@ -223,47 +223,56 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorInfo:
+    ErrorBody:
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
           type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
       required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
+      - errors
+      - requestId
+      title: ErrorBody
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
     HumanPrincipal:
       properties:
         id:
@@ -309,45 +318,6 @@ components:
       - policies
       - email
       title: HumanPrincipal
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    Role-Output:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
     Provider:
       type: string
       enum:
@@ -374,6 +344,12 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
     Policy:
       properties:
         id:
@@ -410,23 +386,47 @@ components:
       - action
       - effect
       title: Policy
-    ErrorBody:
+    ErrorInfo:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
       type: object
       required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
   securitySchemes:
     bearerToken:
       type: http

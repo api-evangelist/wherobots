@@ -292,115 +292,23 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ApiKey:
+    ErrorBody:
       properties:
-        id:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
           type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        partialApiKey:
-          type: string
-          title: Partialapikey
-          description: 'Deprecated: use `preview` instead.'
-          deprecated: true
-        preview:
-          type: string
-          title: Preview
-          description: Display form of the key, e.g. `abc123...wxyz`.
-        name:
-          type: string
-          title: Name
-        valid:
-          type: boolean
-          title: Valid
-        revoked:
-          type: boolean
-          title: Revoked
-        expiresAt:
-          type: string
-          format: date-time
-          title: Expiresat
-        createdById:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Createdbyid
-        createdBy:
-          anyOf:
-          - $ref: '#/components/schemas/OrganizationCustomer'
-          - type: 'null'
-        ownedBy:
-          anyOf:
-          - $ref: '#/components/schemas/OrganizationCustomer'
-          - type: 'null'
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
       required:
-      - id
-      - createTime
-      - updateTime
-      - partialApiKey
-      - preview
-      - name
-      - valid
-      - revoked
-      - expiresAt
-      - createdById
-      - createdBy
-      title: ApiKey
-    ErrorInfo:
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
-          type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
-      type: object
-      required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
+      - errors
+      - requestId
+      title: ErrorBody
     Role-Output:
       properties:
         id:
@@ -434,42 +342,47 @@ components:
       - organizationId
       - policies
       title: Role
+    OrganizationCustomer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - roles
+      title: OrganizationCustomer
     Provider:
       type: string
       enum:
       - WHEROBOTS
       - AWS
       title: Provider
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    UpdateApiKeyRequest:
-      properties:
-        expiresAt:
-          type: string
-          format: date-time
-          title: Expiresat
-      type: object
-      required:
-      - expiresAt
-      title: UpdateApiKeyRequest
     CreateApiKeyResponse:
       properties:
         id:
@@ -536,6 +449,62 @@ components:
       - createdBy
       - key
       title: CreateApiKeyResponse
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    CreateApiKeyRequest:
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          title: Name
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+        ownedById:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Ownedbyid
+      type: object
+      required:
+      - name
+      - expiresAt
+      title: CreateApiKeyRequest
+    UpdateApiKeyRequest:
+      properties:
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+      type: object
+      required:
+      - expiresAt
+      title: UpdateApiKeyRequest
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
     Policy:
       properties:
         id:
@@ -572,7 +541,48 @@ components:
       - action
       - effect
       title: Policy
-    OrganizationCustomer:
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    ApiKey:
       properties:
         id:
           type: string
@@ -585,65 +595,55 @@ components:
           type: string
           format: date-time
           title: Updatetime
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
+        partialApiKey:
+          type: string
+          title: Partialapikey
+          description: 'Deprecated: use `preview` instead.'
+          deprecated: true
+        preview:
+          type: string
+          title: Preview
+          description: Display form of the key, e.g. `abc123...wxyz`.
         name:
+          type: string
+          title: Name
+        valid:
+          type: boolean
+          title: Valid
+        revoked:
+          type: boolean
+          title: Revoked
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+        createdById:
           anyOf:
           - type: string
           - type: 'null'
-          title: Name
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
+          title: Createdbyid
+        createdBy:
+          anyOf:
+          - $ref: '#/components/schemas/OrganizationCustomer'
+          - type: 'null'
+        ownedBy:
+          anyOf:
+          - $ref: '#/components/schemas/OrganizationCustomer'
+          - type: 'null'
       type: object
       required:
       - id
       - createTime
       - updateTime
-      - roles
-      title: OrganizationCustomer
-    CreateApiKeyRequest:
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          title: Name
-        expiresAt:
-          type: string
-          format: date-time
-          title: Expiresat
-        ownedById:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Ownedbyid
-      type: object
-      required:
+      - partialApiKey
+      - preview
       - name
+      - valid
+      - revoked
       - expiresAt
-      title: CreateApiKeyRequest
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - createdById
+      - createdBy
+      title: ApiKey
   securitySchemes:
     bearerToken:
       type: http

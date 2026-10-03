@@ -572,33 +572,45 @@ paths:
       x-excluded: true
 components:
   schemas:
-    Directory:
+    ErrorBody:
       properties:
-        name:
-          type: string
-          title: Name
-        path:
-          type: string
-          title: Path
-        mutateProtected:
-          type: boolean
-          title: Mutateprotected
-          default: false
-        uploadProtected:
-          type: boolean
-          title: Uploadprotected
-          default: false
-        files:
+        errors:
           items:
-            $ref: '#/components/schemas/FileEntry'
+            $ref: '#/components/schemas/ErrorInfo'
           type: array
-          title: Files
-          default: []
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
       required:
-      - name
-      - path
-      title: Directory
+      - errors
+      - requestId
+      title: ErrorBody
+    IngestCredentials:
+      properties:
+        accessKeyId:
+          type: string
+          title: Accesskeyid
+        secretAccessKey:
+          type: string
+          title: Secretaccesskey
+        sessionToken:
+          type: string
+          title: Sessiontoken
+        expiration:
+          type: string
+          format: date-time
+          title: Expiration
+      type: object
+      required:
+      - accessKeyId
+      - secretAccessKey
+      - sessionToken
+      - expiration
+      title: IngestCredentials
     ErrorInfo:
       properties:
         code:
@@ -640,37 +652,6 @@ components:
       - details
       - path
       title: ErrorInfo
-    src__routers__files__UploadUrlResponse:
-      properties:
-        uploadUrl:
-          type: string
-          title: Uploadurl
-      type: object
-      required:
-      - uploadUrl
-      title: UploadUrlResponse
-    IngestCredentials:
-      properties:
-        accessKeyId:
-          type: string
-          title: Accesskeyid
-        secretAccessKey:
-          type: string
-          title: Secretaccesskey
-        sessionToken:
-          type: string
-          title: Sessiontoken
-        expiration:
-          type: string
-          format: date-time
-          title: Expiration
-      type: object
-      required:
-      - accessKeyId
-      - secretAccessKey
-      - sessionToken
-      - expiration
-      title: IngestCredentials
     FileEntryType:
       type: string
       enum:
@@ -697,6 +678,15 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
+    src__routers__files__UploadUrlResponse:
+      properties:
+        uploadUrl:
+          type: string
+          title: Uploadurl
+      type: object
+      required:
+      - uploadUrl
+      title: UploadUrlResponse
     FileEntry:
       properties:
         name:
@@ -727,23 +717,33 @@ components:
       - path
       - type
       title: FileEntry
-    ErrorBody:
+    Directory:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        name:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+          title: Name
+        path:
+          type: string
+          title: Path
+        mutateProtected:
+          type: boolean
+          title: Mutateprotected
+          default: false
+        uploadProtected:
+          type: boolean
+          title: Uploadprotected
+          default: false
+        files:
+          items:
+            $ref: '#/components/schemas/FileEntry'
+          type: array
+          title: Files
+          default: []
       type: object
       required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - name
+      - path
+      title: Directory
   securitySchemes:
     bearerToken:
       type: http

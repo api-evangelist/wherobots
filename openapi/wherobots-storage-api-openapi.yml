@@ -1210,76 +1210,26 @@ paths:
       x-excluded: true
 components:
   schemas:
-    CloudConnectionBinding:
+    StorageIntegrationAccess:
       properties:
-        kind:
-          type: string
-          enum:
-          - storage_integration
-          - glue_catalog
-          - s3tables_catalog
-          title: Kind
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
+        listAccess:
+          type: boolean
+          title: Listaccess
+          default: false
+        getAccess:
+          type: boolean
+          title: Getaccess
+          default: false
+        putAccess:
+          type: boolean
+          title: Putaccess
+          default: false
+        deleteAccess:
+          type: boolean
+          title: Deleteaccess
+          default: false
       type: object
-      required:
-      - kind
-      - id
-      - name
-      title: CloudConnectionBinding
-      description: 'A resource that references (is "bound" to) a cloud connection.
-
-
-        The binding kinds live in different databases (storage integrations in
-
-        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
-
-        only the minimal cross-db-friendly shape: kind, id, and display name.'
-    ErrorInfo:
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
-          type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
-      type: object
-      required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
+      title: StorageIntegrationAccess
     S3AccessType:
       type: string
       enum:
@@ -1287,11 +1237,128 @@ components:
       - requester_pays
       - private
       title: S3AccessType
-    CloudProvider:
+    FileEntryType:
       type: string
       enum:
-      - AWS
-      title: CloudProvider
+      - FILE
+      - FOLDER
+      title: FileEntryType
+    StorageIntegrationAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: StorageIntegrationAccessType
+    StorageCredentialsRequest:
+      properties:
+        path:
+          type: string
+          maxLength: 1024
+          minLength: 6
+          pattern: ^s3:\/\/([a-zA-Z0-9\-_]{3,63})(?:\/?|\/([a-zA-Z0-9!_.*'()/&=-]+))?$
+          title: Path
+          description: S3 URI (e.g. s3://bucket/prefix) to obtain credentials for.
+        access_mode:
+          type: string
+          enum:
+          - read
+          - read_write
+          title: Access Mode
+          description: Access mode for the credentials. 'read' returns read-only credentials; 'read_write' returns credentials that also allow writing.
+          default: read
+      type: object
+      required:
+      - path
+      title: StorageCredentialsRequest
+      description: Request body for the unified storage credentials endpoint.
+    DirectoryListingResult:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/FileEntry'
+          type: array
+          title: Items
+        path:
+          type: string
+          title: Path
+        name:
+          type: string
+          title: Name
+        mutate_protected:
+          type: boolean
+          title: Mutate Protected
+          default: false
+        upload_protected:
+          type: boolean
+          title: Upload Protected
+          default: false
+        current_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - items
+      - path
+      - name
+      title: DirectoryListingResult
+      description: Result of a directory listing operation.
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    TemporaryAwsCredentials:
+      properties:
+        accessKeyId:
+          type: string
+          title: Accesskeyid
+        secretAccessKey:
+          type: string
+          title: Secretaccesskey
+        sessionToken:
+          type: string
+          title: Sessiontoken
+        expiration:
+          type: string
+          format: date-time
+          title: Expiration
+        region:
+          type: string
+          title: Region
+      type: object
+      required:
+      - accessKeyId
+      - secretAccessKey
+      - sessionToken
+      - expiration
+      - region
+      title: TemporaryAwsCredentials
+      description: Temporary AWS STS credentials with an expiration timestamp and region.
+    StorageSourceType:
+      type: string
+      enum:
+      - INTEGRATION
+      - MANAGED
+      title: StorageSourceType
     CreateStorageIntegrationAPIPayload:
       properties:
         name:
@@ -1329,86 +1396,14 @@ components:
       - name
       - path
       title: CreateStorageIntegrationAPIPayload
-    FileEntry:
+    S3AccessApiResponse:
       properties:
-        name:
-          type: string
-          title: Name
-        path:
-          type: string
-          title: Path
-        type:
-          $ref: '#/components/schemas/FileEntryType'
-        lastModified:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Lastmodified
-        size:
-          type: integer
-          title: Size
-          default: 0
-        protected:
-          type: boolean
-          title: Protected
-          default: false
+        accessType:
+          $ref: '#/components/schemas/S3AccessType'
       type: object
       required:
-      - name
-      - path
-      - type
-      title: FileEntry
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    StorageIntegrationAccess:
-      properties:
-        listAccess:
-          type: boolean
-          title: Listaccess
-          default: false
-        getAccess:
-          type: boolean
-          title: Getaccess
-          default: false
-        putAccess:
-          type: boolean
-          title: Putaccess
-          default: false
-        deleteAccess:
-          type: boolean
-          title: Deleteaccess
-          default: false
-      type: object
-      title: StorageIntegrationAccess
-    src__routers__storageintegration__UploadUrlResponse:
-      properties:
-        destination:
-          type: string
-          title: Destination
-        uploadUrl:
-          type: string
-          title: Uploadurl
-      type: object
-      required:
-      - destination
-      - uploadUrl
-      title: UploadUrlResponse
+      - accessType
+      title: S3AccessApiResponse
     CloudConnectionRead:
       properties:
         id:
@@ -1466,77 +1461,54 @@ components:
       - managedBy
       - createdAt
       title: CloudConnectionRead
-    DirectoryListingResult:
+    src__routers__storageintegration__UploadUrlResponse:
       properties:
-        items:
-          items:
-            $ref: '#/components/schemas/FileEntry'
-          type: array
-          title: Items
-        path:
+        destination:
           type: string
-          title: Path
+          title: Destination
+        uploadUrl:
+          type: string
+          title: Uploadurl
+      type: object
+      required:
+      - destination
+      - uploadUrl
+      title: UploadUrlResponse
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
+    FileEntry:
+      properties:
         name:
           type: string
           title: Name
-        mutate_protected:
-          type: boolean
-          title: Mutate Protected
-          default: false
-        upload_protected:
-          type: boolean
-          title: Upload Protected
-          default: false
-        current_page:
+        path:
+          type: string
+          title: Path
+        type:
+          $ref: '#/components/schemas/FileEntryType'
+        lastModified:
           anyOf:
           - type: string
+            format: date-time
           - type: 'null'
-          title: Current Page
-        next_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Next Page
+          title: Lastmodified
+        size:
+          type: integer
+          title: Size
+          default: 0
+        protected:
+          type: boolean
+          title: Protected
+          default: false
       type: object
       required:
-      - items
-      - path
       - name
-      title: DirectoryListingResult
-      description: Result of a directory listing operation.
-    TemporaryAwsCredentials:
-      properties:
-        accessKeyId:
-          type: string
-          title: Accesskeyid
-        secretAccessKey:
-          type: string
-          title: Secretaccesskey
-        sessionToken:
-          type: string
-          title: Sessiontoken
-        expiration:
-          type: string
-          format: date-time
-          title: Expiration
-        region:
-          type: string
-          title: Region
-      type: object
-      required:
-      - accessKeyId
-      - secretAccessKey
-      - sessionToken
-      - expiration
-      - region
-      title: TemporaryAwsCredentials
-      description: Temporary AWS STS credentials with an expiration timestamp and region.
-    FileEntryType:
-      type: string
-      enum:
-      - FILE
-      - FOLDER
-      title: FileEntryType
+      - path
+      - type
+      title: FileEntry
     ErrorClass:
       type: string
       enum:
@@ -1557,23 +1529,47 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    StorageSourceType:
-      type: string
-      enum:
-      - INTEGRATION
-      - MANAGED
-      title: StorageSourceType
-    CloudConnectionManagedBy:
-      type: string
-      enum:
-      - CLOUDFORMATION
-      title: CloudConnectionManagedBy
-    StorageIntegrationAccessType:
-      type: string
-      enum:
-      - READ
-      - READ_WRITE
-      title: StorageIntegrationAccessType
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
     StorageSource:
       properties:
         id:
@@ -1631,36 +1627,40 @@ components:
       - region
       - type
       title: StorageSource
-    S3AccessApiResponse:
+    CloudConnectionBinding:
       properties:
-        accessType:
-          $ref: '#/components/schemas/S3AccessType'
-      type: object
-      required:
-      - accessType
-      title: S3AccessApiResponse
-    StorageCredentialsRequest:
-      properties:
-        path:
-          type: string
-          maxLength: 1024
-          minLength: 6
-          pattern: ^s3:\/\/([a-zA-Z0-9\-_]{3,63})(?:\/?|\/([a-zA-Z0-9!_.*'()/&=-]+))?$
-          title: Path
-          description: S3 URI (e.g. s3://bucket/prefix) to obtain credentials for.
-        access_mode:
+        kind:
           type: string
           enum:
-          - read
-          - read_write
-          title: Access Mode
-          description: Access mode for the credentials. 'read' returns read-only credentials; 'read_write' returns credentials that also allow writing.
-          default: read
+          - storage_integration
+          - glue_catalog
+          - s3tables_catalog
+          title: Kind
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
       type: object
       required:
-      - path
-      title: StorageCredentialsRequest
-      description: Request body for the unified storage credentials endpoint.
+      - kind
+      - id
+      - name
+      title: CloudConnectionBinding
+      description: 'A resource that references (is "bound" to) a cloud connection.
+
+
+        The binding kinds live in different databases (storage integrations in
+
+        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
+
+        only the minimal cross-db-friendly shape: kind, id, and display name.'
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
   securitySchemes:
     bearerToken:
       type: http

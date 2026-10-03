@@ -201,87 +201,23 @@ paths:
       x-excluded: false
 components:
   schemas:
-    ErrorInfo:
+    ErrorBody:
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
-          type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
-      type: object
-      required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    CursorPage__T_Customized_AuditLogEventPublic_:
-      properties:
-        items:
+        errors:
           items:
-            $ref: '#/components/schemas/AuditLogEventPublic'
+            $ref: '#/components/schemas/ErrorInfo'
           type: array
-          title: Items
-        total:
-          type: integer
-          minimum: 0.0
-          title: Total
-        current_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Current Page
-          description: Cursor to refetch the current page
-        current_page_backwards:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Current Page Backwards
-          description: Cursor to refetch the current page starting from the last item
-        previous_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Previous Page
-          description: Cursor for the previous page
-        next_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Next Page
-          description: Cursor for the next page
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
       required:
-      - items
-      - total
-      title: CursorPage[~T]Customized[AuditLogEventPublic]
+      - errors
+      - requestId
+      title: ErrorBody
     ErrorClass:
       type: string
       enum:
@@ -363,23 +299,87 @@ components:
       required:
       - action_name
       title: AuditLogEventPublic
-    ErrorBody:
+    ErrorInfo:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
       type: object
       required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    CursorPage__T_Customized_AuditLogEventPublic_:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/AuditLogEventPublic'
+          type: array
+          title: Items
+        total:
+          type: integer
+          minimum: 0.0
+          title: Total
+        current_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page
+          description: Cursor to refetch the current page
+        current_page_backwards:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page Backwards
+          description: Cursor to refetch the current page starting from the last item
+        previous_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previous Page
+          description: Cursor for the previous page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+          description: Cursor for the next page
+      type: object
+      required:
+      - items
+      - total
+      title: CursorPage[~T]Customized[AuditLogEventPublic]
   securitySchemes:
     bearerToken:
       type: http

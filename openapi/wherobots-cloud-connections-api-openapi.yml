@@ -1065,112 +1065,40 @@ paths:
       x-excluded: true
 components:
   schemas:
-    CloudConnectionBinding:
-      properties:
-        kind:
-          type: string
-          enum:
-          - storage_integration
-          - glue_catalog
-          - s3tables_catalog
-          title: Kind
-        id:
-          type: string
-          title: Id
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - kind
-      - id
-      - name
-      title: CloudConnectionBinding
-      description: 'A resource that references (is "bound" to) a cloud connection.
-
-
-        The binding kinds live in different databases (storage integrations in
-
-        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
-
-        only the minimal cross-db-friendly shape: kind, id, and display name.'
-    ErrorInfo:
-      properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
-          type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
-      type: object
-      required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    AwsCloudConnectionCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-          minLength: 1
-          title: Name
-          description: Display name for the cloud connection
-        awsAccountId:
-          type: string
-          title: Awsaccountid
-          description: The AWS account ID to connect
-        trustedAccountIds:
-          anyOf:
-          - items:
-              type: string
-            type: array
-            maxItems: 20
-          - type: 'null'
-          title: Trustedaccountids
-          description: BYOC compute AWS accounts whose workloads may assume this connection's role
-        allowSaas:
-          type: boolean
-          title: Allowsaas
-          description: Whether Wherobots SaaS-hosted compute may use this connection (trusts the control-plane account)
-          default: true
-      type: object
-      required:
-      - name
-      - awsAccountId
-      title: AwsCloudConnectionCreate
-    CloudProvider:
+    BindingAccessStatus:
       type: string
       enum:
-      - AWS
-      title: CloudProvider
+      - OK
+      - DENIED
+      - FAILED
+      title: BindingAccessStatus
+    RoleAssumptionStatus:
+      type: string
+      enum:
+      - OK
+      - FAILED
+      title: RoleAssumptionStatus
+    BindingAccessChecks:
+      properties:
+        list:
+          type: boolean
+          title: List
+        get:
+          type: boolean
+          title: Get
+        put:
+          type: boolean
+          title: Put
+        delete:
+          type: boolean
+          title: Delete
+      type: object
+      required:
+      - list
+      - get
+      - put
+      - delete
+      title: BindingAccessChecks
     BindingAccessResult:
       properties:
         status:
@@ -1187,6 +1115,12 @@ components:
       - status
       - checks
       title: BindingAccessResult
+    StorageIntegrationAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: StorageIntegrationAccessType
     ErrorBody:
       properties:
         errors:
@@ -1204,12 +1138,43 @@ components:
       - errors
       - requestId
       title: ErrorBody
-    RoleAssumptionStatus:
-      type: string
-      enum:
-      - OK
-      - FAILED
-      title: RoleAssumptionStatus
+    CloudConnectionVerifyResponse:
+      properties:
+        roleAssumption:
+          $ref: '#/components/schemas/RoleAssumptionResult'
+        bindingAccess:
+          anyOf:
+          - $ref: '#/components/schemas/BindingAccessResult'
+          - type: 'null'
+      type: object
+      required:
+      - roleAssumption
+      - bindingAccess
+      title: CloudConnectionVerifyResponse
+    QuickCreateLinkResponse:
+      properties:
+        url:
+          type: string
+          title: Url
+          description: CloudFormation Quick-Create console URL
+        stackName:
+          type: string
+          title: Stackname
+          description: Recommended CloudFormation stack name
+      type: object
+      required:
+      - url
+      - stackName
+      title: QuickCreateLinkResponse
+      description: A CloudFormation Quick-Create console URL and its recommended stack name.
+    CloudConnectionVerifyRequest:
+      properties:
+        binding:
+          anyOf:
+          - $ref: '#/components/schemas/VerifyBindingPayload'
+          - type: 'null'
+      type: object
+      title: CloudConnectionVerifyRequest
     CloudConnectionRead:
       properties:
         id:
@@ -1267,27 +1232,11 @@ components:
       - managedBy
       - createdAt
       title: CloudConnectionRead
-    BindingAccessChecks:
-      properties:
-        list:
-          type: boolean
-          title: List
-        get:
-          type: boolean
-          title: Get
-        put:
-          type: boolean
-          title: Put
-        delete:
-          type: boolean
-          title: Delete
-      type: object
-      required:
-      - list
-      - get
-      - put
-      - delete
-      title: BindingAccessChecks
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
     ErrorClass:
       type: string
       enum:
@@ -1308,58 +1257,6 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    CloudConnectionVerifyRequest:
-      properties:
-        binding:
-          anyOf:
-          - $ref: '#/components/schemas/VerifyBindingPayload'
-          - type: 'null'
-      type: object
-      title: CloudConnectionVerifyRequest
-    CloudConnectionManagedBy:
-      type: string
-      enum:
-      - CLOUDFORMATION
-      title: CloudConnectionManagedBy
-    BindingAccessStatus:
-      type: string
-      enum:
-      - OK
-      - DENIED
-      - FAILED
-      title: BindingAccessStatus
-    StorageIntegrationAccessType:
-      type: string
-      enum:
-      - READ
-      - READ_WRITE
-      title: StorageIntegrationAccessType
-    CloudConnectionVerifyResponse:
-      properties:
-        roleAssumption:
-          $ref: '#/components/schemas/RoleAssumptionResult'
-        bindingAccess:
-          anyOf:
-          - $ref: '#/components/schemas/BindingAccessResult'
-          - type: 'null'
-      type: object
-      required:
-      - roleAssumption
-      - bindingAccess
-      title: CloudConnectionVerifyResponse
-    RoleAssumptionResult:
-      properties:
-        status:
-          $ref: '#/components/schemas/RoleAssumptionStatus'
-        reason:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Reason
-      type: object
-      required:
-      - status
-      title: RoleAssumptionResult
     VerifyBindingPayload:
       properties:
         type:
@@ -1384,6 +1281,120 @@ components:
         Only `storage` is supported in this phase. Glue resource bindings are
 
         handled in a later stream and are intentionally rejected here.'
+    ErrorInfo:
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
+          type: string
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
+      type: object
+      required:
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    RoleAssumptionResult:
+      properties:
+        status:
+          $ref: '#/components/schemas/RoleAssumptionStatus'
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reason
+      type: object
+      required:
+      - status
+      title: RoleAssumptionResult
+    CloudConnectionBinding:
+      properties:
+        kind:
+          type: string
+          enum:
+          - storage_integration
+          - glue_catalog
+          - s3tables_catalog
+          title: Kind
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - kind
+      - id
+      - name
+      title: CloudConnectionBinding
+      description: 'A resource that references (is "bound" to) a cloud connection.
+
+
+        The binding kinds live in different databases (storage integrations in
+
+        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
+
+        only the minimal cross-db-friendly shape: kind, id, and display name.'
+    AwsCloudConnectionCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+          minLength: 1
+          title: Name
+          description: Display name for the cloud connection
+        awsAccountId:
+          type: string
+          title: Awsaccountid
+          description: The AWS account ID to connect
+        trustedAccountIds:
+          anyOf:
+          - items:
+              type: string
+            type: array
+            maxItems: 20
+          - type: 'null'
+          title: Trustedaccountids
+          description: BYOC compute AWS accounts whose workloads may assume this connection's role
+        allowSaas:
+          type: boolean
+          title: Allowsaas
+          description: Whether Wherobots SaaS-hosted compute may use this connection (trusts the control-plane account)
+          default: true
+      type: object
+      required:
+      - name
+      - awsAccountId
+      title: AwsCloudConnectionCreate
     CftAccessType:
       type: string
       enum:
@@ -1391,22 +1402,11 @@ components:
       - read-write
       title: CftAccessType
       description: Access level requested for an S3 binding stack (API-facing values).
-    QuickCreateLinkResponse:
-      properties:
-        url:
-          type: string
-          title: Url
-          description: CloudFormation Quick-Create console URL
-        stackName:
-          type: string
-          title: Stackname
-          description: Recommended CloudFormation stack name
-      type: object
-      required:
-      - url
-      - stackName
-      title: QuickCreateLinkResponse
-      description: A CloudFormation Quick-Create console URL and its recommended stack name.
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
   securitySchemes:
     bearerToken:
       type: http

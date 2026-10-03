@@ -280,48 +280,24 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorInfo:
+    ErrorBody:
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
           type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
-          type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
       required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    HumanPrincipal:
+      - errors
+      - requestId
+      title: ErrorBody
+    Role-Output:
       properties:
         id:
           type: string
@@ -334,115 +310,26 @@ components:
           type: string
           format: date-time
           title: Updatetime
+        name:
+          type: string
+          title: Name
         organizationId:
           type: string
           title: Organizationid
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
         policies:
           items:
             $ref: '#/components/schemas/Policy'
           type: array
           title: Policies
-        deletedAt:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Deletedat
-        email:
-          type: string
-          title: Email
       type: object
       required:
       - id
       - createTime
       - updateTime
+      - name
       - organizationId
-      - roles
       - policies
-      - email
-      title: HumanPrincipal
-    Customer:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        organizationId:
-          type: string
-          title: Organizationid
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-        deletedAt:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Deletedat
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - organizationId
-      - roles
-      - policies
-      title: Customer
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    Invitation:
-      properties:
-        id:
-          type: string
-          title: Id
-        email:
-          type: string
-          title: Email
-        state:
-          type: string
-          enum:
-          - pending
-          - expired
-          title: State
-          default: pending
-        expiresAt:
-          type: string
-          format: date-time
-          title: Expiresat
-        createdAt:
-          type: string
-          format: date-time
-          title: Createdat
-      type: object
-      required:
-      - id
-      - email
-      - expiresAt
-      - createdAt
-      title: Invitation
+      title: Role
     ServicePrincipal:
       properties:
         id:
@@ -488,7 +375,7 @@ components:
       - policies
       - name
       title: ServicePrincipal
-    Role-Output:
+    HumanPrincipal:
       properties:
         id:
           type: string
@@ -501,32 +388,74 @@ components:
           type: string
           format: date-time
           title: Updatetime
-        name:
-          type: string
-          title: Name
         organizationId:
           type: string
           title: Organizationid
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
         policies:
           items:
             $ref: '#/components/schemas/Policy'
           type: array
           title: Policies
+        deletedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Deletedat
+        email:
+          type: string
+          title: Email
       type: object
       required:
       - id
       - createTime
       - updateTime
-      - name
       - organizationId
+      - roles
       - policies
-      title: Role
+      - email
+      title: HumanPrincipal
     Provider:
       type: string
       enum:
       - WHEROBOTS
       - AWS
       title: Provider
+    Invitation:
+      properties:
+        id:
+          type: string
+          title: Id
+        email:
+          type: string
+          title: Email
+        state:
+          type: string
+          enum:
+          - pending
+          - expired
+          title: State
+          default: pending
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+        createdAt:
+          type: string
+          format: date-time
+          title: Createdat
+      type: object
+      required:
+      - id
+      - email
+      - expiresAt
+      - createdAt
+      title: Invitation
     ErrorClass:
       type: string
       enum:
@@ -547,6 +476,47 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
+    Customer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        organizationId:
+          type: string
+          title: Organizationid
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+        deletedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Deletedat
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - organizationId
+      - roles
+      - policies
+      title: Customer
     Policy:
       properties:
         id:
@@ -583,23 +553,53 @@ components:
       - action
       - effect
       title: Policy
-    ErrorBody:
+    ErrorInfo:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+          title: Message
+          description: A human-readable message describing the error
+        details:
+          type: string
+          title: Details
+          description: Details about the error
+        path:
+          type: string
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentation Url
+          description: URL to related documentation
+        field:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Field
+          description: The field that caused the error if applicable
       type: object
       required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
   securitySchemes:
     bearerToken:
       type: http

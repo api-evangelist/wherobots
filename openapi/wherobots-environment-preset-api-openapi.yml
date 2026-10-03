@@ -212,86 +212,85 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorInfo:
+    EnvironmentPresetInput:
       properties:
-        code:
-          $ref: '#/components/schemas/ErrorClass'
-          description: The error code
-        message:
+        name:
           type: string
-          title: Message
-          description: A human-readable message describing the error
-        details:
+          maxLength: 50
+          minLength: 1
+          title: Name
+        version:
           type: string
-          title: Details
-          description: Details about the error
-        path:
-          type: string
-          title: Path
-          description: The path to the field that caused the error
-        suggestion:
-          type: string
-          title: Suggestion
-          description: Suggested action to resolve the error
-          default: Contact us at support@wherobots.com to get help with resolving your error.
-        documentation_url:
+          title: Version
+        sparkConfiguration:
           anyOf:
-          - type: string
+          - additionalProperties: true
+            type: object
           - type: 'null'
-          title: Documentation Url
-          description: URL to related documentation
-        field:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Field
-          description: The field that caused the error if applicable
+          title: Sparkconfiguration
+        dependencies:
+          items:
+            $ref: '#/components/schemas/DependantLibrary'
+          type: array
+          title: Dependencies
+          default: []
       type: object
       required:
-      - code
-      - message
-      - details
-      - path
-      title: ErrorInfo
-    DependantLibrary:
+      - name
+      - version
+      title: EnvironmentPresetInput
+    ErrorBody:
       properties:
-        sourceType:
-          $ref: '#/components/schemas/SourceType'
-        fileType:
-          anyOf:
-          - $ref: '#/components/schemas/FileType'
-          - type: 'null'
-        filePath:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Filepath
-        libraryName:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Libraryname
-        libraryVersion:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Libraryversion
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
       required:
-      - sourceType
-      title: DependantLibrary
-    SourceType:
-      type: string
-      enum:
-      - PYPI
-      - FILE
-      title: SourceType
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
+      - errors
+      - requestId
+      title: ErrorBody
+    OrganizationCustomer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - roles
+      title: OrganizationCustomer
     Role-Output:
       properties:
         id:
@@ -325,6 +324,79 @@ components:
       - organizationId
       - policies
       title: Role
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
+    SourceType:
+      type: string
+      enum:
+      - PYPI
+      - FILE
+      title: SourceType
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    FileType:
+      type: string
+      enum:
+      - JAR
+      - PYTHON_WHEEL
+      - ZIP
+      - OTHER
+      title: FileType
+    DependantLibrary:
+      properties:
+        sourceType:
+          $ref: '#/components/schemas/SourceType'
+        fileType:
+          anyOf:
+          - $ref: '#/components/schemas/FileType'
+          - type: 'null'
+        filePath:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Filepath
+        libraryName:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Libraryname
+        libraryVersion:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Libraryversion
+      type: object
+      required:
+      - sourceType
+      title: DependantLibrary
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
     EnvironmentPreset:
       properties:
         id:
@@ -374,40 +446,6 @@ components:
       - dependencies
       - createdBy
       title: EnvironmentPreset
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    FileType:
-      type: string
-      enum:
-      - JAR
-      - PYTHON_WHEEL
-      - ZIP
-      - OTHER
-      title: FileType
     Policy:
       properties:
         id:
@@ -444,85 +482,47 @@ components:
       - action
       - effect
       title: Policy
-    OrganizationCustomer:
+    ErrorInfo:
       properties:
-        id:
+        code:
+          $ref: '#/components/schemas/ErrorClass'
+          description: The error code
+        message:
           type: string
-          title: Id
-        createTime:
+          title: Message
+          description: A human-readable message describing the error
+        details:
           type: string
-          format: date-time
-          title: Createtime
-        updateTime:
+          title: Details
+          description: Details about the error
+        path:
           type: string
-          format: date-time
-          title: Updatetime
-        email:
+          title: Path
+          description: The path to the field that caused the error
+        suggestion:
+          type: string
+          title: Suggestion
+          description: Suggested action to resolve the error
+          default: Contact us at support@wherobots.com to get help with resolving your error.
+        documentation_url:
           anyOf:
           - type: string
           - type: 'null'
-          title: Email
-        name:
+          title: Documentation Url
+          description: URL to related documentation
+        field:
           anyOf:
           - type: string
           - type: 'null'
-          title: Name
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
+          title: Field
+          description: The field that caused the error if applicable
       type: object
       required:
-      - id
-      - createTime
-      - updateTime
-      - roles
-      title: OrganizationCustomer
-    EnvironmentPresetInput:
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          minLength: 1
-          title: Name
-        version:
-          type: string
-          title: Version
-        sparkConfiguration:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Sparkconfiguration
-        dependencies:
-          items:
-            $ref: '#/components/schemas/DependantLibrary'
-          type: array
-          title: Dependencies
-          default: []
-      type: object
-      required:
-      - name
-      - version
-      title: EnvironmentPresetInput
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - code
+      - message
+      - details
+      - path
+      title: ErrorInfo
   securitySchemes:
     bearerToken:
       type: http

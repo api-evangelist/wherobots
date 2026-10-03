@@ -87,14 +87,78 @@ paths:
       x-excluded: true
 components:
   schemas:
-    Plan:
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    Body_redeemCoupon:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: The coupon code to redeem
+        apply:
+          type: boolean
+          title: Apply
+          description: Whether to apply the coupon features, or only check
+          default: false
+      type: object
+      required:
+      - code
+      title: Body_redeemCoupon
+    WherobotsCloudFeature:
       type: string
       enum:
-      - COMMUNITY
-      - PROFESSIONAL
-      - BUILDER
-      - ENTERPRISE
-      title: Plan
+      - SAML
+      - SERVICE_PRINCIPALS
+      - STORAGE_INTEGRATION
+      - PROFESSIONAL_DATA
+      - AUDIT_LOGS
+      - RUNS
+      - FOREIGN_CATALOGS
+      - RASTERFLOW
+      - MCP_ACCESS
+      - STANDALONE_WHEROBOTSDB
+      - CLOUD_CONNECTIONS
+      - MICRO_RUNTIME
+      - SMALL_RUNTIME
+      - MEDIUM_RUNTIME
+      - LARGE_RUNTIME
+      - X_LARGE_RUNTIME
+      - XX_LARGE_RUNTIME
+      - MEDIUM_HIMEM_RUNTIME
+      - LARGE_HIMEM_RUNTIME
+      - X_LARGE_HIMEM_RUNTIME
+      - XX_LARGE_HIMEM_RUNTIME
+      - X_LARGE_HICPU_RUNTIME
+      - XX_LARGE_HICPU_RUNTIME
+      - MICRO_A10_GPU_RUNTIME
+      - TINY_A10_GPU_RUNTIME
+      - SMALL_A10_GPU_RUNTIME
+      - MEDIUM_A10_GPU_RUNTIME
+      - LARGE_A10_GPU_RUNTIME
+      - X_LARGE_A10_GPU_RUNTIME
+      - X_LARGE_MATCHER_RUNTIME
+      - XX_LARGE_MATCHER_RUNTIME
+      - REGION_AWS_US_WEST_2
+      - REGION_AWS_EU_WEST_1
+      - REGION_AWS_US_EAST_1
+      - REGION_AWS_AP_SOUTH_1
+      - REGION_AWS_US_EAST_2
+      title: WherobotsCloudFeature
     QuotaType:
       type: string
       enum:
@@ -104,6 +168,64 @@ components:
       - DISK_PER_NODE_GB
       - FOREIGN_CATALOG_COUNT
       title: QuotaType
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    Plan:
+      type: string
+      enum:
+      - COMMUNITY
+      - PROFESSIONAL
+      - BUILDER
+      - ENTERPRISE
+      title: Plan
+    Coupon:
+      properties:
+        plans:
+          items:
+            $ref: '#/components/schemas/Plan'
+          type: array
+          uniqueItems: true
+          title: Plans
+          description: The plans this coupon can be applied to
+        features:
+          items:
+            $ref: '#/components/schemas/WherobotsCloudFeature'
+          type: array
+          uniqueItems: true
+          title: Features
+          description: The features enabled by this coupon
+        quotas:
+          additionalProperties:
+            type: integer
+          propertyNames:
+            $ref: '#/components/schemas/QuotaType'
+          type: object
+          title: Quotas
+          description: The quotas granted by this coupon
+      type: object
+      required:
+      - plans
+      - features
+      - quotas
+      title: Coupon
     ErrorInfo:
       properties:
         code:
@@ -145,128 +267,6 @@ components:
       - details
       - path
       title: ErrorInfo
-    WherobotsCloudFeature:
-      type: string
-      enum:
-      - SAML
-      - SERVICE_PRINCIPALS
-      - STORAGE_INTEGRATION
-      - PROFESSIONAL_DATA
-      - AUDIT_LOGS
-      - RUNS
-      - FOREIGN_CATALOGS
-      - RASTERFLOW
-      - MCP_ACCESS
-      - STANDALONE_WHEROBOTSDB
-      - CLOUD_CONNECTIONS
-      - MICRO_RUNTIME
-      - SMALL_RUNTIME
-      - MEDIUM_RUNTIME
-      - LARGE_RUNTIME
-      - X_LARGE_RUNTIME
-      - XX_LARGE_RUNTIME
-      - MEDIUM_HIMEM_RUNTIME
-      - LARGE_HIMEM_RUNTIME
-      - X_LARGE_HIMEM_RUNTIME
-      - XX_LARGE_HIMEM_RUNTIME
-      - X_LARGE_HICPU_RUNTIME
-      - XX_LARGE_HICPU_RUNTIME
-      - MICRO_A10_GPU_RUNTIME
-      - TINY_A10_GPU_RUNTIME
-      - SMALL_A10_GPU_RUNTIME
-      - MEDIUM_A10_GPU_RUNTIME
-      - LARGE_A10_GPU_RUNTIME
-      - X_LARGE_A10_GPU_RUNTIME
-      - X_LARGE_MATCHER_RUNTIME
-      - XX_LARGE_MATCHER_RUNTIME
-      - REGION_AWS_US_WEST_2
-      - REGION_AWS_EU_WEST_1
-      - REGION_AWS_US_EAST_1
-      - REGION_AWS_AP_SOUTH_1
-      - REGION_AWS_US_EAST_2
-      title: WherobotsCloudFeature
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    Coupon:
-      properties:
-        plans:
-          items:
-            $ref: '#/components/schemas/Plan'
-          type: array
-          uniqueItems: true
-          title: Plans
-          description: The plans this coupon can be applied to
-        features:
-          items:
-            $ref: '#/components/schemas/WherobotsCloudFeature'
-          type: array
-          uniqueItems: true
-          title: Features
-          description: The features enabled by this coupon
-        quotas:
-          additionalProperties:
-            type: integer
-          propertyNames:
-            $ref: '#/components/schemas/QuotaType'
-          type: object
-          title: Quotas
-          description: The quotas granted by this coupon
-      type: object
-      required:
-      - plans
-      - features
-      - quotas
-      title: Coupon
-    Body_redeemCoupon:
-      properties:
-        code:
-          type: string
-          title: Code
-          description: The coupon code to redeem
-        apply:
-          type: boolean
-          title: Apply
-          description: Whether to apply the coupon features, or only check
-          default: false
-      type: object
-      required:
-      - code
-      title: Body_redeemCoupon
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
   securitySchemes:
     bearerToken:
       type: http
