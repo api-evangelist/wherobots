@@ -1363,256 +1363,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    Role-Output:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
-    FeatureEnabledState:
-      type: string
-      enum:
-      - enabled_by_plan
-      - enabled_by_override
-      - disabled
-      title: FeatureEnabledState
-    SubscriptionType:
-      type: string
-      enum:
-      - INTERNAL_DEVELOPMENT
-      - MANUAL_CONTRACT
-      - MANUALLY_COMPED
-      title: SubscriptionType
-      description: 'Subscription type for paid plans (Professional/Enterprise).
-
-
-        INTERNAL_DEVELOPMENT: For internal Wherobots developers, no metering/billing.
-
-        MANUAL_CONTRACT: For customers with manual contracts.
-
-        MANUALLY_COMPED: For customers given free access, no metering/billing.'
-    SubscriptionInfo:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        stoppedTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Stoppedtime
-        state:
-          $ref: '#/components/schemas/SubscriptionState'
-        awsMarketplaceSubscription:
-          anyOf:
-          - $ref: '#/components/schemas/AwsMarketplaceSubscription'
-          - type: 'null'
-        stripeSubscription:
-          anyOf:
-          - $ref: '#/components/schemas/StripeSubscription'
-          - type: 'null'
-        internalDevelopmentSubscription:
-          anyOf:
-          - $ref: '#/components/schemas/InternalDevelopmentSubscription'
-          - type: 'null'
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - stoppedTime
-      - state
-      title: SubscriptionInfo
-      description: 'Detailed subscription information including type-specific fields.
-
-
-        This model is used across endpoints to return comprehensive subscription data,
-
-        with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
-    Body_updateFeatureOverride:
-      properties:
-        feature:
-          $ref: '#/components/schemas/WherobotsCloudFeature'
-        access:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          title: Access
-      type: object
-      required:
-      - feature
-      title: Body_updateFeatureOverride
-    OperationTaskName:
-      type: string
-      enum:
-      - bulk-set-eks-resource-quota
-      - backfill-audit-logs
-      title: OperationTaskName
-      description: Enum for all operation task names
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    OperationTaskParams:
-      properties:
-        timestamp:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Timestamp
-        region:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Region
-      type: object
-      title: OperationTaskParams
-    Policy:
-      properties:
-        id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Id
-        createTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Createtime
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-        provider:
-          $ref: '#/components/schemas/Provider'
-        locator:
-          type: string
-          title: Locator
-        action:
-          type: string
-          title: Action
-        effect:
-          $ref: '#/components/schemas/Effect'
-      type: object
-      required:
-      - provider
-      - locator
-      - action
-      - effect
-      title: Policy
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    WherobotsCloudFeature:
-      type: string
-      enum:
-      - SAML
-      - SERVICE_PRINCIPALS
-      - STORAGE_INTEGRATION
-      - PROFESSIONAL_DATA
-      - AUDIT_LOGS
-      - RUNS
-      - FOREIGN_CATALOGS
-      - RASTERFLOW
-      - MCP_ACCESS
-      - STANDALONE_WHEROBOTSDB
-      - CLOUD_CONNECTIONS
-      - MICRO_RUNTIME
-      - SMALL_RUNTIME
-      - MEDIUM_RUNTIME
-      - LARGE_RUNTIME
-      - X_LARGE_RUNTIME
-      - XX_LARGE_RUNTIME
-      - MEDIUM_HIMEM_RUNTIME
-      - LARGE_HIMEM_RUNTIME
-      - X_LARGE_HIMEM_RUNTIME
-      - XX_LARGE_HIMEM_RUNTIME
-      - X_LARGE_HICPU_RUNTIME
-      - XX_LARGE_HICPU_RUNTIME
-      - MICRO_A10_GPU_RUNTIME
-      - TINY_A10_GPU_RUNTIME
-      - SMALL_A10_GPU_RUNTIME
-      - MEDIUM_A10_GPU_RUNTIME
-      - LARGE_A10_GPU_RUNTIME
-      - X_LARGE_A10_GPU_RUNTIME
-      - X_LARGE_MATCHER_RUNTIME
-      - XX_LARGE_MATCHER_RUNTIME
-      - REGION_AWS_US_WEST_2
-      - REGION_AWS_EU_WEST_1
-      - REGION_AWS_US_EAST_1
-      - REGION_AWS_AP_SOUTH_1
-      - REGION_AWS_US_EAST_2
-      title: WherobotsCloudFeature
-    GetKubeAppCostsInput:
-      properties:
-        kubeAppIds:
-          items:
-            type: string
-          type: array
-          maxItems: 100
-          minItems: 1
-          title: Kubeappids
-          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
-      type: object
-      required:
-      - kubeAppIds
-      title: GetKubeAppCostsInput
     WorkloadCostsOutput:
       properties:
         costs:
@@ -1643,144 +1393,29 @@ components:
         the wire shape is intentionally permissive so it doesn''t add runtime
 
         cost on every serialization.'
-    HumanPrincipal:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        organizationId:
-          type: string
-          title: Organizationid
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-        deletedAt:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Deletedat
-        email:
-          type: string
-          title: Email
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - organizationId
-      - roles
-      - policies
-      - email
-      title: HumanPrincipal
-    OperationTaskPayload:
-      properties:
-        taskName:
-          $ref: '#/components/schemas/OperationTaskName'
-        taskParams:
-          anyOf:
-          - $ref: '#/components/schemas/OperationTaskParams'
-          - type: 'null'
-      type: object
-      required:
-      - taskName
-      title: OperationTaskPayload
-    ErrorClass:
+    WorkloadCostUnavailableReason:
       type: string
       enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    AwsMarketplaceSubscription:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        stoppedTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Stoppedtime
-        state:
-          $ref: '#/components/schemas/SubscriptionState'
-        customerAWSAccountId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Customerawsaccountid
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - stoppedTime
-      - state
-      - customerAWSAccountId
-      title: AwsMarketplaceSubscription
-    WorkloadCostUnavailable:
-      properties:
-        kind:
-          type: string
-          const: unavailable
-          title: Kind
-          default: unavailable
-        kube_app_id:
-          type: string
-          title: Kube App Id
-        reason:
-          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
-      type: object
-      required:
-      - kube_app_id
-      - reason
-      title: WorkloadCostUnavailable
-      description: A workload cost we could not resolve, with a structured reason.
-    Plan:
+      - not_found
+      - upstream_error
+      - upstream_rate_limit
+      title: WorkloadCostUnavailableReason
+      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
+    SubscriptionType:
       type: string
       enum:
-      - COMMUNITY
-      - PROFESSIONAL
-      - BUILDER
-      - ENTERPRISE
-      title: Plan
+      - INTERNAL_DEVELOPMENT
+      - MANUAL_CONTRACT
+      - MANUALLY_COMPED
+      title: SubscriptionType
+      description: 'Subscription type for paid plans (Professional/Enterprise).
+
+
+        INTERNAL_DEVELOPMENT: For internal Wherobots developers, no metering/billing.
+
+        MANUAL_CONTRACT: For customers with manual contracts.
+
+        MANUALLY_COMPED: For customers given free access, no metering/billing.'
     WorkloadCostStatus:
       type: string
       enum:
@@ -1859,31 +1494,7 @@ components:
       - stoppedTime
       - state
       title: InternalDevelopmentSubscription
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
-    QuotaType:
-      type: string
-      enum:
-      - CPU
-      - HUMAN_USER_COUNT
-      - WORKLOAD_LIFETIME_HOUR
-      - DISK_PER_NODE_GB
-      - FOREIGN_CATALOG_COUNT
-      title: QuotaType
-    SubscriptionState:
-      type: string
-      enum:
-      - PENDING
-      - ACTIVE
-      - ACTIVE_PROBATION
-      - FAILED
-      - STOPPED
-      title: SubscriptionState
-    StripeSubscription:
+    HumanPrincipal:
       properties:
         id:
           type: string
@@ -1896,39 +1507,187 @@ components:
           type: string
           format: date-time
           title: Updatetime
-        stoppedTime:
+        organizationId:
+          type: string
+          title: Organizationid
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+        deletedAt:
           anyOf:
           - type: string
             format: date-time
           - type: 'null'
-          title: Stoppedtime
-        state:
-          $ref: '#/components/schemas/SubscriptionState'
-        stripeCustomerId:
+          title: Deletedat
+        email:
           type: string
-          title: Stripecustomerid
-        intentSecret:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Intentsecret
+          title: Email
       type: object
       required:
       - id
       - createTime
       - updateTime
-      - stoppedTime
-      - state
-      - stripeCustomerId
-      title: StripeSubscription
-    WorkloadCostUnavailableReason:
+      - organizationId
+      - roles
+      - policies
+      - email
+      title: HumanPrincipal
+    OperationTaskPayload:
+      properties:
+        taskName:
+          $ref: '#/components/schemas/OperationTaskName'
+        taskParams:
+          anyOf:
+          - $ref: '#/components/schemas/OperationTaskParams'
+          - type: 'null'
+      type: object
+      required:
+      - taskName
+      title: OperationTaskPayload
+    GetKubeAppCostsInput:
+      properties:
+        kubeAppIds:
+          items:
+            type: string
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Kubeappids
+          description: A list of Kubernetes App IDs. Maximum 100 items allowed.
+      type: object
+      required:
+      - kubeAppIds
+      title: GetKubeAppCostsInput
+    WorkloadCostUnavailable:
+      properties:
+        kind:
+          type: string
+          const: unavailable
+          title: Kind
+          default: unavailable
+        kube_app_id:
+          type: string
+          title: Kube App Id
+        reason:
+          $ref: '#/components/schemas/WorkloadCostUnavailableReason'
+      type: object
+      required:
+      - kube_app_id
+      - reason
+      title: WorkloadCostUnavailable
+      description: A workload cost we could not resolve, with a structured reason.
+    OperationTaskName:
       type: string
       enum:
-      - not_found
-      - upstream_error
-      - upstream_rate_limit
-      title: WorkloadCostUnavailableReason
-      description: "Why a workload cost could not be returned.\n\nNOT_FOUND           - The kube_app_id is not known to the billing system,\n                      or the caller is not authorized to see it.\n                      Indistinguishable by design (avoids leaking the\n                      existence of unrelated workloads).\nUPSTREAM_ERROR      - The upstream billing system failed or timed out and\n                      we have no cached value to serve. Caller may retry.\nUPSTREAM_RATE_LIMIT - The upstream billing system signaled a rate limit;\n                      caller should back off."
+      - bulk-set-eks-resource-quota
+      - backfill-audit-logs
+      title: OperationTaskName
+      description: Enum for all operation task names
+    WherobotsCloudFeature:
+      type: string
+      enum:
+      - SAML
+      - SERVICE_PRINCIPALS
+      - STORAGE_INTEGRATION
+      - PROFESSIONAL_DATA
+      - AUDIT_LOGS
+      - RUNS
+      - FOREIGN_CATALOGS
+      - RASTERFLOW
+      - MCP_ACCESS
+      - STANDALONE_WHEROBOTSDB
+      - CLOUD_CONNECTIONS
+      - MICRO_RUNTIME
+      - SMALL_RUNTIME
+      - MEDIUM_RUNTIME
+      - LARGE_RUNTIME
+      - X_LARGE_RUNTIME
+      - XX_LARGE_RUNTIME
+      - MEDIUM_HIMEM_RUNTIME
+      - LARGE_HIMEM_RUNTIME
+      - X_LARGE_HIMEM_RUNTIME
+      - XX_LARGE_HIMEM_RUNTIME
+      - X_LARGE_HICPU_RUNTIME
+      - XX_LARGE_HICPU_RUNTIME
+      - MICRO_A10_GPU_RUNTIME
+      - TINY_A10_GPU_RUNTIME
+      - SMALL_A10_GPU_RUNTIME
+      - MEDIUM_A10_GPU_RUNTIME
+      - LARGE_A10_GPU_RUNTIME
+      - X_LARGE_A10_GPU_RUNTIME
+      - X_LARGE_MATCHER_RUNTIME
+      - XX_LARGE_MATCHER_RUNTIME
+      - REGION_AWS_US_WEST_2
+      - REGION_AWS_EU_WEST_1
+      - REGION_AWS_US_EAST_1
+      - REGION_AWS_AP_SOUTH_1
+      - REGION_AWS_US_EAST_2
+      title: WherobotsCloudFeature
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
+    SubscriptionState:
+      type: string
+      enum:
+      - PENDING
+      - ACTIVE
+      - ACTIVE_PROBATION
+      - FAILED
+      - STOPPED
+      title: SubscriptionState
+    FeatureEnabledState:
+      type: string
+      enum:
+      - enabled_by_plan
+      - enabled_by_override
+      - disabled
+      title: FeatureEnabledState
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
     WorkloadCostAvailable:
       properties:
         kind:
@@ -1978,6 +1737,247 @@ components:
       - last_evaluated_at
       title: WorkloadCostAvailable
       description: A workload cost we were able to resolve.
+    StripeSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        stripeCustomerId:
+          type: string
+          title: Stripecustomerid
+        intentSecret:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Intentsecret
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      - stripeCustomerId
+      title: StripeSubscription
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    AwsMarketplaceSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        customerAWSAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Customerawsaccountid
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      - customerAWSAccountId
+      title: AwsMarketplaceSubscription
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
+    Body_updateFeatureOverride:
+      properties:
+        feature:
+          $ref: '#/components/schemas/WherobotsCloudFeature'
+        access:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Access
+      type: object
+      required:
+      - feature
+      title: Body_updateFeatureOverride
+    OperationTaskParams:
+      properties:
+        timestamp:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Timestamp
+        region:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Region
+      type: object
+      title: OperationTaskParams
+    SubscriptionInfo:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        awsMarketplaceSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/AwsMarketplaceSubscription'
+          - type: 'null'
+        stripeSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/StripeSubscription'
+          - type: 'null'
+        internalDevelopmentSubscription:
+          anyOf:
+          - $ref: '#/components/schemas/InternalDevelopmentSubscription'
+          - type: 'null'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: SubscriptionInfo
+      description: 'Detailed subscription information including type-specific fields.
+
+
+        This model is used across endpoints to return comprehensive subscription data,
+
+        with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    QuotaType:
+      type: string
+      enum:
+      - CPU
+      - HUMAN_USER_COUNT
+      - WORKLOAD_LIFETIME_HOUR
+      - DISK_PER_NODE_GB
+      - FOREIGN_CATALOG_COUNT
+      title: QuotaType
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
+    Plan:
+      type: string
+      enum:
+      - COMMUNITY
+      - PROFESSIONAL
+      - BUILDER
+      - ENTERPRISE
+      title: Plan
   securitySchemes:
     bearerToken:
       type: http

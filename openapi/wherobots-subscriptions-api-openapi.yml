@@ -505,61 +505,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    InternalDevelopmentSubscription:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        stoppedTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Stoppedtime
-        state:
-          $ref: '#/components/schemas/SubscriptionState'
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - stoppedTime
-      - state
-      title: InternalDevelopmentSubscription
-    UpgradeConfirmationRequest:
-      properties:
-        setup_intent_id:
-          type: string
-          title: Setup Intent Id
-      type: object
-      required:
-      - setup_intent_id
-      title: UpgradeConfirmationRequest
     ErrorClass:
       type: string
       enum:
@@ -580,50 +525,6 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    AwsMarketplaceSubscription:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        stoppedTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Stoppedtime
-        state:
-          $ref: '#/components/schemas/SubscriptionState'
-        customerAWSAccountId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Customerawsaccountid
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - stoppedTime
-      - state
-      - customerAWSAccountId
-      title: AwsMarketplaceSubscription
-    SubscriptionState:
-      type: string
-      enum:
-      - PENDING
-      - ACTIVE
-      - ACTIVE_PROBATION
-      - FAILED
-      - STOPPED
-      title: SubscriptionState
     SubscriptionInfo:
       properties:
         id:
@@ -671,6 +572,32 @@ components:
         This model is used across endpoints to return comprehensive subscription data,
 
         with optional fields for different subscription types (AWS Marketplace, Stripe, etc.).'
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    SubscriptionState:
+      type: string
+      enum:
+      - PENDING
+      - ACTIVE
+      - ACTIVE_PROBATION
+      - FAILED
+      - STOPPED
+      title: SubscriptionState
     StripeSubscription:
       properties:
         id:
@@ -763,6 +690,79 @@ components:
       - details
       - path
       title: ErrorInfo
+    InternalDevelopmentSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      title: InternalDevelopmentSubscription
+    AwsMarketplaceSubscription:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        stoppedTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Stoppedtime
+        state:
+          $ref: '#/components/schemas/SubscriptionState'
+        customerAWSAccountId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Customerawsaccountid
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - stoppedTime
+      - state
+      - customerAWSAccountId
+      title: AwsMarketplaceSubscription
+    UpgradeConfirmationRequest:
+      properties:
+        setup_intent_id:
+          type: string
+          title: Setup Intent Id
+      type: object
+      required:
+      - setup_intent_id
+      title: UpgradeConfirmationRequest
   securitySchemes:
     bearerToken:
       type: http

@@ -572,23 +572,42 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorBody:
+    Directory:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        name:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+          title: Name
+        path:
+          type: string
+          title: Path
+        mutateProtected:
+          type: boolean
+          title: Mutateprotected
+          default: false
+        uploadProtected:
+          type: boolean
+          title: Uploadprotected
+          default: false
+        files:
+          items:
+            $ref: '#/components/schemas/FileEntry'
+          type: array
+          title: Files
+          default: []
       type: object
       required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - name
+      - path
+      title: Directory
+    src__routers__files__UploadUrlResponse:
+      properties:
+        uploadUrl:
+          type: string
+          title: Uploadurl
+      type: object
+      required:
+      - uploadUrl
+      title: UploadUrlResponse
     IngestCredentials:
       properties:
         accessKeyId:
@@ -611,6 +630,29 @@ components:
       - sessionToken
       - expiration
       title: IngestCredentials
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    FileEntryType:
+      type: string
+      enum:
+      - FILE
+      - FOLDER
+      title: FileEntryType
     ErrorInfo:
       properties:
         code:
@@ -652,12 +694,6 @@ components:
       - details
       - path
       title: ErrorInfo
-    FileEntryType:
-      type: string
-      enum:
-      - FILE
-      - FOLDER
-      title: FileEntryType
     ErrorClass:
       type: string
       enum:
@@ -678,15 +714,6 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    src__routers__files__UploadUrlResponse:
-      properties:
-        uploadUrl:
-          type: string
-          title: Uploadurl
-      type: object
-      required:
-      - uploadUrl
-      title: UploadUrlResponse
     FileEntry:
       properties:
         name:
@@ -717,33 +744,6 @@ components:
       - path
       - type
       title: FileEntry
-    Directory:
-      properties:
-        name:
-          type: string
-          title: Name
-        path:
-          type: string
-          title: Path
-        mutateProtected:
-          type: boolean
-          title: Mutateprotected
-          default: false
-        uploadProtected:
-          type: boolean
-          title: Uploadprotected
-          default: false
-        files:
-          items:
-            $ref: '#/components/schemas/FileEntry'
-          type: array
-          title: Files
-          default: []
-      type: object
-      required:
-      - name
-      - path
-      title: Directory
   securitySchemes:
     bearerToken:
       type: http

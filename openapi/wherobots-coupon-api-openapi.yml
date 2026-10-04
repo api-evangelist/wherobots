@@ -87,38 +87,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    Body_redeemCoupon:
-      properties:
-        code:
-          type: string
-          title: Code
-          description: The coupon code to redeem
-        apply:
-          type: boolean
-          title: Apply
-          description: Whether to apply the coupon features, or only check
-          default: false
-      type: object
-      required:
-      - code
-      title: Body_redeemCoupon
     WherobotsCloudFeature:
       type: string
       enum:
@@ -159,43 +127,6 @@ components:
       - REGION_AWS_AP_SOUTH_1
       - REGION_AWS_US_EAST_2
       title: WherobotsCloudFeature
-    QuotaType:
-      type: string
-      enum:
-      - CPU
-      - HUMAN_USER_COUNT
-      - WORKLOAD_LIFETIME_HOUR
-      - DISK_PER_NODE_GB
-      - FOREIGN_CATALOG_COUNT
-      title: QuotaType
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    Plan:
-      type: string
-      enum:
-      - COMMUNITY
-      - PROFESSIONAL
-      - BUILDER
-      - ENTERPRISE
-      title: Plan
     Coupon:
       properties:
         plans:
@@ -226,6 +157,47 @@ components:
       - features
       - quotas
       title: Coupon
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    Body_redeemCoupon:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: The coupon code to redeem
+        apply:
+          type: boolean
+          title: Apply
+          description: Whether to apply the coupon features, or only check
+          default: false
+      type: object
+      required:
+      - code
+      title: Body_redeemCoupon
+    QuotaType:
+      type: string
+      enum:
+      - CPU
+      - HUMAN_USER_COUNT
+      - WORKLOAD_LIFETIME_HOUR
+      - DISK_PER_NODE_GB
+      - FOREIGN_CATALOG_COUNT
+      title: QuotaType
     ErrorInfo:
       properties:
         code:
@@ -267,6 +239,34 @@ components:
       - details
       - path
       title: ErrorInfo
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    Plan:
+      type: string
+      enum:
+      - COMMUNITY
+      - PROFESSIONAL
+      - BUILDER
+      - ENTERPRISE
+      title: Plan
   securitySchemes:
     bearerToken:
       type: http

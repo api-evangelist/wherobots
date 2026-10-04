@@ -1065,19 +1065,13 @@ paths:
       x-excluded: true
 components:
   schemas:
-    BindingAccessStatus:
+    CftAccessType:
       type: string
       enum:
-      - OK
-      - DENIED
-      - FAILED
-      title: BindingAccessStatus
-    RoleAssumptionStatus:
-      type: string
-      enum:
-      - OK
-      - FAILED
-      title: RoleAssumptionStatus
+      - read-only
+      - read-write
+      title: CftAccessType
+      description: Access level requested for an S3 binding stack (API-facing values).
     BindingAccessChecks:
       properties:
         list:
@@ -1099,82 +1093,13 @@ components:
       - put
       - delete
       title: BindingAccessChecks
-    BindingAccessResult:
-      properties:
-        status:
-          $ref: '#/components/schemas/BindingAccessStatus'
-        reason:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Reason
-        checks:
-          $ref: '#/components/schemas/BindingAccessChecks'
-      type: object
-      required:
-      - status
-      - checks
-      title: BindingAccessResult
-    StorageIntegrationAccessType:
+    BindingAccessStatus:
       type: string
       enum:
-      - READ
-      - READ_WRITE
-      title: StorageIntegrationAccessType
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    CloudConnectionVerifyResponse:
-      properties:
-        roleAssumption:
-          $ref: '#/components/schemas/RoleAssumptionResult'
-        bindingAccess:
-          anyOf:
-          - $ref: '#/components/schemas/BindingAccessResult'
-          - type: 'null'
-      type: object
-      required:
-      - roleAssumption
-      - bindingAccess
-      title: CloudConnectionVerifyResponse
-    QuickCreateLinkResponse:
-      properties:
-        url:
-          type: string
-          title: Url
-          description: CloudFormation Quick-Create console URL
-        stackName:
-          type: string
-          title: Stackname
-          description: Recommended CloudFormation stack name
-      type: object
-      required:
-      - url
-      - stackName
-      title: QuickCreateLinkResponse
-      description: A CloudFormation Quick-Create console URL and its recommended stack name.
-    CloudConnectionVerifyRequest:
-      properties:
-        binding:
-          anyOf:
-          - $ref: '#/components/schemas/VerifyBindingPayload'
-          - type: 'null'
-      type: object
-      title: CloudConnectionVerifyRequest
+      - OK
+      - DENIED
+      - FAILED
+      title: BindingAccessStatus
     CloudConnectionRead:
       properties:
         id:
@@ -1232,55 +1157,19 @@ components:
       - managedBy
       - createdAt
       title: CloudConnectionRead
-    CloudConnectionManagedBy:
-      type: string
-      enum:
-      - CLOUDFORMATION
-      title: CloudConnectionManagedBy
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    VerifyBindingPayload:
+    CloudConnectionVerifyResponse:
       properties:
-        type:
-          type: string
-          const: storage
-          title: Type
-          default: storage
-        path:
-          type: string
-          title: Path
-          description: S3 path or prefix to verify access against
-        accessType:
-          $ref: '#/components/schemas/StorageIntegrationAccessType'
+        roleAssumption:
+          $ref: '#/components/schemas/RoleAssumptionResult'
+        bindingAccess:
+          anyOf:
+          - $ref: '#/components/schemas/BindingAccessResult'
+          - type: 'null'
       type: object
       required:
-      - path
-      - accessType
-      title: VerifyBindingPayload
-      description: 'Optional binding the user is about to persist.
-
-
-        Only `storage` is supported in this phase. Glue resource bindings are
-
-        handled in a later stream and are intentionally rejected here.'
+      - roleAssumption
+      - bindingAccess
+      title: CloudConnectionVerifyResponse
     ErrorInfo:
       properties:
         code:
@@ -1322,6 +1211,51 @@ components:
       - details
       - path
       title: ErrorInfo
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
+    VerifyBindingPayload:
+      properties:
+        type:
+          type: string
+          const: storage
+          title: Type
+          default: storage
+        path:
+          type: string
+          title: Path
+          description: S3 path or prefix to verify access against
+        accessType:
+          $ref: '#/components/schemas/StorageIntegrationAccessType'
+      type: object
+      required:
+      - path
+      - accessType
+      title: VerifyBindingPayload
+      description: 'Optional binding the user is about to persist.
+
+
+        Only `storage` is supported in this phase. Glue resource bindings are
+
+        handled in a later stream and are intentionally rejected here.'
+    BindingAccessResult:
+      properties:
+        status:
+          $ref: '#/components/schemas/BindingAccessStatus'
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reason
+        checks:
+          $ref: '#/components/schemas/BindingAccessChecks'
+      type: object
+      required:
+      - status
+      - checks
+      title: BindingAccessResult
     RoleAssumptionResult:
       properties:
         status:
@@ -1335,35 +1269,67 @@ components:
       required:
       - status
       title: RoleAssumptionResult
-    CloudConnectionBinding:
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
+    QuickCreateLinkResponse:
       properties:
-        kind:
+        url:
           type: string
-          enum:
-          - storage_integration
-          - glue_catalog
-          - s3tables_catalog
-          title: Kind
-        id:
+          title: Url
+          description: CloudFormation Quick-Create console URL
+        stackName:
           type: string
-          title: Id
-        name:
-          type: string
-          title: Name
+          title: Stackname
+          description: Recommended CloudFormation stack name
       type: object
       required:
-      - kind
-      - id
-      - name
-      title: CloudConnectionBinding
-      description: 'A resource that references (is "bound" to) a cloud connection.
-
-
-        The binding kinds live in different databases (storage integrations in
-
-        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
-
-        only the minimal cross-db-friendly shape: kind, id, and display name.'
+      - url
+      - stackName
+      title: QuickCreateLinkResponse
+      description: A CloudFormation Quick-Create console URL and its recommended stack name.
+    RoleAssumptionStatus:
+      type: string
+      enum:
+      - OK
+      - FAILED
+      title: RoleAssumptionStatus
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    StorageIntegrationAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: StorageIntegrationAccessType
+    CloudConnectionVerifyRequest:
+      properties:
+        binding:
+          anyOf:
+          - $ref: '#/components/schemas/VerifyBindingPayload'
+          - type: 'null'
+      type: object
+      title: CloudConnectionVerifyRequest
     AwsCloudConnectionCreate:
       properties:
         name:
@@ -1395,18 +1361,52 @@ components:
       - name
       - awsAccountId
       title: AwsCloudConnectionCreate
-    CftAccessType:
-      type: string
-      enum:
-      - read-only
-      - read-write
-      title: CftAccessType
-      description: Access level requested for an S3 binding stack (API-facing values).
-    CloudProvider:
-      type: string
-      enum:
-      - AWS
-      title: CloudProvider
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    CloudConnectionBinding:
+      properties:
+        kind:
+          type: string
+          enum:
+          - storage_integration
+          - glue_catalog
+          - s3tables_catalog
+          title: Kind
+        id:
+          type: string
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - kind
+      - id
+      - name
+      title: CloudConnectionBinding
+      description: 'A resource that references (is "bound" to) a cloud connection.
+
+
+        The binding kinds live in different databases (storage integrations in
+
+        api-db, Glue and S3 Tables catalogs in catalog-db), so this DTO carries
+
+        only the minimal cross-db-friendly shape: kind, id, and display name.'
   securitySchemes:
     bearerToken:
       type: http

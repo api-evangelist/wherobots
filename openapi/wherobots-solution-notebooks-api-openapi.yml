@@ -431,94 +431,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    RuntimeId:
-      type: string
-      enum:
-      - TINY
-      - SMALL
-      - MEDIUM
-      - LARGE
-      - XLARGE
-      - XXLARGE
-      - micro
-      - tiny
-      - small
-      - medium
-      - large
-      - x-large
-      - 2x-large
-      - 4x-large
-      - medium-himem
-      - large-himem
-      - x-large-himem
-      - 2x-large-himem
-      - 4x-large-himem
-      - x-large-hicpu
-      - 2x-large-hicpu
-      - x-large-matcher
-      - 2x-large-matcher
-      - micro-a10-gpu
-      - tiny-a10-gpu
-      - small-a10-gpu
-      - medium-a10-gpu
-      - large-a10-gpu
-      - x-large-a10-gpu
-      title: RuntimeId
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    Body_createSolutionNotebook:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-        description:
-          anyOf:
-          - type: string
-            maxLength: 1024
-          - type: 'null'
-          title: Description
-        efsPath:
-          type: string
-          maxLength: 512
-          title: Efspath
-        recommendedRuntime:
-          $ref: '#/components/schemas/RuntimeId'
-          default: tiny
-        thumbnailImage:
-          anyOf:
-          - type: string
-            contentMediaType: application/octet-stream
-          - type: 'null'
-          title: Thumbnailimage
-        galleryOrder:
-          type: integer
-          title: Galleryorder
-          default: 0
-        showInGallery:
-          type: boolean
-          title: Showingallery
-          default: true
-      type: object
-      required:
-      - name
-      - efsPath
-      title: Body_createSolutionNotebook
     NotebookMetadata:
       properties:
         id:
@@ -572,27 +484,7 @@ components:
       - galleryOrder
       - showInGallery
       title: NotebookMetadata
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    Body_replaceSolutionNotebook:
+    Body_createSolutionNotebook:
       properties:
         name:
           type: string
@@ -629,7 +521,24 @@ components:
       required:
       - name
       - efsPath
-      title: Body_replaceSolutionNotebook
+      title: Body_createSolutionNotebook
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
     ErrorInfo:
       properties:
         code:
@@ -671,6 +580,97 @@ components:
       - details
       - path
       title: ErrorInfo
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    RuntimeId:
+      type: string
+      enum:
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - micro
+      - tiny
+      - small
+      - medium
+      - large
+      - x-large
+      - 2x-large
+      - 4x-large
+      - medium-himem
+      - large-himem
+      - x-large-himem
+      - 2x-large-himem
+      - 4x-large-himem
+      - x-large-hicpu
+      - 2x-large-hicpu
+      - x-large-matcher
+      - 2x-large-matcher
+      - micro-a10-gpu
+      - tiny-a10-gpu
+      - small-a10-gpu
+      - medium-a10-gpu
+      - large-a10-gpu
+      - x-large-a10-gpu
+      title: RuntimeId
+    Body_replaceSolutionNotebook:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        description:
+          anyOf:
+          - type: string
+            maxLength: 1024
+          - type: 'null'
+          title: Description
+        efsPath:
+          type: string
+          maxLength: 512
+          title: Efspath
+        recommendedRuntime:
+          $ref: '#/components/schemas/RuntimeId'
+          default: tiny
+        thumbnailImage:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Thumbnailimage
+        galleryOrder:
+          type: integer
+          title: Galleryorder
+          default: 0
+        showInGallery:
+          type: boolean
+          title: Showingallery
+          default: true
+      type: object
+      required:
+      - name
+      - efsPath
+      title: Body_replaceSolutionNotebook
   securitySchemes:
     bearerToken:
       type: http

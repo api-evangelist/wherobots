@@ -349,6 +349,112 @@ paths:
       x-excluded: true
 components:
   schemas:
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
+    ServicePrincipalUpdateInput:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        organizationId:
+          type: string
+          title: Organizationid
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Input'
+          type: array
+          title: Roles
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+        deletedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Deletedat
+        name:
+          type: string
+          title: Name
+      type: object
+      title: ServicePrincipalUpdateInput
     ErrorBody:
       properties:
         errors:
@@ -366,6 +472,17 @@ components:
       - errors
       - requestId
       title: ErrorBody
+    ServicePrincipalRegisterInput:
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 3
+          title: Name
+      type: object
+      required:
+      - name
+      title: ServicePrincipalRegisterInput
     ServicePrincipal:
       properties:
         id:
@@ -411,188 +528,6 @@ components:
       - policies
       - name
       title: ServicePrincipal
-    Role-Output:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
-    ServicePrincipalRegisterInput:
-      properties:
-        name:
-          type: string
-          maxLength: 200
-          minLength: 3
-          title: Name
-      type: object
-      required:
-      - name
-      title: ServicePrincipalRegisterInput
-    Role-Input:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    ServicePrincipalUpdateInput:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        organizationId:
-          type: string
-          title: Organizationid
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Input'
-          type: array
-          title: Roles
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
-        deletedAt:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Deletedat
-        name:
-          type: string
-          title: Name
-      type: object
-      title: ServicePrincipalUpdateInput
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    Policy:
-      properties:
-        id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Id
-        createTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Createtime
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-        provider:
-          $ref: '#/components/schemas/Provider'
-        locator:
-          type: string
-          title: Locator
-        action:
-          type: string
-          title: Action
-        effect:
-          $ref: '#/components/schemas/Effect'
-      type: object
-      required:
-      - provider
-      - locator
-      - action
-      - effect
-      title: Policy
     ErrorInfo:
       properties:
         code:
@@ -634,6 +569,71 @@ components:
       - details
       - path
       title: ErrorInfo
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    Role-Input:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - name
+      - organizationId
+      - policies
+      title: Role
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
   securitySchemes:
     bearerToken:
       type: http

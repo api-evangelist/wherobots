@@ -309,99 +309,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    NodeSchedulingMeta:
-      properties:
-        node_preexisted:
-          type: boolean
-          title: Node Preexisted
-        node_name:
-          type: string
-          title: Node Name
-        pod_creation_time:
-          type: string
-          title: Pod Creation Time
-        node_creation_time:
-          type: string
-          title: Node Creation Time
-      type: object
-      required:
-      - node_preexisted
-      - node_name
-      - pod_creation_time
-      - node_creation_time
-      title: NodeSchedulingMeta
-      description: 'Metadata captured at node-scheduling time.
-
-
-        ``node_preexisted`` is True when the pod landed on a node that existed
-
-        before the pod was created, False when the node was provisioned for
-
-        the pod (cold start).'
-    SqlSessionAppMeta:
-      properties:
-        url:
-          type: string
-          title: Url
-          default: ''
-        resolved_version:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Resolved Version
-      type: object
-      title: SqlSessionAppMeta
-      description: SQL Session-specific metadata fields
-    RuntimeId:
-      type: string
-      enum:
-      - TINY
-      - SMALL
-      - MEDIUM
-      - LARGE
-      - XLARGE
-      - XXLARGE
-      - micro
-      - tiny
-      - small
-      - medium
-      - large
-      - x-large
-      - 2x-large
-      - 4x-large
-      - medium-himem
-      - large-himem
-      - x-large-himem
-      - 2x-large-himem
-      - 4x-large-himem
-      - x-large-hicpu
-      - 2x-large-hicpu
-      - x-large-matcher
-      - 2x-large-matcher
-      - micro-a10-gpu
-      - tiny-a10-gpu
-      - small-a10-gpu
-      - medium-a10-gpu
-      - large-a10-gpu
-      - x-large-a10-gpu
-      title: RuntimeId
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
     SqlSessionKubeApp:
       properties:
         id:
@@ -469,24 +376,70 @@ components:
       - regionName
       - message
       title: SqlSessionKubeApp
-    AppStatus:
+    AppType:
       type: string
       enum:
-      - PENDING
-      - PREPARING
-      - PREPARE_FAILED
-      - REQUESTED
-      - DEPLOYING
-      - DEPLOY_FAILED
-      - DEPLOYED
-      - INITIALIZING
-      - INIT_FAILED
-      - READY
-      - DESTROY_REQUESTED
-      - DESTROYING
-      - DESTROY_FAILED
-      - DESTROYED
-      title: AppStatus
+      - JUPYTER
+      - SQL_SESSION
+      - RUN
+      title: AppType
+    NodeSchedulingMeta:
+      properties:
+        node_preexisted:
+          type: boolean
+          title: Node Preexisted
+        node_name:
+          type: string
+          title: Node Name
+        pod_creation_time:
+          type: string
+          title: Pod Creation Time
+        node_creation_time:
+          type: string
+          title: Node Creation Time
+      type: object
+      required:
+      - node_preexisted
+      - node_name
+      - pod_creation_time
+      - node_creation_time
+      title: NodeSchedulingMeta
+      description: 'Metadata captured at node-scheduling time.
+
+
+        ``node_preexisted`` is True when the pod landed on a node that existed
+
+        before the pod was created, False when the node was provisioned for
+
+        the pod (cold start).'
+    RunEventMeta:
+      properties:
+        end_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: End Timestamp
+        start_timestamp:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Start Timestamp
+      type: object
+      title: RunEventMeta
+    SqlSessionAppMeta:
+      properties:
+        url:
+          type: string
+          title: Url
+          default: ''
+        resolved_version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Resolved Version
+      type: object
+      title: SqlSessionAppMeta
+      description: SQL Session-specific metadata fields
     KubeAppEvent:
       properties:
         id:
@@ -523,111 +476,23 @@ components:
       - createTime
       - updateTime
       title: KubeAppEvent
-    KubeAppCreationMeta:
+    ErrorBody:
       properties:
-        use_v2_workflow:
-          type: boolean
-          title: Use V2 Workflow
-          default: false
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
       type: object
-      title: KubeAppCreationMeta
-      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
-
-
-        Captures decisions pinned at kube_app creation time so cancel/destroy can
-
-        consult them later without re-deriving. Currently only carries the v2
-
-        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
-
-        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
-
-        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
-
-        constructed; cleanup at v2 100% rollout deletes this class.'
-    SessionType:
-      type: string
-      enum:
-      - single
-      - multi
-      title: SessionType
-    RunEventMeta:
-      properties:
-        end_timestamp:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: End Timestamp
-        start_timestamp:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Start Timestamp
-      type: object
-      title: RunEventMeta
-    SqlSessionAPIPayload:
-      properties:
-        runtimeId:
-          anyOf:
-          - $ref: '#/components/schemas/RuntimeId'
-          - type: 'null'
-        version:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Version
-        environmentPresetId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Environmentpresetid
-        environmentOverridePresetId:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Environmentoverridepresetid
-        idleTimeoutMinutes:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Idletimeoutminutes
-        shutdownAfterInactiveSeconds:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Shutdownafterinactiveseconds
-        sessionType:
-          $ref: '#/components/schemas/SessionType'
-          default: multi
-      type: object
-      title: SqlSessionAPIPayload
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    AppType:
-      type: string
-      enum:
-      - JUPYTER
-      - SQL_SESSION
-      - RUN
-      title: AppType
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
     ErrorInfo:
       properties:
         code:
@@ -669,6 +534,141 @@ components:
       - details
       - path
       title: ErrorInfo
+    KubeAppCreationMeta:
+      properties:
+        use_v2_workflow:
+          type: boolean
+          title: Use V2 Workflow
+          default: false
+      type: object
+      title: KubeAppCreationMeta
+      description: '``event_meta`` shape for ``EventCode.APP_START_CREATION``.
+
+
+        Captures decisions pinned at kube_app creation time so cancel/destroy can
+
+        consult them later without re-deriving. Currently only carries the v2
+
+        dispatcher marker — set to ``True`` when the LaunchDarkly flag routes the
+
+        kube_app through the unified ``KubeAppWorkflow`` (ENGP-336 Stream E).
+
+        Legacy creates leave ``event_meta`` ``None`` so this model isn''t even
+
+        constructed; cleanup at v2 100% rollout deletes this class.'
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    RuntimeId:
+      type: string
+      enum:
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - micro
+      - tiny
+      - small
+      - medium
+      - large
+      - x-large
+      - 2x-large
+      - 4x-large
+      - medium-himem
+      - large-himem
+      - x-large-himem
+      - 2x-large-himem
+      - 4x-large-himem
+      - x-large-hicpu
+      - 2x-large-hicpu
+      - x-large-matcher
+      - 2x-large-matcher
+      - micro-a10-gpu
+      - tiny-a10-gpu
+      - small-a10-gpu
+      - medium-a10-gpu
+      - large-a10-gpu
+      - x-large-a10-gpu
+      title: RuntimeId
+    AppStatus:
+      type: string
+      enum:
+      - PENDING
+      - PREPARING
+      - PREPARE_FAILED
+      - REQUESTED
+      - DEPLOYING
+      - DEPLOY_FAILED
+      - DEPLOYED
+      - INITIALIZING
+      - INIT_FAILED
+      - READY
+      - DESTROY_REQUESTED
+      - DESTROYING
+      - DESTROY_FAILED
+      - DESTROYED
+      title: AppStatus
+    SqlSessionAPIPayload:
+      properties:
+        runtimeId:
+          anyOf:
+          - $ref: '#/components/schemas/RuntimeId'
+          - type: 'null'
+        version:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Version
+        environmentPresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentpresetid
+        environmentOverridePresetId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Environmentoverridepresetid
+        idleTimeoutMinutes:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Idletimeoutminutes
+        shutdownAfterInactiveSeconds:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Shutdownafterinactiveseconds
+        sessionType:
+          $ref: '#/components/schemas/SessionType'
+          default: multi
+      type: object
+      title: SqlSessionAPIPayload
+    SessionType:
+      type: string
+      enum:
+      - single
+      - multi
+      title: SessionType
   securitySchemes:
     bearerToken:
       type: http

@@ -507,8 +507,6 @@ apis:
   humanURL: https://docs.wherobots.com/api-playground/
   baseURL: https://api.cloud.wherobots.com
   tags:
-  - APIKeys
-  tags_raw:
   - API Key
   properties:
   - type: OpenAPI

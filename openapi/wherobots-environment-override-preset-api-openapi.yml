@@ -212,50 +212,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    EnvironmentOverridePresetInput:
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          minLength: 1
-          title: Name
-        driverDiskSize:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Driverdisksize
-        executorDiskSize:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Executordisksize
-        sparkConfiguration:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Sparkconfiguration
-      type: object
-      required:
-      - name
-      title: EnvironmentOverridePresetInput
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
     Role-Output:
       properties:
         id:
@@ -289,47 +245,86 @@ components:
       - organizationId
       - policies
       title: Role
-    OrganizationCustomer:
+    EnvironmentOverridePresetInput:
       properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
         name:
-          anyOf:
-          - type: string
-          - type: 'null'
+          type: string
+          maxLength: 50
+          minLength: 1
           title: Name
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
+        driverDiskSize:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Driverdisksize
+        executorDiskSize:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Executordisksize
+        sparkConfiguration:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Sparkconfiguration
       type: object
       required:
-      - id
-      - createTime
-      - updateTime
-      - roles
-      title: OrganizationCustomer
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
+      - name
+      title: EnvironmentOverridePresetInput
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
     EnvironmentOverridePreset:
       properties:
         id:
@@ -379,68 +374,6 @@ components:
       - sparkConfiguration
       - createdBy
       title: EnvironmentOverridePreset
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    Policy:
-      properties:
-        id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Id
-        createTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Createtime
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-        provider:
-          $ref: '#/components/schemas/Provider'
-        locator:
-          type: string
-          title: Locator
-        action:
-          type: string
-          title: Action
-        effect:
-          $ref: '#/components/schemas/Effect'
-      type: object
-      required:
-      - provider
-      - locator
-      - action
-      - effect
-      title: Policy
     ErrorInfo:
       properties:
         code:
@@ -482,6 +415,73 @@ components:
       - details
       - path
       title: ErrorInfo
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    OrganizationCustomer:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - roles
+      title: OrganizationCustomer
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
   securitySchemes:
     bearerToken:
       type: http
