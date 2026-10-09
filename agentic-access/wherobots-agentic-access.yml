@@ -1,19 +1,33 @@
-generated: '2026-07-21'
+generated: '2026-09-23'
 method: generated
-source: openapi/wherobots-cloud-openapi-original.json
+source: openapi/wherobots-api-key-api-openapi.yml, openapi/wherobots-audit-log-api-openapi.yml,
+  openapi/wherobots-catalogs-api-openapi.yml, openapi/wherobots-cloud-connections-api-openapi.yml,
+  openapi/wherobots-coupon-api-openapi.yml, openapi/wherobots-environment-override-preset-api-openapi.yml,
+  openapi/wherobots-environment-preset-api-openapi.yml, openapi/wherobots-files-api-openapi.yml,
+  openapi/wherobots-flags-api-openapi.yml, openapi/wherobots-foreign-catalog-api-openapi.yml,
+  openapi/wherobots-health-api-openapi.yml, openapi/wherobots-is-super-user-api-openapi.yml,
+  openapi/wherobots-jupyter-lab-api-openapi.yml, openapi/wherobots-management-api-openapi.yml,
+  openapi/wherobots-me-api-openapi.yml, openapi/wherobots-orb-api-openapi.yml, openapi/wherobots-organization-api-openapi.yml,
+  openapi/wherobots-quota-api-openapi.yml, openapi/wherobots-rasterflow-api-openapi.yml, openapi/wherobots-runs-api-openapi.yml,
+  openapi/wherobots-service-api-openapi.yml, openapi/wherobots-service-token-endpoint-api-openapi.yml,
+  openapi/wherobots-solution-notebooks-api-openapi.yml, openapi/wherobots-sql-api-openapi.yml,
+  openapi/wherobots-storage-api-openapi.yml, openapi/wherobots-stripe-api-openapi.yml, openapi/wherobots-subscriptions-api-openapi.yml,
+  openapi/wherobots-superuser-api-openapi.yml, openapi/wherobots-union-executions-api-openapi.yml,
+  openapi/wherobots-usage-api-openapi.yml, openapi/wherobots-user-management-api-openapi.yml,
+  openapi/wherobots-users-api-openapi.yml, openapi/wherobots-webhook-api-openapi.yml, openapi/wherobots-workos-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 165
+  operations: 193
   by_action_class:
-    connected: 77
-    acting: 88
+    connected: 90
+    acting: 103
   by_consequence:
-    read: 77
-    write: 80
-    safety-critical: 8
-  human_in_the_loop_required: 8
+    read: 90
+    write: 94
+    safety-critical: 9
+  human_in_the_loop_required: 9
 operations:
 - path: /apikey
   method: get
@@ -349,6 +363,22 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /organization/coupon/redeem
+  method: post
+  operationId: redeemCoupon
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /environment-override-preset
   method: get
   operationId: listEnvironmentOverridePresets
@@ -543,6 +573,16 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /flags
+  method: get
+  operationId: listFeatureFlags
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /foreign-catalog
   method: get
   operationId: listForeignCatalogs
@@ -643,6 +683,26 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /health
+  method: get
+  operationId: healthCheck
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /is-super-user
+  method: get
+  operationId: isSuperUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /me/jupyter/lab/instance/{notebook_id}
   method: get
   operationId: getNotebookInstance
@@ -729,18 +789,12 @@ operations:
   method: post
   operationId: getOrganizationWorkloadCosts
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /management/quotas/all
   method: get
   operationId: listAllQuotas
@@ -983,6 +1037,22 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /webhook/orb
+  method: post
+  operationId: orb_webhook_webhook_orb_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /organization/quota/organization
   method: get
   operationId: listQuotas
@@ -1361,6 +1431,16 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /organization/quota/organization
+  method: get
+  operationId: listQuotas
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /rasterflow/runs/{run_id}
   method: delete
   operationId: cancelRasterflowRun
@@ -1517,6 +1597,48 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /ste/.well-known/jwks.json
+  method: get
+  operationId: getSteJwks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /ste/oauth2/token
+  method: post
+  operationId: exchangeAccessToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /ste/v2/oauth2/tokens
+  method: post
+  operationId: exchangeIcebergToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /solution-notebooks
   method: get
   operationId: listSolutionNotebooks
@@ -1634,48 +1756,6 @@ operations:
 - path: /sql/session
   method: post
   operationId: createSqlSession
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /ste/.well-known/jwks.json
-  method: get
-  operationId: getSteJwks
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /ste/oauth2/token
-  method: post
-  operationId: exchangeAccessToken
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /ste/v2/oauth2/tokens
-  method: post
-  operationId: exchangeIcebergToken
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1919,6 +1999,22 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /webhook/stripe/subscriptions
+  method: post
+  operationId: stripe_webhook_webhook_stripe_subscriptions_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
 - path: /subscriptions/amazon-marketplace-customer
   method: get
   operationId: getAmazonMarketplaceCustomerDetails
@@ -2013,6 +2109,268 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /management/organization/{organization_id}/subscription
+  method: get
+  operationId: getOrganizationSubscription
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/organization/{organization_id}/usage/costs
+  method: post
+  operationId: getOrganizationWorkloadCosts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/quotas/all
+  method: get
+  operationId: listAllQuotas
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/organization/{organization_id}/quotas
+  method: get
+  operationId: getOrganizationQuotas
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/organization/{organization_id}/update-quota
+  method: post
+  operationId: updateOrganizationQuota
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/organization/{organization_id}/refresh-quotas
+  method: post
+  operationId: refreshOrganizationQuotas
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/organization/{organization_id}/refresh-users
+  method: post
+  operationId: refreshOrganizationUsers
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/organization/{organization_id}/verify
+  method: post
+  operationId: verifyOrganization
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/organization/{organization_id}/mark-fraudulent
+  method: post
+  operationId: markOrganizationFraudulent
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/organization/{organization_id}/update-plan
+  method: post
+  operationId: updateOrganizationPlan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/organization/{organization_id}/refresh-catalogs
+  method: post
+  operationId: refreshOrganizationCatalogs
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/kube_app/{kube_app_id}/destroy
+  method: post
+  operationId: destroyWorkload
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/organization/{organization_id}/feature-overrides
+  method: get
+  operationId: getFeatureOverrides
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /management/organization/{organization_id}/update-feature-override
+  method: post
+  operationId: updateFeatureOverride
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /management/organization/{organization_id}
+  method: delete
+  operationId: deleteOrganization
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /management/async_operation_task
+  method: post
+  operationId: createAsyncOperationTask
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user-management/{user_id}
+  method: get
+  operationId: getUserById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /user-management/{user_id}
+  method: delete
+  operationId: deleteUser
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /user-management/by-email/{email}
+  method: get
+  operationId: getUserByEmail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /union-executions/{execution_id}
   method: get
   operationId: getUnionExecutionDetails
@@ -2067,18 +2425,12 @@ operations:
   method: post
   operationId: getWorkloadCosts
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /user-management/{user_id}
   method: get
   operationId: getUserById
@@ -2108,6 +2460,52 @@ operations:
 - path: /user-management/by-email/{email}
   method: get
   operationId: getUserByEmail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users/me
+  method: get
+  operationId: getMe
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users/me/role
+  method: post
+  operationId: updateRole
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users/me/path-access
+  method: get
+  operationId: verifyPathAccess
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /organization/{organization_id}/users/invitations
+  method: get
+  operationId: getOrganizationInvitations
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2163,33 +2561,19 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /is-super-user
-  method: get
-  operationId: isSuperUser
+- path: /webhook/workos/actions/user-registration
+  method: post
+  operationId: workos_user_registration_action_webhook_workos_actions_user_registration_post
   x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
     token:
-      max-ttl: 3600
-    audit: none
-- path: /health
-  method: get
-  operationId: healthCheck
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /flags
-  method: get
-  operationId: listFeatureFlags
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
