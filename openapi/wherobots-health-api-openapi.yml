@@ -89,23 +89,6 @@ paths:
       - Health
 components:
   schemas:
-    HealthResponse:
-      properties:
-        status:
-          type: string
-          title: Status
-        checks:
-          anyOf:
-          - additionalProperties:
-              $ref: '#/components/schemas/HealthCheckDetail'
-            type: object
-          - type: 'null'
-          title: Checks
-      type: object
-      required:
-      - status
-      title: HealthResponse
-      description: Health check response with optional detailed component checks.
     HealthCheckDetail:
       properties:
         status:
@@ -138,6 +121,23 @@ components:
       - errors
       - requestId
       title: ErrorBody
+    HealthResponse:
+      properties:
+        status:
+          type: string
+          title: Status
+        checks:
+          anyOf:
+          - additionalProperties:
+              $ref: '#/components/schemas/HealthCheckDetail'
+            type: object
+          - type: 'null'
+          title: Checks
+      type: object
+      required:
+      - status
+      title: HealthResponse
+      description: Health check response with optional detailed component checks.
     ErrorInfo:
       properties:
         code:

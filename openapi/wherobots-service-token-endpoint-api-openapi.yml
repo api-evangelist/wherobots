@@ -288,6 +288,23 @@ components:
       - subject_token
       - subject_token_type
       title: SubjectTokenExchangeRequest
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
     ExchangeTokenRequest:
       properties:
         scope:
@@ -306,23 +323,33 @@ components:
       - grant_type
       - refresh_token
       title: ExchangeTokenRequest
-    ErrorBody:
+    ClientCredIssuanceRequest:
       properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
+        grant_type:
           type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
+          const: client_credentials
+          title: Grant Type
+        scope:
+          type: string
+          title: Scope
+        client_id:
+          type: string
+          title: Client Id
+        client_secret:
+          type: string
+          title: Client Secret
+        expires_in:
+          type: integer
+          minimum: 0.0
+          title: Expires In
+          default: 0
       type: object
       required:
-      - errors
-      - requestId
-      title: ErrorBody
+      - grant_type
+      - scope
+      - client_id
+      - client_secret
+      title: ClientCredIssuanceRequest
     ErrorInfo:
       properties:
         code:
@@ -384,33 +411,6 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    ClientCredIssuanceRequest:
-      properties:
-        grant_type:
-          type: string
-          const: client_credentials
-          title: Grant Type
-        scope:
-          type: string
-          title: Scope
-        client_id:
-          type: string
-          title: Client Id
-        client_secret:
-          type: string
-          title: Client Secret
-        expires_in:
-          type: integer
-          minimum: 0.0
-          title: Expires In
-          default: 0
-      type: object
-      required:
-      - grant_type
-      - scope
-      - client_id
-      - client_secret
-      title: ClientCredIssuanceRequest
   securitySchemes:
     bearerToken:
       type: http

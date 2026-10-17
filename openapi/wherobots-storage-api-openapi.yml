@@ -1210,33 +1210,17 @@ paths:
       x-excluded: true
 components:
   schemas:
-    TemporaryAwsCredentials:
-      properties:
-        accessKeyId:
-          type: string
-          title: Accesskeyid
-        secretAccessKey:
-          type: string
-          title: Secretaccesskey
-        sessionToken:
-          type: string
-          title: Sessiontoken
-        expiration:
-          type: string
-          format: date-time
-          title: Expiration
-        region:
-          type: string
-          title: Region
-      type: object
-      required:
-      - accessKeyId
-      - secretAccessKey
-      - sessionToken
-      - expiration
-      - region
-      title: TemporaryAwsCredentials
-      description: Temporary AWS STS credentials with an expiration timestamp and region.
+    CloudProvider:
+      type: string
+      enum:
+      - AWS
+      title: CloudProvider
+    FileEntryType:
+      type: string
+      enum:
+      - FILE
+      - FOLDER
+      title: FileEntryType
     CloudConnectionRead:
       properties:
         id:
@@ -1294,14 +1278,28 @@ components:
       - managedBy
       - createdAt
       title: CloudConnectionRead
-    S3AccessApiResponse:
+    StorageCredentialsRequest:
       properties:
-        accessType:
-          $ref: '#/components/schemas/S3AccessType'
+        path:
+          type: string
+          maxLength: 1024
+          minLength: 6
+          pattern: ^s3:\/\/([a-zA-Z0-9\-_]{3,63})(?:\/?|\/([a-zA-Z0-9!_.*'()/&=-]+))?$
+          title: Path
+          description: S3 URI (e.g. s3://bucket/prefix) to obtain credentials for.
+        access_mode:
+          type: string
+          enum:
+          - read
+          - read_write
+          title: Access Mode
+          description: Access mode for the credentials. 'read' returns read-only credentials; 'read_write' returns credentials that also allow writing.
+          default: read
       type: object
       required:
-      - accessType
-      title: S3AccessApiResponse
+      - path
+      title: StorageCredentialsRequest
+      description: Request body for the unified storage credentials endpoint.
     ErrorInfo:
       properties:
         code:
@@ -1343,24 +1341,116 @@ components:
       - details
       - path
       title: ErrorInfo
-    CloudConnectionManagedBy:
+    ErrorClass:
       type: string
       enum:
-      - CLOUDFORMATION
-      title: CloudConnectionManagedBy
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    StorageIntegrationAccessType:
+      type: string
+      enum:
+      - READ
+      - READ_WRITE
+      title: StorageIntegrationAccessType
     StorageSourceType:
       type: string
       enum:
       - INTEGRATION
       - MANAGED
       title: StorageSourceType
-    S3AccessType:
-      type: string
-      enum:
-      - free
-      - requester_pays
-      - private
-      title: S3AccessType
+    DirectoryListingResult:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/FileEntry'
+          type: array
+          title: Items
+        path:
+          type: string
+          title: Path
+        name:
+          type: string
+          title: Name
+        mutate_protected:
+          type: boolean
+          title: Mutate Protected
+          default: false
+        upload_protected:
+          type: boolean
+          title: Upload Protected
+          default: false
+        current_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Current Page
+        next_page:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page
+      type: object
+      required:
+      - items
+      - path
+      - name
+      title: DirectoryListingResult
+      description: Result of a directory listing operation.
+    src__routers__storageintegration__UploadUrlResponse:
+      properties:
+        destination:
+          type: string
+          title: Destination
+        uploadUrl:
+          type: string
+          title: Uploadurl
+      type: object
+      required:
+      - destination
+      - uploadUrl
+      title: UploadUrlResponse
+    TemporaryAwsCredentials:
+      properties:
+        accessKeyId:
+          type: string
+          title: Accesskeyid
+        secretAccessKey:
+          type: string
+          title: Secretaccesskey
+        sessionToken:
+          type: string
+          title: Sessiontoken
+        expiration:
+          type: string
+          format: date-time
+          title: Expiration
+        region:
+          type: string
+          title: Region
+      type: object
+      required:
+      - accessKeyId
+      - secretAccessKey
+      - sessionToken
+      - expiration
+      - region
+      title: TemporaryAwsCredentials
+      description: Temporary AWS STS credentials with an expiration timestamp and region.
     StorageSource:
       properties:
         id:
@@ -1418,183 +1508,6 @@ components:
       - region
       - type
       title: StorageSource
-    FileEntry:
-      properties:
-        name:
-          type: string
-          title: Name
-        path:
-          type: string
-          title: Path
-        type:
-          $ref: '#/components/schemas/FileEntryType'
-        lastModified:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Lastmodified
-        size:
-          type: integer
-          title: Size
-          default: 0
-        protected:
-          type: boolean
-          title: Protected
-          default: false
-      type: object
-      required:
-      - name
-      - path
-      - type
-      title: FileEntry
-    CloudProvider:
-      type: string
-      enum:
-      - AWS
-      title: CloudProvider
-    StorageIntegrationAccess:
-      properties:
-        listAccess:
-          type: boolean
-          title: Listaccess
-          default: false
-        getAccess:
-          type: boolean
-          title: Getaccess
-          default: false
-        putAccess:
-          type: boolean
-          title: Putaccess
-          default: false
-        deleteAccess:
-          type: boolean
-          title: Deleteaccess
-          default: false
-      type: object
-      title: StorageIntegrationAccess
-    FileEntryType:
-      type: string
-      enum:
-      - FILE
-      - FOLDER
-      title: FileEntryType
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    src__routers__storageintegration__UploadUrlResponse:
-      properties:
-        destination:
-          type: string
-          title: Destination
-        uploadUrl:
-          type: string
-          title: Uploadurl
-      type: object
-      required:
-      - destination
-      - uploadUrl
-      title: UploadUrlResponse
-    StorageCredentialsRequest:
-      properties:
-        path:
-          type: string
-          maxLength: 1024
-          minLength: 6
-          pattern: ^s3:\/\/([a-zA-Z0-9\-_]{3,63})(?:\/?|\/([a-zA-Z0-9!_.*'()/&=-]+))?$
-          title: Path
-          description: S3 URI (e.g. s3://bucket/prefix) to obtain credentials for.
-        access_mode:
-          type: string
-          enum:
-          - read
-          - read_write
-          title: Access Mode
-          description: Access mode for the credentials. 'read' returns read-only credentials; 'read_write' returns credentials that also allow writing.
-          default: read
-      type: object
-      required:
-      - path
-      title: StorageCredentialsRequest
-      description: Request body for the unified storage credentials endpoint.
-    DirectoryListingResult:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/FileEntry'
-          type: array
-          title: Items
-        path:
-          type: string
-          title: Path
-        name:
-          type: string
-          title: Name
-        mutate_protected:
-          type: boolean
-          title: Mutate Protected
-          default: false
-        upload_protected:
-          type: boolean
-          title: Upload Protected
-          default: false
-        current_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Current Page
-        next_page:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Next Page
-      type: object
-      required:
-      - items
-      - path
-      - name
-      title: DirectoryListingResult
-      description: Result of a directory listing operation.
-    StorageIntegrationAccessType:
-      type: string
-      enum:
-      - READ
-      - READ_WRITE
-      title: StorageIntegrationAccessType
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
     CloudConnectionBinding:
       properties:
         kind:
@@ -1661,6 +1574,93 @@ components:
       - name
       - path
       title: CreateStorageIntegrationAPIPayload
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    S3AccessType:
+      type: string
+      enum:
+      - free
+      - requester_pays
+      - private
+      title: S3AccessType
+    FileEntry:
+      properties:
+        name:
+          type: string
+          title: Name
+        path:
+          type: string
+          title: Path
+        type:
+          $ref: '#/components/schemas/FileEntryType'
+        lastModified:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Lastmodified
+        size:
+          type: integer
+          title: Size
+          default: 0
+        protected:
+          type: boolean
+          title: Protected
+          default: false
+      type: object
+      required:
+      - name
+      - path
+      - type
+      title: FileEntry
+    StorageIntegrationAccess:
+      properties:
+        listAccess:
+          type: boolean
+          title: Listaccess
+          default: false
+        getAccess:
+          type: boolean
+          title: Getaccess
+          default: false
+        putAccess:
+          type: boolean
+          title: Putaccess
+          default: false
+        deleteAccess:
+          type: boolean
+          title: Deleteaccess
+          default: false
+      type: object
+      title: StorageIntegrationAccess
+    S3AccessApiResponse:
+      properties:
+        accessType:
+          $ref: '#/components/schemas/S3AccessType'
+      type: object
+      required:
+      - accessType
+      title: S3AccessApiResponse
+    CloudConnectionManagedBy:
+      type: string
+      enum:
+      - CLOUDFORMATION
+      title: CloudConnectionManagedBy
   securitySchemes:
     bearerToken:
       type: http

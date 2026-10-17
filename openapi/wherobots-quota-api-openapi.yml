@@ -85,32 +85,6 @@ paths:
       x-excluded: true
 components:
   schemas:
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    QuotaType:
-      type: string
-      enum:
-      - CPU
-      - HUMAN_USER_COUNT
-      - WORKLOAD_LIFETIME_HOUR
-      - DISK_PER_NODE_GB
-      - FOREIGN_CATALOG_COUNT
-      title: QuotaType
     ErrorInfo:
       properties:
         code:
@@ -172,6 +146,32 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
+    QuotaType:
+      type: string
+      enum:
+      - CPU
+      - HUMAN_USER_COUNT
+      - WORKLOAD_LIFETIME_HOUR
+      - DISK_PER_NODE_GB
+      - FOREIGN_CATALOG_COUNT
+      title: QuotaType
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
   securitySchemes:
     bearerToken:
       type: http

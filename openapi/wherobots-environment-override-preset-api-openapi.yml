@@ -212,7 +212,13 @@ paths:
       x-excluded: true
 components:
   schemas:
-    Role-Output:
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
+    OrganizationCustomer:
       properties:
         id:
           type: string
@@ -225,26 +231,28 @@ components:
           type: string
           format: date-time
           title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
         name:
-          type: string
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
+        roles:
           items:
-            $ref: '#/components/schemas/Policy'
+            $ref: '#/components/schemas/Role-Output'
           type: array
-          title: Policies
+          title: Roles
       type: object
       required:
       - id
       - createTime
       - updateTime
-      - name
-      - organizationId
-      - policies
-      title: Role
+      - roles
+      title: OrganizationCustomer
     EnvironmentOverridePresetInput:
       properties:
         name:
@@ -272,42 +280,6 @@ components:
       required:
       - name
       title: EnvironmentOverridePresetInput
-    Policy:
-      properties:
-        id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Id
-        createTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Createtime
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-        provider:
-          $ref: '#/components/schemas/Provider'
-        locator:
-          type: string
-          title: Locator
-        action:
-          type: string
-          title: Action
-        effect:
-          $ref: '#/components/schemas/Effect'
-      type: object
-      required:
-      - provider
-      - locator
-      - action
-      - effect
-      title: Policy
     ErrorBody:
       properties:
         errors:
@@ -374,6 +346,12 @@ components:
       - sparkConfiguration
       - createdBy
       title: EnvironmentOverridePreset
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
     ErrorInfo:
       properties:
         code:
@@ -435,7 +413,43 @@ components:
       - BAD_GATEWAY_ERROR
       - GATEWAY_TIMEOUT_ERROR
       title: ErrorClass
-    OrganizationCustomer:
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
+    Role-Output:
       properties:
         id:
           type: string
@@ -448,40 +462,26 @@ components:
           type: string
           format: date-time
           title: Updatetime
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
         name:
-          anyOf:
-          - type: string
-          - type: 'null'
+          type: string
           title: Name
-        roles:
+        organizationId:
+          type: string
+          title: Organizationid
+        policies:
           items:
-            $ref: '#/components/schemas/Role-Output'
+            $ref: '#/components/schemas/Policy'
           type: array
-          title: Roles
+          title: Policies
       type: object
       required:
       - id
       - createTime
       - updateTime
-      - roles
-      title: OrganizationCustomer
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    Provider:
-      type: string
-      enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
+      - name
+      - organizationId
+      - policies
+      title: Role
   securitySchemes:
     bearerToken:
       type: http

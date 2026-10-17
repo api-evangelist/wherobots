@@ -90,6 +90,23 @@ paths:
       x-excluded: false
 components:
   schemas:
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
     TypedLiteral:
       properties:
         name:
@@ -182,23 +199,6 @@ components:
       description: 'Detailed view of a Union/Flyte workflow execution, including live
 
         inputs and outputs fetched from the Union API.'
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
     ErrorInfo:
       properties:
         code:

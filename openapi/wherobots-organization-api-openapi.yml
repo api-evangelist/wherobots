@@ -1801,17 +1801,50 @@ paths:
       x-excluded: true
 components:
   schemas:
-    OrganizationRegisterInput:
+    Plan:
+      type: string
+      enum:
+      - COMMUNITY
+      - PROFESSIONAL
+      - BUILDER
+      - ENTERPRISE
+      title: Plan
+    StorageIntegrationDetails:
       properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
         name:
           type: string
-          maxLength: 50
-          minLength: 3
           title: Name
+        path:
+          type: string
+          title: Path
+        roleArn:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rolearn
+        region:
+          type: string
+          title: Region
       type: object
       required:
+      - id
+      - createTime
+      - updateTime
       - name
-      title: OrganizationRegisterInput
+      - path
+      - region
+      title: StorageIntegrationDetails
     ErrorInfo:
       properties:
         code:
@@ -1853,7 +1886,33 @@ components:
       - details
       - path
       title: ErrorInfo
-    HumanPrincipal:
+    ErrorClass:
+      type: string
+      enum:
+      - BAD_REQUEST_ERROR
+      - CONFLICT_ERROR
+      - INVALID_INPUT_ERROR
+      - INTERNAL_SERVER_ERROR
+      - UNAUTHORIZED_ERROR
+      - INSUFFICIENT_PERMISSIONS_ERROR
+      - THIRD_PARTY_PERMISSIONS_ERROR
+      - NOT_FOUND_ERROR
+      - INSUFFICIENT_QUOTA_ERROR
+      - REQUEST_ENTITY_TOO_LARGE
+      - FOREIGN_CATALOG_CONNECTION_FAILED
+      - RATE_LIMIT_ERROR
+      - TIMEOUT_ERROR
+      - ACCOUNT_NOT_PROVISIONED
+      - BAD_GATEWAY_ERROR
+      - GATEWAY_TIMEOUT_ERROR
+      title: ErrorClass
+    Effect:
+      type: string
+      enum:
+      - ALLOW
+      - DENY
+      title: Effect
+    FileStore:
       properties:
         id:
           type: string
@@ -1866,166 +1925,121 @@ components:
           type: string
           format: date-time
           title: Updatetime
+        bucketName:
+          type: string
+          title: Bucketname
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - bucketName
+      title: FileStore
+    Body_redeemCoupon:
+      properties:
+        code:
+          type: string
+          title: Code
+          description: The coupon code to redeem
+        apply:
+          type: boolean
+          title: Apply
+          description: Whether to apply the coupon features, or only check
+          default: false
+      type: object
+      required:
+      - code
+      title: Body_redeemCoupon
+    Coupon:
+      properties:
+        plans:
+          items:
+            $ref: '#/components/schemas/Plan'
+          type: array
+          uniqueItems: true
+          title: Plans
+          description: The plans this coupon can be applied to
+        features:
+          items:
+            $ref: '#/components/schemas/WherobotsCloudFeature'
+          type: array
+          uniqueItems: true
+          title: Features
+          description: The features enabled by this coupon
+        quotas:
+          additionalProperties:
+            type: integer
+          propertyNames:
+            $ref: '#/components/schemas/QuotaType'
+          type: object
+          title: Quotas
+          description: The quotas granted by this coupon
+      type: object
+      required:
+      - plans
+      - features
+      - quotas
+      title: Coupon
+    SamlSsoStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - INACTIVE
+      - PENDING
+      - FAILED
+      title: SamlSsoStatus
+    Role-Output:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        name:
+          type: string
+          title: Name
         organizationId:
           type: string
           title: Organizationid
-        roles:
-          items:
-            $ref: '#/components/schemas/Role-Output'
-          type: array
-          title: Roles
         policies:
           items:
             $ref: '#/components/schemas/Policy'
           type: array
           title: Policies
-        deletedAt:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Deletedat
-        email:
-          type: string
-          title: Email
       type: object
       required:
       - id
       - createTime
       - updateTime
+      - name
       - organizationId
-      - roles
       - policies
-      - email
-      title: HumanPrincipal
-    ApiKey:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        partialApiKey:
-          type: string
-          title: Partialapikey
-          description: 'Deprecated: use `preview` instead.'
-          deprecated: true
-        preview:
-          type: string
-          title: Preview
-          description: Display form of the key, e.g. `abc123...wxyz`.
-        name:
-          type: string
-          title: Name
-        valid:
-          type: boolean
-          title: Valid
-        revoked:
-          type: boolean
-          title: Revoked
-        expiresAt:
-          type: string
-          format: date-time
-          title: Expiresat
-        createdById:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Createdbyid
-        createdBy:
-          anyOf:
-          - $ref: '#/components/schemas/OrganizationCustomer'
-          - type: 'null'
-        ownedBy:
-          anyOf:
-          - $ref: '#/components/schemas/OrganizationCustomer'
-          - type: 'null'
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - partialApiKey
-      - preview
-      - name
-      - valid
-      - revoked
-      - expiresAt
-      - createdById
-      - createdBy
-      title: ApiKey
-    StorageIntegrationDetails:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        name:
-          type: string
-          title: Name
-        path:
-          type: string
-          title: Path
-        roleArn:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Rolearn
-        region:
-          type: string
-          title: Region
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - name
-      - path
-      - region
-      title: StorageIntegrationDetails
-    OrganizationUpdateInput:
+      title: Role
+    OrganizationState:
+      type: string
+      enum:
+      - ACTIVE
+      - SUSPENDED
+      - CLOSED
+      - EXPIRED
+      title: OrganizationState
+    OrganizationRegisterInput:
       properties:
         name:
-          anyOf:
-          - type: string
-            maxLength: 50
-            minLength: 3
-          - type: 'null'
-          title: Name
-        billingContact:
-          anyOf:
-          - type: string
-            maxLength: 255
-          - type: 'null'
-          title: Billingcontact
-      type: object
-      title: OrganizationUpdateInput
-    OrganizationCreateInput:
-      properties:
-        name:
-          anyOf:
-          - type: string
-            maxLength: 50
-            minLength: 3
-          - type: 'null'
+          type: string
+          maxLength: 50
+          minLength: 3
           title: Name
       type: object
       required:
       - name
-      title: OrganizationCreateInput
+      title: OrganizationRegisterInput
     WherobotsCloudFeature:
       type: string
       enum:
@@ -2066,43 +2080,7 @@ components:
       - REGION_AWS_AP_SOUTH_1
       - REGION_AWS_US_EAST_2
       title: WherobotsCloudFeature
-    Policy:
-      properties:
-        id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Id
-        createTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Createtime
-        updateTime:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-          title: Updatetime
-        provider:
-          $ref: '#/components/schemas/Provider'
-        locator:
-          type: string
-          title: Locator
-        action:
-          type: string
-          title: Action
-        effect:
-          $ref: '#/components/schemas/Effect'
-      type: object
-      required:
-      - provider
-      - locator
-      - action
-      - effect
-      title: Policy
-    OrgListingEntry:
+    OrganizationCustomer:
       properties:
         id:
           type: string
@@ -2115,38 +2093,84 @@ components:
           type: string
           format: date-time
           title: Updatetime
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
         name:
-          type: string
-          title: Name
-        verified:
-          type: boolean
-          title: Verified
-        workosOrganizationId:
           anyOf:
           - type: string
           - type: 'null'
-          title: Workosorganizationid
-        plan:
-          anyOf:
-          - $ref: '#/components/schemas/Plan'
-          - type: 'null'
-        state:
-          $ref: '#/components/schemas/OrganizationState'
+          title: Name
+        roles:
+          items:
+            $ref: '#/components/schemas/Role-Output'
+          type: array
+          title: Roles
       type: object
       required:
       - id
       - createTime
       - updateTime
+      - roles
+      title: OrganizationCustomer
+    OrganizationCreateInput:
+      properties:
+        name:
+          anyOf:
+          - type: string
+            maxLength: 50
+            minLength: 3
+          - type: 'null'
+          title: Name
+      type: object
+      required:
       - name
-      - verified
-      - state
-      title: OrgListingEntry
-    Provider:
+      title: OrganizationCreateInput
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    OrganizationUpdateInput:
+      properties:
+        name:
+          anyOf:
+          - type: string
+            maxLength: 50
+            minLength: 3
+          - type: 'null'
+          title: Name
+        billingContact:
+          anyOf:
+          - type: string
+            maxLength: 255
+          - type: 'null'
+          title: Billingcontact
+      type: object
+      title: OrganizationUpdateInput
+    QuotaType:
       type: string
       enum:
-      - WHEROBOTS
-      - AWS
-      title: Provider
+      - CPU
+      - HUMAN_USER_COUNT
+      - WORKLOAD_LIFETIME_HOUR
+      - DISK_PER_NODE_GB
+      - FOREIGN_CATALOG_COUNT
+      title: QuotaType
     Invitation:
       properties:
         id:
@@ -2177,36 +2201,39 @@ components:
       - expiresAt
       - createdAt
       title: Invitation
-    Coupon:
-      properties:
-        plans:
-          items:
-            $ref: '#/components/schemas/Plan'
-          type: array
-          uniqueItems: true
-          title: Plans
-          description: The plans this coupon can be applied to
-        features:
-          items:
-            $ref: '#/components/schemas/WherobotsCloudFeature'
-          type: array
-          uniqueItems: true
-          title: Features
-          description: The features enabled by this coupon
-        quotas:
-          additionalProperties:
-            type: integer
-          propertyNames:
-            $ref: '#/components/schemas/QuotaType'
-          type: object
-          title: Quotas
-          description: The quotas granted by this coupon
-      type: object
-      required:
-      - plans
-      - features
-      - quotas
-      title: Coupon
+    RuntimeId:
+      type: string
+      enum:
+      - TINY
+      - SMALL
+      - MEDIUM
+      - LARGE
+      - XLARGE
+      - XXLARGE
+      - micro
+      - tiny
+      - small
+      - medium
+      - large
+      - x-large
+      - 2x-large
+      - 4x-large
+      - medium-himem
+      - large-himem
+      - x-large-himem
+      - 2x-large-himem
+      - 4x-large-himem
+      - x-large-hicpu
+      - 2x-large-hicpu
+      - x-large-matcher
+      - 2x-large-matcher
+      - micro-a10-gpu
+      - tiny-a10-gpu
+      - small-a10-gpu
+      - medium-a10-gpu
+      - large-a10-gpu
+      - x-large-a10-gpu
+      title: RuntimeId
     Organization:
       properties:
         id:
@@ -2333,83 +2360,7 @@ components:
       - state
       - allowedRegions
       title: Organization
-    ErrorClass:
-      type: string
-      enum:
-      - BAD_REQUEST_ERROR
-      - CONFLICT_ERROR
-      - INVALID_INPUT_ERROR
-      - INTERNAL_SERVER_ERROR
-      - UNAUTHORIZED_ERROR
-      - INSUFFICIENT_PERMISSIONS_ERROR
-      - THIRD_PARTY_PERMISSIONS_ERROR
-      - NOT_FOUND_ERROR
-      - INSUFFICIENT_QUOTA_ERROR
-      - REQUEST_ENTITY_TOO_LARGE
-      - FOREIGN_CATALOG_CONNECTION_FAILED
-      - RATE_LIMIT_ERROR
-      - TIMEOUT_ERROR
-      - ACCOUNT_NOT_PROVISIONED
-      - BAD_GATEWAY_ERROR
-      - GATEWAY_TIMEOUT_ERROR
-      title: ErrorClass
-    RuntimeId:
-      type: string
-      enum:
-      - TINY
-      - SMALL
-      - MEDIUM
-      - LARGE
-      - XLARGE
-      - XXLARGE
-      - micro
-      - tiny
-      - small
-      - medium
-      - large
-      - x-large
-      - 2x-large
-      - 4x-large
-      - medium-himem
-      - large-himem
-      - x-large-himem
-      - 2x-large-himem
-      - 4x-large-himem
-      - x-large-hicpu
-      - 2x-large-hicpu
-      - x-large-matcher
-      - 2x-large-matcher
-      - micro-a10-gpu
-      - tiny-a10-gpu
-      - small-a10-gpu
-      - medium-a10-gpu
-      - large-a10-gpu
-      - x-large-a10-gpu
-      title: RuntimeId
-    FileStore:
-      properties:
-        id:
-          type: string
-          title: Id
-        createTime:
-          type: string
-          format: date-time
-          title: Createtime
-        updateTime:
-          type: string
-          format: date-time
-          title: Updatetime
-        bucketName:
-          type: string
-          title: Bucketname
-      type: object
-      required:
-      - id
-      - createTime
-      - updateTime
-      - bucketName
-      title: FileStore
-    Role-Output:
+    OrgListingEntry:
       properties:
         id:
           type: string
@@ -2425,80 +2376,29 @@ components:
         name:
           type: string
           title: Name
-        organizationId:
-          type: string
-          title: Organizationid
-        policies:
-          items:
-            $ref: '#/components/schemas/Policy'
-          type: array
-          title: Policies
+        verified:
+          type: boolean
+          title: Verified
+        workosOrganizationId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Workosorganizationid
+        plan:
+          anyOf:
+          - $ref: '#/components/schemas/Plan'
+          - type: 'null'
+        state:
+          $ref: '#/components/schemas/OrganizationState'
       type: object
       required:
       - id
       - createTime
       - updateTime
       - name
-      - organizationId
-      - policies
-      title: Role
-    OrganizationState:
-      type: string
-      enum:
-      - ACTIVE
-      - SUSPENDED
-      - CLOSED
-      - EXPIRED
-      title: OrganizationState
-    SamlSsoStatus:
-      type: string
-      enum:
-      - ACTIVE
-      - INACTIVE
-      - PENDING
-      - FAILED
-      title: SamlSsoStatus
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
-    Body_redeemCoupon:
-      properties:
-        code:
-          type: string
-          title: Code
-          description: The coupon code to redeem
-        apply:
-          type: boolean
-          title: Apply
-          description: Whether to apply the coupon features, or only check
-          default: false
-      type: object
-      required:
-      - code
-      title: Body_redeemCoupon
-    QuotaType:
-      type: string
-      enum:
-      - CPU
-      - HUMAN_USER_COUNT
-      - WORKLOAD_LIFETIME_HOUR
-      - DISK_PER_NODE_GB
-      - FOREIGN_CATALOG_COUNT
-      title: QuotaType
+      - verified
+      - state
+      title: OrgListingEntry
     EnsureHumanPrincipalInput:
       properties:
         workos_organization_id:
@@ -2508,7 +2408,13 @@ components:
       required:
       - workos_organization_id
       title: EnsureHumanPrincipalInput
-    OrganizationCustomer:
+    Provider:
+      type: string
+      enum:
+      - WHEROBOTS
+      - AWS
+      title: Provider
+    HumanPrincipal:
       properties:
         id:
           type: string
@@ -2521,42 +2427,136 @@ components:
           type: string
           format: date-time
           title: Updatetime
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
+        organizationId:
+          type: string
+          title: Organizationid
         roles:
           items:
             $ref: '#/components/schemas/Role-Output'
           type: array
           title: Roles
+        policies:
+          items:
+            $ref: '#/components/schemas/Policy'
+          type: array
+          title: Policies
+        deletedAt:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Deletedat
+        email:
+          type: string
+          title: Email
       type: object
       required:
       - id
       - createTime
       - updateTime
+      - organizationId
       - roles
-      title: OrganizationCustomer
-    Effect:
-      type: string
-      enum:
-      - ALLOW
-      - DENY
-      title: Effect
-    Plan:
-      type: string
-      enum:
-      - COMMUNITY
-      - PROFESSIONAL
-      - BUILDER
-      - ENTERPRISE
-      title: Plan
+      - policies
+      - email
+      title: HumanPrincipal
+    ApiKey:
+      properties:
+        id:
+          type: string
+          title: Id
+        createTime:
+          type: string
+          format: date-time
+          title: Createtime
+        updateTime:
+          type: string
+          format: date-time
+          title: Updatetime
+        partialApiKey:
+          type: string
+          title: Partialapikey
+          description: 'Deprecated: use `preview` instead.'
+          deprecated: true
+        preview:
+          type: string
+          title: Preview
+          description: Display form of the key, e.g. `abc123...wxyz`.
+        name:
+          type: string
+          title: Name
+        valid:
+          type: boolean
+          title: Valid
+        revoked:
+          type: boolean
+          title: Revoked
+        expiresAt:
+          type: string
+          format: date-time
+          title: Expiresat
+        createdById:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Createdbyid
+        createdBy:
+          anyOf:
+          - $ref: '#/components/schemas/OrganizationCustomer'
+          - type: 'null'
+        ownedBy:
+          anyOf:
+          - $ref: '#/components/schemas/OrganizationCustomer'
+          - type: 'null'
+      type: object
+      required:
+      - id
+      - createTime
+      - updateTime
+      - partialApiKey
+      - preview
+      - name
+      - valid
+      - revoked
+      - expiresAt
+      - createdById
+      - createdBy
+      title: ApiKey
+    Policy:
+      properties:
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Id
+        createTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Createtime
+        updateTime:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+          title: Updatetime
+        provider:
+          $ref: '#/components/schemas/Provider'
+        locator:
+          type: string
+          title: Locator
+        action:
+          type: string
+          title: Action
+        effect:
+          $ref: '#/components/schemas/Effect'
+      type: object
+      required:
+      - provider
+      - locator
+      - action
+      - effect
+      title: Policy
   securitySchemes:
     bearerToken:
       type: http

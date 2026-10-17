@@ -484,6 +484,61 @@ components:
       - galleryOrder
       - showInGallery
       title: NotebookMetadata
+    ErrorBody:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/ErrorInfo'
+          type: array
+          title: Errors
+          description: A list of errors that occurred
+        requestId:
+          type: string
+          title: Requestid
+          description: A unique identifier for the request that caused the error
+      type: object
+      required:
+      - errors
+      - requestId
+      title: ErrorBody
+    Body_replaceSolutionNotebook:
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          title: Name
+        description:
+          anyOf:
+          - type: string
+            maxLength: 1024
+          - type: 'null'
+          title: Description
+        efsPath:
+          type: string
+          maxLength: 512
+          title: Efspath
+        recommendedRuntime:
+          $ref: '#/components/schemas/RuntimeId'
+          default: tiny
+        thumbnailImage:
+          anyOf:
+          - type: string
+            contentMediaType: application/octet-stream
+          - type: 'null'
+          title: Thumbnailimage
+        galleryOrder:
+          type: integer
+          title: Galleryorder
+          default: 0
+        showInGallery:
+          type: boolean
+          title: Showingallery
+          default: true
+      type: object
+      required:
+      - name
+      - efsPath
+      title: Body_replaceSolutionNotebook
     Body_createSolutionNotebook:
       properties:
         name:
@@ -522,23 +577,6 @@ components:
       - name
       - efsPath
       title: Body_createSolutionNotebook
-    ErrorBody:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/ErrorInfo'
-          type: array
-          title: Errors
-          description: A list of errors that occurred
-        requestId:
-          type: string
-          title: Requestid
-          description: A unique identifier for the request that caused the error
-      type: object
-      required:
-      - errors
-      - requestId
-      title: ErrorBody
     ErrorInfo:
       properties:
         code:
@@ -633,44 +671,6 @@ components:
       - large-a10-gpu
       - x-large-a10-gpu
       title: RuntimeId
-    Body_replaceSolutionNotebook:
-      properties:
-        name:
-          type: string
-          maxLength: 255
-          title: Name
-        description:
-          anyOf:
-          - type: string
-            maxLength: 1024
-          - type: 'null'
-          title: Description
-        efsPath:
-          type: string
-          maxLength: 512
-          title: Efspath
-        recommendedRuntime:
-          $ref: '#/components/schemas/RuntimeId'
-          default: tiny
-        thumbnailImage:
-          anyOf:
-          - type: string
-            contentMediaType: application/octet-stream
-          - type: 'null'
-          title: Thumbnailimage
-        galleryOrder:
-          type: integer
-          title: Galleryorder
-          default: 0
-        showInGallery:
-          type: boolean
-          title: Showingallery
-          default: true
-      type: object
-      required:
-      - name
-      - efsPath
-      title: Body_replaceSolutionNotebook
   securitySchemes:
     bearerToken:
       type: http
