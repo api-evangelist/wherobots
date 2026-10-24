@@ -1,413 +1,854 @@
 {
+  "info": {
+    "_postman_id": "97f820d2-5105-49b6-8540-3e1f585057af",
+    "name": "Wherobots Cloud Environment Override Preset API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:19:47.000Z",
+    "updatedAt": "2026-10-22T01:19:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-97f820d2-5105-49b6-8540-3e1f585057af"
+  },
   "item": [
     {
-      "id": "9dfa0ac6-fe8e-426f-9f8a-6ca3cc474984",
-      "name": "environment-override--preset",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "environment-override-preset",
       "item": [
         {
-          "id": "0ddd91db-0938-49e8-b6e4-55ccbbd1d6f2",
+          "name": "{environment_override_preset_id}",
+          "item": [
+            {
+              "name": "Delete an environment override preset",
+              "id": "dc2d4758-405e-4567-9ea8-8b2d1bb49b12",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset",
+                    ":environment_override_preset_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a4340180-f805-48e1-8474-d216277b5d31",
+                      "key": "environment_override_preset_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "e25abe71-f42e-4cd7-afc5-982143691fee",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-e25abe71-f42e-4cd7-afc5-982143691fee"
+                },
+                {
+                  "id": "10e540f2-b10b-4694-ac54-47156a932e4d",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-10e540f2-b10b-4694-ac54-47156a932e4d"
+                },
+                {
+                  "id": "7ce5bff5-068e-4d16-a6e5-7655dc9ebe3e",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-7ce5bff5-068e-4d16-a6e5-7655dc9ebe3e"
+                },
+                {
+                  "id": "459c066f-9176-41f2-b077-f246b61d0c17",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-459c066f-9176-41f2-b077-f246b61d0c17"
+                },
+                {
+                  "id": "dc61ca36-2b81-41b1-8781-e61de78331ae",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-dc61ca36-2b81-41b1-8781-e61de78331ae"
+                },
+                {
+                  "id": "96a3f9ac-ce8a-46b2-b20d-62699e316934",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-96a3f9ac-ce8a-46b2-b20d-62699e316934"
+                },
+                {
+                  "id": "690b9bda-ae26-4759-8e8c-a4cfc15f0798",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-690b9bda-ae26-4759-8e8c-a4cfc15f0798"
+                },
+                {
+                  "id": "b9e5c6c4-3f7d-452c-8565-15b35a1c45a2",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-override-preset/:environment_override_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-override-preset",
+                        ":environment_override_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_override_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:48.000Z",
+                  "updatedAt": "2026-10-22T01:19:48.000Z",
+                  "uid": "35240-b9e5c6c4-3f7d-452c-8565-15b35a1c45a2"
+                }
+              ],
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-dc2d4758-405e-4567-9ea8-8b2d1bb49b12"
+            }
+          ],
+          "id": "f222f3d3-0c11-4f4b-b39d-90a731c7cfe3",
+          "createdAt": "2026-10-22T01:19:48.000Z",
+          "updatedAt": "2026-10-22T01:19:48.000Z",
+          "uid": "35240-f222f3d3-0c11-4f4b-b39d-90a731c7cfe3"
+        },
+        {
           "name": "List environment override presets",
+          "id": "a900a6dd-af24-40b3-83b3-f102f1c8a0c9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List environment override presets",
-            "description": {},
-            "url": {
-              "path": [
-                "environment-override-preset"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
+            "url": {
+              "raw": "{{baseUrl}}/environment-override-preset",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "environment-override-preset"
               ]
             }
           },
           "response": [
             {
-              "id": "0bc45a7e-80d6-4b53-92be-1bbd09414863",
+              "id": "e4838ad3-ac5f-4d79-9074-eeed739e7614",
               "name": "Successful Response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"createTime\": \"1973-12-25T17:03:32.210Z\",\n    \"updateTime\": \"2000-03-25T08:20:15.277Z\",\n    \"name\": \"string\",\n    \"sparkConfiguration\": {\n      \"key_0\": 5782.609176400154\n    },\n    \"createdBy\": {\n      \"id\": \"string\",\n      \"createTime\": \"1976-05-24T22:51:30.553Z\",\n      \"updateTime\": \"2024-01-06T05:49:44.504Z\",\n      \"roles\": [\n        {\n          \"id\": \"string\",\n          \"createTime\": \"1970-03-16T22:10:57.035Z\",\n          \"updateTime\": \"2019-06-04T08:31:14.865Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"createTime\": \"1949-07-09T10:23:11.240Z\",\n          \"updateTime\": \"2008-03-08T02:02:28.032Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"string\",\n      \"name\": \"string\"\n    },\n    \"driverDiskSize\": 8814,\n    \"executorDiskSize\": 5261,\n    \"protected\": false\n  },\n  {\n    \"id\": \"string\",\n    \"createTime\": \"1970-03-11T01:30:59.299Z\",\n    \"updateTime\": \"2000-08-01T09:22:11.517Z\",\n    \"name\": \"string\",\n    \"sparkConfiguration\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"createdBy\": {\n      \"id\": \"string\",\n      \"createTime\": \"1998-03-17T09:47:57.846Z\",\n      \"updateTime\": \"1976-05-22T15:54:27.726Z\",\n      \"roles\": [\n        {\n          \"id\": \"string\",\n          \"createTime\": \"2010-02-15T07:20:45.503Z\",\n          \"updateTime\": \"1961-04-11T17:39:57.232Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"createTime\": \"1988-09-19T06:47:13.454Z\",\n          \"updateTime\": \"2022-02-05T21:05:14.295Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"string\",\n      \"name\": \"string\"\n    },\n    \"driverDiskSize\": 4011,\n    \"executorDiskSize\": 1980,\n    \"protected\": false\n  }\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"sparkConfiguration\": {\n      \"mollit_233\": \"e\",\n      \"deserunt_56\": 16177964,\n      \"laboris849\": 62819348\n    },\n    \"createdBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"driverDiskSize\": \"<integer>\",\n    \"executorDiskSize\": \"<integer>\",\n    \"protected\": false\n  },\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"sparkConfiguration\": {\n      \"inc51\": true,\n      \"sit54_\": true\n    },\n    \"createdBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"driverDiskSize\": \"<integer>\",\n    \"executorDiskSize\": \"<integer>\",\n    \"protected\": false\n  }\n]",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-e4838ad3-ac5f-4d79-9074-eeed739e7614"
             },
             {
-              "id": "293098c1-d919-4d4f-bfc7-6d4fce1e1cbb",
+              "id": "bd8fe7e6-e93f-4c38-a27f-c00097486a1f",
               "name": "Bad Request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-bd8fe7e6-e93f-4c38-a27f-c00097486a1f"
             },
             {
-              "id": "08558571-74f4-4594-99d4-f6c465d42559",
+              "id": "4280031e-58a1-41fc-98ab-5f59d4545dcf",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-4280031e-58a1-41fc-98ab-5f59d4545dcf"
             },
             {
-              "id": "4167ba1c-3d99-48fa-ac3f-0a20951d0312",
+              "id": "6fb2b30c-6f88-4006-8341-778651a80a0c",
               "name": "Forbidden",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-6fb2b30c-6f88-4006-8341-778651a80a0c"
             },
             {
-              "id": "fa029af8-6d19-4ce5-be5b-0401d809908c",
+              "id": "5c89dbbb-ba70-4200-be35-cb16f28b6882",
               "name": "Not Found",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-5c89dbbb-ba70-4200-be35-cb16f28b6882"
             },
             {
-              "id": "2888ec11-a053-4b9b-b99b-f26944fe3a84",
+              "id": "62a1ab29-0666-4a18-afaa-6e54bf727692",
               "name": "Conflict",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Conflict",
               "code": 409,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-62a1ab29-0666-4a18-afaa-6e54bf727692"
             },
             {
-              "id": "842dc254-e6e9-452b-840d-fdd3ccf6885a",
+              "id": "9c7af52f-9dbf-40a4-bf1f-46b542ca2ea3",
               "name": "Validation Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-9c7af52f-9dbf-40a4-bf1f-46b542ca2ea3"
             },
             {
-              "id": "024105a6-2b40-42f0-a843-d1686e8b8a22",
+              "id": "80f620e3-d265-417d-82f0-8f71b0f16c26",
               "name": "Internal Server Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-80f620e3-d265-417d-82f0-8f71b0f16c26"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:19:48.000Z",
+          "updatedAt": "2026-10-22T01:19:48.000Z",
+          "uid": "35240-a900a6dd-af24-40b3-83b3-f102f1c8a0c9"
         },
         {
-          "id": "e0dd4cfb-0da6-4685-80b8-d3d5b1a670a6",
           "name": "Create or update an env override preset",
+          "id": "cc6c5835-136e-4561-985a-d86520843ce3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create or update an env override preset",
-            "description": {},
-            "url": {
-              "path": [
-                "environment-override-preset"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "PUT",
             "header": [
               {
                 "key": "Content-Type",
@@ -418,925 +859,491 @@
                 "value": "application/json"
               }
             ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 634\n  }\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
-          },
-          "response": [
-            {
-              "id": "1fd76b13-e6c0-4559-850c-f63bf855d045",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"createTime\": \"1968-07-19T12:07:14.051Z\",\n  \"updateTime\": \"2024-04-27T23:40:08.268Z\",\n  \"name\": \"string\",\n  \"sparkConfiguration\": {\n    \"key_0\": 2137.534785417382\n  },\n  \"createdBy\": {\n    \"id\": \"string\",\n    \"createTime\": \"2016-09-03T08:01:32.773Z\",\n    \"updateTime\": \"2009-01-22T15:09:42.986Z\",\n    \"roles\": [\n      {\n        \"id\": \"string\",\n        \"createTime\": \"1977-06-13T23:09:17.263Z\",\n        \"updateTime\": \"2010-08-13T12:59:55.905Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"createTime\": \"1961-01-04T03:20:21.841Z\",\n        \"updateTime\": \"1980-11-04T23:43:26.776Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"email\": \"string\",\n    \"name\": \"string\"\n  },\n  \"driverDiskSize\": 1164,\n  \"executorDiskSize\": 7354,\n  \"protected\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
             },
-            {
-              "id": "c5740c64-dad7-4cb7-a9c9-8ae268aaea21",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1adb17a0-545c-46e7-b35c-7035f1e65447",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a8a88f94-6075-4127-bc94-ff1c1019f428",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "11403824-d38c-4112-91d2-f14194926aee",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a26151bd-b00a-4685-95fd-df9380aea529",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5c832142-1b55-45b2-a5fb-fec7f01e3597",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d4180874-3e72-40e8-a8b3-0f8a6c30a3f4",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 8430.052351423825,\n    \"key_1\": 5493\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a91143e9-e18e-4ccb-8378-c523fa8feb7f",
-          "name": "Delete an environment override preset",
-          "request": {
-            "name": "Delete an environment override preset",
-            "description": {},
             "url": {
-              "path": [
-                "environment-override-preset",
-                ":environment_override_preset_id"
-              ],
+              "raw": "{{baseUrl}}/environment-override-preset",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "environment_override_preset_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
+              "path": [
+                "environment-override-preset"
               ]
             }
           },
           "response": [
             {
-              "id": "da34d5ee-5795-4de5-9eb5-1c65ddfb860c",
+              "id": "77123953-f03d-4e59-a736-07b63f453ced",
               "name": "Successful Response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"deserunt7\": false,\n    \"voluptate77e\": 4047171.8249741197,\n    \"Lorem_60\": \"Excepteur\"\n  },\n  \"createdBy\": {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"protected\": false\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-77123953-f03d-4e59-a736-07b63f453ced"
             },
             {
-              "id": "8225fb3d-4689-40fd-b85c-dcdaa3b042d8",
+              "id": "c5223cd7-9a29-499a-bf9e-0ef3d1c77ffa",
               "name": "Bad Request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-c5223cd7-9a29-499a-bf9e-0ef3d1c77ffa"
             },
             {
-              "id": "32ce9d00-71c5-4f52-8a97-ebcb29df1373",
+              "id": "4bfa1045-977b-4766-80e5-6c3ddfc0e328",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-4bfa1045-977b-4766-80e5-6c3ddfc0e328"
             },
             {
-              "id": "6fa9f303-01bb-4c8c-bb98-dd7857d08d84",
+              "id": "58ae3927-b458-43e1-a321-c51c295d504a",
               "name": "Forbidden",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-58ae3927-b458-43e1-a321-c51c295d504a"
             },
             {
-              "id": "5b5c751b-58de-4d92-8dcc-2886be45c605",
+              "id": "f72fefdf-6a33-4d88-9e2e-dc43ae8e1470",
               "name": "Not Found",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-f72fefdf-6a33-4d88-9e2e-dc43ae8e1470"
             },
             {
-              "id": "0147ef52-91dc-47d6-8160-adb92756060b",
+              "id": "6766d026-b7c3-457a-9cc7-e3c00e85d7f2",
               "name": "Conflict",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Conflict",
               "code": 409,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-6766d026-b7c3-457a-9cc7-e3c00e85d7f2"
             },
             {
-              "id": "3ea1a2ff-1264-4889-b563-c1981407485e",
+              "id": "67cb1377-20ef-47c2-a43f-4459f6da9418",
               "name": "Validation Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-67cb1377-20ef-47c2-a43f-4459f6da9418"
             },
             {
-              "id": "abe61e95-f53a-4390-ba4f-328fca79a388",
+              "id": "7a99f5d1-3c39-46d7-b80c-42f7bed9306e",
               "name": "Internal Server Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-override-preset",
-                    ":environment_override_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_override_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"driverDiskSize\": \"<integer>\",\n  \"executorDiskSize\": \"<integer>\",\n  \"sparkConfiguration\": {\n    \"irure860\": 5268618.567518279,\n    \"id22\": 17151552.354689375\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-override-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-override-preset"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:48.000Z",
+              "updatedAt": "2026-10-22T01:19:48.000Z",
+              "uid": "35240-7a99f5d1-3c39-46d7-b80c-42f7bed9306e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:19:48.000Z",
+          "updatedAt": "2026-10-22T01:19:48.000Z",
+          "uid": "35240-cc6c5835-136e-4561-985a-d86520843ce3"
         }
       ],
-      "event": []
+      "id": "18973671-7ebb-4fbc-bdf3-5936a01ea939",
+      "createdAt": "2026-10-22T01:19:48.000Z",
+      "updatedAt": "2026-10-22T01:19:48.000Z",
+      "uid": "35240-18973671-7ebb-4fbc-bdf3-5936a01ea939"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "26396a8f-a5b6-48da-96a6-e90c4213ed68",
-    "name": "Wherobots Cloud apikey environment-override--preset API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

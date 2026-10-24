@@ -1,488 +1,486 @@
 {
+  "info": {
+    "_postman_id": "f29d1aca-248f-49b1-a62e-3a494bc6b3b0",
+    "name": "Wherobots Cloud Stripe API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:21:59.000Z",
+    "updatedAt": "2026-10-22T01:21:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f29d1aca-248f-49b1-a62e-3a494bc6b3b0"
+  },
   "item": [
     {
-      "id": "5662e90e-9fa1-40d4-9a7a-755d9a507460",
-      "name": "stripe",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "webhook",
       "item": [
         {
-          "id": "80ee33f6-eb91-491c-bb2b-8a766ebbbf51",
-          "name": "Stripe Webhook",
-          "request": {
-            "name": "Stripe Webhook",
-            "description": {},
-            "url": {
-              "path": [
-                "webhook",
-                "stripe",
-                "subscriptions"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Stripe webhook payload signature",
-                "key": "stripe-signature",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "stripe",
+          "item": [
             {
-              "id": "ef46864d-a80c-4127-8469-37ddfa995d1b",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "subscriptions",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Stripe Webhook",
+                  "id": "9b9f22a8-28ca-42c5-8785-fb4ba5d3a4ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) Stripe webhook payload signature",
+                        "key": "stripe-signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "webhook",
+                        "stripe",
+                        "subscriptions"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3dbc6f91-af90-4526-8bb9-65056fe265f2",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-3dbc6f91-af90-4526-8bb9-65056fe265f2"
+                    },
+                    {
+                      "id": "a10f0dd1-3b33-4beb-85fa-4fdf43e7e408",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"THIRD_PARTY_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-a10f0dd1-3b33-4beb-85fa-4fdf43e7e408"
+                    },
+                    {
+                      "id": "c9b9a791-d776-45e5-a782-4c15b7a60cc2",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"THIRD_PARTY_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-c9b9a791-d776-45e5-a782-4c15b7a60cc2"
+                    },
+                    {
+                      "id": "0464777a-2d87-4739-bb67-3d6d2d6c4d8c",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"THIRD_PARTY_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-0464777a-2d87-4739-bb67-3d6d2d6c4d8c"
+                    },
+                    {
+                      "id": "a2d40e14-3e90-47dc-b5e5-27006a350118",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"THIRD_PARTY_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-a2d40e14-3e90-47dc-b5e5-27006a350118"
+                    },
+                    {
+                      "id": "33cafc8c-47c3-4a68-9b61-28acf7e486c5",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"THIRD_PARTY_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-33cafc8c-47c3-4a68-9b61-28acf7e486c5"
+                    },
+                    {
+                      "id": "690c973f-299a-48a4-bc70-c82a59aa47c8",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"THIRD_PARTY_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-690c973f-299a-48a4-bc70-c82a59aa47c8"
+                    },
+                    {
+                      "id": "13e0832d-5c59-4fed-8dbb-8cd60e18c8c0",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Stripe webhook payload signature",
+                            "key": "stripe-signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/stripe/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "stripe",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"THIRD_PARTY_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:59.000Z",
+                      "updatedAt": "2026-10-22T01:21:59.000Z",
+                      "uid": "35240-13e0832d-5c59-4fed-8dbb-8cd60e18c8c0"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:21:59.000Z",
+                  "updatedAt": "2026-10-22T01:21:59.000Z",
+                  "uid": "35240-9b9f22a8-28ca-42c5-8785-fb4ba5d3a4ed"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7a0ec894-3509-4403-b088-acd4514138ee",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fc34443d-53db-46ce-8bb5-914c1d036be6",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9cde8dcd-0125-44c3-a597-f8ff037d8855",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "49516e7c-6054-481a-b5ca-e0f050d76335",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e74da1ff-d5a9-430b-865c-c6ca55bb8f8d",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d334a94d-e5fb-4c95-800a-497bb0cc7834",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "be56ffe2-c9d5-4d33-a5f2-599b70f31e36",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "stripe",
-                    "subscriptions"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Stripe webhook payload signature",
-                    "key": "stripe-signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "7156a06d-3ee2-414c-bdf6-bcef98aca9b0",
+              "createdAt": "2026-10-22T01:21:59.000Z",
+              "updatedAt": "2026-10-22T01:21:59.000Z",
+              "uid": "35240-7156a06d-3ee2-414c-bdf6-bcef98aca9b0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "02c738bb-1b54-486c-92e9-c7312a16560d",
+          "createdAt": "2026-10-22T01:21:59.000Z",
+          "updatedAt": "2026-10-22T01:21:59.000Z",
+          "uid": "35240-02c738bb-1b54-486c-92e9-c7312a16560d"
         }
       ],
-      "event": []
+      "id": "71ccac4c-10e5-4db5-9865-1cedac499d89",
+      "createdAt": "2026-10-22T01:21:59.000Z",
+      "updatedAt": "2026-10-22T01:21:59.000Z",
+      "uid": "35240-71ccac4c-10e5-4db5-9865-1cedac499d89"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "beb6f426-7089-4686-b58a-1ac0f41b9fab",
-    "name": "Wherobots Cloud apikey stripe API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,505 +1,481 @@
 {
+  "info": {
+    "_postman_id": "7d567dcd-a767-4d84-9711-adaa3b6a2b96",
+    "name": "Wherobots Cloud Rasterflow API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:21:15.000Z",
+    "updatedAt": "2026-10-22T01:21:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7d567dcd-a767-4d84-9711-adaa3b6a2b96"
+  },
   "item": [
     {
-      "id": "0168af80-c6b4-4277-91b8-a0ab1d3f116c",
       "name": "rasterflow",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "1c9e72ec-a849-40b1-b460-0dd5ba47a51d",
-          "name": "Cancel a running Rasterflow workflow run by ID",
-          "request": {
-            "name": "Cancel a running Rasterflow workflow run by ID",
-            "description": {
-              "content": "Abort a running Union/Flyte workflow run.\n\nThe run and its Union project/domain are resolved from the local copy of\nthe run. Cancelling an already-terminal run is a no-op.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rasterflow",
-                "runs",
-                ":run_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "run_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "runs",
+          "item": [
             {
-              "id": "fe747f44-5205-4348-a02f-8c4ae72888b9",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
+              "name": "{run_id}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7fbe90bb-3af2-494f-a1d2-ead6403d0d87",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                  "name": "Cancel a running Rasterflow workflow run by ID",
+                  "id": "76bcaedf-a233-4819-9f44-fe324ecc0748",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9a56069b-fd4e-4917-b18a-63b81770da10",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3189f83c-dfd3-479e-be50-f80e193d54ad",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rasterflow",
+                        "runs",
+                        ":run_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7cae8c61-654e-47d7-9bf6-2086f5ac267e",
+                          "key": "run_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "description": "Abort a running Union/Flyte workflow run.\n\nThe run and its Union project/domain are resolved from the local copy of\nthe run. Cancelling an already-terminal run is a no-op."
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4d583bb2-00ae-4e2d-a09c-52fb6d42d83c",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "response": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "id": "54b3b17b-ff3b-4a4d-a27e-949fe3deed4f",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-54b3b17b-ff3b-4a4d-a27e-949fe3deed4f"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d41427c6-4fe5-43d6-99b2-774594e82984",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "id": "727be4b5-c8aa-400e-8be8-e3f9471d3c7b",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-727be4b5-c8aa-400e-8be8-e3f9471d3c7b"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b34e6429-1fba-4076-a807-1b9d7f8d352f",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "id": "0a683ff4-a12c-44de-ac62-31d1df9cdc67",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-0a683ff4-a12c-44de-ac62-31d1df9cdc67"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3c65d583-1762-4f0c-922d-8d3acd4d7a16",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rasterflow",
-                    "runs",
-                    ":run_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "run_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
+                      "id": "5d199e48-4245-4194-8757-2331702ba100",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-5d199e48-4245-4194-8757-2331702ba100"
                     },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                    {
+                      "id": "998d458d-e32e-4f4f-81b7-797fd4d220f8",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-998d458d-e32e-4f4f-81b7-797fd4d220f8"
+                    },
+                    {
+                      "id": "505b1305-c6c5-4d51-b5bd-be08cc913fac",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-505b1305-c6c5-4d51-b5bd-be08cc913fac"
+                    },
+                    {
+                      "id": "372897af-d205-4f7a-a9fa-b4fc2d20dce5",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-372897af-d205-4f7a-a9fa-b4fc2d20dce5"
+                    },
+                    {
+                      "id": "b393f99d-fb04-4e3e-b07d-eb57a157b8ee",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rasterflow/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rasterflow",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "run_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:16.000Z",
+                      "updatedAt": "2026-10-22T01:21:16.000Z",
+                      "uid": "35240-b393f99d-fb04-4e3e-b07d-eb57a157b8ee"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:21:16.000Z",
+                  "updatedAt": "2026-10-22T01:21:16.000Z",
+                  "uid": "35240-76bcaedf-a233-4819-9f44-fe324ecc0748"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "41442aee-b022-40fb-820b-3c42f7475385",
+              "createdAt": "2026-10-22T01:21:16.000Z",
+              "updatedAt": "2026-10-22T01:21:16.000Z",
+              "uid": "35240-41442aee-b022-40fb-820b-3c42f7475385"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0c89b471-5244-492b-9617-a0dc70035b94",
+          "createdAt": "2026-10-22T01:21:16.000Z",
+          "updatedAt": "2026-10-22T01:21:16.000Z",
+          "uid": "35240-0c89b471-5244-492b-9617-a0dc70035b94"
         }
       ],
-      "event": []
+      "id": "95171cdd-f996-4797-a66b-47451a52d675",
+      "createdAt": "2026-10-22T01:21:16.000Z",
+      "updatedAt": "2026-10-22T01:21:16.000Z",
+      "uid": "35240-95171cdd-f996-4797-a66b-47451a52d675"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "ad8d14ea-b324-4008-9597-2d885fc342e7",
-    "name": "Wherobots Cloud apikey rasterflow API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

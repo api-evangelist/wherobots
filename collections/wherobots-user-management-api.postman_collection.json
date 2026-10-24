@@ -1,1436 +1,1364 @@
 {
+  "info": {
+    "_postman_id": "24db8d94-84c3-41a8-927e-7d01b2067225",
+    "name": "Wherobots Cloud User Management API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:22:34.000Z",
+    "updatedAt": "2026-10-22T01:22:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-24db8d94-84c3-41a8-927e-7d01b2067225"
+  },
   "item": [
     {
-      "id": "9dad2809-4d59-4f54-bd59-677beb458a8f",
       "name": "user-management",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "69bbfcc5-b161-45b3-b6ab-cfb36e08feb0",
-          "name": "Get user by ID",
-          "request": {
-            "name": "Get user by ID",
-            "description": {},
-            "url": {
-              "path": [
-                "user-management",
-                ":user_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "user_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "{user_id}",
+          "item": [
             {
-              "id": "5ad27788-22dc-4733-895e-5e9cddf3d3a4",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "Get user by ID",
+              "id": "d9600c10-78a3-45a9-b8e0-47048c34b5f0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
                     }
                   ]
                 },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"createTime\": \"2011-06-28T09:16:07.437Z\",\n  \"updateTime\": \"1969-03-08T23:55:13.145Z\",\n  \"organizationId\": \"string\",\n  \"roles\": [\n    {\n      \"id\": \"string\",\n      \"createTime\": \"1997-04-28T07:49:50.405Z\",\n      \"updateTime\": \"1963-07-15T15:38:09.126Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1955-03-15T13:58:30.825Z\",\n          \"updateTime\": \"1958-10-18T03:41:30.377Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1957-12-19T16:11:53.876Z\",\n          \"updateTime\": \"1959-09-12T12:28:04.928Z\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"createTime\": \"2015-12-27T17:08:59.550Z\",\n      \"updateTime\": \"1979-05-17T12:06:24.012Z\",\n      \"name\": \"string\",\n      \"organizationId\": \"string\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"DENY\",\n          \"id\": \"string\",\n          \"createTime\": \"1956-06-07T10:01:30.115Z\",\n          \"updateTime\": \"1999-10-30T18:55:03.327Z\"\n        },\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"string\",\n          \"action\": \"string\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"string\",\n          \"createTime\": \"1983-08-29T16:48:26.370Z\",\n          \"updateTime\": \"1977-11-03T18:11:07.353Z\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"AWS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"2004-04-14T18:00:57.607Z\",\n      \"updateTime\": \"1973-01-21T04:56:27.306Z\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"string\",\n      \"action\": \"string\",\n      \"effect\": \"DENY\",\n      \"id\": \"string\",\n      \"createTime\": \"1967-01-14T06:51:43.836Z\",\n      \"updateTime\": \"1964-01-11T13:18:27.873Z\"\n    }\n  ],\n  \"email\": \"string\",\n  \"deletedAt\": \"1960-05-05T06:35:51.784Z\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "44c0a42e-55ea-4beb-9a5c-eb5d2b4dfd66",
-              "name": "Bad Request",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/user-management/:user_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "user-management",
                     ":user_id"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "13f7341d-72e5-4f62-8442-f5cdccdee5eb",
                       "key": "user_id",
+                      "value": "<string>",
                       "description": "(Required) "
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                }
+              },
+              "response": [
+                {
+                  "id": "44638ba2-84ad-4f80-9d40-9375931f8efd",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
                   },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"organizationId\": \"<string>\",\n  \"roles\": [\n    {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"policies\": [\n        {\n          \"provider\": \"AWS\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"DENY\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"name\": \"<string>\",\n      \"organizationId\": \"<string>\",\n      \"policies\": [\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"DENY\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        },\n        {\n          \"provider\": \"WHEROBOTS\",\n          \"locator\": \"<string>\",\n          \"action\": \"<string>\",\n          \"effect\": \"ALLOW\",\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\"\n        }\n      ]\n    }\n  ],\n  \"policies\": [\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"<string>\",\n      \"action\": \"<string>\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    {\n      \"provider\": \"WHEROBOTS\",\n      \"locator\": \"<string>\",\n      \"action\": \"<string>\",\n      \"effect\": \"ALLOW\",\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    }\n  ],\n  \"email\": \"<string>\",\n  \"deletedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-44638ba2-84ad-4f80-9d40-9375931f8efd"
+                },
+                {
+                  "id": "c6b407a7-e778-4710-ba0d-4f6ed18509e6",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-c6b407a7-e778-4710-ba0d-4f6ed18509e6"
+                },
+                {
+                  "id": "0a9c0b23-deea-4417-b7d3-03a200bd4738",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-0a9c0b23-deea-4417-b7d3-03a200bd4738"
+                },
+                {
+                  "id": "708d2c9b-f44a-4b62-81e8-292f9a2c1763",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-708d2c9b-f44a-4b62-81e8-292f9a2c1763"
+                },
+                {
+                  "id": "e4115660-7c11-4567-a836-1ac556a992ec",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-e4115660-7c11-4567-a836-1ac556a992ec"
+                },
+                {
+                  "id": "8659978a-1263-40b9-9fda-05c9f8660285",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-8659978a-1263-40b9-9fda-05c9f8660285"
+                },
+                {
+                  "id": "bc8e33c7-a05c-4bc9-b700-9bbfd9e778c9",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-bc8e33c7-a05c-4bc9-b700-9bbfd9e778c9"
+                },
+                {
+                  "id": "4bf44ae1-8028-46f6-9cc7-199f2d83ff1f",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-4bf44ae1-8028-46f6-9cc7-199f2d83ff1f"
+                }
+              ],
+              "createdAt": "2026-10-22T01:22:35.000Z",
+              "updatedAt": "2026-10-22T01:22:35.000Z",
+              "uid": "35240-d9600c10-78a3-45a9-b8e0-47048c34b5f0"
+            },
+            {
+              "name": "Delete a user",
+              "id": "a0453bd8-20c8-4c74-8381-a201789e0052",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fb4a0fac-a690-4958-b74e-caf1f0936b45",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/user-management/:user_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "user-management",
                     ":user_id"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "9264afe0-524d-4e0d-8060-6ecd1d2fbc35",
                       "key": "user_id",
+                      "value": "<string>",
                       "description": "(Required) "
                     }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
                 }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c9fae085-1d54-44cc-b0c7-9af3c8632419",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
+              },
+              "response": [
+                {
+                  "id": "33e0a6f1-df20-4d72-8ed8-52f26545160e",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a61e9c8b-10db-4fe3-b500-db418f0281cb",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-33e0a6f1-df20-4d72-8ed8-52f26545160e"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9488d201-b20f-47df-abe0-652ae3e4e698",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "id": "49c33017-d160-41cf-a2c6-4dccfcafc806",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-49c33017-d160-41cf-a2c6-4dccfcafc806"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c7b691ba-20c2-424c-bba8-7560ccb88929",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "id": "d9b9c062-cd2d-43ce-9e5e-94cf05e979bb",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-d9b9c062-cd2d-43ce-9e5e-94cf05e979bb"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "913e70e7-8261-4ccc-9c80-ac5e1153860b",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "id": "126db678-4102-4510-bcfc-3d6bfe9b4851",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-126db678-4102-4510-bcfc-3d6bfe9b4851"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "23332c81-31c4-4737-82ef-d3e3e665391c",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-23332c81-31c4-4737-82ef-d3e3e665391c"
+                },
+                {
+                  "id": "284ecd4f-d518-41da-b503-b744248121ef",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-284ecd4f-d518-41da-b503-b744248121ef"
+                },
+                {
+                  "id": "380d1568-9117-4d0d-a864-d5eff12d34f7",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-380d1568-9117-4d0d-a864-d5eff12d34f7"
+                },
+                {
+                  "id": "03578ecb-1f2c-4cce-ac06-1f84a59f0891",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/:user_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        ":user_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-03578ecb-1f2c-4cce-ac06-1f84a59f0891"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-22T01:22:35.000Z",
+              "updatedAt": "2026-10-22T01:22:35.000Z",
+              "uid": "35240-a0453bd8-20c8-4c74-8381-a201789e0052"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d0f87980-b168-4f96-9752-ae896deda5a5",
+          "createdAt": "2026-10-22T01:22:35.000Z",
+          "updatedAt": "2026-10-22T01:22:35.000Z",
+          "uid": "35240-d0f87980-b168-4f96-9752-ae896deda5a5"
         },
         {
-          "id": "53174fa1-f890-4b70-96f4-288126b24bac",
-          "name": "Delete a user",
-          "request": {
-            "name": "Delete a user",
-            "description": {},
-            "url": {
-              "path": [
-                "user-management",
-                ":user_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "user_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "by-email",
+          "item": [
             {
-              "id": "cbfda90e-ca5d-47e2-a70d-3f369871b3c8",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "{email}",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get users by email (partial match)",
+                  "id": "ff57baf8-7687-4d0c-9911-1ee48eadb0e4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user-management/by-email/:email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user-management",
+                        "by-email",
+                        ":email"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3ed934b7-4690-4d66-baee-0f2a8b290e95",
+                          "key": "email",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "659a7698-d60f-42cc-8208-21678eb5ec48",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"organizationId\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"policies\": [\n      {\n        \"provider\": \"WHEROBOTS\",\n        \"locator\": \"<string>\",\n        \"action\": \"<string>\",\n        \"effect\": \"DENY\",\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\"\n      },\n      {\n        \"provider\": \"AWS\",\n        \"locator\": \"<string>\",\n        \"action\": \"<string>\",\n        \"effect\": \"ALLOW\",\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\"\n      }\n    ],\n    \"email\": \"<string>\",\n    \"deletedAt\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"organizationId\": \"<string>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"policies\": [\n      {\n        \"provider\": \"WHEROBOTS\",\n        \"locator\": \"<string>\",\n        \"action\": \"<string>\",\n        \"effect\": \"DENY\",\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\"\n      },\n      {\n        \"provider\": \"AWS\",\n        \"locator\": \"<string>\",\n        \"action\": \"<string>\",\n        \"effect\": \"ALLOW\",\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\"\n      }\n    ],\n    \"email\": \"<string>\",\n    \"deletedAt\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-659a7698-d60f-42cc-8208-21678eb5ec48"
+                    },
+                    {
+                      "id": "3d211ef9-b412-4148-a452-54e22c1acf0c",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-3d211ef9-b412-4148-a452-54e22c1acf0c"
+                    },
+                    {
+                      "id": "ec3af2d7-84dd-492e-b697-f98ef05bb362",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-ec3af2d7-84dd-492e-b697-f98ef05bb362"
+                    },
+                    {
+                      "id": "06f82ab5-49a7-4015-898d-da87c15c8300",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-06f82ab5-49a7-4015-898d-da87c15c8300"
+                    },
+                    {
+                      "id": "458459d3-89fd-45a8-ada1-3e9d1f24b416",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-458459d3-89fd-45a8-ada1-3e9d1f24b416"
+                    },
+                    {
+                      "id": "d83f0b1d-4830-4c4a-ac84-a870cbd87aa8",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-d83f0b1d-4830-4c4a-ac84-a870cbd87aa8"
+                    },
+                    {
+                      "id": "1c035d67-882d-4d6b-8036-945a2b307974",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-1c035d67-882d-4d6b-8036-945a2b307974"
+                    },
+                    {
+                      "id": "ac05a7ec-4ffb-4870-af2e-bef7ce79aaec",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user-management/by-email/:email",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user-management",
+                            "by-email",
+                            ":email"
+                          ],
+                          "variable": [
+                            {
+                              "key": "email"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"GATEWAY_TIMEOUT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:22:35.000Z",
+                      "updatedAt": "2026-10-22T01:22:35.000Z",
+                      "uid": "35240-ac05a7ec-4ffb-4870-af2e-bef7ce79aaec"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:22:35.000Z",
+                  "updatedAt": "2026-10-22T01:22:35.000Z",
+                  "uid": "35240-ff57baf8-7687-4d0c-9911-1ee48eadb0e4"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "016d1e27-cc69-4d67-b939-7c83076216ef",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7277b685-fd68-41fd-95c4-f6a3c3738871",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "84d1ed54-7f0a-439a-8d2e-759e74731bd2",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4e460cf8-43c6-4194-98dd-0c55856001be",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fd2e2b0e-8fac-43a8-a26b-2d2aa0042b3b",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "305c428d-0cfe-4de0-9ca1-b83c2d91c9d6",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4963968d-bc61-487a-b46b-f73fa0e51c5b",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "user_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "510e9784-37f4-439e-a3ab-c2b19e9b6001",
+              "createdAt": "2026-10-22T01:22:35.000Z",
+              "updatedAt": "2026-10-22T01:22:35.000Z",
+              "uid": "35240-510e9784-37f4-439e-a3ab-c2b19e9b6001"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c5b3768b-0775-4752-9080-39510cadb6d0",
-          "name": "Get users by email (partial match)",
-          "request": {
-            "name": "Get users by email (partial match)",
-            "description": {},
-            "url": {
-              "path": [
-                "user-management",
-                "by-email",
-                ":email"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "email",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "886eae54-bc80-4e53-a6bb-78b6ba01eb82",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"createTime\": \"1972-07-01T01:04:24.800Z\",\n    \"updateTime\": \"1980-02-17T00:57:39.128Z\",\n    \"organizationId\": \"string\",\n    \"roles\": [\n      {\n        \"id\": \"string\",\n        \"createTime\": \"2013-07-07T07:12:09.563Z\",\n        \"updateTime\": \"1960-06-25T11:41:56.344Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"createTime\": \"1973-06-27T18:44:08.450Z\",\n        \"updateTime\": \"2025-07-12T20:59:01.297Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"policies\": [\n      {\n        \"provider\": \"AWS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"DENY\",\n        \"id\": \"string\",\n        \"createTime\": \"1979-08-18T21:42:55.179Z\",\n        \"updateTime\": \"1979-02-27T16:45:32.915Z\"\n      },\n      {\n        \"provider\": \"WHEROBOTS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"ALLOW\",\n        \"id\": \"string\",\n        \"createTime\": \"2015-11-07T05:14:38.206Z\",\n        \"updateTime\": \"1949-02-08T11:05:36.470Z\"\n      }\n    ],\n    \"email\": \"string\",\n    \"deletedAt\": \"2007-01-22T18:07:04.060Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"createTime\": \"1950-03-13T11:16:36.800Z\",\n    \"updateTime\": \"1984-03-09T00:59:48.753Z\",\n    \"organizationId\": \"string\",\n    \"roles\": [\n      {\n        \"id\": \"string\",\n        \"createTime\": \"2017-11-03T07:12:01.975Z\",\n        \"updateTime\": \"1967-02-04T11:36:41.450Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"createTime\": \"1953-03-30T05:35:31.682Z\",\n        \"updateTime\": \"1981-08-19T02:21:20.496Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": \"string\",\n            \"action\": \"string\",\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"policies\": [\n      {\n        \"provider\": \"WHEROBOTS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"ALLOW\",\n        \"id\": \"string\",\n        \"createTime\": \"1993-05-08T20:49:44.961Z\",\n        \"updateTime\": \"1955-03-19T08:54:16.357Z\"\n      },\n      {\n        \"provider\": \"WHEROBOTS\",\n        \"locator\": \"string\",\n        \"action\": \"string\",\n        \"effect\": \"DENY\",\n        \"id\": \"string\",\n        \"createTime\": \"1948-08-19T00:32:54.227Z\",\n        \"updateTime\": \"1967-06-06T02:28:53.250Z\"\n      }\n    ],\n    \"email\": \"string\",\n    \"deletedAt\": \"1978-06-14T04:07:11.997Z\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "10ba4083-7ebe-4089-997c-f2077af37646",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "bb038755-2c16-4941-8104-ba2ad4a5c0ea",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b3031968-8217-4337-92ee-016a6c45ec02",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b0bf3404-f96d-40f8-93a9-f14c5f357583",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "13d4def6-ad2d-44e4-b709-30c1085d463d",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "182f1da0-a5b1-40b6-b126-8135c596048c",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "26188aa7-6c64-41a8-9e0e-e4d877320f51",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user-management",
-                    "by-email",
-                    ":email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "email",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6a10b76d-21db-41b8-ad62-72f176009058",
+          "createdAt": "2026-10-22T01:22:35.000Z",
+          "updatedAt": "2026-10-22T01:22:35.000Z",
+          "uid": "35240-6a10b76d-21db-41b8-ad62-72f176009058"
         }
       ],
-      "event": []
+      "id": "81b86a43-df18-4bda-88b0-e76c52970640",
+      "createdAt": "2026-10-22T01:22:35.000Z",
+      "updatedAt": "2026-10-22T01:22:35.000Z",
+      "uid": "35240-81b86a43-df18-4bda-88b0-e76c52970640"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "141cc7a8-4d8f-448b-a581-da864afe70ca",
-    "name": "Wherobots Cloud apikey user-management API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

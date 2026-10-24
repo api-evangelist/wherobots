@@ -1,416 +1,405 @@
 {
+  "info": {
+    "_postman_id": "81ce182b-20a7-4bf4-8a6a-0c843bc4b1cd",
+    "name": "Wherobots Cloud Is Super User API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:20:28.000Z",
+    "updatedAt": "2026-10-22T01:20:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-81ce182b-20a7-4bf4-8a6a-0c843bc4b1cd"
+  },
   "item": [
     {
-      "id": "1966cdba-e35d-497b-843b-41b4e6f77b07",
-      "name": "Is Super User",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "is-super-user",
       "item": [
         {
-          "id": "cf6791b3-6d46-49e5-b14c-297d1a52e6bd",
           "name": "Check if current user is a superuser",
+          "id": "e77b4f44-f010-4f95-8f87-bf00b70243b2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Check if current user is a superuser",
-            "description": {},
-            "url": {
-              "path": [
-                "is-super-user"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
+            "url": {
+              "raw": "{{baseUrl}}/is-super-user",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "is-super-user"
               ]
             }
           },
           "response": [
             {
-              "id": "4a42194d-1620-490c-9a80-ffbd451c9296",
+              "id": "1ccb76db-6afa-403f-b594-5f4c29d0dae0",
               "name": "Successful Response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "false",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "<boolean>",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-1ccb76db-6afa-403f-b594-5f4c29d0dae0"
             },
             {
-              "id": "800ec1ab-9755-4990-b4e9-b815efc42238",
+              "id": "c1b56e34-f4be-4f6b-8aa3-7017577db37b",
               "name": "Bad Request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ACCOUNT_NOT_PROVISIONED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-c1b56e34-f4be-4f6b-8aa3-7017577db37b"
             },
             {
-              "id": "fe6796cf-e308-4f40-9ee4-1eef4928a62d",
+              "id": "157e0c60-92d1-4327-bb60-88769462ce96",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ACCOUNT_NOT_PROVISIONED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-157e0c60-92d1-4327-bb60-88769462ce96"
             },
             {
-              "id": "0d191d7f-3461-41cd-ae88-375fea6dbb49",
+              "id": "472608da-e03c-4849-b5f0-2ce2507b0acc",
               "name": "Forbidden",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ACCOUNT_NOT_PROVISIONED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-472608da-e03c-4849-b5f0-2ce2507b0acc"
             },
             {
-              "id": "8ac3b914-2f7c-4362-8641-36417f956034",
+              "id": "b89a88f3-471d-47ad-9f8d-3cf445d027c8",
               "name": "Not Found",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ACCOUNT_NOT_PROVISIONED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-b89a88f3-471d-47ad-9f8d-3cf445d027c8"
             },
             {
-              "id": "7a75be53-c6a6-413b-8a61-b49ea3e6d6d4",
+              "id": "f9598692-443f-4353-9751-e5d0b3be1437",
               "name": "Conflict",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "Conflict",
               "code": 409,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ACCOUNT_NOT_PROVISIONED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-f9598692-443f-4353-9751-e5d0b3be1437"
             },
             {
-              "id": "d9a89748-688e-4bb9-ae82-70a71a01170b",
+              "id": "ebfbce18-ede2-41a3-b189-3d72df371a90",
               "name": "Validation Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ACCOUNT_NOT_PROVISIONED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-ebfbce18-ede2-41a3-b189-3d72df371a90"
             },
             {
-              "id": "4057297b-400b-4433-a7d8-b712613a4f0b",
+              "id": "4981e5a0-0369-492c-a93d-828110bd283f",
               "name": "Internal Server Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "is-super-user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/is-super-user",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "is-super-user"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"ACCOUNT_NOT_PROVISIONED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_QUOTA_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:29.000Z",
+              "updatedAt": "2026-10-22T01:20:29.000Z",
+              "uid": "35240-4981e5a0-0369-492c-a93d-828110bd283f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:20:29.000Z",
+          "updatedAt": "2026-10-22T01:20:29.000Z",
+          "uid": "35240-e77b4f44-f010-4f95-8f87-bf00b70243b2"
         }
       ],
-      "event": []
+      "id": "d6bca7e0-82fe-4acb-90d9-4138fd013bc2",
+      "createdAt": "2026-10-22T01:20:29.000Z",
+      "updatedAt": "2026-10-22T01:20:29.000Z",
+      "uid": "35240-d6bca7e0-82fe-4acb-90d9-4138fd013bc2"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "51f39b58-33a1-442f-a3e6-b8bcd9b4e2b4",
-    "name": "Wherobots Cloud apikey Is Super User API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

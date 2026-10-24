@@ -1,500 +1,505 @@
 {
+  "info": {
+    "_postman_id": "68f55e92-4d9b-459b-8556-6ef218ac4d63",
+    "name": "Wherobots Cloud Workos API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:22:51.000Z",
+    "updatedAt": "2026-10-22T01:22:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-68f55e92-4d9b-459b-8556-6ef218ac4d63"
+  },
   "item": [
     {
-      "id": "4055f4fb-7426-40f1-bda1-bced2fae75d9",
-      "name": "workos",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "webhook",
       "item": [
         {
-          "id": "9cf3d961-e6cb-4520-89aa-1893bee65ea1",
-          "name": "Workos User Registration Action",
-          "request": {
-            "name": "Workos User Registration Action",
-            "description": {
-              "content": "Handle a WorkOS AuthKit User Registration Action.\n\nWorkOS POSTs a signed payload at sign-up time; we verify the signature, then\nreturn a *signed* Allow/Deny verdict. Signature verification always runs and\nalways fails closed (bad signature -> 401, missing secret -> 500) regardless\nof environment. The domain restriction itself is only enforced when the\nrunning environment is in ``signup_restricted_environments`` and an allowlist\nis configured; otherwise the action is a pass-through (always Allow).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "webhook",
-                "workos",
-                "actions",
-                "user-registration"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "WorkOS Action payload signature",
-                "key": "WorkOS-Signature",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "workos",
+          "item": [
             {
-              "id": "be59e108-32c4-49bc-8473-95d3d8426a0b",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "actions",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "user-registration",
+                  "item": [
+                    {
+                      "name": "Workos User Registration Action",
+                      "id": "0d98d091-9396-414a-97f0-ac2ee4c4ca62",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "WorkOS Action payload signature",
+                            "key": "WorkOS-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "webhook",
+                            "workos",
+                            "actions",
+                            "user-registration"
+                          ]
+                        },
+                        "description": "Handle a WorkOS AuthKit User Registration Action.\n\nWorkOS POSTs a signed payload at sign-up time; we verify the signature, then\nreturn a *signed* Allow/Deny verdict. Signature verification always runs and\nalways fails closed (bad signature -> 401, missing secret -> 500) regardless\nof environment. The domain restriction itself is only enforced when the\nrunning environment is in ``signup_restricted_environments`` and an allowlist\nis configured; otherwise the action is a pass-through (always Allow)."
+                      },
+                      "response": [
+                        {
+                          "id": "8a97eb9e-363a-48f1-bd53-2f90157294ce",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-8a97eb9e-363a-48f1-bd53-2f90157294ce"
+                        },
+                        {
+                          "id": "3da11409-0492-4054-8875-36f0bb90ab5b",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-3da11409-0492-4054-8875-36f0bb90ab5b"
+                        },
+                        {
+                          "id": "8ae4f21d-16ed-4d57-b76d-c5c7fc48e635",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-8ae4f21d-16ed-4d57-b76d-c5c7fc48e635"
+                        },
+                        {
+                          "id": "18709bed-88c8-4ed7-aaaa-16e39e27f52f",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-18709bed-88c8-4ed7-aaaa-16e39e27f52f"
+                        },
+                        {
+                          "id": "829ac437-9d4d-4c07-a317-975627154d8e",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-829ac437-9d4d-4c07-a317-975627154d8e"
+                        },
+                        {
+                          "id": "14cdaa46-dffa-47f1-adef-56fbf18a2f48",
+                          "name": "Conflict",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-14cdaa46-dffa-47f1-adef-56fbf18a2f48"
+                        },
+                        {
+                          "id": "bd4d18bf-b278-4f78-9367-b356d33a7131",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-bd4d18bf-b278-4f78-9367-b356d33a7131"
+                        },
+                        {
+                          "id": "2a93e30e-efae-48a5-ab36-57aa0f844995",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "WorkOS Action payload signature",
+                                "key": "WorkOS-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/webhook/workos/actions/user-registration",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "webhook",
+                                "workos",
+                                "actions",
+                                "user-registration"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:22:52.000Z",
+                          "updatedAt": "2026-10-22T01:22:52.000Z",
+                          "uid": "35240-2a93e30e-efae-48a5-ab36-57aa0f844995"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:22:52.000Z",
+                      "updatedAt": "2026-10-22T01:22:52.000Z",
+                      "uid": "35240-0d98d091-9396-414a-97f0-ac2ee4c4ca62"
+                    }
+                  ],
+                  "id": "9b033315-244c-455a-95f6-bfd41a3e592e",
+                  "createdAt": "2026-10-22T01:22:52.000Z",
+                  "updatedAt": "2026-10-22T01:22:52.000Z",
+                  "uid": "35240-9b033315-244c-455a-95f6-bfd41a3e592e"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "18727628-5fa5-406a-90da-0ff864f7d0e7",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c2d76d87-26d6-4337-b42f-9f1c8e46feb9",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "806f8514-c2a0-4f49-b4d4-0bd9e6d8c8ce",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f01857ce-fdae-421d-9f83-4f50ceb1788c",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8dc23610-79af-4837-817a-054cad270aaa",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0efcaec8-a166-4617-9838-3e1222424431",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "34a81010-d4c2-4b8c-8e9b-53f776322448",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "webhook",
-                    "workos",
-                    "actions",
-                    "user-registration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "WorkOS Action payload signature",
-                    "key": "WorkOS-Signature",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INVALID_INPUT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "9e0a9e11-390c-4e55-b21a-b63412629f8f",
+              "createdAt": "2026-10-22T01:22:52.000Z",
+              "updatedAt": "2026-10-22T01:22:52.000Z",
+              "uid": "35240-9e0a9e11-390c-4e55-b21a-b63412629f8f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "10e8702d-97f4-4329-a9ab-c8387ffbda68",
+          "createdAt": "2026-10-22T01:22:52.000Z",
+          "updatedAt": "2026-10-22T01:22:52.000Z",
+          "uid": "35240-10e8702d-97f4-4329-a9ab-c8387ffbda68"
         }
       ],
-      "event": []
+      "id": "123ac44d-5b52-48ea-aef9-863891c32685",
+      "createdAt": "2026-10-22T01:22:52.000Z",
+      "updatedAt": "2026-10-22T01:22:52.000Z",
+      "uid": "35240-123ac44d-5b52-48ea-aef9-863891c32685"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "cedc1f4f-372a-4f9b-9318-d6a9cd0632de",
-    "name": "Wherobots Cloud apikey workos API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

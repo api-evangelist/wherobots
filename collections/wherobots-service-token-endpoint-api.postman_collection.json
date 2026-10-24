@@ -1,1794 +1,1762 @@
 {
+  "info": {
+    "_postman_id": "74306ece-3c1f-4817-9271-a7ee241a69da",
+    "name": "Wherobots Cloud Service Token Endpoint API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:21:33.000Z",
+    "updatedAt": "2026-10-22T01:21:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74306ece-3c1f-4817-9271-a7ee241a69da"
+  },
   "item": [
     {
-      "id": "5464463d-6411-4c54-9841-ee6c72bae004",
-      "name": "service_token_endpoint",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "ste",
       "item": [
         {
-          "id": "dc2a2d03-69dd-447e-94a1-f02e8d61c574",
-          "name": "Get JWKS for token verification",
-          "request": {
-            "name": "Get JWKS for token verification",
-            "description": {},
-            "url": {
-              "path": [
-                "ste",
-                ".well-known",
-                "jwks.json"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": ".well-known",
+          "item": [
             {
-              "id": "fb7ab45f-dd58-41e1-abd9-ff1ec9eb6c08",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "jwks.json",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get JWKS for token verification",
+                  "id": "7989a9e6-a777-41dd-b21a-02dce4545a04",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ste",
+                        ".well-known",
+                        "jwks.json"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8c68d7a1-ffca-4402-bd18-74f7dba4d916",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-8c68d7a1-ffca-4402-bd18-74f7dba4d916"
+                    },
+                    {
+                      "id": "526178d7-564a-4041-903b-8721effc097e",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-526178d7-564a-4041-903b-8721effc097e"
+                    },
+                    {
+                      "id": "e4349a9d-aa57-4582-81c7-cff95387f5b4",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-e4349a9d-aa57-4582-81c7-cff95387f5b4"
+                    },
+                    {
+                      "id": "3ae2fe93-6f2f-4ce4-b798-a68494a7a43b",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-3ae2fe93-6f2f-4ce4-b798-a68494a7a43b"
+                    },
+                    {
+                      "id": "83204b21-ec1d-46a6-adde-f5403b7b5975",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-83204b21-ec1d-46a6-adde-f5403b7b5975"
+                    },
+                    {
+                      "id": "33187a9f-d756-4541-89b5-90680a1e039f",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-33187a9f-d756-4541-89b5-90680a1e039f"
+                    },
+                    {
+                      "id": "f117f571-8f9c-42fc-b838-8bb2d0a5c952",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-f117f571-8f9c-42fc-b838-8bb2d0a5c952"
+                    },
+                    {
+                      "id": "7c5df5a9-093d-432e-97b7-832f3f490523",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/.well-known/jwks.json",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            ".well-known",
+                            "jwks.json"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-7c5df5a9-093d-432e-97b7-832f3f490523"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:21:34.000Z",
+                  "updatedAt": "2026-10-22T01:21:34.000Z",
+                  "uid": "35240-7989a9e6-a777-41dd-b21a-02dce4545a04"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "80d0e963-b8c5-4d1e-bbd5-39adf3366770",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a1ae8c2a-0db7-46b8-804f-e750f5a483ff",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b013d925-6344-4fb7-9439-031ba8875953",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "63e0468d-45fc-48ff-a23a-fac5cf6c96ff",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "09825cf4-251c-4f2a-ab01-0a8197c88983",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4f485052-bdb3-41a6-9323-477929fd798e",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "08c75e58-195f-43a5-994f-1d0b4dde0304",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    ".well-known",
-                    "jwks.json"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "bdfd1ba9-d593-4b39-9c39-2548f6b6c4da",
+              "createdAt": "2026-10-22T01:21:34.000Z",
+              "updatedAt": "2026-10-22T01:21:34.000Z",
+              "uid": "35240-bdfd1ba9-d593-4b39-9c39-2548f6b6c4da"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "fe842faa-b66f-49a8-ac60-332660061fe1",
+          "createdAt": "2026-10-22T01:21:34.000Z",
+          "updatedAt": "2026-10-22T01:21:34.000Z",
+          "uid": "35240-fe842faa-b66f-49a8-ac60-332660061fe1"
         },
         {
-          "id": "c15412f3-335c-4ed1-b7e1-69d8b59d2458",
-          "name": "Exchange refresh token for access token",
-          "request": {
-            "name": "Exchange refresh token for access token",
-            "description": {
-              "content": "Exchange credentials for an access token. Currently only support refresh_token",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "ste",
-                "oauth2",
-                "token"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "scope",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "grant_type",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "refresh_token",
-                  "value": "<string>",
-                  "description": "(Required) "
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "oauth2",
+          "item": [
             {
-              "id": "379ddc61-c18d-4c2b-80be-41f996c5781f",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "token",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Exchange refresh token for access token",
+                  "id": "307ca25e-18ff-43cb-b980-c031c36b9d7d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "scope",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ste/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ste",
+                        "oauth2",
+                        "token"
+                      ]
+                    },
+                    "description": "Exchange credentials for an access token. Currently only support refresh_token"
+                  },
+                  "response": [
+                    {
+                      "id": "af189c76-1e4a-443a-a451-30892e845594",
+                      "name": "Successful Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-af189c76-1e4a-443a-a451-30892e845594"
+                    },
+                    {
+                      "id": "27bc4902-e60e-4d6a-a3bc-bfb677611a98",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-27bc4902-e60e-4d6a-a3bc-bfb677611a98"
+                    },
+                    {
+                      "id": "adfc2847-07a1-4736-bfae-65636c861f1d",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-adfc2847-07a1-4736-bfae-65636c861f1d"
+                    },
+                    {
+                      "id": "98f4d019-e5b3-4131-b1d2-fa4a0747ca21",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-98f4d019-e5b3-4131-b1d2-fa4a0747ca21"
+                    },
+                    {
+                      "id": "2dc01697-a9cd-454e-aa25-dd2d9fb5feb9",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-2dc01697-a9cd-454e-aa25-dd2d9fb5feb9"
+                    },
+                    {
+                      "id": "a264a161-45a0-47dd-8fe1-5244a10850d7",
+                      "name": "Conflict",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Conflict",
+                      "code": 409,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-a264a161-45a0-47dd-8fe1-5244a10850d7"
+                    },
+                    {
+                      "id": "1155bf63-4abb-4a74-b21d-09cdb29a5005",
+                      "name": "Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-1155bf63-4abb-4a74-b21d-09cdb29a5005"
+                    },
+                    {
+                      "id": "dbb74b4b-8ce7-4825-8a6d-3edbb1ec7fb6",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-dbb74b4b-8ce7-4825-8a6d-3edbb1ec7fb6"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:21:34.000Z",
+                  "updatedAt": "2026-10-22T01:21:34.000Z",
+                  "uid": "35240-307ca25e-18ff-43cb-b980-c031c36b9d7d"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d59e1536-e0a8-4d36-b15d-04f1262dd49a",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "182db62d-277b-4122-9eb7-6d9f4fbbf4f9",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3f7c69a0-0937-4c63-a7c9-26cb406291f8",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9380add0-b8bb-4dc0-9ea0-7eb1b9b74295",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "45ccf61e-ca0c-47bd-bdab-ece5b0709f29",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ebe6d1e8-8c3f-4109-9f70-3843d4f18a07",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b564c583-070f-42d6-8f13-bdba5e29d58b",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "oauth2",
-                    "token"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "scope",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "grant_type",
-                      "value": "<string>"
-                    },
-                    {
-                      "disabled": false,
-                      "description": {
-                        "content": "(Required) ",
-                        "type": "text/plain"
-                      },
-                      "key": "refresh_token",
-                      "value": "<string>"
-                    }
-                  ]
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "e8956263-8fd6-41b5-9f0a-1c457d2d5786",
+              "createdAt": "2026-10-22T01:21:34.000Z",
+              "updatedAt": "2026-10-22T01:21:34.000Z",
+              "uid": "35240-e8956263-8fd6-41b5-9f0a-1c457d2d5786"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0831abf5-49d2-4e3d-9c39-3868b2a96f53",
+          "createdAt": "2026-10-22T01:21:34.000Z",
+          "updatedAt": "2026-10-22T01:21:34.000Z",
+          "uid": "35240-0831abf5-49d2-4e3d-9c39-3868b2a96f53"
         },
         {
-          "id": "af4ac9b1-305e-40d7-bc7b-9c8aed578a47",
-          "name": "Exchange token for Iceberg REST access",
-          "request": {
-            "name": "Exchange token for Iceberg REST access",
-            "description": {
-              "content": "Exchange credentials for Open Source (OSS) Iceberg REST Client (IRC).\n\nOSS IRC (< 1.10.x) uses 2 grant types:\n- token-exchange: Defined by the OAuth 2.0 Token Exchange spec (RFC 8693).\n  Exchange a valid, unexpired (OAuth) access token for a new access token with the same or smaller scopes.\n- client_credentials: Defined by the OAuth 2.0 Authorization Framework spec (RFC 6749).\n  Exchange a client credential (i.e. Wherobots API Key) for an access token.\n\nUse cases:\n1. [client_credentials] Users who has an API key yet no OAuth JWT token.\nRequest format:\n    {\n        \"grant_type\": \"client_credentials\",\n        \"client_id\": \"<customer_id>\", (Wherobots Customer Ext ID)\n        \"client_secret\": \"<api_key>\", (Wherobots API Key)\n        \"scope\": \"<requested_scope>\" (\"catalog\" for now, to be extended in the future)\n    }\n2. [token-exchange] Users who already has an valid, unexpired OAuth JWT token.\nRequest format:\n    {\n        \"grant_type\": \"urn:ietf:params:oauth:grant-type:token-exchange\", (OSS IRC always use this exact string)\n        \"scope\": \"<requested_scope>\",\n        \"subject_token\": \"<current_unexpired_access_token>\",\n        \"subject_token_type\": \"urn:ietf:params:oauth:token-type:access_token\", (OSS IRC always use this exact string)\n        \"actor_token\": \"<optional_actor_token>\", (not used currently)\n        \"actor_token_type\": \"<actor_token_type>\" (not used currently)\n    }\nNote: the optional actor_token is used for permission delegation, which is NOT\ncurrently supported, and thus has no effect even if provided. The \"subject_token_type\"\nhas to be \"access_token\" at the moment - we currently only support exchanging access tokens.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "ste",
-                "v2",
-                "oauth2",
-                "tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "disabled": false,
-                  "key": "grant_type",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "scope",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_id",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "client_secret",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "expires_in",
-                  "value": "0"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "c8c7a824-e4fc-4a20-b53a-c11d7c09ec4a",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "oauth2",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "tokens",
+                  "item": [
+                    {
+                      "name": "Exchange token for Iceberg REST access",
+                      "id": "fb5483e8-7c60-46ed-94a4-a7cd3a3b5d2f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "key": "grant_type",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "client_secret",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "expires_in",
+                              "value": "0"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ste",
+                            "v2",
+                            "oauth2",
+                            "tokens"
+                          ]
+                        },
+                        "description": "Exchange credentials for Open Source (OSS) Iceberg REST Client (IRC).\n\nOSS IRC (\", (Wherobots Customer Ext ID)\n\"client_secret\": \"\", (Wherobots API Key)\n\"scope\": \"\" (\"catalog\" for now, to be extended in the future)\n}\n2. [token-exchange] Users who already has an valid, unexpired OAuth JWT token.\nRequest format:\n{\n\"grant_type\": \"urn:ietf:params:oauth:grant-type:token-exchange\", (OSS IRC always use this exact string)\n\"scope\": \"\",\n\"subject_token\": \"\",\n\"subject_token_type\": \"urn:ietf:params:oauth:token-type:access_token\", (OSS IRC always use this exact string)\n\"actor_token\": \"\", (not used currently)\n\"actor_token_type\": \"\" (not used currently)\n}\nNote: the optional actor_token is used for permission delegation, which is NOT\ncurrently supported, and thus has no effect even if provided. The \"subject_token_type\"\nhas to be \"access_token\" at the moment - we currently only support exchanging access tokens."
+                      },
+                      "response": [
+                        {
+                          "id": "5db85363-0637-4010-ae8a-75dca0e3b8c7",
+                          "name": "Successful Response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-5db85363-0637-4010-ae8a-75dca0e3b8c7"
+                        },
+                        {
+                          "id": "e147cc13-3cca-42bb-8402-3f63172a59dc",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-e147cc13-3cca-42bb-8402-3f63172a59dc"
+                        },
+                        {
+                          "id": "95bc6a33-9a11-41c2-a162-2e83e606c5e5",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-95bc6a33-9a11-41c2-a162-2e83e606c5e5"
+                        },
+                        {
+                          "id": "c2a95c6c-c67f-46ed-b489-d6d5e31a4ae7",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-c2a95c6c-c67f-46ed-b489-d6d5e31a4ae7"
+                        },
+                        {
+                          "id": "cb6ad8ae-01b2-407f-80b0-f924aa050bfc",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-cb6ad8ae-01b2-407f-80b0-f924aa050bfc"
+                        },
+                        {
+                          "id": "b0b4a62e-f681-4cbf-8301-6641890cd6fd",
+                          "name": "Conflict",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-b0b4a62e-f681-4cbf-8301-6641890cd6fd"
+                        },
+                        {
+                          "id": "1a021133-bc02-4985-ac08-3f2bca494fc0",
+                          "name": "Validation Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-1a021133-bc02-4985-ac08-3f2bca494fc0"
+                        },
+                        {
+                          "id": "90770791-119f-4b09-a4a5-646d325a6333",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "key": "grant_type",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "scope",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "client_secret",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "key": "expires_in",
+                                  "value": "0"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ste/v2/oauth2/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ste",
+                                "v2",
+                                "oauth2",
+                                "tokens"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"BAD_REQUEST_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:21:34.000Z",
+                          "updatedAt": "2026-10-22T01:21:34.000Z",
+                          "uid": "35240-90770791-119f-4b09-a4a5-646d325a6333"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:21:34.000Z",
+                      "updatedAt": "2026-10-22T01:21:34.000Z",
+                      "uid": "35240-fb5483e8-7c60-46ed-94a4-a7cd3a3b5d2f"
+                    }
+                  ],
+                  "id": "5973bfdc-f80e-4752-abd8-b338c0f722f8",
+                  "createdAt": "2026-10-22T01:21:34.000Z",
+                  "updatedAt": "2026-10-22T01:21:34.000Z",
+                  "uid": "35240-5973bfdc-f80e-4752-abd8-b338c0f722f8"
                 }
               ],
-              "body": "{}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c4fb1f52-3e1a-4cc7-9201-3e7ab35f164e",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4764de13-1dc4-408e-ab98-f4493a47d4c6",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "31c8c02a-3092-449a-b2ce-9e113f635b04",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "317fc5a0-2a42-48c2-93fb-3b62fc6b7c0e",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "07a8d3f6-6d0c-42c5-a61d-d745302e1939",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5858bd78-fa4f-472c-a308-1ad14729d73c",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7ad92942-9e46-4d94-825c-5d086d7fb17b",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "ste",
-                    "v2",
-                    "oauth2",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "urlencoded",
-                  "urlencoded": [
-                    {
-                      "disabled": false,
-                      "key": "grant_type",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "scope",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_id",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "client_secret",
-                      "value": "string"
-                    },
-                    {
-                      "disabled": false,
-                      "key": "expires_in",
-                      "value": "0"
-                    }
-                  ]
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"NOT_FOUND_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "b27256ca-1fd7-45be-8e25-3a7a0b758182",
+              "createdAt": "2026-10-22T01:21:34.000Z",
+              "updatedAt": "2026-10-22T01:21:34.000Z",
+              "uid": "35240-b27256ca-1fd7-45be-8e25-3a7a0b758182"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "7c530558-2254-43dd-beab-b676fddfebc9",
+          "createdAt": "2026-10-22T01:21:34.000Z",
+          "updatedAt": "2026-10-22T01:21:34.000Z",
+          "uid": "35240-7c530558-2254-43dd-beab-b676fddfebc9"
         }
       ],
-      "event": []
+      "id": "0c5df799-140a-4cb9-8688-7549ff0278de",
+      "createdAt": "2026-10-22T01:21:34.000Z",
+      "updatedAt": "2026-10-22T01:21:34.000Z",
+      "uid": "35240-0c5df799-140a-4cb9-8688-7549ff0278de"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "b575c1b2-85af-4491-9102-dc04139b9dfe",
-    "name": "Wherobots Cloud apikey service_token_endpoint API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

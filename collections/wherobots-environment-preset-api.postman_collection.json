@@ -1,413 +1,854 @@
 {
+  "info": {
+    "_postman_id": "132563fb-55a4-47e1-a144-d1ee2ce81daa",
+    "name": "Wherobots Cloud Environment Preset API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:19:52.000Z",
+    "updatedAt": "2026-10-22T01:19:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-132563fb-55a4-47e1-a144-d1ee2ce81daa"
+  },
   "item": [
     {
-      "id": "198010fe-2543-4753-84cf-b610dfa11cd3",
       "name": "environment-preset",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "67922cff-e454-4854-a366-8c63dda2c3d4",
+          "name": "{environment_preset_id}",
+          "item": [
+            {
+              "name": "Delete an environment preset",
+              "id": "9e650d87-f3db-4870-a89a-bbfbb9f2df55",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset",
+                    ":environment_preset_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "58f24d92-ab21-497a-a426-91d4729cbcf3",
+                      "key": "environment_preset_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "8e41733a-4326-45f9-8a1a-88b526d85066",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-8e41733a-4326-45f9-8a1a-88b526d85066"
+                },
+                {
+                  "id": "b117421b-f03e-450a-9c1a-edc9f98da04f",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-b117421b-f03e-450a-9c1a-edc9f98da04f"
+                },
+                {
+                  "id": "cc100cd8-163a-42c7-bb69-d7ba21773a68",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-cc100cd8-163a-42c7-bb69-d7ba21773a68"
+                },
+                {
+                  "id": "37057c9c-ab7f-4587-a882-40c1d59dc24c",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-37057c9c-ab7f-4587-a882-40c1d59dc24c"
+                },
+                {
+                  "id": "1148e686-8dbd-4372-9202-39ad59526ba9",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-1148e686-8dbd-4372-9202-39ad59526ba9"
+                },
+                {
+                  "id": "f04d0748-e3bf-4f61-897b-62bf27d43503",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-f04d0748-e3bf-4f61-897b-62bf27d43503"
+                },
+                {
+                  "id": "81b2f3b4-3d3c-4cc6-9d5a-5ae3c94abee5",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-81b2f3b4-3d3c-4cc6-9d5a-5ae3c94abee5"
+                },
+                {
+                  "id": "4245176e-7fbb-4c13-81e4-0ad8cfdd7415",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/environment-preset/:environment_preset_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "environment-preset",
+                        ":environment_preset_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "environment_preset_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:19:53.000Z",
+                  "updatedAt": "2026-10-22T01:19:53.000Z",
+                  "uid": "35240-4245176e-7fbb-4c13-81e4-0ad8cfdd7415"
+                }
+              ],
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-9e650d87-f3db-4870-a89a-bbfbb9f2df55"
+            }
+          ],
+          "id": "47605aa5-94db-4685-954a-f3b3abe1e42c",
+          "createdAt": "2026-10-22T01:19:53.000Z",
+          "updatedAt": "2026-10-22T01:19:53.000Z",
+          "uid": "35240-47605aa5-94db-4685-954a-f3b3abe1e42c"
+        },
+        {
           "name": "List environment presets",
+          "id": "ff9e0551-1817-4edf-999e-9e7a6bdf4439",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List environment presets",
-            "description": {},
-            "url": {
-              "path": [
-                "environment-preset"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
+            "url": {
+              "raw": "{{baseUrl}}/environment-preset",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "environment-preset"
               ]
             }
           },
           "response": [
             {
-              "id": "c5f8409e-c71e-4f6f-b7f2-542a16bea83c",
+              "id": "0bcd6235-d68a-4756-a57d-f8db07fc98d6",
               "name": "Successful Response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"createTime\": \"1967-10-10T18:07:03.995Z\",\n    \"updateTime\": \"1960-07-05T09:12:55.861Z\",\n    \"name\": \"string\",\n    \"version\": \"string\",\n    \"sparkConfiguration\": {\n      \"key_0\": 1078.9497712813877\n    },\n    \"dependencies\": [\n      {\n        \"sourceType\": \"PYPI\",\n        \"fileType\": \"JAR\",\n        \"filePath\": \"string\",\n        \"libraryName\": \"string\",\n        \"libraryVersion\": \"string\"\n      },\n      {\n        \"sourceType\": \"PYPI\",\n        \"fileType\": \"ZIP\",\n        \"filePath\": \"string\",\n        \"libraryName\": \"string\",\n        \"libraryVersion\": \"string\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"string\",\n      \"createTime\": \"2025-08-02T04:42:31.539Z\",\n      \"updateTime\": \"2014-10-29T01:56:24.743Z\",\n      \"roles\": [\n        {\n          \"id\": \"string\",\n          \"createTime\": \"1989-09-14T15:49:39.284Z\",\n          \"updateTime\": \"1958-05-06T23:01:53.746Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"createTime\": \"1970-03-25T21:05:11.238Z\",\n          \"updateTime\": \"1947-09-15T19:15:15.939Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"string\",\n      \"name\": \"string\"\n    },\n    \"protected\": false\n  },\n  {\n    \"id\": \"string\",\n    \"createTime\": \"1979-12-29T18:26:01.181Z\",\n    \"updateTime\": \"1989-11-30T00:14:18.063Z\",\n    \"name\": \"string\",\n    \"version\": \"string\",\n    \"sparkConfiguration\": {\n      \"key_0\": \"string\",\n      \"key_1\": 4727.282103058375,\n      \"key_2\": 9151.434477666446\n    },\n    \"dependencies\": [\n      {\n        \"sourceType\": \"FILE\",\n        \"fileType\": \"ZIP\",\n        \"filePath\": \"string\",\n        \"libraryName\": \"string\",\n        \"libraryVersion\": \"string\"\n      },\n      {\n        \"sourceType\": \"FILE\",\n        \"fileType\": \"OTHER\",\n        \"filePath\": \"string\",\n        \"libraryName\": \"string\",\n        \"libraryVersion\": \"string\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"string\",\n      \"createTime\": \"1956-05-09T15:36:57.991Z\",\n      \"updateTime\": \"2015-09-06T08:32:11.129Z\",\n      \"roles\": [\n        {\n          \"id\": \"string\",\n          \"createTime\": \"1952-09-22T02:05:32.248Z\",\n          \"updateTime\": \"1953-03-19T16:51:25.843Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"createTime\": \"1991-01-28T16:09:02.256Z\",\n          \"updateTime\": \"1998-11-18T16:24:22.224Z\",\n          \"name\": \"string\",\n          \"organizationId\": \"string\",\n          \"policies\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"string\",\n      \"name\": \"string\"\n    },\n    \"protected\": false\n  }\n]",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"sparkConfiguration\": {\n      \"proident4\": false,\n      \"Loremf\": 28218853.496793404\n    },\n    \"dependencies\": [\n      {\n        \"sourceType\": \"PYPI\",\n        \"fileType\": \"OTHER\",\n        \"filePath\": \"<string>\",\n        \"libraryName\": \"<string>\",\n        \"libraryVersion\": \"<string>\"\n      },\n      {\n        \"sourceType\": \"PYPI\",\n        \"fileType\": \"JAR\",\n        \"filePath\": \"<string>\",\n        \"libraryName\": \"<string>\",\n        \"libraryVersion\": \"<string>\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"protected\": false\n  },\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"sparkConfiguration\": {\n      \"adipisicingb5c\": \"ipsum dolor\",\n      \"culpa7\": 47039731.83874762,\n      \"irureaa\": false\n    },\n    \"dependencies\": [\n      {\n        \"sourceType\": \"PYPI\",\n        \"fileType\": \"JAR\",\n        \"filePath\": \"<string>\",\n        \"libraryName\": \"<string>\",\n        \"libraryVersion\": \"<string>\"\n      },\n      {\n        \"sourceType\": \"PYPI\",\n        \"fileType\": \"OTHER\",\n        \"filePath\": \"<string>\",\n        \"libraryName\": \"<string>\",\n        \"libraryVersion\": \"<string>\"\n      }\n    ],\n    \"createdBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"protected\": false\n  }\n]",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-0bcd6235-d68a-4756-a57d-f8db07fc98d6"
             },
             {
-              "id": "d108b9bd-0e5f-42f5-b0b7-0b05a2dc0acb",
+              "id": "f4ad3937-4cad-47a3-b628-ea524dbaf825",
               "name": "Bad Request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-f4ad3937-4cad-47a3-b628-ea524dbaf825"
             },
             {
-              "id": "a3e77f43-c576-46b5-8d6d-6827532c1cea",
+              "id": "1298af4d-52a2-414d-9ba4-784ab56c5685",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-1298af4d-52a2-414d-9ba4-784ab56c5685"
             },
             {
-              "id": "db962846-23ed-46d5-bbcb-f341c66dbb52",
+              "id": "940ca5f4-a9ce-49e9-ba0a-2054a9c62e13",
               "name": "Forbidden",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-940ca5f4-a9ce-49e9-ba0a-2054a9c62e13"
             },
             {
-              "id": "0ca7fb01-d52d-4375-b511-a6feaa1fe8f4",
+              "id": "bf691c2b-197d-458b-b61b-6e261c22ba39",
               "name": "Not Found",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-bf691c2b-197d-458b-b61b-6e261c22ba39"
             },
             {
-              "id": "d06231bb-f7b3-44da-93c2-7bffb3317e0b",
+              "id": "b3bb0422-da2b-4bad-a0a7-9504887c1019",
               "name": "Conflict",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Conflict",
               "code": 409,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-b3bb0422-da2b-4bad-a0a7-9504887c1019"
             },
             {
-              "id": "e3e8011a-de65-4478-8384-202320cc8deb",
+              "id": "0064ebc8-cae4-4024-8bba-c68e4026a572",
               "name": "Validation Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-0064ebc8-cae4-4024-8bba-c68e4026a572"
             },
             {
-              "id": "847b25ac-8e74-461a-b54e-7fe9f1311dfe",
+              "id": "40253bdb-b000-4ebf-b3fe-9bfd8728922a",
               "name": "Internal Server Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-40253bdb-b000-4ebf-b3fe-9bfd8728922a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:19:53.000Z",
+          "updatedAt": "2026-10-22T01:19:53.000Z",
+          "uid": "35240-ff9e0551-1817-4edf-999e-9e7a6bdf4439"
         },
         {
-          "id": "b926a015-4bf7-449c-95ea-3a4a303737b4",
           "name": "Create or update an environment preset",
+          "id": "7cfc4314-6fc8-463d-b420-4ab54dea5804",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create or update an environment preset",
-            "description": {},
-            "url": {
-              "path": [
-                "environment-preset"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
+            "method": "PUT",
             "header": [
               {
                 "key": "Content-Type",
@@ -418,925 +859,491 @@
                 "value": "application/json"
               }
             ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 6801.775495165335,\n    \"key_1\": true\n  }\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
-          },
-          "response": [
-            {
-              "id": "b7cdb724-c0ce-472d-8f5c-1e534d0ac91f",
-              "name": "Successful Response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"createTime\": \"1993-02-13T16:40:59.621Z\",\n  \"updateTime\": \"1994-11-28T08:38:44.015Z\",\n  \"name\": \"string\",\n  \"version\": \"string\",\n  \"sparkConfiguration\": {\n    \"key_0\": 1286,\n    \"key_1\": 6688\n  },\n  \"dependencies\": [\n    {\n      \"sourceType\": \"PYPI\",\n      \"fileType\": \"JAR\",\n      \"filePath\": \"string\",\n      \"libraryName\": \"string\",\n      \"libraryVersion\": \"string\"\n    },\n    {\n      \"sourceType\": \"PYPI\",\n      \"fileType\": \"OTHER\",\n      \"filePath\": \"string\",\n      \"libraryName\": \"string\",\n      \"libraryVersion\": \"string\"\n    }\n  ],\n  \"createdBy\": {\n    \"id\": \"string\",\n    \"createTime\": \"1969-01-10T09:20:21.015Z\",\n    \"updateTime\": \"2000-08-25T16:05:44.530Z\",\n    \"roles\": [\n      {\n        \"id\": \"string\",\n        \"createTime\": \"2023-04-12T02:32:12.396Z\",\n        \"updateTime\": \"1994-04-18T20:54:49.943Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"createTime\": \"2003-05-08T17:42:09.412Z\",\n        \"updateTime\": \"1993-10-07T03:44:20.441Z\",\n        \"name\": \"string\",\n        \"organizationId\": \"string\",\n        \"policies\": [\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"locator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"effect\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"createTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    ],\n    \"email\": \"string\",\n    \"name\": \"string\"\n  },\n  \"protected\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
             },
-            {
-              "id": "b7c424f2-7422-4779-9308-86ca97afe039",
-              "name": "Bad Request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d8cd0e80-daca-4e93-ae06-75dc71ecf894",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "32def0e3-a3d3-44b6-a4bc-be6faea68e83",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6b26e331-b46d-4407-826e-3ece992084ec",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a9a5ba49-95cd-4863-aff5-f1fb0b0c9767",
-              "name": "Conflict",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "405b50bd-635b-4327-8034-f6c2f23aeaba",
-              "name": "Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a398125e-48b9-4e80-8ecc-b0ac61bfd490",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"key_0\": 176.23786048808765,\n    \"key_1\": 938.1410327183237,\n    \"key_2\": true\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "618b9c0b-616f-4354-898b-472b5b1e3fde",
-          "name": "Delete an environment preset",
-          "request": {
-            "name": "Delete an environment preset",
-            "description": {},
             "url": {
-              "path": [
-                "environment-preset",
-                ":environment_preset_id"
-              ],
+              "raw": "{{baseUrl}}/environment-preset",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "environment_preset_id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
+              "path": [
+                "environment-preset"
               ]
             }
           },
           "response": [
             {
-              "id": "49da81f3-b853-4bb4-996f-610dfc9a5f47",
+              "id": "a2375123-c603-4f76-b918-33212511d0e7",
               "name": "Successful Response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"quis04\": 22917463.631391972\n  },\n  \"dependencies\": [\n    {\n      \"sourceType\": \"FILE\",\n      \"fileType\": \"PYTHON_WHEEL\",\n      \"filePath\": \"<string>\",\n      \"libraryName\": \"<string>\",\n      \"libraryVersion\": \"<string>\"\n    },\n    {\n      \"sourceType\": \"FILE\",\n      \"fileType\": \"JAR\",\n      \"filePath\": \"<string>\",\n      \"libraryName\": \"<string>\",\n      \"libraryVersion\": \"<string>\"\n    }\n  ],\n  \"createdBy\": {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"protected\": false\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-a2375123-c603-4f76-b918-33212511d0e7"
             },
             {
-              "id": "5b6862ac-c4e8-4959-89ac-48ee683d6039",
+              "id": "b56957e3-b9d2-4661-b544-85dff98ad08c",
               "name": "Bad Request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-b56957e3-b9d2-4661-b544-85dff98ad08c"
             },
             {
-              "id": "a9b0f148-b2f2-4a34-90b9-07195000143d",
+              "id": "0125f78c-39f7-4855-9c6a-c38d841a94fa",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-0125f78c-39f7-4855-9c6a-c38d841a94fa"
             },
             {
-              "id": "b4d3f6c4-1977-409b-b3a5-cb347b11bb90",
+              "id": "94a22f12-e8fa-4df5-b604-e8e2e418b5f0",
               "name": "Forbidden",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-94a22f12-e8fa-4df5-b604-e8e2e418b5f0"
             },
             {
-              "id": "e6e150b2-e4eb-42d6-a29a-efbb20fd7618",
+              "id": "07558be2-7508-496f-8195-d5aeecf3d1c2",
               "name": "Not Found",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-07558be2-7508-496f-8195-d5aeecf3d1c2"
             },
             {
-              "id": "9467b756-9b95-4ced-a363-f8068526c825",
+              "id": "a7e02fbb-1695-49a6-bcef-73dcb7f6832b",
               "name": "Conflict",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Conflict",
               "code": 409,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-a7e02fbb-1695-49a6-bcef-73dcb7f6832b"
             },
             {
-              "id": "429cb5f9-0bf5-498b-b708-a5211059559a",
+              "id": "4b2f8090-b3c2-4f37-bc52-4e969585e6a8",
               "name": "Validation Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-4b2f8090-b3c2-4f37-bc52-4e969585e6a8"
             },
             {
-              "id": "ca7fb1f4-46ad-4a60-af5b-3f55c790eac6",
+              "id": "918950c4-baba-40a8-b157-3d0e28e695c2",
               "name": "Internal Server Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "environment-preset",
-                    ":environment_preset_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "environment_preset_id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "DELETE",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"sparkConfiguration\": {\n    \"est68\": true,\n    \"nostrud974\": \"repreh\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/environment-preset",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "environment-preset"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"UNAUTHORIZED_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"INTERNAL_SERVER_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"FOREIGN_CATALOG_CONNECTION_FAILED\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:19:53.000Z",
+              "updatedAt": "2026-10-22T01:19:53.000Z",
+              "uid": "35240-918950c4-baba-40a8-b157-3d0e28e695c2"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:19:53.000Z",
+          "updatedAt": "2026-10-22T01:19:53.000Z",
+          "uid": "35240-7cfc4314-6fc8-463d-b420-4ab54dea5804"
         }
       ],
-      "event": []
+      "id": "bff17a7a-3ddd-4b7f-846c-df8f2827c7a3",
+      "createdAt": "2026-10-22T01:19:53.000Z",
+      "updatedAt": "2026-10-22T01:19:53.000Z",
+      "uid": "35240-bff17a7a-3ddd-4b7f-846c-df8f2827c7a3"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "03a5da0b-5e39-41a9-8e5c-aa303ceca952",
-    "name": "Wherobots Cloud apikey environment-preset API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

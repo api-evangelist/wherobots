@@ -1,0 +1,1962 @@
+{
+  "info": {
+    "_postman_id": "eeb367de-5422-4846-bd57-3ff69f88729d",
+    "name": "Wherobots Cloud Apikey API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:22:57.000Z",
+    "updatedAt": "2026-10-22T01:22:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eeb367de-5422-4846-bd57-3ff69f88729d"
+  },
+  "item": [
+    {
+      "name": "apikey",
+      "item": [
+        {
+          "name": "{api_key_id}",
+          "item": [
+            {
+              "name": "Update API key expiry",
+              "id": "b9822ad3-1903-40c2-b32b-e001f7ca4b1b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey/:api_key_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey",
+                    ":api_key_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "195271eb-4694-4a7b-91f5-04b8396ed442",
+                      "key": "api_key_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "ba5363f1-2dc2-49ed-8168-70d4ec52e3b4",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"partialApiKey\": \"<string>\",\n  \"preview\": \"<string>\",\n  \"name\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"revoked\": \"<boolean>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"createdById\": \"<string>\",\n  \"createdBy\": {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"ownedBy\": {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-ba5363f1-2dc2-49ed-8168-70d4ec52e3b4"
+                },
+                {
+                  "id": "420bd41b-d9db-48e2-a6cb-9fd8ca5a54bc",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-420bd41b-d9db-48e2-a6cb-9fd8ca5a54bc"
+                },
+                {
+                  "id": "d23157d3-569a-47e9-a8be-3ddd9889b7ed",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-d23157d3-569a-47e9-a8be-3ddd9889b7ed"
+                },
+                {
+                  "id": "52293947-b9da-40a1-bb93-56b8e5e972ab",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-52293947-b9da-40a1-bb93-56b8e5e972ab"
+                },
+                {
+                  "id": "89e02c15-da6c-4e01-82e8-10c21a8a1b25",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-89e02c15-da6c-4e01-82e8-10c21a8a1b25"
+                },
+                {
+                  "id": "fd5eef86-1f02-4efc-87c9-b1ba1226f1ec",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-fd5eef86-1f02-4efc-87c9-b1ba1226f1ec"
+                },
+                {
+                  "id": "cef4acbc-bcda-4d53-94d7-679241bdbb62",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-cef4acbc-bcda-4d53-94d7-679241bdbb62"
+                },
+                {
+                  "id": "2a20643d-6f77-4ad3-a2bf-9f58ec1ea581",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-2a20643d-6f77-4ad3-a2bf-9f58ec1ea581"
+                }
+              ],
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-b9822ad3-1903-40c2-b32b-e001f7ca4b1b"
+            },
+            {
+              "name": "Revoke an API key",
+              "id": "c94f8e4a-89e4-4027-967d-d8932c5738aa",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey/:api_key_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey",
+                    ":api_key_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6512b490-25db-47cf-b9b7-774af1503d0b",
+                      "key": "api_key_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "6faf24ad-1b95-4cc9-9e59-4cfda7d3c60a",
+                  "name": "Successful Response",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-6faf24ad-1b95-4cc9-9e59-4cfda7d3c60a"
+                },
+                {
+                  "id": "fa031787-8085-4e36-a4bf-8890092dffe1",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-fa031787-8085-4e36-a4bf-8890092dffe1"
+                },
+                {
+                  "id": "0239fdd0-62ec-43df-b18f-6ac3922ec505",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-0239fdd0-62ec-43df-b18f-6ac3922ec505"
+                },
+                {
+                  "id": "061bd4d4-b518-4275-a62d-25ce911046e7",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-061bd4d4-b518-4275-a62d-25ce911046e7"
+                },
+                {
+                  "id": "349eca0b-3750-444c-9c0a-b6e8465cb13f",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-349eca0b-3750-444c-9c0a-b6e8465cb13f"
+                },
+                {
+                  "id": "ab19c5e0-f09f-4d38-b6ec-52fc9d46f00f",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-ab19c5e0-f09f-4d38-b6ec-52fc9d46f00f"
+                },
+                {
+                  "id": "850f5fc7-04ce-4891-ac8a-a5c53af57cd4",
+                  "name": "Validation Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-850f5fc7-04ce-4891-ac8a-a5c53af57cd4"
+                },
+                {
+                  "id": "c5a465da-817c-412f-ac47-9cd9ed945d26",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apikey/:api_key_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apikey",
+                        ":api_key_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "api_key_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:22:58.000Z",
+                  "updatedAt": "2026-10-22T01:22:58.000Z",
+                  "uid": "35240-c5a465da-817c-412f-ac47-9cd9ed945d26"
+                }
+              ],
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-c94f8e4a-89e4-4027-967d-d8932c5738aa"
+            }
+          ],
+          "id": "95781e48-caf1-4f01-afa9-6d5273273605",
+          "createdAt": "2026-10-22T01:22:58.000Z",
+          "updatedAt": "2026-10-22T01:22:58.000Z",
+          "uid": "35240-95781e48-caf1-4f01-afa9-6d5273273605"
+        },
+        {
+          "name": "List API keys",
+          "id": "c198dfeb-46bd-459d-8c4f-fa36a00802b4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/apikey?customerId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apikey"
+              ],
+              "query": [
+                {
+                  "key": "customerId",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4f636455-19f9-4482-876a-1a23e7047495",
+              "name": "Successful Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"partialApiKey\": \"<string>\",\n    \"preview\": \"<string>\",\n    \"name\": \"<string>\",\n    \"valid\": \"<boolean>\",\n    \"revoked\": \"<boolean>\",\n    \"expiresAt\": \"<dateTime>\",\n    \"createdById\": \"<string>\",\n    \"createdBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"ownedBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"partialApiKey\": \"<string>\",\n    \"preview\": \"<string>\",\n    \"name\": \"<string>\",\n    \"valid\": \"<boolean>\",\n    \"revoked\": \"<boolean>\",\n    \"expiresAt\": \"<dateTime>\",\n    \"createdById\": \"<string>\",\n    \"createdBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"ownedBy\": {\n      \"id\": \"<string>\",\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\",\n      \"roles\": [\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"ALLOW\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"createTime\": \"<dateTime>\",\n          \"updateTime\": \"<dateTime>\",\n          \"name\": \"<string>\",\n          \"organizationId\": \"<string>\",\n          \"policies\": [\n            {\n              \"provider\": \"AWS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            },\n            {\n              \"provider\": \"WHEROBOTS\",\n              \"locator\": \"<string>\",\n              \"action\": \"<string>\",\n              \"effect\": \"DENY\",\n              \"id\": \"<string>\",\n              \"createTime\": \"<dateTime>\",\n              \"updateTime\": \"<dateTime>\"\n            }\n          ]\n        }\n      ],\n      \"email\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  }\n]",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-4f636455-19f9-4482-876a-1a23e7047495"
+            },
+            {
+              "id": "462bf7ad-06e9-4db0-ac14-6b993841c8d0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-462bf7ad-06e9-4db0-ac14-6b993841c8d0"
+            },
+            {
+              "id": "3b18ca6f-fa0c-464a-8819-719d34524a7f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-3b18ca6f-fa0c-464a-8819-719d34524a7f"
+            },
+            {
+              "id": "6c822710-d057-45dc-9a21-80f35d163dcc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-6c822710-d057-45dc-9a21-80f35d163dcc"
+            },
+            {
+              "id": "7bdaf981-1cde-4bb8-a164-d082577cb25f",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-7bdaf981-1cde-4bb8-a164-d082577cb25f"
+            },
+            {
+              "id": "f09a789b-9244-453a-8ae2-45c3aa02cbef",
+              "name": "Conflict",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-f09a789b-9244-453a-8ae2-45c3aa02cbef"
+            },
+            {
+              "id": "f590e638-82e2-4389-944a-7c4ce1e38ba1",
+              "name": "Validation Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-f590e638-82e2-4389-944a-7c4ce1e38ba1"
+            },
+            {
+              "id": "a355ca3a-a374-4af7-af6b-685b086be722",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apikey?customerId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ],
+                  "query": [
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-a355ca3a-a374-4af7-af6b-685b086be722"
+            }
+          ],
+          "createdAt": "2026-10-22T01:22:58.000Z",
+          "updatedAt": "2026-10-22T01:22:58.000Z",
+          "uid": "35240-c198dfeb-46bd-459d-8c4f-fa36a00802b4"
+        },
+        {
+          "name": "Create an API key",
+          "id": "48710fce-c75a-48ab-acd2-deda541393df",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/apikey",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apikey"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "35cb7a99-d814-416b-ae70-ecbb61782777",
+              "name": "Successful Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"partialApiKey\": \"<string>\",\n  \"preview\": \"<string>\",\n  \"name\": \"<string>\",\n  \"valid\": \"<boolean>\",\n  \"revoked\": \"<boolean>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"createdById\": \"<string>\",\n  \"createdBy\": {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"key\": \"<string>\",\n  \"ownedBy\": {\n    \"id\": \"<string>\",\n    \"createTime\": \"<dateTime>\",\n    \"updateTime\": \"<dateTime>\",\n    \"roles\": [\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"DENY\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"createTime\": \"<dateTime>\",\n        \"updateTime\": \"<dateTime>\",\n        \"name\": \"<string>\",\n        \"organizationId\": \"<string>\",\n        \"policies\": [\n          {\n            \"provider\": \"WHEROBOTS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          },\n          {\n            \"provider\": \"AWS\",\n            \"locator\": \"<string>\",\n            \"action\": \"<string>\",\n            \"effect\": \"ALLOW\",\n            \"id\": \"<string>\",\n            \"createTime\": \"<dateTime>\",\n            \"updateTime\": \"<dateTime>\"\n          }\n        ]\n      }\n    ],\n    \"email\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-35cb7a99-d814-416b-ae70-ecbb61782777"
+            },
+            {
+              "id": "17944266-ef6c-422d-be5b-aea9c02df570",
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-17944266-ef6c-422d-be5b-aea9c02df570"
+            },
+            {
+              "id": "56c81ded-4d2b-4c40-b976-478ba1f15df3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-56c81ded-4d2b-4c40-b976-478ba1f15df3"
+            },
+            {
+              "id": "2cf2409f-9ec5-4840-b999-4d8703437c59",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-2cf2409f-9ec5-4840-b999-4d8703437c59"
+            },
+            {
+              "id": "20c01243-1a78-4f92-9b92-8e06c2a9107e",
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-20c01243-1a78-4f92-9b92-8e06c2a9107e"
+            },
+            {
+              "id": "babca295-b23f-4963-80ec-15b3021ad72a",
+              "name": "Conflict",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-babca295-b23f-4963-80ec-15b3021ad72a"
+            },
+            {
+              "id": "75b92b2a-a53c-4135-a878-54cb22627156",
+              "name": "Validation Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-75b92b2a-a53c-4135-a878-54cb22627156"
+            },
+            {
+              "id": "fcf677f9-9220-4932-99f7-2010d392303f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"ownedById\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/apikey",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apikey"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"REQUEST_ENTITY_TOO_LARGE\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"CONFLICT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:22:58.000Z",
+              "updatedAt": "2026-10-22T01:22:58.000Z",
+              "uid": "35240-fcf677f9-9220-4932-99f7-2010d392303f"
+            }
+          ],
+          "createdAt": "2026-10-22T01:22:58.000Z",
+          "updatedAt": "2026-10-22T01:22:58.000Z",
+          "uid": "35240-48710fce-c75a-48ab-acd2-deda541393df"
+        }
+      ],
+      "id": "f1950b97-fb49-416a-b751-ebb4202a1163",
+      "createdAt": "2026-10-22T01:22:58.000Z",
+      "updatedAt": "2026-10-22T01:22:58.000Z",
+      "uid": "35240-f1950b97-fb49-416a-b751-ebb4202a1163"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
+    }
+  ]
+}

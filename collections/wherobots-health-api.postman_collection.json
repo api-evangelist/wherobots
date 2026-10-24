@@ -1,347 +1,356 @@
 {
+  "info": {
+    "_postman_id": "68f6c042-1339-45d7-98d3-c50ea97570ac",
+    "name": "Wherobots Cloud Health API",
+    "description": "Wherobots Cloud API OpenAPI specification.\n\nThese are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\nThe underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\nThe Authorize button below will allow you to input an access token to authenticate to our API.\nThen all of the requests on the page should work.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:20:18.000Z",
+    "updatedAt": "2026-10-22T01:20:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-68f6c042-1339-45d7-98d3-c50ea97570ac"
+  },
   "item": [
     {
-      "id": "1cf42ca2-7caf-4010-918d-d76b0080e209",
-      "name": "Health",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "health",
       "item": [
         {
-          "id": "e2dde7ed-c9a0-40b3-81ac-4811838644f7",
           "name": "Health check",
+          "id": "2e6b59b3-2e1c-4022-87cb-b6596ce47b54",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Health check",
-            "description": {
-              "content": "Health check endpoint with detailed component status.\n\nReturns status=\"ok\" always for k8s probe compatibility.\nIndividual component failures are reported in the checks dict.\n\nNote: DB connections use pool_pre_ping=True for automatic validation\non checkout. This endpoint reports pool status without making DB queries.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "health"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Health check endpoint with detailed component status.\n\nReturns status=\"ok\" always for k8s probe compatibility.\nIndividual component failures are reported in the checks dict.\n\nNote: DB connections use pool_pre_ping=True for automatic validation\non checkout. This endpoint reports pool status without making DB queries."
           },
           "response": [
             {
-              "id": "58e2836c-0084-452a-a719-af3d566f9240",
+              "id": "06f3496d-4a9c-4b1c-9f69-b6ca8311484e",
               "name": "Successful Response",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"string\",\n  \"checks\": {\n    \"key_0\": {\n      \"status\": \"string\",\n      \"message\": \"string\"\n    }\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"checks\": {\n    \"occaecat_a9\": {\n      \"status\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-06f3496d-4a9c-4b1c-9f69-b6ca8311484e"
             },
             {
-              "id": "deff3c98-2ea6-449c-90ce-a8422eb57877",
+              "id": "68c7878d-ad26-4403-a7a2-a8b9eceacac0",
               "name": "Bad Request",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-68c7878d-ad26-4403-a7a2-a8b9eceacac0"
             },
             {
-              "id": "902a6728-44f3-457b-899e-43f01c59b1ba",
+              "id": "09960833-2f5d-414d-8ed5-361c12af9562",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-09960833-2f5d-414d-8ed5-361c12af9562"
             },
             {
-              "id": "32ddd059-0b71-4e7b-9800-b5e133f13672",
+              "id": "748772af-0fe0-48e0-b80b-ee52dd1eb043",
               "name": "Forbidden",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "Forbidden",
               "code": 403,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-748772af-0fe0-48e0-b80b-ee52dd1eb043"
             },
             {
-              "id": "2fa8613c-7e8c-42da-aa95-40c43698f1aa",
+              "id": "23957061-dc9f-48c8-b1a8-98d5b6383027",
               "name": "Not Found",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "Not Found",
               "code": 404,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-23957061-dc9f-48c8-b1a8-98d5b6383027"
             },
             {
-              "id": "2db16037-785c-4d24-a7a4-877b5bfdfb9e",
+              "id": "14759ee1-8be1-405f-98b5-1468130c602a",
               "name": "Conflict",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "Conflict",
               "code": 409,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-14759ee1-8be1-405f-98b5-1468130c602a"
             },
             {
-              "id": "c253eca1-f6ce-4240-bf5c-e5162a60283a",
+              "id": "3150c1a2-5808-4547-9d76-bd319021222b",
               "name": "Validation Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
               "code": 422,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-3150c1a2-5808-4547-9d76-bd319021222b"
             },
             {
-              "id": "0eacad86-aea6-4ebd-8787-959751d4fa4c",
+              "id": "69a9858d-5fb7-42b3-97c2-7df4a8d4575e",
               "name": "Internal Server Error",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "health"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "health"
+                  ]
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"string\",\n      \"details\": \"string\",\n      \"path\": \"string\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"string\",\n      \"field\": \"string\"\n    }\n  ],\n  \"requestId\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"errors\": [\n    {\n      \"code\": \"RATE_LIMIT_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    },\n    {\n      \"code\": \"INSUFFICIENT_PERMISSIONS_ERROR\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\",\n      \"path\": \"<string>\",\n      \"suggestion\": \"Contact us at support@wherobots.com to get help with resolving your error.\",\n      \"documentation_url\": \"<string>\",\n      \"field\": \"<string>\"\n    }\n  ],\n  \"requestId\": \"<string>\"\n}",
+              "createdAt": "2026-10-22T01:20:18.000Z",
+              "updatedAt": "2026-10-22T01:20:18.000Z",
+              "uid": "35240-69a9858d-5fb7-42b3-97c2-7df4a8d4575e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T01:20:18.000Z",
+          "updatedAt": "2026-10-22T01:20:18.000Z",
+          "uid": "35240-2e6b59b3-2e1c-4022-87cb-b6596ce47b54"
         }
       ],
-      "event": []
+      "id": "1fe708a4-773c-46af-95cc-7fafbbbeeea2",
+      "createdAt": "2026-10-22T01:20:18.000Z",
+      "updatedAt": "2026-10-22T01:20:18.000Z",
+      "uid": "35240-1fe708a4-773c-46af-95cc-7fafbbbeeea2"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.cloud.wherobots.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.cloud.wherobots.com"
     }
-  ],
-  "info": {
-    "_postman_id": "f9476161-c47a-4d58-8fb7-d2bbd26cb0d6",
-    "name": "Wherobots Cloud apikey Health API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Wherobots Cloud API OpenAPI specification.\n\n    These are the API docs for the Wherobots API. You can use this to test out the API and see what it does.\n    The underlying OPENAPI spec can be found at /openapi.json. This can be used to generate clients for the API.\n\n    The Authorize button below will allow you to input an access token to authenticate to our API.\n    Then all of the requests on the page should work.\n    ",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
